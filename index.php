@@ -41,6 +41,7 @@
         include "./includes/mysql_connect.php";
         $conn=connect_mysql();
     ?>
+<?php ?>
 
   <!-- MAIN CONTAINER -->
   <div class="main-container">
