@@ -1,0 +1,319 @@
+// Blog styling
+.latest_blogs {
+
+  width: 100%;
+  height: 50rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+    color: $rusty-red;
+    font-family: $league;
+    text-transform: uppercase;
+    padding-top: 1.5rem;
+  }
+
+  &__container {
+    width: 85%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+
+    width: 24%;
+    height: 90%;
+    border-radius: 0.4rem;
+    background-color: white;
+    box-shadow: $subtle-shadow;
+    cursor: pointer;
+    overflow: hidden;
+
+    &__bg {
+
+      &__container {
+        border-top-right-radius: 0.4rem;
+        border-top-left-radius: 0.4rem;
+        width: 100%;
+        height: 58%;
+        overflow: hidden;
+      }
+
+      width: 100%;
+      height: 100%;
+      background: {
+        size: cover;
+        position: center;
+      }
+      transition: 0.3s ease-in-out;
+      
+    }
+
+    &__content {
+      
+      width: 100%;
+      height: 42%;
+      background-color: $rusty-red;
+      border-bottom-right-radius: 0.4rem;
+      border-bottom-left-radius: 0.4rem;
+      padding: 1.2rem;
+      box-sizing: border-box;
+      position: relative;
+
+      &__title {
+        margin: 0;
+        font-size: 1.4rem;
+        color: white;
+        text-transform: uppercase;
+        font-weight: $bold;
+      }
+
+      &__sep { 
+        margin-top: 0.4rem;
+        height: 0.1rem;
+        width: 10rem;
+        background-color: white;
+      }
+
+      p {
+        color: rgb(255, 168, 183);
+        font-size: 1.3rem;
+        margin: 1rem 0 0 0;
+      }
+
+    }
+
+    &:hover &__bg {
+      transform: scale(1.08);
+    }
+
+    &__continue {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      left: 0; right: 0;
+      bottom: 0;
+      height: 2.2rem;
+      background-color: white;
+      transition: 0.4s;
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $rusty-red;
+        font-weight: $semiBold;
+        font-size: 1.1rem;
+      }
+    }
+
+  }
+
+}
+
+
+// Blog Detail Styling
+.blog_detail {
+
+  width: 100%;
+
+  &__header {
+
+    width: 90%;
+    height: 40rem;
+    background: url('../assets/images/blog-detail-bg.png');
+    background: {
+      size: cover;
+      position: center;
+    }
+    margin: 0 auto;
+    margin-top: 20rem;
+    box-sizing: border-box;
+    padding: 7rem;
+
+    &__title {
+      text-transform: uppercase;
+      color: white;
+      font-family: $league;
+      h1 {
+        width: 50rem;
+        margin: 0;
+      }
+      h3 {
+        margin: 0.5rem 0 0 0;
+        font-size: 2.2rem;
+      }
+    }
+
+  }
+
+  &__footer {
+
+    margin-top: 5rem;
+
+    &__desc {
+      color: white;
+      h4 {
+        margin: 0;
+        text-transform: capitalize;
+        font-weight: $light;
+        b {
+          text-transform: uppercase;
+          font-weight: $semiBold;
+        }
+      }
+      h5 {
+        margin-top: 0.5rem;
+        text-transform: capitalize;
+        font-weight: $light;
+        b {
+          font-weight: $semiBold;
+        }
+      }
+    }
+
+    &__share {
+      width: 32rem;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      &__item {
+        margin: 0;
+        border-radius: 0.5rem;
+        color: white;
+        font-family: system-ui;
+        text-transform: uppercase;
+        font-weight: $medium;
+        padding: 1.2rem;
+        cursor: pointer;
+        transition: 0.3s;
+        &:nth-child(1) {
+          background-color: #365EB3;
+        }
+        &:nth-child(2) {
+          background-color: #57C0F0;
+        }
+      }
+    }
+    
+  }
+
+
+  // Blog Detail Content Styling
+  &__main {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+
+  &__content {
+
+    width: 80%;
+    padding: 5rem 7rem 2rem 7rem;
+
+    p {
+      font-weight: $medium;
+      line-height: 2.3rem;
+      color: grey;
+    }
+
+    &__image {
+      margin: 4rem 0;
+      img {
+        width: 100%;
+      }
+      p {
+        font-family: 'Arial';
+        margin-top: 0.5rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    &__sep {
+      height: 0.1rem;
+      width: 100%;
+      background-color: grey;
+      margin-top: 15rem;
+    }
+
+  }
+
+  &__aside {
+    width: 20%;
+    padding: 7rem;
+    display: flex;
+    flex-direction: column;
+    &__ad {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 25rem;
+      width: 100%;
+      background-color: grey;
+      margin-bottom: 2rem;
+      color: white;
+      text-transform: uppercase;
+    }
+  }
+
+
+  &__see_more {
+
+    padding: 0rem 7rem;
+    box-sizing: border-box;
+
+    &__title {
+      text-transform: uppercase;
+      color: $rusty-red;
+      font-family: $league;
+      margin: 2rem 0;  
+    }
+
+    &__items {
+      width: 70.5%;
+      display: flex;
+      margin: 4rem 0 16rem 0;
+    }
+
+    &__item {
+      margin-right: 4rem;
+      height: 15rem;
+      width: 25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.267);
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+      img {
+        height: 100%;
+        width: 100%;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+      &__title {
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        width: 100%;
+        height: 10rem;
+        padding: 0rem 1rem;
+        background-color: $rusty-red;
+        box-sizing: border-box;
+        color: white;
+        text-transform: uppercase;
+        h5 { font-size: 1.3rem; }
+      }
+      &:hover {
+        box-shadow: 0 0 40px 1px rgba(0, 0, 0, 0.527);
+        height: 15.5rem;
+        width: 25.5rem;
+      }
+    }
+
+  }
+
+}

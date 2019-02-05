@@ -1,0 +1,339 @@
+// Main Container Styling
+.main_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-top: 15.5rem;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.filter_results {
+
+  width: 24.5%;
+  height: auto;
+  background-color: white;
+  box-shadow: $subtle-shadow;
+  transition: 0.3s;
+  align-self: baseline;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $rusty-red;
+    margin-bottom: 2rem;
+    h3 {
+      text-transform: uppercase;
+      color: white;
+      font-size: 1.5rem;
+      padding-left: 1rem;
+      font-weight: $bold;
+    }
+    button {
+      margin-right: 1rem;
+      border: none;
+      background-color: white;
+      font-family: 'Montserrat';
+      color: $rusty-red;
+      text-transform: uppercase;
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+      font-weight: $semiBold;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  &__item {
+
+    $easer: 0.25s ease-in-out;
+
+    margin: 1rem;
+    height: auto;
+    transition: $easer;
+
+    &__head {
+      display: flex;
+      border-top-left-radius: 0.3rem;
+      border-top-right-radius: 0.3rem;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $rusty-red;
+      h5 {
+        text-transform: uppercase;
+        color: white;
+        margin: 0;
+        font-size: 1.2rem;
+        padding: 1rem;
+      }
+      i {
+        font-size: 1.8rem;
+        font-weight: $bold;
+        padding: 1rem 1.5rem;
+        color: white;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+    }
+
+    &__content {
+      transition: $easer;
+      padding-bottom: 1rem;
+      border: 1px solid $rusty-red;
+      border-bottom-left-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
+      transform-origin: top;
+    }
+
+    &__form {
+      transition: $easer;
+      margin: 1rem;
+      input {
+        margin-top: 1rem;
+        border: none;
+        border-bottom: 1px solid #b6b6b6;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        width: 25rem;
+        outline: none;
+        font-weight: $semiBold;
+        color: grey;
+      }
+      ::placeholder {
+        color: #b6b6b6;
+      }
+    }
+
+    &__check {
+      transition: $easer;
+      height: auto;
+      max-height: 10rem;
+      width: 100%;
+      padding: 1rem;
+      overflow-y: auto;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      color: $rusty-red;
+      font-size: 1.2rem;
+      font-weight: $medium;
+      line-height: 1.5rem;
+      input[type='checkbox'] {
+        margin-right: 0.5rem;
+        margin-top: 0.2rem;
+      }
+    }
+
+  }
+
+}
+
+// Course Results Styling
+.course_results {
+
+  width: 59.5%;
+  height: auto;
+  background-color: white;
+  box-shadow: $subtle-shadow;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  box-sizing: border-box;
+  align-self: baseline;
+
+  &__head {
+    h3 {
+      border-bottom: 0.5px solid #e0e0e0;
+      text-transform: uppercase;
+      color: rgb(168, 168, 168);
+      font-weight: $medium;
+      margin: 1.1rem;
+      padding-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    b {
+      color: $rusty-red;
+    }
+  }
+
+  &__container {
+    width: 97%;
+    height: auto;
+    margin: 2rem auto;
+    box-sizing: border-box;
+  }
+
+  &__item {
+
+    width: 100%;
+    height: auto;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
+    margin-bottom: 1.5rem;
+
+    &__img {
+      height: 18rem;
+      width: 18rem;
+      border: 2px solid $rusty-red;
+      img { width: 100%; height: 100%; }
+    }
+
+    &__content {
+
+      height: 18rem;
+      width: 43%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 1rem;
+
+      &__head {
+        text-transform: uppercase;
+        h4 {
+          font-weight: $bold;
+          font-size: 1.6rem;
+          margin: 0;
+          a {
+            &:link, &:visited {
+              text-decoration: none;
+              color: $rusty-red;
+            }
+          }
+        }
+        h5 {
+          color: #cecece;
+          margin: 0;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          font-weight: $medium;
+        }
+      }
+
+      &__info {
+
+        height: 20rem;
+
+        &__dur {
+          display: flex;
+          align-items: center;
+          img {
+            width: 2rem;
+            height: 2rem;
+          }
+          h5 {
+            text-transform: uppercase;
+            color: $rusty-red;
+            padding-left: 0.8em;
+          }
+        }
+
+        &__dm {
+          h5 {
+            margin: 0;
+            color: $rusty-red;
+            text-transform: uppercase;
+          }
+          h6 {
+            margin: 0.5rem 0 0 0;
+            color: #bbbbbb;
+            text-transform: uppercase;
+            font-weight: $medium;
+          }
+        }
+
+      }
+
+      &__price {
+        h3 {
+          text-transform: capitalize;
+          margin: 0;
+          color: $rusty-red;
+          font-size: 2rem;
+        }
+        span {
+          text-transform: uppercase;
+          color: #c7c7c7;
+          font-weight: $semiBold; 
+          font-size: 1.3rem;
+        }
+      }
+
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 7.5rem;
+      width: 25%;
+      padding-right: 1.5rem;
+      button {
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        font-weight: $semiBold;
+        cursor: pointer;
+        transition: 0.3s;
+        &:nth-child(1) {
+          border: 1px solid $rusty-red;
+          background-color: $rusty-red;
+          color: white;
+          &:hover {
+            font-size: 1.3rem;
+          }
+        }
+        &:nth-child(2) {
+          border: 1px solid $rusty-red;
+          background-color: white;
+          color: $rusty-red;
+          &:hover {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    } 
+
+  }
+
+}
+
+.ad_banners {
+
+  width: 14.5%;
+  height: 100rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__item {
+    width: 100%;
+    height: 25rem;
+    background-color: rgb(177, 177, 177);
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    h4 { font-weight: $medium; }
+  }
+
+}
+
+
+.arrow-active {
+  transform: rotate(180deg);
+}
+
+.section-active {
+  transform: scaleY(0);
+}
+
+.section-no-display {
+  display: none;
+}

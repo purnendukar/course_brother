@@ -1,0 +1,472 @@
+// Login Modal Styling
+.login_modal {
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000ea;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &__backdrop--active {
+    opacity: 1;
+    z-index: 7;
+  }
+
+  height: 55rem;
+  width: 90rem;
+  background-color: white;
+  display: flex;
+  border-radius: 1.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  box-shadow: 0 0 40px 1px #0000004b;
+  transition: opacity 0.4s ease-in-out;
+
+  &--active {
+    opacity: 1;
+    z-index: 7;
+  }
+
+  &__close {
+    position: absolute;
+    height: 4rem;
+    width: 4rem;
+    background-color: white;
+    color: $rusty-red;
+    right: -1.5rem;
+    top: -1.5rem;
+    border-radius: 50%;
+    box-shadow: $subtle-shadow;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    &:hover {
+      height: 5rem;
+      width: 5rem;
+      right: -2rem;
+      top: -2rem;
+      font-size: 3rem;
+      line-height: 5rem;
+    }
+  }
+
+  &__main {
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    
+    &__title {
+      margin-right: -8rem;
+      h2 {
+        font-family: $league;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+        color: $rusty-red;
+      }
+      h4 {
+        text-transform: uppercase;
+        font-family: $league;
+        margin: 0;
+        color: $rusty-red;
+      }
+    }
+
+    &__form {
+
+      margin-right: -8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 20rem;
+      width: 100%;
+      
+      input[type='email'], 
+      input[type='password'] {
+        box-sizing: border-box;
+        padding: 1.8rem;
+        width: 100%;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #ececec;
+        font-family: $league;
+        color: $rusty-red;
+      }
+
+      button[type='submit'] {
+        margin-top: 1rem;
+        border: none;
+        font-family: $league;
+        color: white;
+        background-color: $rusty-red;
+        text-transform: uppercase;
+        padding: 1.4rem 3rem 1rem 3rem;
+        border-radius: 0.5rem;
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          background-color: darken($rusty-red, 5%);
+        }
+      }
+
+      ::placeholder {
+        text-transform: uppercase;
+        font-family: $league;
+        color: #c9c9c9;
+        font-size: 1.4rem;
+        letter-spacing: 0.05rem;
+      }
+
+    }
+
+    &__oauth {
+
+      margin-top: -4rem;
+      margin-right: -8rem;
+      padding-top: 1rem;
+      border-top: 1px solid #cfcfcf;
+      width: 100%;
+
+      h3 {
+        text-transform: uppercase;
+        color: #adadad;
+        font-family: $league;
+        font-size: 1.5rem;
+        padding-bottom: 1rem;
+      }
+
+      &__container {
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      &__item {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 1px #00000056;
+        cursor: pointer;
+        transition: 0.1s ease-in-out;
+        &:hover {
+          box-shadow: 0 0 30px 1px #00000056;
+        }
+      }
+      
+    }
+
+  }
+
+  &__appendix {
+
+    width: 50%;
+    height: 100%;
+    border-bottom-right-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: {
+      image: url('../assets/svg/login-bg.svg');
+      size: cover;
+      repeat: no-repeat;
+    }
+    padding: 2rem;
+    box-sizing: border-box;
+    
+    &__head {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 9rem;
+      h2 {
+        color: white;
+        margin-bottom: 0.5rem;
+        font-family: $league;
+        text-transform: uppercase;
+      }
+      &__sep {
+        width: 60%;
+        height: 0.1rem;
+        background-color: white;
+      }
+      p {
+        margin-top: 3rem;
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+        font-family: $league;
+        font-size: 1.3rem;
+        letter-spacing: 0.05rem;
+      }
+    }
+
+    &__register {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      padding-left: 9rem;
+      margin-top: 5rem;
+      p {
+        color: white;
+        letter-spacing: 0.05rem;
+        font-family: $league;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+      }
+      button {
+        border: none;
+        text-transform: uppercase;
+        font-family: $league;
+        background-color: white;
+        border-radius: 2rem;
+        padding: 1rem 1.5rem;
+        color: $rusty-red;
+        font-size: 1.2rem;
+        transition: 0.1s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          padding: 1rem 2rem;
+        }
+      }
+    }
+
+
+  }
+
+} 
+
+
+// Register Modal Styling
+.register_modal {
+
+  height: 55rem;
+  width: 90rem;
+  background-color: white;
+  display: flex;
+  border-radius: 1.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  box-shadow: 0 0 40px 1px #0000004b;
+  transition: opacity 0.4s ease-in-out;
+
+  &--active {
+    opacity: 1;
+    z-index: 7;
+  }
+
+  &__submit {
+    margin-top: 2rem;
+    padding: 1.4rem 3rem 1rem 3rem;
+    background-color: $rusty-red;
+    color: white;
+    text-transform: uppercase;
+    font-family: $league;
+    letter-spacing: 0.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: darken($rusty-red, 5%);
+    }
+  }
+
+  &__close {
+    position: absolute;
+    height: 4rem;
+    width: 4rem;
+    background-color: white;
+    color: $rusty-red;
+    right: -1.5rem;
+    top: -1.5rem;
+    border-radius: 50%;
+    box-shadow: $subtle-shadow;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    &:hover {
+      height: 5rem;
+      width: 5rem;
+      right: -2rem;
+      top: -2rem;
+      font-size: 3rem;
+      line-height: 5rem;
+    }
+  }
+
+  &__main {
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    
+    &__title {
+      margin-right: -6.5rem;
+      margin-bottom: 2rem;
+      h2 {
+        font-family: $league;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+        color: $rusty-red;
+      }
+      h4 {
+        text-transform: uppercase;
+        font-family: $league;
+        margin: 0;
+        color: $rusty-red;
+      }
+    }
+
+    &__form {
+
+      margin-right: -6.5rem;
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 20rem;
+      width: 100%;
+      
+      input[type='text'],
+      input[type='email'], 
+      input[type='password'] {
+        box-sizing: border-box;
+        padding: 1.2rem 2rem;
+        width: 100%;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #ececec;
+        font-family: $league;
+        color: $rusty-red;
+      }
+
+      button[type='submit'] {
+        visibility: hidden;
+      }
+
+      ::placeholder {
+        text-transform: uppercase;
+        font-family: $league;
+        color: #c9c9c9;
+        font-size: 1.3rem;
+        letter-spacing: 0.05rem;
+      }
+
+    }
+
+  }
+
+  &__appendix {
+
+    width: 50%;
+    height: 105%;
+    margin-top: -2.7rem;
+    border-bottom-right-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: {
+      image: url('../assets/svg/register-bg.svg');
+      size: cover;
+      repeat: no-repeat;
+    }
+    padding: 2rem;
+    box-sizing: border-box;
+    
+    &__head {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 7rem;
+      h2 {
+        color: white;
+        margin-bottom: 0.5rem;
+        font-family: $league;
+        text-transform: uppercase;
+      }
+      &__sep {
+        width: 60%;
+        height: 0.1rem;
+        background-color: white;
+      }
+      p {
+        margin-top: 3rem;
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+        font-family: $league;
+        font-size: 1.3rem;
+        letter-spacing: 0.05rem;
+        line-height: 1.7rem;
+      }
+    }
+
+    &__login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      padding-left: 7rem;
+      margin-top: 5rem;
+      p {
+        color: white;
+        letter-spacing: 0.05rem;
+        font-family: $league;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+      }
+      button {
+        border: none;
+        text-transform: uppercase;
+        font-family: $league;
+        background-color: white;
+        border-radius: 2rem;
+        padding: 1rem 1.5rem;
+        color: $rusty-red;
+        font-size: 1.2rem;
+        transition: 0.1s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          padding: 1rem 2rem;
+        }
+      }
+    }
+
+
+  }
+
+} 

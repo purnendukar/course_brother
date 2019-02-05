@@ -1,0 +1,26 @@
+// BACK TO TOP STYLING
+.back-to-top {
+
+  background-color: $rusty-red;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  position: fixed;
+  right: 4rem;
+  bottom: -10rem;
+  z-index: 10;
+  border: 1px solid white;
+  box-shadow: $subtle-shadow;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+
+  i {
+    color: white;
+    font-weight: $bold;
+    font-size: 2rem;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+}

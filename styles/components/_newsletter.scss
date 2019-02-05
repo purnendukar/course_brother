@@ -1,0 +1,142 @@
+// Newsletter Popup styling
+.newsletter_popup {
+  
+  &__backdrop {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.432);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 7;
+  }
+
+  &__backdrop--active {
+    display: block;
+  }
+
+
+  transition: all 0.3s;
+  display: flex;
+  height: 70vh;
+  width: 60vw;
+  flex-direction: row;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  box-shadow: $subtle-shadow;
+  transform: scale(0) translate(-50%, -50%);
+  transform-origin: center center;
+  opacity: 0;
+  z-index: 6;
+
+
+  &__illustration {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    &__img {
+      height: 50%;
+      width: 75%;
+      background: url('../assets/images/illustration/contact-us-illustration.jpg');
+      background: {
+        size: cover;
+        repeat: no-repeat;
+      } 
+    }
+  }
+
+  &__main {
+
+    width: 50%;
+    height: 100%;
+    position: relative;
+    padding: 4rem;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, $about-red 0%, $rusty-red 100%);
+
+    &__close {
+      color: white;
+      font-size: 3rem;
+      position: absolute;
+      right: 1.7rem;
+      transition: 0.3s;
+      top: 1rem;
+      cursor: pointer;
+      &:hover {
+        transform: rotate(180deg);
+      }
+    }
+    
+    &__title {
+      color: white;
+      font-family: 'LeagueSpartan';
+      text-transform: uppercase;
+      font-size: 3.2rem;
+      margin: 0;
+      width: 25rem;
+    }
+
+    &__form {
+      margin-top: 4rem;
+      form {
+        input {
+          box-sizing: border-box;
+          margin-top: 1rem;
+          box-shadow: $subtle-shadow;
+          width: 100%;
+          padding: 0.8rem 1.5rem;
+          border: none;
+          border-bottom: 3px solid $about-red;
+          color: $about-red;
+          text-transform: uppercase;
+          font-family: 'LeagueSpartan';
+          line-height: 1rem;
+        }
+        span {
+          margin-top: 3rem;
+          display: flex;
+          justify-content: space-between;
+          align-content: center;
+        }
+        input[type='submit'] {
+          border: none;
+          background-color: white;
+          border-radius: 0.2rem;
+          color: $rusty-red;
+          width: 48%;
+          text-transform: uppercase;
+          font-family: 'LeagueSpartan';
+          margin: 0;
+          cursor: pointer;
+          padding: 1.3rem 1.7rem 1rem 1.7rem;
+        }
+        div {
+          border-radius: 0.2rem;
+          background-color: $rusty-red;
+          color: white;
+          padding: 1.3rem 1rem 1rem 1rem;
+          width: 45%;
+          cursor: pointer;
+          margin-left: 2rem;
+          text-align: center;
+          font-family: 'LeagueSpartan';
+          text-transform: uppercase;
+          box-shadow: $subtle-shadow;
+        }
+        ::placeholder {
+          font-family: 'LeagueSpartan';
+          text-transform: uppercase;
+          font-size: 1.3rem;
+          color: rgb(206, 205, 205);
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,19 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: $mont;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+.main-container {
+  margin-top: 14rem;
+}
+
+@font-face {
+  font-family: 'LeagueSpartan';
+  src: url('../fonts/leaguespartan-bold.woff2');
+}

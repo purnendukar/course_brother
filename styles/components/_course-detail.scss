@@ -1,0 +1,351 @@
+// Course Detail Styling
+.course_detail {
+
+  width: 82%;
+  height: auto;
+  margin: 18rem auto;
+  box-shadow: $subtle_shadow;
+
+  // Course Detail Header styling
+  &__header {
+    height: 26rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(0deg, rgba(219, 50, 77, 0.7), rgba(219, 50, 77, 0.7)), url('../assets/images/header-bg.jpg');
+    background: {
+      size: cover;
+    }
+    .detail__skew {
+      position: absolute;
+      width: 80rem;
+      left: -10rem;
+      height: 100%;
+      background-color: $rusty-red;
+      transform: skewX(25deg);
+    }
+    .detail__info {
+      position: relative;
+      z-index: 1;
+      padding-left: 5.5rem;
+      color: white;
+      &__head {
+        h2 {
+          font-weight: $semiBold;
+          letter-spacing: 0.2rem;
+        }
+        h5 {
+          font-weight: $light;
+          font-size: 1.5rem;
+          letter-spacing: 0.5rem;
+          margin-top: -1.5rem;
+        }
+      }
+      &__appendix {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h4 {
+          color: $light-red;
+          font-size: 2rem;
+        }
+        h5 {
+          color: $light-red;
+          font-size: 1.8rem;
+          font-weight: $medium;
+          border-left: 2px solid $light-red;
+          padding-left: 3rem;
+          margin-right: 18rem;
+        }
+      }
+
+
+      // Payment extend
+      %payment {
+        display: flex;
+        background-color: transparent;
+        align-items: center;
+        h4 {
+          margin: 0;
+          font-weight: $semiBold;
+          font-size: 1.2rem;
+          &:nth-child(1) {
+            font-weight: $bold;
+            font-size: 1.5rem;
+            color: $rusty-red;
+            background-color: white;
+            padding: 0.6rem 1rem;
+            border-top-left-radius: 0.4rem;
+            border-bottom-left-radius: 0.4rem;
+          }
+          &:nth-child(2) {
+            color: white;
+            background-color: $rusty-red;
+            padding: 0.8rem 1rem;
+            border-top-right-radius: 0.4rem;
+            border-bottom-right-radius: 0.4rem;
+            box-shadow: $subtle_shadow;
+          }
+        }
+      }
+
+      &__payment {
+        display: flex;
+        flex-direction: row;
+        &__onetime {
+          @extend %payment;
+        }
+        &__annual {
+          @extend %payment;
+          margin-left: 3rem;
+        }
+      }
+    }
+    .detail__img img {
+      width: 16rem;
+      height: 16rem;
+      border-radius: 20rem;
+      border: 0.8rem solid $rusty-red;
+      margin-right: 7rem;
+    }
+  }
+
+
+  // Course Detail body Styling
+  &__body {
+
+    width: 100%;
+    height: auto;
+
+    // Course Detail body nav Styling
+    &__nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: $subtle_shadow;
+      button {
+        width: 30rem;
+        border: none;
+        border: 7px solid white;
+        border-radius: 1rem;
+        background-color: $rusty-red;
+        color: white;
+        font-weight: $semiBold;
+        padding: 2rem;
+        font-size: 2.2rem;
+        outline: none;
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover {
+          background-color: darken($rusty-red, 5%);
+        }
+      }
+      ul {
+        list-style-type: none;
+        display: flex;
+        margin-left: 1.5rem;
+        li {
+          color: rgb(165, 165, 165);
+          font-weight: $medium;
+          margin-right: 3rem;
+          font-size: 1.5rem;
+          letter-spacing: 0.15rem;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            color: rgb(124, 124, 124);
+          }
+        }
+      }
+    }
+
+    // Course Detail Body Main Styling
+    &__main {
+
+      display: flex;
+      box-sizing: border-box;
+      padding: 3rem;
+      justify-content: space-between;
+
+      // Course Detail Body Main Lead Form Styling
+      .lead_form {
+        position: relative;
+        padding: 0rem;
+        height: 30rem;
+        border-radius: 0.8rem;
+        box-shadow: $subtle_shadow;
+        form {
+          padding-top: 9rem;
+          input[type='text'], input[type='email'] {
+            outline: none;
+            border: 1px solid rgb(194, 194, 194);
+            border-radius: 10rem;
+            padding: 0.5rem;
+            width: calc(100% - 4rem);
+            margin-top: 1rem;
+            margin-left: 1.25rem;
+            font-size: 1.2rem;
+            color: grey;
+          }
+          input[type='submit'] {
+            border: none;
+            box-shadow: $subtle_shadow;
+            color: white;
+            background-color: $rusty-red;
+            border-radius: 10rem;
+            margin-top: 2rem;
+            margin-left: 1.2rem;
+            margin-right: 1.2rem;
+            padding: 0.8rem 6.9rem;
+            font-weight: $semiBold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            letter-spacing: 0.2rem;
+            transition: 0.3s;
+            &:hover {
+              background-color: darken($rusty-red, 5%);
+            }
+          }
+          ::placeholder {
+            font-size: 1rem;
+            font-weight: $light;
+            padding-left: 1rem;
+            color: rgb(196, 190, 190);
+          }
+        }
+        &__header {
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          background-color: $rusty-red;
+          color: white;
+          height: 8rem;
+          padding: 2rem;
+          margin-right: 2rem;
+          box-sizing: border-box;
+          border-top-right-radius: 0.8rem;
+          border-top-left-radius: 0.8rem;
+          width: 100%;
+          h5 { margin: 1rem 0 0 0; font-weight: $semiBold; }
+        }
+      }
+
+
+      // Course Detail Body Main Content Styling
+      .main_content {
+        width: 340rem;
+        margin-right: 10rem;
+        border-bottom: 2px solid rgb(212, 212, 212);
+        &__title {
+          color: $light-red;
+          font-weight: $semiBold;
+        }
+        &__body {
+          font-weight: $medium;
+          font-size: 1.4rem;
+          color: rgb(192, 190, 190);
+          line-height: 1.7rem;
+        }
+      }
+
+
+
+      // ETABS HIDING
+      .etabs {
+        position: absolute;
+        top: -500rem;
+        visibility: hidden;
+      }
+
+    }
+
+  }
+
+
+  // Related Courses Styling
+  .related_courses {
+    padding: 1rem 3rem 3rem 3rem;
+    &__title {
+      color: $light-red;
+      font-size: 2rem;
+      font-weight: $semiBold;
+      padding-left: 0.2rem;
+    }
+    &__container {
+      display: flex;
+      margin-top: 4rem;
+    }
+    &__item {
+      transition: 0.3s;
+      cursor: pointer;
+      opacity: 0.9;
+      background: linear-gradient(0deg, rgba(219, 50, 78, 0.6), rgba(219, 50, 78, 0.6)), url('../assets/images/courses_img/ins1.jpg');
+      background: {
+        size: cover;
+      }
+      width: 28rem;
+      height: 28rem;
+      border-radius: 1rem;
+      box-shadow: $subtle_shadow;
+      margin-right: 3rem;
+      padding: 2rem;
+      position: relative;
+      &:hover {
+        opacity: 1;
+      }
+      &__uni {
+        color: white;
+        font-size: 1.6rem;
+        font-weight: $semiBold;
+      }
+      &__sep {
+        width: 10rem;
+        height: 0.2rem;
+        background-color: white;
+      }
+      &__name {
+        text-transform: uppercase;
+        color: white;
+        font-weight: $semiBold;
+        padding-top: 2rem;
+      }
+      &__info {
+        position: absolute;
+        background-color: $rusty-red;
+        color: white;
+        bottom: 0; left: 0; right: 0;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        display: flex;
+        box-sizing: border-box;
+        padding: 0 1.5rem;
+        justify-content: space-between;
+        &__price {
+          font-weight: $medium;
+        }
+        &__duration {
+          font-weight: $medium;
+          border-left: 1px solid white;
+          padding-left: 7rem;
+        }
+      }
+    }
+  }
+
+
+}
+
+.animateButton {
+  animation: shake 0.6s ease-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(10px); }
+  40% { transform: translateX(-10px); }
+  60% { transform: translateX(10px); }
+  80% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}

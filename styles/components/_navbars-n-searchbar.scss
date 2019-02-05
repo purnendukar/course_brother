@@ -1,0 +1,310 @@
+// Navbar Main Styling
+.navbar_main  {
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  z-index: 6;
+
+  &__appendix {
+
+    width: 100%;
+    height: 2.8rem;//2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: $dark-red;
+    overflow: hidden;
+
+    &__container {
+      display: flex;
+      width: 82%;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    &__info {
+
+      display: flex;
+      justify-content: space-between;
+      padding-right: 47rem;
+      padding-left: 1rem;
+      height: 100%;
+      width: 16rem;
+
+      &__item {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        h5 {
+          width: 5rem;
+          color: white;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+          padding-left: 0.5rem;
+        }
+        img {
+          height: 1.5rem;
+          width: 1.65rem;
+        }
+      }
+
+    }
+
+    &__cart {
+      width: 20%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      align-items: center;
+      h5 {
+        color: white;
+        text-transform: uppercase;
+        font-weight: $medium;
+        padding-left: 0.5rem;
+        font-size: 1.1rem;
+      }
+      img {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+
+    &__login {
+      background-color: white;
+      padding: 0 2rem 0 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: skewX(-10deg);
+      & > * { transform: skewX(10deg); }
+      cursor: pointer;
+      h5 {
+        text-transform: uppercase;
+        color: $rusty-red;
+        font-weight: $semiBold;
+        font-size: 1rem;
+        padding-right: 0.5rem;
+      }
+      img {
+        height: 1.5rem;
+        width: 1.5rem;
+        padding: 0.5rem 0.6rem 0 0;
+      }
+    }
+
+    &__register {
+      background-color: $rusty-red;
+      padding: 0 2rem 0 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-right: 8rem;
+      transform: skewX(-10deg);
+      & > * { transform: skewX(10deg); }
+      cursor: pointer;
+      h5 {
+        text-transform: uppercase;
+        color: white;
+        font-weight: $semiBold;
+        font-size: 1rem;
+        padding-right: 0.5rem;
+      }
+      img {
+        height: 1.5rem;
+        width: 1.5rem;
+        padding: 0rem 0.6rem 0 0;
+      }
+    }
+
+  }
+
+  &__header {
+
+    width: 100%;
+    height: 8rem;
+    background-color: $rusty-red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__logo {
+      img {
+        width: 14rem;
+      }
+    }
+
+    &__search {
+      input[type='text'] {
+        border: none;
+        box-shadow: $subtle-shadow;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        width: 42rem;
+        height: 4rem;
+        padding-left: 2rem;
+        outline: none;
+        font-weight: $medium;
+        color: grey;
+      }
+      ::placeholder {
+        text-transform: uppercase;
+        color: rgb(187, 187, 187);
+        font-size: 1.3rem;
+      }
+      input[type='submit'] {
+        border: none;
+        box-shadow: $subtle-shadow;
+        color: white;
+        background-color: $rusty-red;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        padding: 1.3rem;
+        margin-left: -0.3rem;
+        cursor: pointer;
+        font-weight: $semiBold;
+        font-size: 1.4rem;
+        transition: 0.4s;
+        &:hover {
+          background-color: darken($rusty-red, 3%);
+        }
+      }
+    }
+
+    &__contact {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 5rem;
+
+      &__item {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        img {
+          height: 2.2rem;
+          width: 2.2rem;
+          padding-left: 1.5rem;
+        }
+        h4 {
+          color: white;
+          font-size: 1.2rem;
+          font-weight: $light;
+        }
+      }
+
+    }
+
+  }
+
+  &__courses {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    background-color: white;
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.062);
+    width: 100%;
+
+    &__container {
+
+      display: flex;
+      width: 80%;
+      justify-content: space-between;
+      
+    }
+
+    &__item {
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      padding: 0.2rem;
+
+      h3 {
+        text-transform: uppercase;
+        color: $rusty-red;
+        font-size: 1.1rem;
+        padding-right: 0.8rem;
+      }
+
+      i {
+        color: rgb(189, 189, 189);
+        padding-top: 0.2rem;
+        transition: 0.2s;
+      }
+
+      &:hover i {
+        transform: rotate(180deg) translateY(-2px);
+      }
+
+      &__dropdown {
+
+        position: absolute;
+        left: -70%;
+        right: 0;
+        top: -100rem;
+        z-index: -2;
+        opacity: 0;
+        padding: 2rem;
+        width: 40rem;
+        border-radius: 1rem;
+        background-color: white;
+        box-shadow: $subtle-shadow;
+        transition: opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); 
+
+        &__content {
+          white-space: nowrap;
+          background-color: white;
+          width: 40rem;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-content: space-between;
+          max-height: 35rem;
+        }
+
+        a:link, a:visited, a:active {
+          color: $rusty-red;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 1.3rem;
+          font-weight: $semiBold;
+          li {
+            margin-bottom: 1rem;
+            list-style: none;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        &--active {
+          top: 3.8rem;
+          opacity: 1;
+          z-index: 5;
+        }
+
+      }
+
+    }
+
+  }
+
+}

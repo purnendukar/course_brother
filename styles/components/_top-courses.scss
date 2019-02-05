@@ -1,0 +1,141 @@
+// Top Courses Styling
+.top_courses {
+
+  width: 100%;
+  height: 27rem;
+  background: {
+    image: url('../assets/svg/top-courses-bg.svg');
+    size: cover;
+  }
+  position: relative;
+
+  &__title {
+    font-family: $league;
+    color: $rusty-red;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: $section_title_size;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  &__item {
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: $subtle-shadow;
+    width: 16rem;
+    height: 16rem;
+    margin-top: 1.2rem;
+    cursor: pointer;
+    transition: 0.4s;
+    
+    img {
+      width: 6rem;
+      height: 6rem;
+      margin-top: 1.4rem;
+    }
+
+    h3 {
+      margin-top: 2rem;
+      color: $rusty-red;
+      text-transform: uppercase;
+      font-weight: $semiBold;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    &:hover::after {
+      content: 'CLICK TO VIEW';
+      text-align: center;
+      font-weight: $bold;
+      color: white;
+      font-size: 1.3rem;
+      line-height: 16rem;
+      position: absolute;
+      background-color: rgba(219, 50, 78, 0.801);
+      width: 16rem;
+      height: 16rem;
+      border-radius: 1rem;
+      opacity: 1;
+    }
+
+
+    // Section styling
+    &__section {
+
+      position: absolute;
+      top: -2.2rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      cursor: auto;
+      background-color: white;
+      padding-top: 2.5rem;
+      z-index: -5;
+      opacity: 0;
+      transition: 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+      &__button {
+        position: absolute;
+        top: 1rem;
+        right: 3rem;
+        color: $rusty-red;
+        font-size: 4rem;
+        cursor: pointer;
+        z-index: 6;
+      }
+
+      &__container {
+
+        width: 50%;
+        margin: 0 auto;
+
+        h4 {
+          text-transform: uppercase;
+          font-family: $league;
+          color: $rusty-red;
+          border-bottom: 2px solid $rusty-red;
+          padding-bottom: 1rem;
+          margin-top: 2rem;
+          font-size: 2.2rem;
+        }
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          align-items: flex-start;
+          flex-direction: column-reverse;
+          list-style: none;
+          height: 12rem;
+          margin-left: -4.2rem;
+          a {
+            &:visited, &:link, &:active { text-decoration: none; }
+          }
+          li {
+            font-size: 1.8rem;
+            height: 3rem;
+            font-weight: $medium;
+            color: $rusty-red;
+            text-transform: uppercase;
+          }
+        }
+
+      }
+    }
+
+  }
+
+}

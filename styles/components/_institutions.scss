@@ -1,0 +1,31 @@
+// Institutions and Universities section styling
+.uni_and_col {
+
+  height: 28vh;
+  width: 100%;
+  background-color: white;
+  box-shadow: $subtle-shadow;
+
+  &__title {
+    text-align: center;
+    color: $rusty-red;
+    font-weight: $bold;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    padding-top: 3rem;
+  }
+
+  .rslides {
+    margin: 2rem auto;
+    width: 80%;
+    li {
+      display: flex;
+      justify-content: space-between;
+      img {
+        height: 8rem;
+        width: 15rem;
+      }
+    }
+  }
+
+}

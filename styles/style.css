@@ -1,0 +1,4282 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+.main-container {
+  margin-top: 14rem;
+}
+
+@font-face {
+  font-family: 'LeagueSpartan';
+  src: url("../fonts/leaguespartan-bold.woff2");
+}
+
+.about_us {
+  margin-top: -2.2rem;
+}
+
+.about_us__header {
+  width: 100%;
+  height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 13rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 77, 0.9)), to(rgba(219, 50, 77, 0.9))), url("../assets/images/about-bg.jpg");
+  background: linear-gradient(0deg, rgba(219, 50, 77, 0.9), rgba(219, 50, 77, 0.9)), url("../assets/images/about-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.about_us__header__title {
+  width: 50%;
+  color: white;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  font-size: 6rem;
+}
+
+.about_us__header__para {
+  width: 55%;
+  color: white;
+  font-size: 1.9rem;
+  border-left: 1px solid white;
+  padding: 1rem 0rem 1rem 6rem;
+}
+
+.about_us__services {
+  height: auto;
+  width: 100%;
+  background-color: white;
+}
+
+.about_us__services__title {
+  text-align: center;
+  color: #DB324D;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  font-size: 4rem;
+  margin-top: 8rem;
+}
+
+.about_us__services__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 6rem 3rem 10rem 3rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about_us__services__container__item {
+  width: 26rem;
+  height: 38rem;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about_us__services__container__item:nth-child(1) {
+  background-color: #FF5E5B;
+  -webkit-box-shadow: 0px 6px 30px 1px #FF5E5B;
+          box-shadow: 0px 6px 30px 1px #FF5E5B;
+}
+
+.about_us__services__container__item:nth-child(2) {
+  background-color: #ffcc42;
+  -webkit-box-shadow: 0px 6px 30px 1px #ffcc42;
+          box-shadow: 0px 6px 30px 1px #ffcc42;
+}
+
+.about_us__services__container__item:nth-child(3) {
+  background-color: #59cd90;
+  -webkit-box-shadow: 0px 6px 30px 1px #59cd90;
+          box-shadow: 0px 6px 30px 1px #59cd90;
+}
+
+.about_us__services__container__item:nth-child(4) {
+  background-color: #3fa7d6;
+  -webkit-box-shadow: 0px 6px 30px 1px #3fa7d6;
+          box-shadow: 0px 6px 30px 1px #3fa7d6;
+}
+
+.about_us__services__container__item img {
+  width: 6.5rem;
+  height: 6.5rem;
+  padding-top: 2rem;
+}
+
+.about_us__services__container__item h5 {
+  text-transform: uppercase;
+  color: white;
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+.about_us__services__container__item p {
+  color: white;
+  text-align: center;
+  font-size: 1.55rem;
+  padding: 0rem 1.5rem;
+}
+
+.about_us__founders {
+  height: auto;
+  width: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 77, 0.9)), to(rgba(219, 50, 77, 0.9))), url("../assets/images/about-founder-bg.jpg");
+  background: linear-gradient(0deg, rgba(219, 50, 77, 0.9), rgba(219, 50, 77, 0.9)), url("../assets/images/about-founder-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about_us__founders__title {
+  text-transform: uppercase;
+  color: white;
+  font-family: "LeagueSpartan";
+  text-align: center;
+  font-size: 4rem;
+  padding: 6rem;
+}
+
+.about_us__founders__container {
+  width: 80%;
+  padding-bottom: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about_us__founders__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50rem;
+}
+
+.about_us__founders__item img {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10rem;
+}
+
+.about_us__founders__item h4 {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 1rem 1.5rem 0.2rem 1.5rem;
+}
+
+.about_us__founders__item h5 {
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+.about_us__founders__item p {
+  text-align: center;
+  color: white;
+  font-weight: 300;
+  width: 18rem;
+}
+
+.back-to-top {
+  background-color: #DB324D;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  position: fixed;
+  right: 4rem;
+  bottom: -10rem;
+  z-index: 10;
+  border: 1px solid white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  -webkit-transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.back-to-top i {
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.back-to-top:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.latest_blogs {
+  width: 100%;
+  height: 50rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.latest_blogs__title {
+  text-align: center;
+  color: #DB324D;
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+  padding-top: 1.5rem;
+}
+
+.latest_blogs__container {
+  width: 85%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.latest_blogs__item {
+  width: 24%;
+  height: 90%;
+  border-radius: 0.4rem;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.latest_blogs__item__bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.latest_blogs__item__bg__container {
+  border-top-right-radius: 0.4rem;
+  border-top-left-radius: 0.4rem;
+  width: 100%;
+  height: 58%;
+  overflow: hidden;
+}
+
+.latest_blogs__item__content {
+  width: 100%;
+  height: 42%;
+  background-color: #DB324D;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  padding: 1.2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.latest_blogs__item__content__title {
+  margin: 0;
+  font-size: 1.4rem;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.latest_blogs__item__content__sep {
+  margin-top: 0.4rem;
+  height: 0.1rem;
+  width: 10rem;
+  background-color: white;
+}
+
+.latest_blogs__item__content p {
+  color: #ffa8b7;
+  font-size: 1.3rem;
+  margin: 1rem 0 0 0;
+}
+
+.latest_blogs__item:hover .latest_blogs__item__bg {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.latest_blogs__item__continue {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.2rem;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.latest_blogs__item__continue a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #DB324D;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.blog_detail {
+  width: 100%;
+}
+
+.blog_detail__header {
+  width: 90%;
+  height: 40rem;
+  background: url("../assets/images/blog-detail-bg.png");
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  margin-top: 20rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 7rem;
+}
+
+.blog_detail__header__title {
+  text-transform: uppercase;
+  color: white;
+  font-family: "LeagueSpartan";
+}
+
+.blog_detail__header__title h1 {
+  width: 50rem;
+  margin: 0;
+}
+
+.blog_detail__header__title h3 {
+  margin: 0.5rem 0 0 0;
+  font-size: 2.2rem;
+}
+
+.blog_detail__footer {
+  margin-top: 5rem;
+}
+
+.blog_detail__footer__desc {
+  color: white;
+}
+
+.blog_detail__footer__desc h4 {
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+.blog_detail__footer__desc h4 b {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.blog_detail__footer__desc h5 {
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+.blog_detail__footer__desc h5 b {
+  font-weight: 600;
+}
+
+.blog_detail__footer__share {
+  width: 32rem;
+  margin-top: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.blog_detail__footer__share__item {
+  margin: 0;
+  border-radius: 0.5rem;
+  color: white;
+  font-family: system-ui;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 1.2rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.blog_detail__footer__share__item:nth-child(1) {
+  background-color: #365EB3;
+}
+
+.blog_detail__footer__share__item:nth-child(2) {
+  background-color: #57C0F0;
+}
+
+.blog_detail__main {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.blog_detail__content {
+  width: 80%;
+  padding: 5rem 7rem 2rem 7rem;
+}
+
+.blog_detail__content p {
+  font-weight: 500;
+  line-height: 2.3rem;
+  color: grey;
+}
+
+.blog_detail__content__image {
+  margin: 4rem 0;
+}
+
+.blog_detail__content__image img {
+  width: 100%;
+}
+
+.blog_detail__content__image p {
+  font-family: 'Arial';
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.blog_detail__content__sep {
+  height: 0.1rem;
+  width: 100%;
+  background-color: grey;
+  margin-top: 15rem;
+}
+
+.blog_detail__aside {
+  width: 20%;
+  padding: 7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.blog_detail__aside__ad {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 25rem;
+  width: 100%;
+  background-color: grey;
+  margin-bottom: 2rem;
+  color: white;
+  text-transform: uppercase;
+}
+
+.blog_detail__see_more {
+  padding: 0rem 7rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.blog_detail__see_more__title {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-family: "LeagueSpartan";
+  margin: 2rem 0;
+}
+
+.blog_detail__see_more__items {
+  width: 70.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 4rem 0 16rem 0;
+}
+
+.blog_detail__see_more__item {
+  margin-right: 4rem;
+  height: 15rem;
+  width: 25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.267);
+          box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.267);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.blog_detail__see_more__item img {
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.blog_detail__see_more__item__title {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  width: 100%;
+  height: 10rem;
+  padding: 0rem 1rem;
+  background-color: #DB324D;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  text-transform: uppercase;
+}
+
+.blog_detail__see_more__item__title h5 {
+  font-size: 1.3rem;
+}
+
+.blog_detail__see_more__item:hover {
+  -webkit-box-shadow: 0 0 40px 1px rgba(0, 0, 0, 0.527);
+          box-shadow: 0 0 40px 1px rgba(0, 0, 0, 0.527);
+  height: 15.5rem;
+  width: 25.5rem;
+}
+
+.contact_us {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+}
+
+.contact_us__meet {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 77, 0.9)), to(rgba(219, 50, 77, 0.9))), url("../assets/images/contact-bg.jpg");
+  background: linear-gradient(0deg, rgba(219, 50, 77, 0.9), rgba(219, 50, 77, 0.9)), url("../assets/images/contact-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.contact_us__meet__container {
+  width: 80%;
+  height: 70%;
+  border: 5px solid white;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contact_us__meet__container__title {
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
+  border: 5px solid white;
+  background-color: #DB324D;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  position: absolute;
+  top: -50px;
+  left: 54px;
+}
+
+.contact_us__meet__container__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.contact_us__meet__container__info__item {
+  margin: 1.5rem 0;
+}
+
+.contact_us__meet__container__info__item__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 40rem;
+}
+
+.contact_us__meet__container__info__item__container img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.contact_us__meet__container__info__item__container h4 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: right;
+}
+
+.contact_us__ping {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+}
+
+.contact_us__ping__container {
+  width: 80%;
+  height: 70%;
+  padding: 4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  border: 5px solid #DB324D;
+  text-transform: uppercase;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.95)), to(rgba(255, 255, 255, 0.95))), url("../assets/images/illustration/contact-us-illustration.jpg");
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url("../assets/images/illustration/contact-us-illustration.jpg");
+  background-size: contain;
+  background-position: center;
+}
+
+.contact_us__ping__container__title {
+  color: #DB324D;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  letter-spacing: 0.3rem;
+  border: 5px solid #DB324D;
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  position: absolute;
+  top: -50px;
+  left: 54px;
+}
+
+.contact_us__ping__container h6 {
+  font-size: 1.6rem;
+  color: #DB324D;
+}
+
+.contact_us__ping__container form p {
+  color: #DB324D;
+  line-height: 2.5rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.contact_us__ping__container form p:nth-child(2) {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  color: #a5a5a5;
+  margin-top: 2rem;
+}
+
+.contact_us__ping__container form ::-webkit-input-placeholder {
+  color: #cecccc;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.contact_us__ping__container form :-ms-input-placeholder {
+  color: #cecccc;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.contact_us__ping__container form ::-ms-input-placeholder {
+  color: #cecccc;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.contact_us__ping__container form ::placeholder {
+  color: #cecccc;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.contact_us__ping__container form input[type='text'], .contact_us__ping__container form input[type='email'] {
+  border: none;
+  border-bottom: 1px solid #DB324D;
+  outline: none;
+  color: #DB324D;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 2rem;
+  text-align: center;
+  background-color: transparent;
+}
+
+.contact_us__ping__container form input[type='submit'] {
+  border: none;
+  background-color: #DB324D;
+  color: white;
+  border-radius: 10rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  padding: 0.6rem 3rem;
+  margin-top: 2rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.contact_us__ping__container form input[type='submit']:hover {
+  background-color: #cf2440;
+}
+
+.course_detail {
+  width: 82%;
+  height: auto;
+  margin: 18rem auto;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+}
+
+.course_detail__header {
+  height: 26rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 77, 0.7)), to(rgba(219, 50, 77, 0.7))), url("../assets/images/header-bg.jpg");
+  background: linear-gradient(0deg, rgba(219, 50, 77, 0.7), rgba(219, 50, 77, 0.7)), url("../assets/images/header-bg.jpg");
+  background-size: cover;
+}
+
+.course_detail__header .detail__skew {
+  position: absolute;
+  width: 80rem;
+  left: -10rem;
+  height: 100%;
+  background-color: #DB324D;
+  -webkit-transform: skewX(25deg);
+          transform: skewX(25deg);
+}
+
+.course_detail__header .detail__info {
+  position: relative;
+  z-index: 1;
+  padding-left: 5.5rem;
+  color: white;
+}
+
+.course_detail__header .detail__info__head h2 {
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+}
+
+.course_detail__header .detail__info__head h5 {
+  font-weight: 300;
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  margin-top: -1.5rem;
+}
+
+.course_detail__header .detail__info__appendix {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.course_detail__header .detail__info__appendix h4 {
+  color: #FF8B9C;
+  font-size: 2rem;
+}
+
+.course_detail__header .detail__info__appendix h5 {
+  color: #FF8B9C;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border-left: 2px solid #FF8B9C;
+  padding-left: 3rem;
+  margin-right: 18rem;
+}
+
+.course_detail__header .detail__info .detail__info__payment__onetime, .course_detail__header .detail__info .detail__info__payment__annual {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.course_detail__header .detail__info .detail__info__payment__onetime h4, .course_detail__header .detail__info .detail__info__payment__annual h4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.course_detail__header .detail__info .detail__info__payment__onetime h4:nth-child(1), .course_detail__header .detail__info .detail__info__payment__annual h4:nth-child(1) {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #DB324D;
+  background-color: white;
+  padding: 0.6rem 1rem;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.course_detail__header .detail__info .detail__info__payment__onetime h4:nth-child(2), .course_detail__header .detail__info .detail__info__payment__annual h4:nth-child(2) {
+  color: white;
+  background-color: #DB324D;
+  padding: 0.8rem 1rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+}
+
+.course_detail__header .detail__info__payment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.course_detail__header .detail__info__payment__annual {
+  margin-left: 3rem;
+}
+
+.course_detail__header .detail__img img {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 20rem;
+  border: 0.8rem solid #DB324D;
+  margin-right: 7rem;
+}
+
+.course_detail__body {
+  width: 100%;
+  height: auto;
+}
+
+.course_detail__body__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+}
+
+.course_detail__body__nav button {
+  width: 30rem;
+  border: none;
+  border: 7px solid white;
+  border-radius: 1rem;
+  background-color: #DB324D;
+  color: white;
+  font-weight: 600;
+  padding: 2rem;
+  font-size: 2.2rem;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.course_detail__body__nav button:hover {
+  background-color: #cf2440;
+}
+
+.course_detail__body__nav ul {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1.5rem;
+}
+
+.course_detail__body__nav ul li {
+  color: #a5a5a5;
+  font-weight: 500;
+  margin-right: 3rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.15rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.course_detail__body__nav ul li:hover {
+  color: #7c7c7c;
+}
+
+.course_detail__body__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 3rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.course_detail__body__main .lead_form {
+  position: relative;
+  padding: 0rem;
+  height: 30rem;
+  border-radius: 0.8rem;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+}
+
+.course_detail__body__main .lead_form form {
+  padding-top: 9rem;
+}
+
+.course_detail__body__main .lead_form form input[type='text'], .course_detail__body__main .lead_form form input[type='email'] {
+  outline: none;
+  border: 1px solid #c2c2c2;
+  border-radius: 10rem;
+  padding: 0.5rem;
+  width: calc(100% - 4rem);
+  margin-top: 1rem;
+  margin-left: 1.25rem;
+  font-size: 1.2rem;
+  color: grey;
+}
+
+.course_detail__body__main .lead_form form input[type='submit'] {
+  border: none;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  color: white;
+  background-color: #DB324D;
+  border-radius: 10rem;
+  margin-top: 2rem;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+  padding: 0.8rem 6.9rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: 0.2rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.course_detail__body__main .lead_form form input[type='submit']:hover {
+  background-color: #cf2440;
+}
+
+.course_detail__body__main .lead_form form ::-webkit-input-placeholder {
+  font-size: 1rem;
+  font-weight: 300;
+  padding-left: 1rem;
+  color: #c4bebe;
+}
+
+.course_detail__body__main .lead_form form :-ms-input-placeholder {
+  font-size: 1rem;
+  font-weight: 300;
+  padding-left: 1rem;
+  color: #c4bebe;
+}
+
+.course_detail__body__main .lead_form form ::-ms-input-placeholder {
+  font-size: 1rem;
+  font-weight: 300;
+  padding-left: 1rem;
+  color: #c4bebe;
+}
+
+.course_detail__body__main .lead_form form ::placeholder {
+  font-size: 1rem;
+  font-weight: 300;
+  padding-left: 1rem;
+  color: #c4bebe;
+}
+
+.course_detail__body__main .lead_form__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #DB324D;
+  color: white;
+  height: 8rem;
+  padding: 2rem;
+  margin-right: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+  width: 100%;
+}
+
+.course_detail__body__main .lead_form__header h5 {
+  margin: 1rem 0 0 0;
+  font-weight: 600;
+}
+
+.course_detail__body__main .main_content {
+  width: 340rem;
+  margin-right: 10rem;
+  border-bottom: 2px solid #d4d4d4;
+}
+
+.course_detail__body__main .main_content__title {
+  color: #FF8B9C;
+  font-weight: 600;
+}
+
+.course_detail__body__main .main_content__body {
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #c0bebe;
+  line-height: 1.7rem;
+}
+
+.course_detail__body__main .etabs {
+  position: absolute;
+  top: -500rem;
+  visibility: hidden;
+}
+
+.course_detail .related_courses {
+  padding: 1rem 3rem 3rem 3rem;
+}
+
+.course_detail .related_courses__title {
+  color: #FF8B9C;
+  font-size: 2rem;
+  font-weight: 600;
+  padding-left: 0.2rem;
+}
+
+.course_detail .related_courses__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 4rem;
+}
+
+.course_detail .related_courses__item {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+  opacity: 0.9;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 78, 0.6)), to(rgba(219, 50, 78, 0.6))), url("../assets/images/courses_img/ins1.jpg");
+  background: linear-gradient(0deg, rgba(219, 50, 78, 0.6), rgba(219, 50, 78, 0.6)), url("../assets/images/courses_img/ins1.jpg");
+  background-size: cover;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  margin-right: 3rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.course_detail .related_courses__item:hover {
+  opacity: 1;
+}
+
+.course_detail .related_courses__item__uni {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.course_detail .related_courses__item__sep {
+  width: 10rem;
+  height: 0.2rem;
+  background-color: white;
+}
+
+.course_detail .related_courses__item__name {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  padding-top: 2rem;
+}
+
+.course_detail .related_courses__item__info {
+  position: absolute;
+  background-color: #DB324D;
+  color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 1.5rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.course_detail .related_courses__item__info__price {
+  font-weight: 500;
+}
+
+.course_detail .related_courses__item__info__duration {
+  font-weight: 500;
+  border-left: 1px solid white;
+  padding-left: 7rem;
+}
+
+.animateButton {
+  -webkit-animation: shake 0.6s ease-out;
+          animation: shake 0.6s ease-out;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  40% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  40% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+.main_container {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15.5rem;
+  background-color: white;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.filter_results {
+  width: 24.5%;
+  height: auto;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.filter_results__head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #DB324D;
+  margin-bottom: 2rem;
+}
+
+.filter_results__head h3 {
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  font-weight: 700;
+}
+
+.filter_results__head button {
+  margin-right: 1rem;
+  border: none;
+  background-color: white;
+  font-family: 'Montserrat';
+  color: #DB324D;
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.filter_results__item {
+  margin: 1rem;
+  height: auto;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.filter_results__item__head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #DB324D;
+}
+
+.filter_results__item__head h5 {
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.filter_results__item__head i {
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.filter_results__item__content {
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  padding-bottom: 1rem;
+  border: 1px solid #DB324D;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+}
+
+.filter_results__item__form {
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  margin: 1rem;
+}
+
+.filter_results__item__form input {
+  margin-top: 1rem;
+  border: none;
+  border-bottom: 1px solid #b6b6b6;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  padding-bottom: 0.5rem;
+  width: 25rem;
+  outline: none;
+  font-weight: 600;
+  color: grey;
+}
+
+.filter_results__item__form ::-webkit-input-placeholder {
+  color: #b6b6b6;
+}
+
+.filter_results__item__form :-ms-input-placeholder {
+  color: #b6b6b6;
+}
+
+.filter_results__item__form ::-ms-input-placeholder {
+  color: #b6b6b6;
+}
+
+.filter_results__item__form ::placeholder {
+  color: #b6b6b6;
+}
+
+.filter_results__item__check {
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  height: auto;
+  max-height: 10rem;
+  width: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-transform: uppercase;
+  color: #DB324D;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.filter_results__item__check input[type='checkbox'] {
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.course_results {
+  width: 59.5%;
+  height: auto;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.course_results__head h3 {
+  border-bottom: 0.5px solid #e0e0e0;
+  text-transform: uppercase;
+  color: #a8a8a8;
+  font-weight: 500;
+  margin: 1.1rem;
+  padding-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.course_results__head b {
+  color: #DB324D;
+}
+
+.course_results__container {
+  width: 97%;
+  height: auto;
+  margin: 2rem auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.course_results__item {
+  width: 100%;
+  height: auto;
+  padding: 1.5rem;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
+          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.096);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.course_results__item__img {
+  height: 18rem;
+  width: 18rem;
+  border: 2px solid #DB324D;
+}
+
+.course_results__item__img img {
+  width: 100%;
+  height: 100%;
+}
+
+.course_results__item__content {
+  height: 18rem;
+  width: 43%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 1rem;
+}
+
+.course_results__item__content__head {
+  text-transform: uppercase;
+}
+
+.course_results__item__content__head h4 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.course_results__item__content__head h4 a:link, .course_results__item__content__head h4 a:visited {
+  text-decoration: none;
+  color: #DB324D;
+}
+
+.course_results__item__content__head h5 {
+  color: #cecece;
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.course_results__item__content__info {
+  height: 20rem;
+}
+
+.course_results__item__content__info__dur {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.course_results__item__content__info__dur img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.course_results__item__content__info__dur h5 {
+  text-transform: uppercase;
+  color: #DB324D;
+  padding-left: 0.8em;
+}
+
+.course_results__item__content__info__dm h5 {
+  margin: 0;
+  color: #DB324D;
+  text-transform: uppercase;
+}
+
+.course_results__item__content__info__dm h6 {
+  margin: 0.5rem 0 0 0;
+  color: #bbbbbb;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.course_results__item__content__price h3 {
+  text-transform: capitalize;
+  margin: 0;
+  color: #DB324D;
+  font-size: 2rem;
+}
+
+.course_results__item__content__price span {
+  text-transform: uppercase;
+  color: #c7c7c7;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.course_results__item__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 7.5rem;
+  width: 25%;
+  padding-right: 1.5rem;
+}
+
+.course_results__item__buttons button {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.course_results__item__buttons button:nth-child(1) {
+  border: 1px solid #DB324D;
+  background-color: #DB324D;
+  color: white;
+}
+
+.course_results__item__buttons button:nth-child(1):hover {
+  font-size: 1.3rem;
+}
+
+.course_results__item__buttons button:nth-child(2) {
+  border: 1px solid #DB324D;
+  background-color: white;
+  color: #DB324D;
+}
+
+.course_results__item__buttons button:nth-child(2):hover {
+  font-size: 1.3rem;
+}
+
+.ad_banners {
+  width: 14.5%;
+  height: 100rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ad_banners__item {
+  width: 100%;
+  height: 25rem;
+  background-color: #b1b1b1;
+  color: white;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ad_banners__item h4 {
+  font-weight: 500;
+}
+
+.arrow-active {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.section-active {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+}
+
+.section-no-display {
+  display: none;
+}
+
+.featured_courses {
+  width: 100%;
+  height: 48rem;
+  position: relative;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(219, 50, 78, 0.815)), to(rgba(180, 40, 63, 0))), url("../assets/images/about-founder-bg.jpg");
+  background: linear-gradient(to bottom, rgba(219, 50, 78, 0.815), rgba(180, 40, 63, 0)), url("../assets/images/about-founder-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.featured_courses__main__head h2 {
+  font-family: "LeagueSpartan";
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 3rem;
+  width: 10rem;
+  padding: 5rem 0 0.5rem 0;
+  margin-left: 5rem;
+  border-bottom: 2px solid white;
+}
+
+.featured_courses__main__nav ul {
+  list-style: none;
+  width: 38rem;
+  margin-left: -9.5rem;
+  margin-top: 3.4rem;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.featured_courses__main__nav li {
+  padding: 1.5rem 1rem 1.5rem 10rem;
+  -webkit-transform: skewX(30deg);
+          transform: skewX(30deg);
+  cursor: pointer;
+  margin: 0.5rem;
+  text-transform: uppercase;
+  color: white;
+  background-color: #DB324D;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.featured_courses__main__nav li a:link, .featured_courses__main__nav li a:visited, .featured_courses__main__nav li a:active {
+  display: inline-block;
+  -webkit-transform: skewX(-30deg);
+          transform: skewX(-30deg);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.featured_courses__main .list--active {
+  width: 32rem;
+  background-color: white;
+}
+
+.featured_courses__body {
+  position: absolute;
+  height: 90%;
+  width: 65%;
+  right: 3rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.featured_courses__body__container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.featured_courses__body__item {
+  margin: 0 0.5rem 0 0.5rem;
+  background-color: #DB324D;
+  width: 42%;
+  height: 48%;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  background-size: cover;
+  background-position: 100% 80%;
+  background-repeat: no-repeat;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 5;
+}
+
+.featured_courses__body__item h4 {
+  font-size: 1.5rem;
+  margin: 2rem 0 0 1.5rem;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid white;
+  width: 30rem;
+}
+
+.featured_courses__body__item__course {
+  padding: 1rem;
+  background-color: white;
+  -webkit-transform: skewX(30deg);
+          transform: skewX(30deg);
+  width: 30rem;
+  margin-left: -4.5rem;
+  margin-top: 4rem;
+}
+
+.featured_courses__body__item__course span {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-family: "LeagueSpartan";
+  font-size: 1.2rem;
+  padding-left: 5rem;
+  display: inline-block;
+  -webkit-transform: skewX(-30deg);
+          transform: skewX(-30deg);
+}
+
+.featured_courses__body__item__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  background-color: white;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.featured_courses__body__item__info__price {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+}
+
+.featured_courses__body__item__info__year {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding-right: 1rem;
+}
+
+.featured_courses__body__item__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.featured_courses__body__item__buttons button {
+  border: none;
+  background-color: #DB324D;
+  color: white;
+  text-transform: uppercase;
+  padding: 1rem;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.featured_courses__body__item__buttons button:nth-child(1) {
+  width: 50%;
+  border-right: 1px solid white;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.featured_courses__body__item__buttons button:nth-child(1):hover {
+  background-color: white;
+  color: #DB324D;
+  border-top: 1px solid #DB324D;
+}
+
+.featured_courses__body__item__buttons button:nth-child(2) {
+  width: 50%;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.featured_courses__body__item__buttons button:nth-child(2):hover {
+  background-color: white;
+  color: #DB324D;
+  border-top: 1px solid #DB324D;
+}
+
+.footer {
+  width: 100%;
+  height: 50vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(128, 128, 128, 0.564)), to(rgba(128, 128, 128, 0.564))), url("../assets/images/footer-bg.jpg");
+  background: linear-gradient(rgba(128, 128, 128, 0.564), rgba(128, 128, 128, 0.564)), url("../assets/images/footer-bg.jpg");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.footer__container {
+  width: 82%;
+  height: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer__container h3 {
+  color: #a8a8a8;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.footer .footer__get_in_touch .touch_contact .contact_phone, .footer__get_in_touch .touch_contact .footer .contact_phone, .footer .footer__get_in_touch .touch_contact .contact_email, .footer__get_in_touch .touch_contact .footer .contact_email {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer .footer__get_in_touch .touch_contact .contact_phone h4, .footer__get_in_touch .touch_contact .footer .contact_phone h4, .footer .footer__get_in_touch .touch_contact .contact_email h4, .footer__get_in_touch .touch_contact .footer .contact_email h4 {
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.footer .footer__get_in_touch .touch_contact .contact_phone span, .footer__get_in_touch .touch_contact .footer .contact_phone span, .footer .footer__get_in_touch .touch_contact .contact_email span, .footer__get_in_touch .touch_contact .footer .contact_email span {
+  color: white;
+  font-weight: 100;
+  padding-left: 2rem;
+}
+
+.footer__get_in_touch {
+  padding-right: 7rem;
+}
+
+.footer__get_in_touch .touch_contact {
+  margin-top: 4rem;
+  height: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.footer__quick_links {
+  padding-right: 7rem;
+}
+
+.footer__quick_links a:link, .footer__quick_links a:visited, .footer__quick_links a:active {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.footer__quick_links a:link:hover, .footer__quick_links a:visited:hover, .footer__quick_links a:active:hover {
+  color: #FF8B9C;
+}
+
+.footer__quick_links .links {
+  padding-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer__policies {
+  margin-left: -15rem;
+}
+
+.footer__policies h3 {
+  text-transform: uppercase;
+}
+
+.footer__policies a:link, .footer__policies a:visited, .footer__policies a:active {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.footer__policies a:link:hover, .footer__policies a:visited:hover, .footer__policies a:active:hover {
+  color: #FF8B9C;
+}
+
+.footer__policies .links {
+  padding-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer__newsletter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.footer__newsletter .newsletter_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 4rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__newsletter input[type='email'], .footer__newsletter input[type='text'] {
+  color: white;
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: 1px solid white;
+}
+
+.footer__newsletter input[type='email']::-webkit-input-placeholder, .footer__newsletter input[type='text']::-webkit-input-placeholder {
+  color: white;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.footer__newsletter input[type='email']:-ms-input-placeholder, .footer__newsletter input[type='text']:-ms-input-placeholder {
+  color: white;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.footer__newsletter input[type='email']::-ms-input-placeholder, .footer__newsletter input[type='text']::-ms-input-placeholder {
+  color: white;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.footer__newsletter input[type='email']::placeholder, .footer__newsletter input[type='text']::placeholder {
+  color: white;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.footer__newsletter input[type='submit'] {
+  border: none;
+  outline: none;
+  border-radius: 20rem;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  background-color: white;
+  color: #DB324D;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.footer__newsletter input[type='submit']:hover {
+  background-color: #DB324D;
+  color: white;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin-top: 14rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header__testimonial {
+  width: 30%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.header__testimonial__slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header__testimonial__slides__item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.header__testimonial__slides__item__overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00000000), to(#000000));
+  background: linear-gradient(to bottom, #00000000, #000000);
+}
+
+.header__testimonial__slides__item img {
+  width: 100%;
+  height: 100%;
+}
+
+.header__testimonial__slides__item__sep {
+  width: 8rem;
+  height: 0.1rem;
+  background-color: #ffba00;
+}
+
+.header__testimonial__slides__item__content {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  bottom: 0;
+}
+
+.header__testimonial__slides__item__content h4 {
+  color: #ffba00;
+  margin: 0;
+}
+
+.header__testimonial__slides__item__content h5 {
+  color: #ffba00;
+  margin: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.header__testimonial__slides__item__content p {
+  width: 28rem;
+  color: white;
+  text-align: center;
+  font-size: 1.35rem;
+  margin: 1.5rem 0;
+}
+
+.header__carousel {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.header__carousel__container {
+  width: 100%;
+  height: 100%;
+}
+
+.header__carousel__item {
+  position: relative;
+  width: 100%;
+  height: 80%;
+}
+
+.header__carousel__item img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header__carousel__item__content {
+  position: absolute;
+  width: 20rem;
+  top: 25%;
+  -webkit-transform: translateY(-25%);
+          transform: translateY(-25%);
+  right: 0;
+  background-color: rgba(255, 186, 0, 0.9);
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__carousel__item__content h4 {
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.header__carousel__item__content__sep {
+  height: 0.1rem;
+  width: 5rem;
+  background-color: white;
+}
+
+.header__carousel__item__content button {
+  border: none;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.header__carousel__item__content button a:link, .header__carousel__item__content button a:visited, .header__carousel__item__content button a:active {
+  text-decoration: none;
+  color: #ffba00;
+}
+
+.header__carousel__buttons {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.header__carousel__buttons div {
+  margin: 0.6rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: #ffba00;
+  cursor: pointer;
+}
+
+.tooltipster-base {
+  color: #DB324D;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.uni_and_col {
+  height: 230px;
+  width: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+}
+
+.uni_and_col__title {
+  text-align: center;
+  color: #DB324D;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  padding-top: 3rem;
+}
+
+.uni_and_col .rslides {
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.uni_and_col .rslides li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.uni_and_col .rslides li img {
+  height: 13rem;
+  width: 13rem;
+}
+
+.login_modal {
+  height: 55rem;
+  width: 90rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 1.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  -webkit-box-shadow: 0 0 40px 1px #0000004b;
+          box-shadow: 0 0 40px 1px #0000004b;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.login_modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000000ea;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.login_modal__backdrop--active {
+  opacity: 1;
+  z-index: 7;
+}
+
+.login_modal--active {
+  opacity: 1;
+  z-index: 7;
+}
+
+.login_modal__close {
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+  background-color: white;
+  color: #DB324D;
+  right: -1.5rem;
+  top: -1.5rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  text-align: center;
+  line-height: 4rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.login_modal__close:hover {
+  height: 5rem;
+  width: 5rem;
+  right: -2rem;
+  top: -2rem;
+  font-size: 3rem;
+  line-height: 5rem;
+}
+
+.login_modal__main {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  padding: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.login_modal__main__title {
+  margin-right: -8rem;
+}
+
+.login_modal__main__title h2 {
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  color: #DB324D;
+}
+
+.login_modal__main__title h4 {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  margin: 0;
+  color: #DB324D;
+}
+
+.login_modal__main__form {
+  margin-right: -8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20rem;
+  width: 100%;
+}
+
+.login_modal__main__form input[type='email'],
+.login_modal__main__form input[type='password'] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1.8rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #ececec;
+  font-family: "LeagueSpartan";
+  color: #DB324D;
+}
+
+.login_modal__main__form button[type='submit'] {
+  margin-top: 1rem;
+  border: none;
+  font-family: "LeagueSpartan";
+  color: white;
+  background-color: #DB324D;
+  text-transform: uppercase;
+  padding: 1.4rem 3rem 1rem 3rem;
+  border-radius: 0.5rem;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.login_modal__main__form button[type='submit']:hover {
+  background-color: #cf2440;
+}
+
+.login_modal__main__form ::-webkit-input-placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+}
+
+.login_modal__main__form :-ms-input-placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+}
+
+.login_modal__main__form ::-ms-input-placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+}
+
+.login_modal__main__form ::placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+}
+
+.login_modal__main__oauth {
+  margin-top: -4rem;
+  margin-right: -8rem;
+  padding-top: 1rem;
+  border-top: 1px solid #cfcfcf;
+  width: 100%;
+}
+
+.login_modal__main__oauth h3 {
+  text-transform: uppercase;
+  color: #adadad;
+  font-family: "LeagueSpartan";
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.login_modal__main__oauth__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.login_modal__main__oauth__item {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 10px 1px #00000056;
+          box-shadow: 0 0 10px 1px #00000056;
+  cursor: pointer;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.login_modal__main__oauth__item:hover {
+  -webkit-box-shadow: 0 0 30px 1px #00000056;
+          box-shadow: 0 0 30px 1px #00000056;
+}
+
+.login_modal__appendix {
+  width: 50%;
+  height: 100%;
+  border-bottom-right-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../assets/svg/login-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.login_modal__appendix__head {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 9rem;
+}
+
+.login_modal__appendix__head h2 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+}
+
+.login_modal__appendix__head__sep {
+  width: 60%;
+  height: 0.1rem;
+  background-color: white;
+}
+
+.login_modal__appendix__head p {
+  margin-top: 3rem;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.login_modal__appendix__register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  padding-left: 9rem;
+  margin-top: 5rem;
+}
+
+.login_modal__appendix__register p {
+  color: white;
+  letter-spacing: 0.05rem;
+  font-family: "LeagueSpartan";
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.login_modal__appendix__register button {
+  border: none;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  background-color: white;
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  color: #DB324D;
+  font-size: 1.2rem;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.login_modal__appendix__register button:hover {
+  padding: 1rem 2rem;
+}
+
+.register_modal {
+  height: 55rem;
+  width: 90rem;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 1.5rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+  -webkit-box-shadow: 0 0 40px 1px #0000004b;
+          box-shadow: 0 0 40px 1px #0000004b;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.register_modal--active {
+  opacity: 1;
+  z-index: 7;
+}
+
+.register_modal__submit {
+  margin-top: 2rem;
+  padding: 1.4rem 3rem 1rem 3rem;
+  background-color: #DB324D;
+  color: white;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  letter-spacing: 0.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.register_modal__submit:hover {
+  background-color: #cf2440;
+}
+
+.register_modal__close {
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+  background-color: white;
+  color: #DB324D;
+  right: -1.5rem;
+  top: -1.5rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  text-align: center;
+  line-height: 4rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.register_modal__close:hover {
+  height: 5rem;
+  width: 5rem;
+  right: -2rem;
+  top: -2rem;
+  font-size: 3rem;
+  line-height: 5rem;
+}
+
+.register_modal__main {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  padding: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.register_modal__main__title {
+  margin-right: -6.5rem;
+  margin-bottom: 2rem;
+}
+
+.register_modal__main__title h2 {
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  color: #DB324D;
+}
+
+.register_modal__main__title h4 {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  margin: 0;
+  color: #DB324D;
+}
+
+.register_modal__main__form {
+  margin-right: -6.5rem;
+  margin-top: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20rem;
+  width: 100%;
+}
+
+.register_modal__main__form input[type='text'],
+.register_modal__main__form input[type='email'],
+.register_modal__main__form input[type='password'] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1.2rem 2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #ececec;
+  font-family: "LeagueSpartan";
+  color: #DB324D;
+}
+
+.register_modal__main__form button[type='submit'] {
+  visibility: hidden;
+}
+
+.register_modal__main__form ::-webkit-input-placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.register_modal__main__form :-ms-input-placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.register_modal__main__form ::-ms-input-placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.register_modal__main__form ::placeholder {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #c9c9c9;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}
+
+.register_modal__appendix {
+  width: 50%;
+  height: 105%;
+  margin-top: -2.7rem;
+  border-bottom-right-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../assets/svg/register-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.register_modal__appendix__head {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 7rem;
+}
+
+.register_modal__appendix__head h2 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+}
+
+.register_modal__appendix__head__sep {
+  width: 60%;
+  height: 0.1rem;
+  background-color: white;
+}
+
+.register_modal__appendix__head p {
+  margin-top: 3rem;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.7rem;
+}
+
+.register_modal__appendix__login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  padding-left: 7rem;
+  margin-top: 5rem;
+}
+
+.register_modal__appendix__login p {
+  color: white;
+  letter-spacing: 0.05rem;
+  font-family: "LeagueSpartan";
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.register_modal__appendix__login button {
+  border: none;
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  background-color: white;
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  color: #DB324D;
+  font-size: 1.2rem;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.register_modal__appendix__login button:hover {
+  padding: 1rem 2rem;
+}
+
+.navbar_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+}
+
+.navbar_main__appendix {
+  width: 100%;
+  height: 2.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: #A62639;
+  overflow: hidden;
+}
+
+.navbar_main__appendix__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 82%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.navbar_main__appendix__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 47rem;
+  padding-left: 1rem;
+  height: 100%;
+  width: 16rem;
+}
+
+.navbar_main__appendix__info__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar_main__appendix__info__item h5 {
+  width: 5rem;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+}
+
+.navbar_main__appendix__info__item img {
+  height: 1.5rem;
+  width: 1.65rem;
+}
+
+.navbar_main__appendix__cart {
+  width: 20%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar_main__appendix__cart h5 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-left: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.navbar_main__appendix__cart img {
+  height: 1rem;
+  width: 1rem;
+}
+
+.navbar_main__appendix__login {
+  background-color: white;
+  padding: 0 2rem 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+  cursor: pointer;
+}
+
+.navbar_main__appendix__login > * {
+  -webkit-transform: skewX(10deg);
+          transform: skewX(10deg);
+}
+
+.navbar_main__appendix__login h5 {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 0.5rem;
+}
+
+.navbar_main__appendix__login img {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0.5rem 0.6rem 0 0;
+}
+
+.navbar_main__appendix__register {
+  background-color: #DB324D;
+  padding: 0 2rem 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+  cursor: pointer;
+}
+
+.navbar_main__appendix__register > * {
+  -webkit-transform: skewX(10deg);
+          transform: skewX(10deg);
+}
+
+.navbar_main__appendix__register h5 {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 0.5rem;
+}
+
+.navbar_main__appendix__register img {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0rem 0.6rem 0 0;
+}
+
+.navbar_main__header {
+  width: 100%;
+  height: 8rem;
+  background-color: #DB324D;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar_main__header__container {
+  width: 80%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar_main__header__logo img {
+  width: 14rem;
+}
+
+.navbar_main__header__search input[type='text'] {
+  border: none;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  width: 42rem;
+  height: 4rem;
+  padding-left: 2rem;
+  outline: none;
+  font-weight: 500;
+  color: grey;
+}
+
+.navbar_main__header__search ::-webkit-input-placeholder {
+  text-transform: uppercase;
+  color: #bbbbbb;
+  font-size: 1.3rem;
+}
+
+.navbar_main__header__search :-ms-input-placeholder {
+  text-transform: uppercase;
+  color: #bbbbbb;
+  font-size: 1.3rem;
+}
+
+.navbar_main__header__search ::-ms-input-placeholder {
+  text-transform: uppercase;
+  color: #bbbbbb;
+  font-size: 1.3rem;
+}
+
+.navbar_main__header__search ::placeholder {
+  text-transform: uppercase;
+  color: #bbbbbb;
+  font-size: 1.3rem;
+}
+
+.navbar_main__header__search input[type='submit'] {
+  border: none;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  color: white;
+  background-color: #DB324D;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 1.3rem;
+  margin-left: -0.3rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.4rem;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.navbar_main__header__search input[type='submit']:hover {
+  background-color: #d82642;
+}
+
+.navbar_main__header__contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 5rem;
+}
+
+.navbar_main__header__contact__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar_main__header__contact__item img {
+  height: 2.2rem;
+  width: 2.2rem;
+  padding-left: 1.5rem;
+}
+
+.navbar_main__header__contact__item h4 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.navbar_main__courses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 4rem;
+  background-color: white;
+  -webkit-box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.062);
+          box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.062);
+  width: 100%;
+}
+
+.navbar_main__courses__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar_main__courses__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 0.2rem;
+}
+
+.navbar_main__courses__item h3 {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-size: 1.1rem;
+  padding-right: 0.8rem;
+}
+
+.navbar_main__courses__item i {
+  color: #bdbdbd;
+  padding-top: 0.2rem;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.navbar_main__courses__item:hover i {
+  -webkit-transform: rotate(180deg) translateY(-2px);
+          transform: rotate(180deg) translateY(-2px);
+}
+
+.navbar_main__courses__item__dropdown {
+  position: absolute;
+  left: -70%;
+  right: 0;
+  top: -100rem;
+  z-index: -2;
+  opacity: 0;
+  padding: 2rem;
+  width: 40rem;
+  border-radius: 1rem;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  -webkit-transition: opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.navbar_main__courses__item__dropdown__content {
+  white-space: nowrap;
+  background-color: white;
+  width: 40rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  max-height: 35rem;
+}
+
+.navbar_main__courses__item__dropdown a:link, .navbar_main__courses__item__dropdown a:visited, .navbar_main__courses__item__dropdown a:active {
+  color: #DB324D;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.navbar_main__courses__item__dropdown a:link li, .navbar_main__courses__item__dropdown a:visited li, .navbar_main__courses__item__dropdown a:active li {
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.navbar_main__courses__item__dropdown a:link:hover, .navbar_main__courses__item__dropdown a:visited:hover, .navbar_main__courses__item__dropdown a:active:hover {
+  text-decoration: underline;
+}
+
+.navbar_main__courses__item__dropdown--active {
+  top: 3.8rem;
+  opacity: 1;
+  z-index: 5;
+}
+
+.newsletter_popup {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 70vh;
+  width: 60vw;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  -webkit-transform: scale(0) translate(-50%, -50%);
+          transform: scale(0) translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  opacity: 0;
+  z-index: 6;
+}
+
+.newsletter_popup__backdrop {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.432);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 7;
+}
+
+.newsletter_popup__backdrop--active {
+  display: block;
+}
+
+.newsletter_popup__illustration {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+}
+
+.newsletter_popup__illustration__img {
+  height: 50%;
+  width: 75%;
+  background: url("../assets/images/illustration/contact-us-illustration.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.newsletter_popup__main {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  padding: 4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: linear-gradient(135deg, #FF5E5B 0%, #DB324D 100%);
+}
+
+.newsletter_popup__main__close {
+  color: white;
+  font-size: 3rem;
+  position: absolute;
+  right: 1.7rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  top: 1rem;
+  cursor: pointer;
+}
+
+.newsletter_popup__main__close:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.newsletter_popup__main__title {
+  color: white;
+  font-family: 'LeagueSpartan';
+  text-transform: uppercase;
+  font-size: 3.2rem;
+  margin: 0;
+  width: 25rem;
+}
+
+.newsletter_popup__main__form {
+  margin-top: 4rem;
+}
+
+.newsletter_popup__main__form form input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 1rem;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-bottom: 3px solid #FF5E5B;
+  color: #FF5E5B;
+  text-transform: uppercase;
+  font-family: 'LeagueSpartan';
+  line-height: 1rem;
+}
+
+.newsletter_popup__main__form form span {
+  margin-top: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.newsletter_popup__main__form form input[type='submit'] {
+  border: none;
+  background-color: white;
+  border-radius: 0.2rem;
+  color: #DB324D;
+  width: 48%;
+  text-transform: uppercase;
+  font-family: 'LeagueSpartan';
+  margin: 0;
+  cursor: pointer;
+  padding: 1.3rem 1.7rem 1rem 1.7rem;
+}
+
+.newsletter_popup__main__form form div {
+  border-radius: 0.2rem;
+  background-color: #DB324D;
+  color: white;
+  padding: 1.3rem 1rem 1rem 1rem;
+  width: 45%;
+  cursor: pointer;
+  margin-left: 2rem;
+  text-align: center;
+  font-family: 'LeagueSpartan';
+  text-transform: uppercase;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+}
+
+.newsletter_popup__main__form form ::-webkit-input-placeholder {
+  font-family: 'LeagueSpartan';
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #cecdcd;
+}
+
+.newsletter_popup__main__form form :-ms-input-placeholder {
+  font-family: 'LeagueSpartan';
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #cecdcd;
+}
+
+.newsletter_popup__main__form form ::-ms-input-placeholder {
+  font-family: 'LeagueSpartan';
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #cecdcd;
+}
+
+.newsletter_popup__main__form form ::placeholder {
+  font-family: 'LeagueSpartan';
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: #cecdcd;
+}
+
+.news_updates {
+  width: 100%;
+  height: 45rem;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 78, 0.8)), to(rgba(219, 50, 78, 0.8))), url("../assets/images/news-bg.jpg");
+  background: linear-gradient(0deg, rgba(219, 50, 78, 0.8), rgba(219, 50, 78, 0.8)), url("../assets/images/news-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.news_updates__back, .news_updates__next {
+  background-color: white;
+  padding: 2rem;
+  color: #DB324D;
+  border: 2px solid #DB324D;
+  font-size: 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.news_updates__back i, .news_updates__next i {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.news_updates__back:hover i, .news_updates__next:hover i {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.news_updates__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  height: 80%;
+}
+
+.news_updates__head {
+  background-color: #DB324D;
+  width: 6%;
+  height: 100%;
+  position: relative;
+}
+
+.news_updates__head h2 {
+  position: absolute;
+  right: -8.5rem;
+  bottom: 17rem;
+  width: 23rem;
+  margin: 0;
+  color: white;
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+  display: inline-block;
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.news_updates__main {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.news_updates__main__container {
+  width: 96%;
+  height: 94%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.news_updates__main__section {
+  width: 100%;
+  margin: 0 1rem 0 2rem;
+}
+
+.news_updates__main__section__title {
+  text-transform: uppercase;
+  color: #DB324D;
+  margin-bottom: 0;
+}
+
+.news_updates__main__section__sep {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #FF8B9C;
+  margin-top: 1rem;
+}
+
+.news_updates__main__section__content {
+  overflow-y: scroll;
+  margin-top: 3rem;
+  height: 25rem;
+}
+
+.news_updates__main__section__content__item h3 {
+  text-transform: uppercase;
+  color: #FF8B9C;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.news_updates__main__section__content__item p {
+  font-size: 1.2rem;
+  color: grey;
+  margin-top: 0.5rem;
+}
+
+.news_updates__main__section__content__item a:link, .news_updates__main__section__content__item a:visited, .news_updates__main__section__content__item a:active {
+  text-transform: uppercase;
+  color: #FF8B9C;
+}
+
+.policy_container {
+  height: 60vh;
+}
+
+.policy_header {
+  width: 80%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto;
+  border-bottom: 1px solid #DB324D;
+  padding: 3rem 3rem;
+}
+
+.policy_header h3 {
+  text-align: center;
+  color: #DB324D;
+  text-transform: uppercase;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.preloader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F34965;
+  opacity: 1;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+  -webkit-transition: 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.preloader--fadeOut {
+  opacity: 0;
+  -webkit-transform: translateX(-2000px);
+          transform: translateX(-2000px);
+}
+
+.preloader__svg_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.preloader__tagline {
+  margin-top: 1rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: white;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+#logo-svg {
+  width: 30rem;
+  height: 10rem;
+}
+
+.site_features {
+  width: 100%;
+  height: 50rem;
+  background-color: #DB324D;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.site_features__out {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 82%;
+  padding-bottom: 8rem;
+}
+
+.site_features__title {
+  font-family: "LeagueSpartan";
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.4rem;
+  text-align: center;
+  color: white;
+  padding-top: 6rem;
+  margin-top: 0;
+}
+
+.site_features__subtitle {
+  color: white;
+  font-weight: 300;
+  font-size: 1.8rem;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.site_features__subtitle span {
+  font-weight: 600;
+}
+
+.site_features__container {
+  width: 100%;
+  margin: 5rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.site_features__section {
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 18vw;
+}
+
+.site_features__section img {
+  height: 8rem;
+  width: 8rem;
+}
+
+.site_features__section .section_text {
+  text-align: center;
+  color: white;
+}
+
+.site_features__section .section_text h3 {
+  font-weight: 500;
+  font-size: 1.9rem;
+}
+
+.site_features__section .section_text p {
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+.all_testimonials__container {
+  margin-top: 14rem;
+  width: 100%;
+  height: 100rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.all_testimonials__aside {
+  height: 100%;
+  width: 20%;
+  position: relative;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FF5E5B), to(#DB324D));
+  background: linear-gradient(to bottom, #FF5E5B, #DB324D);
+}
+
+.all_testimonials__aside__mark {
+  position: absolute;
+  top: 10rem;
+  left: -1rem;
+  opacity: 0.3;
+}
+
+.all_testimonials__aside__mark i {
+  font-size: 25rem;
+  color: white;
+}
+
+.all_testimonials__main {
+  padding: 5rem;
+  position: relative;
+}
+
+.all_testimonials__main__sep {
+  width: 15rem;
+  height: 1px;
+  background-color: #FF8B9C;
+}
+
+.all_testimonials__main__title {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-family: "LeagueSpartan";
+}
+
+.all_testimonials__main__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  width: 100rem;
+  left: -3rem;
+}
+
+.all_testimonials__main__item {
+  width: 48rem;
+  height: 17rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.185);
+          box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.185);
+  margin-top: 4rem;
+  overflow: hidden;
+}
+
+.all_testimonials__main__item__img {
+  width: 35%;
+}
+
+.all_testimonials__main__item__img img {
+  top: 0;
+  left: 0;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  height: 100%;
+  width: 90%;
+}
+
+.all_testimonials__main__item__content {
+  padding: 1rem 2rem 1rem 1.4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.all_testimonials__main__item__content h4 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #FF8B9C;
+  font-weight: 700;
+  margin: 2rem 0 0 0;
+}
+
+.all_testimonials__main__item__content h5 {
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  color: #a1a1a1;
+  font-weight: 500;
+}
+
+.all_testimonials__main__item__content p {
+  font-size: 1.4rem;
+  color: #979797;
+  font-weight: 300;
+}
+
+.top_courses {
+  width: 100%;
+  height: 27rem;
+  background-image: url("../assets/svg/top-courses-bg.svg");
+  background-size: cover;
+  position: relative;
+}
+
+.top_courses__title {
+  font-family: "LeagueSpartan";
+  color: #DB324D;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.8rem;
+}
+
+.top_courses__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.top_courses__item {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  width: 16rem;
+  height: 16rem;
+  margin-top: 1.2rem;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.top_courses__item img {
+  width: 6rem;
+  height: 6rem;
+  margin-top: 1.4rem;
+}
+
+.top_courses__item h3 {
+  margin-top: 2rem;
+  color: #DB324D;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.top_courses__item:hover::after {
+  content: 'CLICK TO VIEW';
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 1.3rem;
+  line-height: 16rem;
+  position: absolute;
+  background-color: rgba(219, 50, 78, 0.801);
+  width: 16rem;
+  height: 16rem;
+  border-radius: 1rem;
+  opacity: 1;
+}
+
+.top_courses__item__section {
+  position: absolute;
+  top: -2.2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  cursor: auto;
+  background-color: white;
+  padding-top: 2.5rem;
+  z-index: -5;
+  opacity: 0;
+  -webkit-transition: 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.top_courses__item__section__button {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  color: #DB324D;
+  font-size: 4rem;
+  cursor: pointer;
+  z-index: 6;
+}
+
+.top_courses__item__section__container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.top_courses__item__section__container h4 {
+  text-transform: uppercase;
+  font-family: "LeagueSpartan";
+  color: #DB324D;
+  border-bottom: 2px solid #DB324D;
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+  font-size: 2.2rem;
+}
+
+.top_courses__item__section__container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  list-style: none;
+  height: 12rem;
+  margin-left: -4.2rem;
+}
+
+.top_courses__item__section__container ul a:visited, .top_courses__item__section__container ul a:link, .top_courses__item__section__container ul a:active {
+  text-decoration: none;
+}
+
+.top_courses__item__section__container ul li {
+  font-size: 1.8rem;
+  height: 3rem;
+  font-weight: 500;
+  color: #DB324D;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=style.css.map */

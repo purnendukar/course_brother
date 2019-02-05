@@ -1,0 +1,166 @@
+// Header Styling
+.header {
+
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin-top: 14rem;
+  display: flex;
+
+
+  &__testimonial {
+
+    width: 30%;
+    height: 100%;
+    background-color: transparent;
+
+    &__slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      &__item {
+
+        position: absolute;
+        width: 100%;
+        height: 100%;  
+
+        &__overlay {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: linear-gradient(to bottom, #00000000, #000000);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+
+        &__sep {
+          width: 8rem;
+          height: 0.1rem;
+          background-color: $bright-yellow;
+        }
+
+        &__content {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          bottom: 0;
+          h4 {
+            color: $bright-yellow;
+            margin: 0;
+          }
+          h5 {
+            color: $bright-yellow;
+            margin: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: $light;
+          }
+          p {
+            width: 28rem;
+            color: white;
+            text-align: center;
+            font-size: 1.35rem;
+            margin: 1.5rem 0;
+          }
+        }
+
+      }
+    }
+
+  }
+
+  &__carousel {
+
+    position: relative;
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+
+    &__container {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__item {
+
+      position: relative;
+      width: 100%;
+      height: 80%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      &__content {
+        position: absolute;
+        width: 20rem;
+        top: 25%;
+        transform: translateY(-25%);
+        right: 0;
+        background-color: transparentize($bright-yellow, 0.1);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h4 {
+          text-align: center;
+          color: white;
+          margin-bottom: 1rem;
+        }
+        &__sep {
+          height: 0.1rem;
+          width: 5rem;
+          background-color: white;
+        }
+        button {
+          border: none;
+          background-color: white;
+          border-radius: 0.5rem;
+          padding: 1rem;
+          font-size: 1.2rem;
+          margin-top: 1rem;
+          text-transform: uppercase;
+          font-weight: $medium;
+          a:link, a:visited, a:active {
+            text-decoration: none;
+            color: $bright-yellow;
+          }
+        }
+      }
+
+    }
+
+    &__buttons {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-around;
+      div {
+        margin: 0.6rem;
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 50%;
+        background-color: $bright-yellow;
+        cursor: pointer;
+      }
+    }
+
+  }
+  
+}
+
+
+// Tooltipster Styling
+.tooltipster-base {
+  color: $rusty-red;
+  text-align: center;
+  padding: 0.5rem;
+}

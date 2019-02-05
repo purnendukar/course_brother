@@ -1,0 +1,194 @@
+// Featured Courses styling
+.featured_courses {
+
+  width: 100%;
+  height: 48rem;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(219, 50, 78, 0.815), rgba(180, 40, 63, 0)), url('../assets/images/about-founder-bg.jpg');
+  background: {
+    size: cover;
+    repeat: no-repeat;
+    attachment: fixed;
+  }
+
+  &__main {
+    
+    &__head {
+      h2 {
+        font-family: $league;
+        color: white;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 3rem;
+        width: 10rem;
+        padding: 5rem 0 0.5rem 0;
+        margin-left: 5rem;
+        border-bottom: 2px solid white;
+      }
+    }
+
+    &__nav {
+      ul {
+        list-style: none;
+        width: 38rem;
+        margin-left: -9.5rem;
+        margin-top: 3.4rem;
+        transition: 0.4s ease-in-out;
+      }
+      li {
+        padding: 1.5rem 1rem 1.5rem 10rem;
+        transform: skewX(30deg);
+        cursor: pointer;
+        a:link, a:visited, a:active {
+          display: inline-block;
+          transform: skewX(-30deg);
+          color: white;
+          font-weight: $semiBold;
+          text-decoration: none;
+          font-size: 1.5rem;
+        } 
+        margin: 0.5rem;
+        text-transform: uppercase;
+        color: white;
+        background-color: $rusty-red;
+        transition: 0.4s ease-in-out;
+      }
+    }
+
+    .list--active {
+      width: 32rem;
+      background-color: white;
+    }
+    
+  }
+
+
+  &__body {
+
+    position: absolute;
+    height: 90%;
+    width: 65%;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &__container {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      align-content: space-between;
+    }
+
+    &__item {
+      
+      margin: 0 0.5rem 0 0.5rem;
+      background-color: $rusty-red;
+      width: 42%;
+      height: 48%;
+      border-radius: 0.5rem;
+      box-shadow: $subtle-shadow;
+      background: {
+        size: cover;
+        position: 100% 80%;
+        repeat: no-repeat;
+      }
+      box-sizing: border-box;
+      overflow: hidden;
+      transition: 0.4s;
+      z-index: 5;
+
+      h4 {
+        font-size: 1.5rem;
+        margin: 2rem 0 0 1.5rem;
+        color: white;
+        font-weight: $semiBold;
+        text-transform: uppercase;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid white;
+        width: 30rem;
+      }
+
+      &__course {
+        padding: 1rem;
+        background-color: white;
+        transform: skewX(30deg);
+        width: 30rem;
+        margin-left: -4.5rem;
+        margin-top: 4rem;
+        span {
+          text-transform: uppercase;
+          color: $rusty-red;
+          font-family: $league;
+          font-size: 1.2rem;
+          padding-left: 5rem;
+          display: inline-block;
+          transform: skewX(-30deg);
+        }
+      }
+
+      &__info {
+        display: flex;
+        padding: 1rem;
+        background-color: white;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+        &__price {
+          text-transform: uppercase;
+          color: $rusty-red;
+          font-weight: $semiBold;
+          font-size: 1.4rem;
+          padding-left: 1rem;
+        }
+        &__year {
+          text-transform: uppercase;
+          color: $rusty-red;
+          font-weight: $medium;
+          font-size: 1.4rem;
+          padding-right: 1rem;
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        button {
+          border: none;
+          background-color: $rusty-red;
+          color: white;
+          text-transform: uppercase;
+          padding: 1rem;
+          outline: none;
+          cursor: pointer;
+          transition: 0.4s;
+          &:nth-child(1) {
+            width: 50%;
+            border-right: 1px solid white;
+            font-weight: $semiBold;
+            font-size: 1.3rem;
+            &:hover {
+              background-color: white;
+              color: $rusty-red;
+              border-top: 1px solid $rusty-red;
+            }
+          }
+          &:nth-child(2) {
+            width: 50%;
+            font-weight: $medium;
+            font-size: 1.2rem;
+            &:hover {
+              background-color: white;
+              color: $rusty-red;
+              border-top: 1px solid $rusty-red;
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
