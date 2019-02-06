@@ -36,95 +36,28 @@
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
 
+		<script>
+				function edit(a){
+						window.location.href="./blogEditFormShow.php?id="+a;
+				}
+		</script>
+
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--if lte IE 8>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<!endif-->
-        
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-            
-        <script>
-            function send_data(u_id,u_name,about,image){
-                $.ajax({
-                      type: "POST",
-                      url: "./includes/update_univesities.php",
-                      data: {u_id:u_id,u_name:u_name,about:about},
-                      complete: function(data){
-                                //data contains the response from the php file.
-                                //u can pass it here to the javascript function
-                                console.log(data);
-                                if(data.responseText=='01'){
-                                    alert("data updated");
-                                }else{
-                                    alert("data not updated");
-                                }
-                            }
-                    });
-                
-                var formData = new FormData();
-                formData.append('image',$('#'+u_id+'image')[0].files[0]);
-                formData.append('u_id',u_id);
 
-                $.ajax({
-                    url: "./includes/update_univesities.php",
-                    type: 'POST',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: formData,
-                    complete: function (data) {
-                        if(data.responseText!='0'){
-                            image.src="."+data.responseText;
-                            alert("image updated");
-                        }else{
-                            alert("image not updated");
-                        }
-                    }
-                });
-                    
-            }
-            
-            
-            function change_(a){
-                var but=document.getElementsByName(a+"edit_update");
-                var u_name=document.getElementsByName(a+"u_name");
-                var about=document.getElementsByName(a+"about");
-                var img=document.getElementsByName(a+"img");
-                var image=document.getElementsByName(a+"image");
-                if(but[0].value=="Edit"){
-                    but[0].value="Update";
-                    u_name[0].disabled=false;
-                    about[0].disabled=false;
-                    img[0].style.display="none";
-                    image[0].style.display="block";
-                    image[0].disable=false;
-                    
-                }else{
-                    console.log(image[0].files);
-                    send_data(a,u_name[0].value,about[0].value,img[0]);
-                    but[0].value="Edit";
-                    u_name[0].disabled=true;
-                    about[0].disabled=true;
-                    //if(image[0].files.length==0){
-                        img[0].style.display="block";
-                        image[0].style.display="none";
-                    //}else{
-//                        img[0].style.display="none";
-//                        image[0].style.display="block";
-//                    }
-                }
-                
-            }
-        </script>
-        
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('./includes/navbar.php'); ?>
-        
+
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
@@ -135,10 +68,10 @@
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
-                        
-                        
+
+
 
             <div class='row menu-form' >
               <div class='col-lg-6' >
@@ -155,14 +88,14 @@
                           ?>
                           <td style="text-align:center; padding:10px"><?php echo $row['id'];?>
                           </td>
-                          <td style="padding:10px" ><input name="<?php echo $row['id']."title";?>" type=text-area class="form-control" value="<?php echo $row['title'];?>" disabled/>
+                          <td style="padding:10px" ><input type=text-area class="form-control" value="<?php echo $row['title'];?>" disabled/>
                           </td>
                           <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>"/>
-                              <input id="<?php echo $row['id']."image"?>" name="<?php echo $row['id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
+                              <input  name="<?php echo $row['id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
                           </td>
-                          <td><input name="<?php echo $row['id']."edit_update" ?>" type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="change_('<?php echo $row['id'];?>');"/>
+                          <td><input type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="edit('<?php echo $row['id'];?>');"/>
                           </td>
-                            <?php echo"</tr>";} 
+                            <?php echo"</tr>";}
                             ?>
                         </table><!--
                     <div class="form-group">
@@ -172,7 +105,7 @@
                     <div class="form-group">
                       <label for="exampleInputPassword1">Edit</label>
                       <input type="text" class="form-control" placeholder="Add Option">
-                    </div> 
+                    </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button> -->
                   </form>
               </div>

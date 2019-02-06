@@ -35,7 +35,7 @@
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
+
         <script>
             function add_course(){
                 var duration=document.getElementsByName('duration')[0].value;
@@ -51,7 +51,7 @@
                     alert("Give a interger value in course value");
                 }
             }
-            
+
             function add_fees(){
                 var duration=document.getElementsByName('duration')[0].value;
                 var structure_sec=document.getElementById("structure_fees");
@@ -66,7 +66,7 @@
                     alert("Give a interger value in course value");
                 }
             }
-            
+
             function submit_it(){
                 var duration=document.getElementsByName('duration')[0].value;
                 var univ=document.getElementsByName("univ")[0];
@@ -99,7 +99,7 @@
                     alert("Delivery Mode not selected");
                     return;
                 }
-                
+
                 var formData = new FormData();
                 formData.append("u_id",u_id);
                 formData.append("prg_id",prg_id);
@@ -179,9 +179,9 @@
                         }
                     }
                 });
-                
+
             }
-            
+
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -193,7 +193,7 @@
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -206,7 +206,7 @@
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
             <div class='row menu-form'>
               <div class='col-lg-6'>
@@ -260,14 +260,14 @@
                         <label for="exampleInputPassword1" >Add Course Structure</label><br/>
                         <a id="add_course"  href="javascript:add_course();">Click Here</a>
                         <div id="structure_sec">
-                            
+
                         </div>
                		</div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Add Fee Structure</label><br/>
                         <a id="add_fees"  href="javascript:add_fees();">Click Here</a>
                         <div id="structure_fees">
-                            
+
                         </div>
                		</div>
                     <div class="form-group">
