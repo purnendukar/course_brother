@@ -45,7 +45,7 @@
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
         <?php if(isset($_POST['submit'])){
             $title="";
@@ -63,14 +63,15 @@
                 $t=explode('.',$_FILES['image']['name']);
                 $file_ext=strtolower(end($t));
                 $file_path="./assets/images/blogs_thumnail/";
-            
+
                 $extensions= array("jpeg","jpg","png");
                 if(in_array($file_ext,$extensions)=== false){
                      $errors[]="extension not allowed, please choose a JPEG or PNG file.";
                 }
                 if(empty($errors)==true){
-                     if(move_uploaded_file($file_tmp,".".$file_path.$file_name)){
-                         $path=$file_path.$file_name;
+									$path=$file_path.rand().$file_name;
+                     if(move_uploaded_file($file_tmp,".".$path)){
+
                      }
                 }else{
                     print_r($errors);
@@ -80,7 +81,7 @@
                 $content=preg_replace("/[\n\r]/",'<br>',$_POST['content']);
                 $res=$conn_p->query("INSERT INTO `blog`(`title`, `content`, `thumnail`) VALUES ('".$title."','".$content."','".$path."')");
                 if($res){
-                    echo "<script>alert('Successfully Added');window.location.href='./institutionAddForm.php';</script>";
+                    echo "<script>alert('Successfully Added');window.location.href='./blogAddForm.php';</script>";
                 }else{
                     echo "<script>alert('Failed')</script>";
                 }
@@ -96,7 +97,7 @@
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
 
             <div class='row menu-form'>

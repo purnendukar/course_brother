@@ -45,9 +45,9 @@
                 var input_=document.getElementsByName('input_');
                 var formData = new FormData();
                 formData.append('id',a);
-                formData.append('title',input_[0]);
-                formData.append('content',input_[1]);
-                formData.append('image', $('input[type=file]')[0].files[0]); 
+                formData.append('title',input_[0].value);
+                formData.append('content',input_[1].value);
+                formData.append('image', $('input[type=file]')[0].files[0]);
                 $.ajax({
                     url: "./blogeAddFormupdate.php",
                     type: 'POST',
@@ -57,9 +57,9 @@
                     data: formData,
                     complete: function (data) {
                         console.log(data.responseText);
-                        if(data.responseText=='1'){
+                        if(data.responseText=='1' || data.responseText=='11'){
                             alert("Successfully Added");
-                            window.location.href="./courseEditForm.php";
+                            window.location.href="./blogEditForm.php";
                         }else{
                             alert("Something went wrong submit again");
                         }
