@@ -117,7 +117,7 @@
 
 					<li class="">
 						<a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-file"></i>
+              			<i class="menu-icon fa fa-file"></i>
 							<span class="menu-text"> Index Page </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -133,6 +133,37 @@
 
 						</ul>
 					</li> <!-- Index Page Side Option Ends -->
+
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+              			<i class="menu-icon fa fa-file"></i>
+							<span class="menu-text"> Blogs </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							
+						<li class="">
+								<a href="./blogAddForm.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-plus"></b> &nbsp; Add
+								</a>
+							</li>
+							<li class="">
+								<a href="./blogEditForm.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-edit"></b> &nbsp; Edit
+								</a>
+							</li>
+							<li class="">
+								<a href="./blogDeleteForm.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-minus"></b> &nbsp; Delete
+								</a>
+							</li>
+
+						</ul>
+					</li>
                     
                     <li class="">
 						<a href="#" class="dropdown-toggle">
