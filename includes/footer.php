@@ -78,6 +78,12 @@
             if($s[count($s)-2]=='pages'){
                 echo ".";
             }?>./pages/privacy-policy.php">privacy policy</a>
+        <a href="<?php $s=$_SERVER['REQUEST_URI'];
+            $s=explode('/',$s);
+            $d="";
+            if($s[count($s)-2]=='pages'){
+                echo ".";
+            }?>./pages/legal.php">legal policy</a>
       </div>
     </div>
     <div class="footer__newsletter">
