@@ -453,10 +453,6 @@
 	                  <h2 class='menu-text'>Featured Courses</h2>
 	                  <form class='menu-content' >
 	                    <div class="form-group">
-<!--
-	                      <label for="exampleInputEmail1">Edit Heading</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
--->
                             <?php while($row=$res->fetch_assoc()){ ?>
                                     <div><input name='featured_c' type='checkbox' value='<?php echo $row['id']?>' <?php if($row['checked']=="yes") echo "checked";?> /> <?php echo $row['c_name'];?></div>
                             <?php } ?>
