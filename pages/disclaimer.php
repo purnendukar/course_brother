@@ -53,7 +53,7 @@
         <h3>disclaimer</h3>
       </div>
       <!-- /POLICY_HEADER -->
-      <div>
+      <div class="policy__content">
             <?php echo $conn->query("select content from policies where id=3")->fetch_assoc()['content'];?>
         </div>
     </div>
