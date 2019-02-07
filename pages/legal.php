@@ -54,7 +54,9 @@
         <h3>legal policy</h3>
       </div>
       <!-- /POLICY_HEADER -->
-      
+      <div class="policy__content">
+            <?php echo $conn->query("select content from policies where id=6")->fetch_assoc()['content'];?>
+      </div>
     </div>
     <!-- POLICY_CONTAINER -->
     
