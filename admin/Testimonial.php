@@ -144,7 +144,7 @@
                 if(head.value==""||para.value==""||about.value==""||document.getElementById('img_choose').value==''){
                     alert("Fill all Feild");
                     return;
-                }//problem in php
+                }
                 var formData= new FormData();
                 formData.append('head',escape(head.value));
                 formData.append('para',escape(para.value));

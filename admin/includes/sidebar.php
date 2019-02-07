@@ -163,7 +163,28 @@
 							</li>
 
 						</ul>
-					</li>
+					</li><!-- Blog Section -->
+
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+              			<i class="menu-icon fa fa-file"></i>
+							<span class="menu-text"> News & Update</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<?php $r=$conn_p->query("select * from universities");
+							while($ro=$r->fetch_assoc()){ ?>
+							<li class="">
+								<a href="./newsletterEditForm.php?id=<?php echo $ro['u_id'];?>">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-edit"></b> &nbsp; <?php echo $ro['u_name']?>
+								</a>
+							</li>
+							<?php } ?>
+
+						</ul>
+					</li><!-- Blog Section -->
                     
                     <li class="">
 						<a href="#" class="dropdown-toggle">

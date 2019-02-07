@@ -447,7 +447,7 @@
                 <div class="news_updates__main__section__content__item">
                   <h3><?php echo $row_1['heading']; ?></h3>
                   <p>
-                    <?php echo substr($row_1['content'],0,80)."..."; ?>
+                    <?php echo substr(urldecode($row_1['content']),0,80)."..."; ?>
                     <a href="#">read more</a>
                   </p>
                 </div>
