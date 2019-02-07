@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - Index Page Add Menu</title>
+		<title>Dashboard - About Page Add Menu</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -149,7 +149,7 @@
 					<div class="page-content">
             
             <?php include('./settingsContainer.php'); ?>
-            <h3>Index Page</h3>
+            <h3>About Page</h3>
             <div id="accordion">
 			  <h3>Slider</h3>
 				<div class='row menu-form' >
