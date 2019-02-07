@@ -4,7 +4,7 @@ $conn=connect_mysql_page();
 $id=$_POST['id'];
 $title=$_POST['title'];
 $content=$_POST['content'];
-if($conn->query("UPDATE `blog` SET `title`='".$title."',`content`='".$content."' WHERE id=".$id)){
+if($conn->query("UPDATE `blogs` SET `heading`='".$title."',`content`='".$content."' WHERE id=".$id)){
   if(isset($_FILES['image'])){
             $errors= array();
             $file_name = $_FILES['image']['name'];
@@ -24,7 +24,7 @@ if($conn->query("UPDATE `blog` SET `title`='".$title."',`content`='".$content."'
             if(empty($errors)==true){
               $path = $file_path.rand().$file_name;
                if(move_uploaded_file($file_tmp,".".$path)){
-                   if($conn->query("UPDATE `blog` SET thumnail='".$path."' where id=".$id)){
+                   if($conn->query("UPDATE `blogs` SET thumnail='".$path."' where id=".$id)){
                       echo "1";
                    }
                }

@@ -83,12 +83,12 @@
                                 <th style="text-align:center; padding:10px">Title</th>
                                 <th style="text-align:center; padding:10px">Image</th>
                             </tr>
-                            <?php $res=$conn_p->query("select * from  blog");
+                            <?php $res=$conn_p->query("select * from  blogs");
                             while($row=$res->fetch_assoc()){ echo "<tr class=\"form-group\">";
                           ?>
                           <td style="text-align:center; padding:10px"><?php echo $row['id'];?>
                           </td>
-                          <td style="padding:10px" ><input type=text-area class="form-control" value="<?php echo $row['title'];?>" disabled/>
+                          <td style="padding:10px" ><input type=text-area class="form-control" value="<?php echo $row['heading'];?>" disabled/>
                           </td>
                           <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>"/>
                               <input  name="<?php echo $row['id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>

@@ -97,15 +97,15 @@
             <div class='row menu-form'>
                 <?php if(isset($_GET['id'])){
                 $id=$_GET['id'];
-                $row=$conn_p->query("select * from blog where id=".$id)->fetch_assoc();
+                $row=$conn_p->query("select * from blogs where id=".$id)->fetch_assoc();
                 ?>
               <div class='col-lg-6'>
                   <h2 class='menu-text'>Edit Blog</h2>
                   <form class='menu-content' id="form1" name="form1" method="post" action="javascript:submit_it('<?php echo $id; ?>')">
-                      <?php $row=$conn_p->query("select * from blog")->fetch_assoc(); ?>
+                      
                     <div class="form-group">
                     <label for="exampleInputPassword1">Title</label>
-               		<input name="input_" class="form-control" value="<?php echo $row['title'] ?>" />
+               		<input name="input_" class="form-control" value="<?php echo $row['heading'] ?>" />
                		</div>
                		<div class="form-group">
                     <label for="exampleInputPassword1">Content</label>

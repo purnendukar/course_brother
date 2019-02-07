@@ -79,7 +79,7 @@
             }
             if(isset($_POST['title'])){
                 $content=preg_replace("/[\n\r]/",'<br>',$_POST['content']);
-                $res=$conn_p->query("INSERT INTO `blog`(`title`, `content`, `thumnail`) VALUES ('".$title."','".$content."','".$path."')");
+                $res=$conn_p->query("INSERT INTO `blogs`(`heading`, `content`, `thumnail`) VALUES ('".$title."','".$content."','".$path."')");
                 if($res){
                     echo "<script>alert('Successfully Added');window.location.href='./blogAddForm.php';</script>";
                 }else{
