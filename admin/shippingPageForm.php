@@ -88,7 +88,7 @@
                     <?php include('./settingsContainer.php'); ?>
                     <div class='row menu-form'>
                         <div class='col-lg-6'>
-                            <h2 class='menu-text'>Contact Us</h2>
+                            <h2 class='menu-text'>Shipping Policy</h2>
                             <div id="tab" class='menu-content' style="width:100%">
                                 <div class="form-group">
                                 <?php $res=$conn_p->query("SELECT * FROM `policies` where id=1");?>
