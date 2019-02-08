@@ -15,7 +15,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
         setcookie("user_id", $row['id'], time() + (86400 * 30));
         unset($_POST['username']);
         unset($_POST['password']);
-        header("Location: index.php");
+        header("Location: ./");
     }else{
         echo "<script>alert('incorrect username or password');</script>";
     }

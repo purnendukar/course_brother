@@ -1,6 +1,6 @@
 <?php ob_start();
 if(!(isset($_COOKIE['user_id']))){
-    header('Location: login.php');
+    header('Location: login');
 }
 include "./includes/mysql_connect.php";
 $conn_p=connect_mysql_page();
