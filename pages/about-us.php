@@ -47,29 +47,23 @@
 
     <!-- ABOUT_US -->
     <div class='about_us'>
-
+      <?php $res=$conn->query("SELECT * FROM `about`");?>
       <div class="about_us__header">
         <h1 class='about_us__header__title'>about</h1>
         <div class="about_us__header__para">
-          Aliquam rutrum molestie porta. Sed pellentesque nulla
-          eget mi tempus iaculis. In laoreet dui augue, quis aliquet
-          nisi cursus vitae. Pellentesque elementum malesuada
-          rutrum. Aenean sit amet enim at arcu laoreet consequat
-          sit amet euismod metus. Aenean lorem lorem, dignissim a
-          tristique a, fermentum in eros. Aliquam malesuada sem ut
-          nisi gravida aliquam id tempor diam. Suspendiss.
+          <?php echo urldecode($res->fetch_assoc()['content']);?>
         </div>
       </div>
 
       <div class="about_us__services">
         <h2 class='about_us__services__title'>we strive to provide you with</h2>
         <div class="about_us__services__container">
-
+          <?php $res=$conn->query("SELECT * FROM `provide`");?>
           <div class="about_us__services__container__item">
             <img src="..\assets\svg\Icons\white\journey.svg" />
             <h5>versatility</h5>
             <p>
-              Choose from a variety of degrees, diploma, certificate courses from top course providers
+              <?php echo urldecode($res->fetch_assoc()['content']);?>
             </p>
           </div>
 
@@ -77,7 +71,7 @@
             <img src="..\assets\svg\Icons\white\stopwatch.svg" />
             <h5>convenience</h5>
             <p>
-              Select any course from our wide variety of courses, and enjoy your learning experience at your own leisure and pace
+            <?php echo urldecode($res->fetch_assoc()['content']);?>
             </p>
           </div>
 
@@ -93,7 +87,7 @@
             <img src="..\assets\svg\Icons\white\support.svg" />
             <h5>support</h5>
             <p>
-              Regarding any query about any course or process, we provide you with counselling help from our experts
+            <?php echo urldecode($res->fetch_assoc()['content']);?>
             </p>
           </div>
 
@@ -101,37 +95,20 @@
       </div>
 
       <div class="about_us__founders">
-
-        <h2 class='about_us__founders__title'>founders</h2>
+        <?php $res=$conn->query("SELECT * FROM `team`")?>
+        <h2 class='about_us__founders__title'>Team Members</h2>
         <div class='about_us__founders__container'>
-          
+          <?php while($row=$res->fetch_assoc()){?>
           <div class="about_us__founders__item">
-            <img src="../assets/images/about_img/messi.jpg" />
-            <h4>lionel messi</h4>
-            <h5>sr. engineer</h5>
+            <img src=".<?php echo $row['img_src']?>" />
+            <h4><?php echo urldecode($row['name'])?></h4>
+            <h5><?php echo urldecode($row['position'])?></h5>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam, adipisci.
+            <?php echo urldecode($row['about'])?>
             </p>
           </div>
+          <?php } ?>
           
-          <div class="about_us__founders__item">
-            <img src="../assets/images/about_img/messi.jpg" />
-            <h4>lionel messi</h4>
-            <h5>marketing head</h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam, adipisci.
-            </p>
-          </div>
-          
-          <div class="about_us__founders__item">
-            <img src="../assets/images/about_img/messi.jpg" />
-            <h4>lionel messi</h4>
-            <h5>tech lead</h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam, adipisci.
-            </p>
-          </div>
-
         </div>
 
       </div>
