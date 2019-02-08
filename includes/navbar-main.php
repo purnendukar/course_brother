@@ -88,16 +88,16 @@ if($s[count($s)-2]=='pages'){
 
         <?php // echo "<script>getElementByName('course').value='".$_GET['course']."';</script>"?>
       <div class="navbar_main__header__contact">
-
+      <?php $res=$conn->query("SELECT * FROM `contact_info`");?>
         <div class="navbar_main__header__contact__item">
-          <h4>+91 7044356122</h4>
+          <h4><?php echo $res->fetch_assoc()['info'];?></h4>
           <span><img src="<?php echo $d?>./assets/svg/Icons/white/phone-book.svg" /></span>
         </div>
 
         <div class="navbar_main__header__contact__item">
-          <h4>shyam.d@gmail.com</h4>
+          <h4><?php $email= $res->fetch_assoc()['info']; echo $email; ?></h4>
           <span class='tooltip' title='Click to open in your default email application'>
-            <a href='mailto:shyam.d@gmail.com'><img src="<?php echo $d?>./assets/svg/Icons/white/mail-black-envelope-symbol.svg" /></a>
+            <a href='mailto:<?php echo $email ?>'><img src="<?php echo $d?>./assets/svg/Icons/white/mail-black-envelope-symbol.svg" /></a>
           </span>
         </div>
 

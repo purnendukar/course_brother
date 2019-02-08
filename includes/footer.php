@@ -5,13 +5,14 @@
     <div class="footer__get_in_touch">
       <h3>GET IN TOUCH</h3>
       <div class="touch_contact">
+      <?php $res=$conn->query("SELECT * FROM `contact_info`");?>
         <div class="contact_phone">
           <h4>PHONE</h4>
-          <span>+91 7044356122</span>
+          <span><?php echo $res->fetch_assoc()['info'];?></span>
         </div>
         <div class="contact_email">
           <h4>EMAIL</h4>
-          <span>shyam.d@gmail.com</span>
+          <span><?php echo $res->fetch_assoc()['info'];?></span>
         </div>
       </div>
     </div>

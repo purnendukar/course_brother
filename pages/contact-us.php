@@ -54,11 +54,11 @@
           <h3 class='contact_us__meet__container__title'>plan a meet</h3>
 
           <div class="contact_us__meet__container__info">
-
+            <?php $res=$conn->query("SELECT * FROM `contact_info`");?>
             <div class="contact_us__meet__container__info__item">
               <div class='contact_us__meet__container__info__item__container'>
                 <img src='..\assets\svg\Icons\white\phone-receiver.svg' />
-                <h4>+91 7044356122</h4>
+                <h4><?php echo $res->fetch_assoc()['info'];?></h4>
               </div>
             </div>
             <div class="contact_us__meet__container__info__item">
@@ -66,13 +66,13 @@
                 <a href='mailto:shyam.d@gmail.com'>
                   <img src='..\assets\svg\Icons\white\mail-black-envelope-symbol.svg' />
                 </a>
-                <h4>shyam.d@gmail.com</h4>
+                <h4><?php echo $res->fetch_assoc()['info'];?></h4>
               </div>
             </div>
             <div class="contact_us__meet__container__info__item">
               <div class='contact_us__meet__container__info__item__container'>
                 <img src='..\assets\svg\Icons\white\maps-and-flags.svg' />
-                <h4>19, market street <br> kolkata 700087</h4>
+                <h4 style="max-width:55%;"><?php echo $res->fetch_assoc()['info'];?></h4>
               </div>
             </div>
 
