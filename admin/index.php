@@ -1,3 +1,9 @@
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else 
+  ob_start(); 
+?>
 <?php session_start();
 ?>
 
@@ -6,8 +12,8 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - NextGen Shiksha</title>
-
+		<title>Dashboard - Course Brother</title>
+		<meta http-equiv="Cache-control" content="public">
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 

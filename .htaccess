@@ -1,0 +1,56 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+<IfModule mod_php5.c>
+   php_value post_max_size 200M
+   php_value upload_max_filesize 200M
+   php_value memory_limit 300M
+   php_value max_execution_time 259200
+   php_value max_input_time 259200
+   php_value session.gc_maxlifetime 1200
+</IfModule>
+
+<Files *.html>
+SetOutputFilter DEFLATE
+</Files>
+
+<IfModule mod_gzip.c>
+    mod_gzip_on       Yes
+    mod_gzip_dechunk  Yes
+    mod_gzip_item_include file      \.(html?|txt|css|js|php|pl)$
+    mod_gzip_item_include handler   ^cgi-script$
+    mod_gzip_item_include mime      ^text/.*
+    mod_gzip_item_include mime      ^application/x-javascript.*
+    mod_gzip_item_exclude mime      ^image/.*
+    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+ErrorDocument 400 /error_pages/400.php
+ErrorDocument 401 /error_pages/401.php
+ErrorDocument 403 /error_pages/403.php
+ErrorDocument 404 /error_pages/404.php
+ErrorDocument 410 /error_pages/410.php
+ErrorDocument 500 /error_pages/500.php
+
+#comment out the next 4 line when in server
+
+#RewriteEngine On
+#RewriteBase /
+#RewriteCond %{HTTP_HOST} ^www.coursebrother.com [NC]
+#RewriteRule ^(.*)$ http://coursebrother.com/$1 [L,R=301]
+
+<FilesMatch "\.(js)">
+    ForceType application/x-httpd-php
+
+	php_value auto_prepend_file "/the/full/path/of/this/file/gzip-js.php"
+
+</FilesMatch>
+
+<FilesMatch "\.(css)">
+    ForceType application/x-httpd-php
+
+	php_value auto_prepend_file "/the/full/path/of/this/file/gzip-css.php"
+
+</FilesMatch>

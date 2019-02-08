@@ -1,10 +1,16 @@
-<?php ob_start();?>
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else 
+  ob_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-control" content="public">
   <link rel="shortcut icon" href="..\assets\images\favicon.png" type="image/png" />
 
   <!-- NORMALIZE CSS -->

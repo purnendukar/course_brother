@@ -1,9 +1,16 @@
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else 
+  ob_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-control" content="public">
   <link rel="shortcut icon" href="assets\images\favicon.png" type="image/png" />
 
   <!-- NORMALIZE CSS -->
@@ -445,7 +452,7 @@
               <div class="news_updates__main__section__content">
                   <?php while($row_1=$res_1->fetch_assoc()){ ?>
                 <div class="news_updates__main__section__content__item">
-                  <h3><?php echo $row_1['heading']; ?></h3>
+                  <h3><?php echo urldecode($row_1['heading']); ?></h3>
                   <p>
                     <?php echo substr(urldecode($row_1['content']),0,80)."..."; ?>
                     <a href="#">read more</a>

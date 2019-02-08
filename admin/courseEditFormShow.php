@@ -1,8 +1,13 @@
-
-<?php ob_start();?>
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else 
+  ob_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Dashboard - Course Add Menu</title>

@@ -1,6 +1,14 @@
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else 
+  ob_start(); 
+?>
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
+		<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Dashboard - Institution Edit Menu</title>
@@ -70,14 +78,11 @@
 					<div class="page-content">
 
             <?php include('./settingsContainer.php'); ?>
-
-
-
             <div class='row menu-form' >
-              <div class='col-lg-6' >
+              <div class='col-lg-6' style="width:100%">
                   <h2 class='menu-text'>Institution Edit Menu</h2>
                   <form class='menu-content'  method="post" action="">
-                      <table>
+                      <table style="width:100%">
                             <tr style="padding:12px;">
                                 <th width="30px" style="text-align:center; padding:10px">Id</th>
                                 <th style="text-align:center; padding:10px">Title</th>
