@@ -43,43 +43,43 @@
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./contactPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Contact Us
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./shippingPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Shipping Policy
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./refundPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Refund Policy
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./disclaimerPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Disclaimer
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./termnconditionPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Terms & Condition
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./privacyPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Privacy Policy
 										</a>
 									</li>
 									<li class="">
-										<a href=".contactPAgeForm.php">
+										<a href="./legalPageForm.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Legal Policy
 										</a>
