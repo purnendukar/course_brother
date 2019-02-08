@@ -5,6 +5,8 @@ $d="";
 if($s[count($s)-2]=='pages'){
     $d=$d.".";
 }
+//MySQL connector 
+$conn=connect_mysql();
 ?>
 <!-- PRELOADER -->
 <?php include $d.'./includes/preloader.php';
@@ -112,9 +114,6 @@ if($s[count($s)-2]=='pages'){
         <!-- dynamically showing menu -->
         <?php
             
-            //MySQL connector 
-            $conn=connect_mysql();
-        
             $sql="select * from menu";
             $res=$conn->query($sql);
             while($row=$res->fetch_assoc()){

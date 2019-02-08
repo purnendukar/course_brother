@@ -89,7 +89,7 @@
             <p>i am <input name="uname" type='text' placeholder='your full name' required />, hailing from <input type='text' placeholder='your city' name="city" required />, and i would like to discuss about <input type='text' placeholder='course name' name="course_t" required /> course. my email address is <input type='email' placeholder='your email' name="email" required />, and my phone number is <input type='text' placeholder='your ph. no.' name="phn" required />. thank you.
             </p>
             <p>
-              <input type='checkbox' required /> I authorize CourseBrother.com representative to contact me via phone and/or email. This will override registry on DND/NDNC
+              <input id="accept" type='checkbox' required /> I authorize CourseBrother.com representative to contact me via phone and/or email. This will override registry on DND/NDNC
             </p>
             <input type="submit" value='SEND' />
           </form>
