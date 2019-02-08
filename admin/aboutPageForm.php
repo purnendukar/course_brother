@@ -38,6 +38,95 @@
 		<script src="assets/js/ace-extra.min.js"></script>
 
         <script>
+            function edit_(a){
+                var input_= document.getElementsByName('input_'+a);
+                var name=input_[0];
+                var position=input_[1];
+                var about=input_[2];
+                var img_display=document.getElementById("img_display"+a);
+                var img_choose=document.getElementById("img_choose"+a);
+                var butt=document.getElementById("edit_update"+a);
+                if(butt.value=="Edit"){
+                    name.disabled=false;
+                    position.disabled=false;
+                    about.disabled=false;
+                    butt.value="Update";
+                    img_display.style.display="none";
+                    img_choose.style.display="block";             
+                }else{
+                    var formData=new FormData();
+                    formData.append('id',a);
+                    formData.append('name',name.value);
+                    formData.append('position',position.value);
+                    formData.append('about',about.value);
+
+                    $.ajax({
+                        url: "./team_update.php",
+                        type: 'POST',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        complete: function (data) {
+                            if(data.responseText=='01'){
+                                alert("Data Updated");
+                            }else{
+                                alert("Data Not Updated");
+                                window.location.href="./aboutPageForm.php";
+                            }
+                        }
+                    });
+                    var img_form=new FormData();
+                        img_form.append('image',$('#img_choose'+a+'')[0].files[0]);
+                        img_form.append('id',a);
+                        $.ajax({
+                            url: "./team_update.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: img_form,
+                            complete: function (data) {
+                                if(data.responseText!='0'){
+                                    img_display.src="."+data.responseText;
+                                    alert("Image Updated");
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Image Not Updated");
+                                }
+                            }
+                        });
+                    name.disabled=true;
+                    position.disabled=true;
+                    about.disabled=true;
+                    butt.value="Edit";
+                    img_display.style.display="block";
+                    img_choose.style.display="none";
+                }
+            }
+            function delete_it(a){
+                if(confirm("Going to delete id "+a+" data")){
+                var formData= new FormData();
+                formData.append("id",a);
+                $.ajax({
+                        url: "./team_delete.php",
+                        type: 'POST',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        complete: function (data) {
+                            if(data.responseText=='1'){
+                                alert("Deleted");
+                                document.getElementById("row"+a).style.display="none";
+                            }else{
+                                console.log(data.responseText);
+                                alert("Not Deleted");
+                            }
+                        }
+                    });
+                }
+            }
             function about_edit(){
                 var about = document.getElementById("about");
                 var f=new FormData();
@@ -231,7 +320,7 @@
                                     <input id="img_choose<?php echo $row['id']?>" type="file" style="width:200px;display:none;"/></td>
                                 <td>
                                     <input id="edit_update<?php echo $row['id']?>" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="edit_('<?php echo $row['id']?>')" /><br>
-                                    <input type="button" style="width:85px; margin:5px;" class="btn btn-primary" value="Delete" onclick="delete_('<?php echo $row['id']?>')"/>
+                                    <input type="button" style="width:85px; margin:5px;" class="btn btn-primary" value="Delete" onclick="delete_it('<?php echo $row['id']?>')"/>
                                 </td>
                           </tr>
                           <?php } ?>
@@ -262,47 +351,7 @@
                       
 	              </div>
 	            </div>
-	            <h3>Service Section List</h3>
-			    <div class='row menu-form'>
-	              <div class='col-lg-6'>
-	                  <h2 class='menu-text'>Edit Service Section List</h2>
-	                  <form class='menu-content'>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 1</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 1</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 2</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 2</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 3</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 3</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 4</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 4</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <button type="submit" class="btn btn-primary">Submit</button>
-	                  </form>
-	              </div>
-	            </div>
+	            
 			</div>
 
 					</div><!-- /.page-content -->
