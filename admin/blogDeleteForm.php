@@ -59,7 +59,7 @@ else
                         console.log(data.responseText);
                         if(data.responseText=='1'){
                             alert("Successfully Deleted");
-                            window.location.href="./blogDeleteForm.php";
+                            window.location.href="./blogDeleteForm";
                         }else{
                             alert("Something went wrong submit again");
                         }

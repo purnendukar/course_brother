@@ -126,7 +126,7 @@ else
                         console.log(data.responseText);
                         if(data.responseText=='1'){
                             alert("Successfully Added");
-                            window.location.href="./courseEditForm.php";
+                            window.location.href="./courseEditForm";
                         }else{
                             alert("Something went wrong submit again");
                         }

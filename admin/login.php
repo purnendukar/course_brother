@@ -91,7 +91,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 
 											<div class="space-6"></div>
 
-											<form action = "login.php" method="POST">
+											<form action = "login" method="POST">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -266,7 +266,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 			</div><!-- /.main-content -->
 		</div><!-- /.main-container -->
         <?php } else{
-            header("Location: index.php");
+            header("Location: ./");
         }?>
 		<!-- basic scripts -->
 

@@ -58,7 +58,7 @@ else
                         console.log(data.responseText);
                         if(data.responseText=='1'){
                             alert("Successfully Deleted");
-                            window.location.href="./courseDeleteForm.php";
+                            window.location.href="./courseDeleteForm";
                         }else{
                             alert("Something went wrong submit again");
                         }

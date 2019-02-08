@@ -71,7 +71,7 @@ else
 								<!-- PAGE CONTENT BEGINS -->
 
 								<div>
-									<form action="upload.php" method="post" enctype="multipart/form-data" >
+									<form action="upload" method="post" enctype="multipart/form-data" >
 									<div class="form-group">
 				                      <label for="exampleInputEmail1">Add Caption</label>
 				                      <input type="text" class="form-control" placeholder="Ex: An image of the Alps">

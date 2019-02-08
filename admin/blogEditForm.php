@@ -46,7 +46,7 @@ else
 
 		<script>
 				function edit(a){
-						window.location.href="./blogEditFormShow.php?id="+a;
+						window.location.href="./blogEditFormShow?id="+a;
 				}
 		</script>
 

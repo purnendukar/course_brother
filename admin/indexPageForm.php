@@ -78,7 +78,7 @@ else
                                 alert("Data Updated");
                             }else{
                                 alert("Data Not Updated");
-                                window.location.href="./indexPageForm.php";
+                                window.location.href="./indexPageForm";
                             }
                         }
                     });
@@ -162,7 +162,7 @@ else
                         complete: function (data) {
                             if(data.responseText=='1'){
                                 alert("Data Added Successfully");
-                                window.location.href="./indexPageForm.php";
+                                window.location.href="./indexPageForm";
                             }else{
                                 console.log(data.responseText);
                                 alert("Data Not Added Try Again");
@@ -203,7 +203,7 @@ else
                                 alert("Data Updated");
                             }else{
                                 alert("Data Not Updated");
-                                window.location.href="./indexPageForm.php";
+                                window.location.href="./indexPageForm";
                             }
                         }
                     });
@@ -288,7 +288,7 @@ else
                         complete: function (data) {
                             if(data.responseText=='1'){
                                 alert("Data Added Succedd fully");
-                                window.location.href="./indexPageForm.php";
+                                window.location.href="./indexPageForm";
                             }else{
                                 console.log(data.responseText);
                                 alert("Data Not Added Try Again");

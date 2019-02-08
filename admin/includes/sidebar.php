@@ -6,7 +6,7 @@
 				<ul class="nav nav-list">
 
 					<li class="">
-						<a href="index.php">
+						<a href="./">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -30,56 +30,56 @@
 								<ul class="submenu">
 
 									<li class="">
-										<a href="./indexPageForm.php">
+										<a href="./indexPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Index Page
 										</a>
 									</li>
 
 									<li class="">
-										<a href="./aboutPageForm.php">
+										<a href="./aboutPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; About Us
 										</a>
 									</li>
 									<li class="">
-										<a href="./contactPageForm.php">
+										<a href="./contactPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Contact Us
 										</a>
 									</li>
 									<li class="">
-										<a href="./shippingPageForm.php">
+										<a href="./shippingPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Shipping Policy
 										</a>
 									</li>
 									<li class="">
-										<a href="./refundPageForm.php">
+										<a href="./refundPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Refund Policy
 										</a>
 									</li>
 									<li class="">
-										<a href="./disclaimerPageForm.php">
+										<a href="./disclaimerPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Disclaimer
 										</a>
 									</li>
 									<li class="">
-										<a href="./termnconditionPageForm.php">
+										<a href="./termnconditionPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Terms & Condition
 										</a>
 									</li>
 									<li class="">
-										<a href="./privacyPageForm.php">
+										<a href="./privacyPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Privacy Policy
 										</a>
 									</li>
 									<li class="">
-										<a href="./legalPageForm.php">
+										<a href="./legalPageForm">
 											<i class="menu-icon fa fa-caret-right"></i>
 											<b class="fa fa-edit"></b> &nbsp; Legal Policy
 										</a>
@@ -101,14 +101,14 @@
 						<ul class="submenu">
 
 							<li class="">
-								<a href="./logoAddDropzone.php">
+								<a href="./logoAddDropzone">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-plus"></b> &nbsp; Add
 								</a>
 							</li>
 
 							<li class="">
-								<a href="./logoEditDropzone.php">
+								<a href="./logoEditDropzone">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Edit
 								</a>
@@ -128,14 +128,14 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="./menuAddForm.php">
+								<a href="./menuAddForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-plus"></b> &nbsp; Add
 								</a>
 							</li>
 
 							<li class="">
-								<a href="./all_menu.php">
+								<a href="./all_menu">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; All Menu
 								</a>
@@ -153,7 +153,7 @@
 						<ul class="submenu">
 							
 							<li class="">
-								<a href="./indexPageForm.php">
+								<a href="./indexPageForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Edit
 								</a>
@@ -172,19 +172,19 @@
 						<ul class="submenu">
 							
 						<li class="">
-								<a href="./blogAddForm.php">
+								<a href="./blogAddForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-plus"></b> &nbsp; Add
 								</a>
 							</li>
 							<li class="">
-								<a href="./blogEditForm.php">
+								<a href="./blogEditForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Edit
 								</a>
 							</li>
 							<li class="">
-								<a href="./blogDeleteForm.php">
+								<a href="./blogDeleteForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-minus"></b> &nbsp; Delete
 								</a>
@@ -204,7 +204,7 @@
 							<?php $r=$conn_p->query("select * from universities");
 							while($ro=$r->fetch_assoc()){ ?>
 							<li class="">
-								<a href="./newsletterEditForm.php?id=<?php echo $ro['u_id'];?>">
+								<a href="./newsletterEditForm?id=<?php echo $ro['u_id'];?>">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; <?php echo $ro['u_name']?>
 								</a>
@@ -224,7 +224,7 @@
 						<ul class="submenu">
 							
 							<li class="">
-								<a href="./Testimonial.php">
+								<a href="./Testimonial">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Edit
 								</a>
@@ -245,19 +245,19 @@
 						<ul class="submenu">
 							
 							<li class="">
-								<a href="./institutionAddForm.php">
+								<a href="./institutionAddForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-plus"></b> &nbsp; Add
 								</a>
 							</li>
 							<li class="">
-								<a href="./institutionEditForm.php">
+								<a href="./institutionEditForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Edit
 								</a>
 							</li>
 							<li class="">
-								<a href="./institutionDeleteForm.php">
+								<a href="./institutionDeleteForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-minus"></b> &nbsp; Delete
 								</a>
@@ -276,19 +276,19 @@
 						<ul class="submenu">
 							
 							<li class="">
-								<a href="./courseAddForm.php">
+								<a href="./courseAddForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-plus"></b> &nbsp; Add
 								</a>
 							</li>
 							<li class="">
-								<a href="./courseEditForm.php">
+								<a href="./courseEditForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Edit
 								</a>
 							</li>
 							<li class="">
-								<a href="./courseDeleteForm.php">
+								<a href="./courseDeleteForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-minus"></b> &nbsp; Delete
 								</a>
@@ -305,14 +305,14 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="./user.php">
+								<a href="./user">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-plus"></b> &nbsp; Team Members
 								</a>
 							</li>
 
 							<li class="">
-								<a href="./lead.php">
+								<a href="./lead">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; Lead User Info
 								</a>

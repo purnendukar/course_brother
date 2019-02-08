@@ -80,7 +80,7 @@ else
                                 alert("Data Updated");
                             }else{
                                 alert("Data Not Updated");
-                                window.location.href="./aboutPageForm.php";
+                                window.location.href="./aboutPageForm";
                             }
                         }
                     });
@@ -152,7 +152,7 @@ else
                                 alert("Data Updated Successfully");
                             }else{
                                 alert("Data Not Updated Try Again");
-                                window.location.href="./aboutPageForm.php";
+                                window.location.href="./aboutPageForm";
                             }
                         }
                 });
@@ -175,7 +175,7 @@ else
                                 alert("Data Updated Successfully");
                             }else{
                                 alert("Data Not Updated Try Again");
-                                window.location.href="./aboutPageForm.php";
+                                window.location.href="./aboutPageForm";
                             }
                         }
                 });
@@ -212,7 +212,7 @@ else
                         complete: function (data) {
                             if(data.responseText=='1'){
                                 alert("Data Added Successfully");
-                                window.location.href="./aboutPageForm.php";
+                                window.location.href="./aboutPageForm";
                             }else{
                                 console.log(data.responseText);
                                 alert("Data Not Added Try Again");

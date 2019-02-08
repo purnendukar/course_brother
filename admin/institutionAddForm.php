@@ -90,7 +90,7 @@ else
                 $keyword=$u_name;
                 $res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."')");
                 if($res){
-                    echo "<script>alert('Successfully Added');window.location.href='./institutionAddForm.php';</script>";
+                    echo "<script>alert('Successfully Added');window.location.href='./institutionAddForm';</script>";
                 }else{
                     echo "<script>alert('Failed')</script>";
                 }

@@ -180,7 +180,7 @@ else
                         console.log(data.responseText);
                         if(data.responseText=='1'){
                             alert("Successfully Added");
-                            window.location.href="./courseAddForm.php";
+                            window.location.href="./courseAddForm";
                         }else{
                             alert("Something went wrong submit again");
                         }

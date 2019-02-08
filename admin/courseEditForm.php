@@ -45,7 +45,7 @@ else
         
         <script>
             function edit(a){
-                window.location.href="./courseEditFormShow.php?id="+a;            
+                window.location.href="./courseEditFormShow?id="+a;            
             }
         </script>
 

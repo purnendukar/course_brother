@@ -3,7 +3,7 @@
     <div class="footer-content">
       <span class="bigger-120">
         <span class="blue bolder">
-          <a href='index.php'>Course brother</a>
+          <a href='./'>Course brother</a>
         </span>
         Dashboard &copy; 2018 - 2019
       </span>

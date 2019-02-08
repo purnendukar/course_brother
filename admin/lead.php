@@ -47,7 +47,7 @@ else
         
         <script>
             function clear_filter(){
-                window.location.href="./lead.php";
+                window.location.href="./lead";
             }
         </script>
 
@@ -92,7 +92,7 @@ else
 										<!-- div.dataTables_borderWrap -->
 										<div>
                                             <div style="background:#EFF3F8;width:100%;height:50px;">
-                                                <form method="post" action="./lead.php">
+                                                <form method="post" action="./lead">
                                                     <p style="padding:10px;">
                                                         From: <input name="from_date" type="date"/> 
                                                         - <input name="to_date" type="date"/>

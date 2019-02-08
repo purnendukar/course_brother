@@ -64,7 +64,7 @@ else
                         console.log(data.responseText);
                         if(data.responseText=='1' || data.responseText=='11'){
                             alert("Successfully Added");
-                            window.location.href="./blogEditForm.php";
+                            window.location.href="./blogEditForm";
                         }else{
                             alert("Something went wrong submit again");
                         }
