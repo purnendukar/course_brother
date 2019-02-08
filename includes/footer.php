@@ -24,25 +24,25 @@
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./index.php">HOME</a>
+            }?>./">HOME</a>
           <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/about-us.php">ABOUT US</a>
+            }?>./pages/about-us">ABOUT US</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/contact-us.php">CONTACT US</a>
+            }?>./pages/contact-us">CONTACT US</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/course-results.php?course=all">COURSES</a>
+            }?>./pages/course-results?course=all">COURSES</a>
         <a href="#">SERVICES</a>
       </div>
     </div>
@@ -54,37 +54,37 @@
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/ship-del-policy.php">shipping & delivery policy</a>
+            }?>./pages/ship-del-policy">shipping & delivery policy</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/refund-policy.php">refund policy</a>
+            }?>./pages/refund-policy">refund policy</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/disclaimer.php">disclaimer</a>
+            }?>./pages/disclaimer">disclaimer</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/terms-conditions.php">terms & conditions</a>
+            }?>./pages/terms-conditions">terms & conditions</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/privacy-policy.php">privacy policy</a>
+            }?>./pages/privacy-policy">privacy policy</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/legal.php">legal policy</a>
+            }?>./pages/legal">legal policy</a>
       </div>
     </div>
     <div class="footer__newsletter">
@@ -95,7 +95,7 @@
             $d="";
             if($s[count($s)-2]=='pages'){
                 echo ".";
-            }?>./pages/subscribe.php?url=<?php echo $_SERVER['REQUEST_URI'];?>">
+            }?>./pages/subscribe?url=<?php echo $_SERVER['REQUEST_URI'];?>">
           <input name="u_name" type='text' placeholder='YOUR NAME' />
           <br />
           <input name="u_email" type='email' placeholder='YOUR EMAIL' />

@@ -75,7 +75,7 @@ else
                 if(dmode[i].checked)
                     d_id=d_id+(dmode[i].value)+",";
             }
-            xmlhttp.open("GET","get_detail.php?u_id="+u_id+"&s_id="+s_id+"&a_id="+a_id+"&c_id="+c_id+"&d_id="+d_id+"&course=all");
+            xmlhttp.open("GET","get_detail?u_id="+u_id+"&s_id="+s_id+"&a_id="+a_id+"&c_id="+c_id+"&d_id="+d_id+"&course=all");
             xmlhttp.send();
             
         }
@@ -121,7 +121,7 @@ else
                 if(dmode[i].checked)
                     dmode[i].checked=false;
             }
-            xmlhttp.open("GET","get_detail.php?u_id=&s_id=&a_id=&c_id=&d_id=&course=all");
+            xmlhttp.open("GET","get_detail?u_id=&s_id=&a_id=&c_id=&d_id=&course=all");
             xmlhttp.send();
         }
     </script>
@@ -512,7 +512,7 @@ else
               </div>
             </div>
             <div class="course_results__item__buttons">
-              <button onclick=<?php echo "\"window.location.href='./course-detail.php?id=".$row_2['id']."'\""; ?>  >go to course</button>
+              <button onclick=<?php echo "\"window.location.href='./course-detail?id=".$row_2['id']."'\""; ?>  >go to course</button>
               <button>add to compare</button>
             </div>
           </div>

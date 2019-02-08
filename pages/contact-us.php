@@ -92,7 +92,7 @@ else
         <div class="contact_us__ping__container">
           <h3 class='contact_us__ping__container__title'>ping us</h3>
           <h6>hello,</h6>
-          <form method="post" action="./enquire_send.php?url=contact-us.php">
+          <form method="post" action="./enquire_send?url=contact-us">
             <p>i am <input name="uname" type='text' placeholder='your full name' required />, hailing from <input type='text' placeholder='your city' name="city" required />, and i would like to discuss about <input type='text' placeholder='course name' name="course_t" required /> course. my email address is <input type='email' placeholder='your email' name="email" required />, and my phone number is <input type='text' placeholder='your ph. no.' name="phn" required />. thank you.
             </p>
             <p>

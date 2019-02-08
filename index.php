@@ -75,7 +75,7 @@ else
     <div class="header">
 
       <div class="header__testimonial">
-        <a href="./pages/all-testimonials.php">
+        <a href="./pages/all-testimonials">
           <ul class="rslides header__testimonial__slides">
             <?php 
               $res=$conn->query("select * from testimonial");
@@ -132,7 +132,7 @@ else
             while($row=$res->fetch_assoc()){
                 if($count%5==0) echo "<li>";
           ?>
-          <a href="./pages/course-results.php?course=<?php echo $row['u_name'];?>" target="_blank"><img  src="<?php echo $row['img_src']?>"  /></a><?php
+          <a href="./pages/course-results?course=<?php echo $row['u_name'];?>" target="_blank"><img  src="<?php echo $row['img_src']?>"  /></a><?php
                 $count++; 
                 if($count%5==0) echo "</li>";
             }
@@ -197,7 +197,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                  <button onclick=<?php echo "\"window.location.href='./pages/course-detail.php?id=".$row['id']."'\""?>)>read more</button>
+                  <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -228,7 +228,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail.php?id=".$row['id']."'\""?>)>read more</button>
+                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -259,7 +259,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail.php?id=".$row['id']."'\""?>)>read more</button>
+                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -290,7 +290,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail.php?id=".$row['id']."'\""?>)>read more</button>
+                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -321,7 +321,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail.php?id=".$row['id']."'\""?>)>read more</button>
+                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -391,19 +391,19 @@ else
                             if($row['heading']=="graduate & post-graduate"){
                                 $res_t1=$conn->query("select DISTINCT(c_id) as c from full_detail where prg_id=1 or prg_id=2 ");
                                 while($row_t1=$res_t1->fetch_assoc()){
-                                ?> <a href='<?php $t_cname=$conn->query("select c_name from courses where id=".$row_t1['c'])->fetch_assoc()['c_name']; echo "./pages/course-results.php?course=".$t_cname; ?>'><li><?php echo $t_cname;?></li></a>  <?php }
+                                ?> <a href='<?php $t_cname=$conn->query("select c_name from courses where id=".$row_t1['c'])->fetch_assoc()['c_name']; echo "./pages/course-results?course=".$t_cname; ?>'><li><?php echo $t_cname;?></li></a>  <?php }
                             }if($row['heading']=="specialization courses"){
                                 $res_t1=$conn->query("select * from subject");
                                 while($row_t1=$res_t1->fetch_assoc()){
-                                ?> <a href='<?php echo "./pages/course-results.php?course=".$row_t1['sub_name']; ?>'><li><?php echo $row_t1['sub_name'];?></li></a>  <?php }
+                                ?> <a href='<?php echo "./pages/course-results?course=".$row_t1['sub_name']; ?>'><li><?php echo $row_t1['sub_name'];?></li></a>  <?php }
                             }if($row['heading']=="universities"){
                                 $res_t1=$conn->query("select * from universities");
                                 while($row_t1=$res_t1->fetch_assoc()){
-                                ?> <a href='<?php echo "./pages/course-results.php?course=all ".$row_t1['u_name']; ?>'><li><?php echo $row_t1['u_name'];?></li></a>  <?php }
+                                ?> <a href='<?php echo "./pages/course-results.p?course=all ".$row_t1['u_name']; ?>'><li><?php echo $row_t1['u_name'];?></li></a>  <?php }
                             }if($row['heading']=="diploma & pg diploma courses"){
                                 $res_t1=$conn->query("select DISTINCT(s_id) as c from full_detail where prg_id=4 ");
                                 while($row_t1=$res_t1->fetch_assoc()){
-                                ?> <a href='<?php $t_sname=$conn->query("select sub_name from subject where id=".$row_t1['c'])->fetch_assoc()['sub_name']; echo "./pages/course-results.php?course=DIPLOMA ".$t_sname; ?>'><li><?php echo $t_sname;?></li></a>  <?php }
+                                ?> <a href='<?php $t_sname=$conn->query("select sub_name from subject where id=".$row_t1['c'])->fetch_assoc()['sub_name']; echo "./pages/course-results?course=DIPLOMA ".$t_sname; ?>'><li><?php echo $t_sname;?></li></a>  <?php }
                             }
                           ?>
                       </ul>

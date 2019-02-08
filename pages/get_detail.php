@@ -128,7 +128,7 @@
               </div>
             </div>
             <div class="course_results__item__buttons">
-              <button onclick=<?php echo "\"window.location.href='./course-detail.php?id=".$row_2['id']."'\""; ?>  >go to course</button>
+              <button onclick=<?php echo "\"window.location.href='./course-detail?id=".$row_2['id']."'\""; ?>  >go to course</button>
               <button>add to compare</button>
             </div>
           </div>

@@ -193,7 +193,7 @@ else
           </div>
           <div class="lead_form">
             <div class="lead_form__header"><h5>TALK TO AN EXPERT COUNSELLOR FOR FREE</h5></div>
-            <form method="post" action="./enquire_send.php?url=course-detail.php?id=<?php echo $_GET['id'];?>">
+            <form method="post" action="./enquire_send?url=course-detail?id=<?php echo $_GET['id'];?>">
               <input name="uname" type="text" placeholder='NAME' required />
               <input name="email" type="email" placeholder='EMAIL ADDRESS' required="required" />
               <input name="phn" type="text" placeholder='PHONE' required="required" />
@@ -235,7 +235,7 @@ else
                 }
                 $used=$id_d;
             ?>
-          <div class="related_courses__item" onclick="window.location.href='./course-detail.php?id=<?php echo $row_t['id']; ?>'">
+          <div class="related_courses__item" onclick="window.location.href='./course-detail?id=<?php echo $row_t['id']; ?>'">
             <h3 class='related_courses__item__uni'><?php $p=$conn->query("select u_name from universities where u_id=".$row_t['u_id']); echo $p->fetch_assoc()['u_name']; ?></h3>
             <div class="related_courses__item__sep"></div>
             <h4 class='related_courses__item__name'><?php $p=$conn->query("select c_name from courses where id=".$row_t['c_id']); echo $p->fetch_assoc()['c_name']; ?> in <?php $p=$conn->query("select sub_name from subject where id=".$row_t['s_id']); echo $p->fetch_assoc()['sub_name']; ?></h4>
