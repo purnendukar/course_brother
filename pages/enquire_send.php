@@ -16,7 +16,7 @@
     $str.=" and I would like to discuss about ".strtoupper($course)." course. My email address is ".$email.", and my phone number is ".strtoupper($phn).". THANK YOU.";
     echo $str;
     $e=$conn->query("SELECT * FROM `contact_info` where id=2")->fetch_assoc()['info'];
-    mail($e,"Enquiry",$str);
+    mail($e,"Enquiry",$str,"From: ".$email);
     $t=explode("/",$_GET['url']);
     header("Location: ".$t[count($t)-1]);
     
