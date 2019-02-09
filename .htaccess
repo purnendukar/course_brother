@@ -41,16 +41,12 @@ ErrorDocument 500 /error_pages/500.php
 #RewriteCond %{HTTP_HOST} ^www.coursebrother.com [NC]
 #RewriteRule ^(.*)$ http://coursebrother.com/$1 [L,R=301]
 
-<FilesMatch "\.(js)">
-    ForceType application/x-httpd-php
+#<FilesMatch "\.(js)">
+#  ForceType application/x-httpd-php
+#  php_value auto_prepend_file "gzip-js.php"
+#</FilesMatch>
 
-	php_value auto_prepend_file "/the/full/path/of/this/file/gzip-js.php"
-
-</FilesMatch>
-
-<FilesMatch "\.(css)">
-    ForceType application/x-httpd-php
-
-	php_value auto_prepend_file "/the/full/path/of/this/file/gzip-css.php"
-
-</FilesMatch>
+#<FilesMatch "\.(css)">
+#  ForceType application/x-httpd-php
+#  php_value auto_prepend_file "gzip-css.php"
+#</FilesMatch>
