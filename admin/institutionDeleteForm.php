@@ -2,13 +2,13 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	
+
 	<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
@@ -51,7 +51,7 @@ else
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<!endif-->
-        
+
         <script>
          function delete_(a){
              var d=document.getElementById('row'+a);
@@ -71,14 +71,14 @@ else
                           }
                         }
                     });
-             
+
          }
         </script>
-        
+
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -91,7 +91,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
 
             <div class='row menu-form'>
@@ -114,12 +114,12 @@ else
                           </td>
                           <td style="padding:10px" ><input name="<?php echo $row['u_id']."about";?>" type=text-area class="form-control" value="<?php echo $row['about'];?>" disabled/>
                           </td>
-                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['u_id']."img"; ?>" width="100px" src="<?php echo ".".$row['img_src'];?>"/>
+                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['u_id']."img"; ?>" width="100px" src="<?php echo ".".$row['img_src'];?>" alt="image"/>
                               <input id="<?php echo $row['u_id']."image"?>" name="<?php echo $row['u_id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
                           </td>
                           <td><input name="<?php echo $row['u_id']."edit_update" ?>" type="button" class="btn btn-primary" style="width:80px" value="Delete" onclick="delete_('<?php echo $row['u_id'];?>');"/>
                           </td>
-                            <?php echo"</tr>";} 
+                            <?php echo"</tr>";}
                             ?>
                         </table>
                   </form>

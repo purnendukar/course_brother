@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,9 +49,9 @@ else
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<!endif-->
-        
+
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-            
+
         <script>
             function send_data(u_id,u_name,about,image){
                 $.ajax({
@@ -69,7 +69,7 @@ else
                                 }
                             }
                     });
-                
+
                 var formData = new FormData();
                 formData.append('image',$('#'+u_id+'image')[0].files[0]);
                 formData.append('u_id',u_id);
@@ -90,10 +90,10 @@ else
                         }
                     }
                 });
-                    
+
             }
-            
-            
+
+
             function change_(a){
                 var but=document.getElementsByName(a+"edit_update");
                 var u_name=document.getElementsByName(a+"u_name");
@@ -107,7 +107,7 @@ else
                     img[0].style.display="none";
                     image[0].style.display="block";
                     image[0].disable=false;
-                    
+
                 }else{
                     console.log(image[0].files);
                     send_data(a,u_name[0].value,about[0].value,img[0]);
@@ -122,16 +122,16 @@ else
 //                        image[0].style.display="block";
 //                    }
                 }
-                
+
             }
         </script>
-        
+
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('./includes/navbar.php'); ?>
-        
+
         <?php
 //        if(isset($_POST['submit'])){
 //            $t=0;
@@ -164,10 +164,10 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
-                        
-                        
+
+
 
             <div class='row menu-form' >
               <div class='col-lg-6' style="width:90%">
@@ -189,12 +189,12 @@ else
                           </td>
                           <td style="padding:10px" ><input name="<?php echo $row['u_id']."about";?>" type=text-area class="form-control" value="<?php echo $row['about'];?>" disabled/>
                           </td>
-                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['u_id']."img"; ?>" width="100px" src="<?php echo ".".$row['img_src'];?>"/>
+                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['u_id']."img"; ?>" width="100px" src="<?php echo ".".$row['img_src'];?>" alt="image"/>
                               <input id="<?php echo $row['u_id']."image"?>" name="<?php echo $row['u_id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
                           </td>
                           <td><input name="<?php echo $row['u_id']."edit_update" ?>" type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="change_('<?php echo $row['u_id'];?>');"/>
                           </td>
-                            <?php echo"</tr>";} 
+                            <?php echo"</tr>";}
                             ?>
                         </table><!--
                     <div class="form-group">
@@ -204,7 +204,7 @@ else
                     <div class="form-group">
                       <label for="exampleInputPassword1">Edit</label>
                       <input type="text" class="form-control" placeholder="Add Option">
-                    </div> 
+                    </div>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button> -->
                   </form>
               </div>

@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 
@@ -95,7 +95,7 @@ else
                           </td>
                           <td style="padding:10px" ><input type=text-area class="form-control" value="<?php echo $row['heading'];?>" disabled/>
                           </td>
-                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>"/>
+                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>" alt="image"/>
                               <input  name="<?php echo $row['id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
                           </td>
                           <td><input type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="edit('<?php echo $row['id'];?>');"/>

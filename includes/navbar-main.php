@@ -19,24 +19,24 @@ $conn=connect_mysql();
     <div class='navbar_main__appendix__container'>
         <!-- new -->
       <div class="navbar_main__appendix__info">
-        
+
       </div>
 
         <!-- new end -->
 
       <div class="navbar_main__appendix__login">
-        <span><img src="<?php echo $d?>./assets/svg/Icons/red/log-in.svg" /></span>
+        <span><img src="<?php echo $d?>./assets/svg/Icons/red/log-in.svg"  alt="icon"/></span>
         <h5>login</h5>
       </div>
 
       <div class="navbar_main__appendix__register">
-        <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" /></span>
+        <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" alt="icon" /></span>
         <h5>register</h5>
       </div>
 
       <div class="navbar_main__appendix__cart">
         <h5>cart</h5>
-        <span><img src="<?php echo $d?>./assets/svg/Icons/white/shopping-cart.svg" /></span>
+        <span><img src="<?php echo $d?>./assets/svg/Icons/white/shopping-cart.svg" alt="icon" /></span>
       </div>
     </div>
 
@@ -47,7 +47,7 @@ $conn=connect_mysql();
     <div class='navbar_main__header__container'>
 
       <div class="navbar_main__header__logo">
-        <a href='<?php echo $d?>./'><img src="<?php echo $d?>./assets/svg/cb-logo.svg" /></a>
+        <a href='<?php echo $d?>./'><img src="<?php echo $d?>./assets/svg/cb-logo.svg" alt="icon"/></a>
       </div>
 
       <div class="navbar_main__header__search">
@@ -69,7 +69,7 @@ $conn=connect_mysql();
         <div class="navbar_main__header__contact__item">
           <h4><?php $email= $res->fetch_assoc()['info']; echo $email; ?></h4>
           <span class='tooltip' title='Click to open in your default email application'>
-            <a href='mailto:<?php echo $email ?>'><img src="<?php echo $d?>./assets/svg/Icons/white/mail-black-envelope-symbol.svg" /></a>
+            <a href='mailto:<?php echo $email ?>'><img src="<?php echo $d?>./assets/svg/Icons/white/mail-black-envelope-symbol.svg" alt="icon" /></a>
           </span>
         </div>
 

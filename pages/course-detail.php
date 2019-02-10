@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,29 +37,29 @@ else
   <title>CourseBrothers | One Stop Destination for Learning</title>
 </head>
 <body>
-    
+
   <!-- MAIN_CONTAINER -->
   <div class="main-container">
-      
+
       <!-- MySQL connector --!>
   <?php
         include "../includes/mysql_connect.php";
         $conn=connect_mysql();
     ?>
-      
+
       <!-- LOGIN_REGISTER_MODALS -->
     <?php include '../includes/login-register-modal.php'; ?>
     <!-- /LOGIN_REGISTER_MODALS -->
-       
-            
+
+
     <!-- NAVBAR_MAIN -->
     <?php include('../includes/navbar-main.php'); ?>
     <!-- /NAVBAR_MAIN -->
-      
+
       <!-- NEWSLETTER_POPUP -->
     <?php include('../includes/newsletter-popup.php'); ?>
     <!-- NEWSLETTER_POPUP -->
-     
+
 
     <!-- COURSE_DETAIL -->
     <div class="course_detail">
@@ -99,7 +99,7 @@ else
           </div>
         </div>
         <div class="detail__img">
-          <img src='.<?php  echo $row_univ['img_src']; ?>' />
+          <img src='.<?php  echo $row_univ['img_src']; ?>' alt="image"/>
         </div>
       </div>
       <!-- /COURSE_DETAIL_HEADER -->
@@ -124,14 +124,14 @@ else
               <li class='tab'><a class='a2' href="#tabs-structure">STRUCTURE</a></li>
               <li class='tab'><a class='a3' href="#tabs-fee">FEE</a></li>
               <li class='tab'><a class='a4' href="#tabs-eligibility">ELIGIBILITY</a></li>
-            </ul> 
+            </ul>
               <!-- Get data from about course -->
                 <?php $sql_1="select * from about_course where id=".$d_id;
                 $row_1=$conn->query($sql_1)->fetch_assoc();
                 ?>
             <div id="tabs-overview">
               <h3 class='main_content__title'>COURSE OVERVIEW</h3>
-                
+
               <p class='main_content__body'>
                 <?php echo $row_1['overview']; ?>
               </p>
@@ -140,7 +140,7 @@ else
             <div id="tabs-structure">
               <h3 class='main_content__title'>COURSE STRUCTURE</h3>
               <p class='main_content__body'>
-                <?php $sem=explode("|",$row_1['structure']); 
+                <?php $sem=explode("|",$row_1['structure']);
                   for($i=0;$i<count($sem);$i++){
                       if($i==0){
                           ?>1ST SEMESTER <br><br><?php echo $sem[$i]; ?><br><br><br><?php
@@ -160,7 +160,7 @@ else
               <h3 class='main_content__title'>COURSE FEE</h3>
                 <?php $sql_t="select * from fee_structure where id=".$row['id']; $res_t=$conn->query($sql_t); $row_t=$res_t->fetch_assoc(); $fee_str=explode(",",$row_t['structure']);?>
               <p class='main_content__body'>
-                  <?php for($i=0;$i<2*$row['duration'];$i++){ 
+                  <?php for($i=0;$i<2*$row['duration'];$i++){
                       if($i==0){
                           echo ($i+1)."ST SEMESTER - Rs ".$fee_str[$i]."<br>";
                       }else if($i==1){
@@ -211,10 +211,10 @@ else
       <div class="related_courses">
         <h2 class='related_courses__title'>RELATED COURSES</h2>
         <div class="related_courses__container">
-            <?php $sql_t="select * from full_detail where c_id=".$row['c_id']." and id!=".$row['id']; 
+            <?php $sql_t="select * from full_detail where c_id=".$row['c_id']." and id!=".$row['id'];
 
                 $t=$conn->query("select count(s.u_id) as t from (".$sql_t.") as s")->fetch_assoc();
-                $t_num=$t['t']; 
+                $t_num=$t['t'];
                 $id_d=0;
                 $used='';
             for($i=0;$i<2;$i++){
@@ -222,7 +222,7 @@ else
                     while($id_d==$used){
                         $id_d=rand()%$t_num;
                     }
-                    $res_t=$conn->query($sql_t); 
+                    $res_t=$conn->query($sql_t);
                     for($j=0;$j<=$id_d;$j++){
                         $row_t=$res_t->fetch_assoc();
                     }
@@ -245,7 +245,7 @@ else
             </div>
           </div>
             <?php } ?>
-            
+
         </div>
       </div>
       <!-- /RELATED_COURSES -->
@@ -272,11 +272,11 @@ else
   <!-- TweenMax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
   <!-- EasyTabs -->
-  <script 
+  <script
     src='https://cdnjs.cloudflare.com/ajax/libs/jquery.easytabs/3.2.0/jquery.easytabs.min.js'>
   </script>
   <!-- ToolTipster -->
-  <script 
+  <script
     src='https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js'>
   </script>
   <!-- WOW JS -->
@@ -301,4 +301,4 @@ else
     </script>
     <script src="../js/preloader.js"></script>
 </body>
-</html> 
+</html>

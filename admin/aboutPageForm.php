@@ -1,13 +1,13 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    
+
 		<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
@@ -60,7 +60,7 @@ else
                     about.disabled=false;
                     butt.value="Update";
                     img_display.style.display="none";
-                    img_choose.style.display="block";             
+                    img_choose.style.display="block";
                 }else{
                     var formData=new FormData();
                     formData.append('id',a);
@@ -139,7 +139,7 @@ else
                 var about = document.getElementById("about");
                 var f=new FormData();
                 f.append('content',about.value);
-                
+
                 $.ajax({
                         url: "./about_update.php",
                         type: 'POST',
@@ -220,8 +220,8 @@ else
                         }
                     });
             }
-        </script> 
-       
+        </script>
+
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--if lte IE 8>
@@ -231,7 +231,7 @@ else
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -244,7 +244,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
             <h3>About Page</h3>
             <div id="accordion">
@@ -253,20 +253,20 @@ else
 	              <div class='col-lg-6' style="width:100%;height:100%">
 	                  <h2 class='menu-text'>About</h2>
 	                  <div id="tab" class='menu-content' style="width:100%">
-                          
+
                           <div class="form-group" id="<?php echo "row".$row['id'] ?>">
                                 <?php $t=$conn_p->query("select * from about");?>
                                 <textarea id="about" style="min-width:100%;max-width:100%;height:300px;"><?php echo urldecode($t->fetch_assoc()['content']); ?></textarea>
                                 <div style="text-align:center;padding:10px;">
                                     <input class="btn btn-primary" type="button" onclick="about_edit();" value="Update" />
                                 </div>
-                          </div> 
-                          
+                          </div>
+
 	                  </div>
-                        
+
 	              </div>
 	            </div>
-			  
+
 			  <h3>Provide you</h3>
 			    <div class='row menu-form'>
 	              <div class='col-lg-6' style="width:100%; height:100%">
@@ -295,7 +295,7 @@ else
 	                  </div>
 	              </div>
 	            </div>
-			  
+
                 <h3>Team Member</h3>
 			    <div class='row menu-form'>
 	              <div class='col-lg-6' style="width:100%;">
@@ -322,9 +322,9 @@ else
                                 <td style="padding:5px;">
                                     <input name="input_<?php echo $row['id']?>" style="padding:10px;" type="text" class="form-control" value="<?php echo urldecode($row['about'])?>" disabled />
                                     </td>
-                                
+
                                 <td style="padding:5px;width:100px;height:100px;overflow:hidden;">
-                                    <img id="img_display<?php echo $row['id']?>" style="width:100px;height:100px;object-fit:cover" src="<?php echo ".".$row['img_src']?>" />
+                                    <img id="img_display<?php echo $row['id']?>" style="width:100px;height:100px;object-fit:cover" src="<?php echo ".".$row['img_src']?>" alt="image"/>
                                     <input id="img_choose<?php echo $row['id']?>" type="file" style="width:200px;display:none;"/></td>
                                 <td>
                                     <input id="edit_update<?php echo $row['id']?>" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="edit_('<?php echo $row['id']?>')" /><br>
@@ -332,7 +332,7 @@ else
                                 </td>
                           </tr>
                           <?php } ?>
- 
+
                             <tr id="add_onef" style="display:none">
                                 <td style="padding:5px;">
                                     <input type="text" name="input_f" class="form-control" placeholder="Name"/>
@@ -350,16 +350,16 @@ else
                                     <input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it_f();" />
                                 </td>
                             </tr>
-                          
+
 	                  </table>
                         <div class="form-group"  style="text-align:center; padding:30px;">
                             <input type="button" style="width:100px;" class="btn btn-primary" value="Add One" onclick="add_f()"/>
                         </div>
 	                  </form>
-                      
+
 	              </div>
 	            </div>
-	            
+
 			</div>
 
 					</div><!-- /.page-content -->

@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,13 +36,13 @@ else
 
   <!-- CUSTOM CSS -->
   <link rel='stylesheet' href='./styles/style.css' />
-    
+
 
 
   <title>CourseBrother.com | One Stop Destination for Learning</title>
 </head>
 <body>
-    
+
   <!-- MySQL connector --!>
   <?php
         include "./includes/mysql_connect.php";
@@ -56,7 +56,7 @@ else
     <!-- NEWSLETTER_POPUP -->
     <?php include 'includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
-    
+
 
     <!-- BACK_TO_TOP -->
     <?php include 'includes/back-to-top.php'; ?>
@@ -65,7 +65,7 @@ else
     <!-- LOGIN_REGISTER_MODALS -->
     <?php include 'includes/login-register-modal.php' ?>
     <!-- /LOGIN_REGISTER_MODALS -->
-      
+
     <!-- NAVBAR_MAIN -->
     <?php include './includes/navbar-main.php' ?>
     <!-- /NAVBAR_MAIN -->
@@ -77,7 +77,7 @@ else
       <div class="header__testimonial">
         <a href="./pages/all-testimonials">
           <ul class="rslides header__testimonial__slides">
-            <?php 
+            <?php
               $res=$conn->query("select * from testimonial");
                 while($row=$res->fetch_assoc()){
               ?>
@@ -124,16 +124,16 @@ else
     <div class="uni_and_col">
 
       <div class="uni_and_col__title">trusted by 10+ universities & colleges</div>
-        
+
       <ul class="rslides ">
           <?php $sql="select * from universities";
                 $res=$conn->query($sql);
-          $count=0; // for <li> 
+          $count=0; // for <li>
             while($row=$res->fetch_assoc()){
                 if($count%5==0) echo "<li>";
           ?>
-          <a href="./pages/course-results?course=<?php echo $row['u_name'];?>" target="_blank"><img  src="<?php echo $row['img_src']?>"  /></a><?php
-                $count++; 
+          <a href="./pages/course-results?course=<?php echo $row['u_name'];?>" target="_blank"><img  src="<?php echo $row['img_src']?>" alt="image" /></a><?php
+                $count++;
                 if($count%5==0) echo "</li>";
             }
             if($count%5!=0){ echo "</li>";}
@@ -160,7 +160,7 @@ else
                 $sql1="select * from featured_courses where checked='yes'";
                     $res1=$conn->query($sql1);
                     while($row1=$res1->fetch_assoc()){
-                ?> 
+                ?>
                        <li><a href=''><?php echo $row1['c_name'];?></a></li>
                 <?php
                     }
@@ -170,7 +170,7 @@ else
 
         <div class="featured_courses__body">
 
-  
+
           <div class="featured_courses__body__container">
               <?php
               /* flag is to count number of result */
@@ -179,11 +179,11 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;" 
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
               class="featured_courses__body__item">
-              
+
                 <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
-              
+
                 <div class="featured_courses__body__item__course">
                     <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
                 </div>
@@ -201,9 +201,9 @@ else
               </div>
             </div>
             <?php $flag++;}?>
-              
+
           </div>
-            
+
             <div class="featured_courses__body__container">
               <?php
               /* flag is to count number of result */
@@ -212,7 +212,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;" 
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -232,9 +232,9 @@ else
               </div>
             </div>
             <?php $flag++;}?>
-              
+
           </div>
-            
+
             <div class="featured_courses__body__container">
               <?php
               /* flag is to count number of result */
@@ -243,7 +243,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;" 
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -263,9 +263,9 @@ else
               </div>
             </div>
             <?php $flag++;}?>
-              
+
           </div>
-            
+
             <div class="featured_courses__body__container">
               <?php
               /* flag is to count number of result */
@@ -274,7 +274,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;" 
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -294,9 +294,9 @@ else
               </div>
             </div>
             <?php $flag++;}?>
-              
+
           </div>
-            
+
             <div class="featured_courses__body__container">
               <?php
               /* flag is to count number of result */
@@ -305,7 +305,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;" 
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -325,7 +325,7 @@ else
               </div>
             </div>
             <?php $flag++;}?>
-              
+
           </div>
 
         </div>
@@ -342,7 +342,7 @@ else
         <h1 class='site_features__title wow fadeIn'>FEW REASONS WHY STUDENTS PREFER US</h1>
         <h3 class='site_features__subtitle'><span>CourseBrother.com</span> is your one-stop destination for course exploration & making an informed education decision</h3>
         <div class="site_features__container">
-        
+
           <?php
                 $sql="select * from features";
                 $res=$conn->query($sql);
@@ -351,7 +351,7 @@ else
                 while($row=$res->fetch_assoc()){
             ?>
                 <div class="site_features__section wow fadeIn"  data-wow-delay='<?php echo $delay[$i++]; ?>s'>
-                  <div class="section_icon"><span><img src="<?php echo $row['img_src']?>" /></span></div>
+                  <div class="section_icon"><span><img src="<?php echo $row['img_src']?>" alt="image"/></span></div>
                   <div class="section_text">
                     <h3><?php echo urldecode($row['heading'])?></h3>
                     <p><?php echo urldecode($row['info'])?></p>
@@ -360,7 +360,7 @@ else
             <?php
                 }
             ?>
-        
+
         </div>
       </div>
     </div>
@@ -369,16 +369,16 @@ else
 
     <!-- TOP_COURSES -->
     <div class="top_courses">
-      
+
       <h2 class='top_courses__title'>our top picks</h2>
       <div class="top_courses__container">
-        
-          <?php 
+
+          <?php
             $sql="select * from out_top_picks" ;
             $res=$conn->query($sql);
             while($row=$res->fetch_assoc()){?>
                 <div class="top_courses__item">
-                  <img src="<?php echo $row['img_src']?>" />
+                  <img src="<?php echo $row['img_src']?>" alt="image"/>
                   <h3><?php echo $row['heading']?></h3>
                   <div class="top_courses__item__section">
                     <div class="top_courses__item__section__button">
@@ -430,8 +430,8 @@ else
           <h2>news & updates</h2>
         </div>
         <div class="news_updates__main siema">
-            <?php 
-            $sql_t="select * from universities"; 
+            <?php
+            $sql_t="select * from universities";
             $res_t=$conn->query($sql_t);
             $co=$conn->query('select count(*) as c from universities ')->fetch_assoc()['c'];
             $co=intval(($co+1)/2);
@@ -439,7 +439,7 @@ else
                 $j=0;
             ?>
           <div class="news_updates__main__container">
-            <?php 
+            <?php
                 while($j<2 && $row_t=$res_t->fetch_assoc()){
                 $sql_1="select * from news_update where u_id=".$row_t['u_id']." order by id DESC";
                 $res_1=$conn->query($sql_1);
@@ -480,7 +480,7 @@ else
       <h2 class='latest_blogs__title'>latest blog posts</h2>
 
       <div class="latest_blogs__container">
-        <?php 
+        <?php
             $sql_t="select * from blogs order by id DESC";
             $res_t=$conn->query($sql_t);
             $i=0; // for check number of blogs
@@ -526,28 +526,28 @@ else
   <!-- TweenMax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
   <!-- ToolTipster -->
-  <script 
+  <script
     src='https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js'>
   </script>
   <!-- EasyTabs -->
-  <script 
+  <script
     src='https://cdnjs.cloudflare.com/ajax/libs/jquery.easytabs/3.2.0/jquery.easytabs.min.js'>
   </script>
   <!-- RESPONSIVE SLIDES -->
-  <script 
+  <script
     src='https://cdnjs.cloudflare.com/ajax/libs/ResponsiveSlides.js/1.55/responsiveslides.min.js'>
   </script>
   <!-- SIEMA CAROUSEL -->
-  <script 
+  <script
     src='https://cdn.jsdelivr.net/npm/siema@1.5.1/dist/siema.min.js'>
   </script>
   <!-- WOW JS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'></script>
   <!-- CUSTOM JS -->
   <script src='./js/custom.js'></script>
-    
+
      <script src='./js/navbar.js'></script>
-    
+
     <script>
     setInterval(function(){
         var t = parseInt(Math.random()*10000000);

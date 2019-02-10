@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ else
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
+
         <script>
             //testimonial
             function edit_(a){
@@ -60,7 +60,7 @@ else
                     about.disabled=false;
                     butt.value="Update";
                     img_display.style.display="none";
-                    img_choose.style.display="block";             
+                    img_choose.style.display="block";
                 }else{
                     var formData=new FormData();
                     formData.append('id',a);
@@ -186,7 +186,7 @@ else
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -199,7 +199,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
 				<div class='row menu-form'>
 	              <div class='col-lg-6' style="width:100%; height:100%">
@@ -227,7 +227,7 @@ else
                               <td style="padding:5px;">
                                   <input name="input_<?php echo $row['id']?>" type="text" class="form-control" value="<?php echo urldecode($row['about']);?>" disabled /></td>
                               <td style="padding:5px;width:100px;height:100px;overflow:hidden;">
-                                  <img id="img_display<?php echo $row['id']?>" style="width:100px;height:120px;object-fit:cover" src="<?php echo ".".$row['img_src']?>" />
+                                  <img id="img_display<?php echo $row['id']?>" style="width:100px;height:120px;object-fit:cover" src="<?php echo ".".$row['img_src']?>" alt="image"/>
                                   <input id="img_choose<?php echo $row['id']?>" type="file" style="width:200px;display:none;"/></td>
                               <td>
                                   <input id="edit_update<?php echo $row['id']?>" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="edit_('<?php echo $row['id']?>')" /><br>
@@ -235,14 +235,14 @@ else
                               </td>
                           </tr>
                           <?php } ?>
-                          
+
 <!--
 	                    <div class="form-group">
 	                      <label for="exampleInputEmail1">Edit Heading</label>
 	                      <input type="email" class="form-control" placeholder="Add Option">
 	                    </div>
 	                    <button type="submit" class="btn btn-primary">Submit</button>
-                        
+
 -->
                           <tr id="add_one" style="display:none">
                               <td style="padding:5px;"></td>
@@ -252,7 +252,7 @@ else
                               <td style="padding:5px;"><input type="file" id="img_choose" name="" style="margin:5px;" /></td>
                               <td><input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it();" /></td>
                           </tr>
-                          
+
 	                  </table>
                         <div class="form-group"  style="text-align:center; padding:30px;"><input type="button" style="width:100px;" class="btn btn-primary" value="Add One" onclick="add()"/></div>
 	              </div>

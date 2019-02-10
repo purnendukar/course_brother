@@ -1,13 +1,13 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    
+
 		<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
@@ -44,7 +44,7 @@ else
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
+
         <script>
             //testimonial
             function edit_(a){
@@ -59,7 +59,7 @@ else
                     link.disabled=false;
                     butt.value="Update";
                     img_display.style.display="none";
-                    img_choose.style.display="block";             
+                    img_choose.style.display="block";
                 }else{
                     var formData=new FormData();
                     formData.append('id',a);
@@ -170,7 +170,7 @@ else
                         }
                     });
             }
-            
+
             //Features
             function edit_f(a){
                 var input_= document.getElementsByName('input_f'+a);
@@ -184,7 +184,7 @@ else
                     info.disabled=false;
                     butt.value="Update";
                     img_display.style.display="none";
-                    img_choose.style.display="block";             
+                    img_choose.style.display="block";
                 }else{
                     var formData=new FormData();
                     formData.append('id',a);
@@ -227,7 +227,7 @@ else
                                 }
                             }
                         });
-                    
+
                     butt.value="Edit";
                     head.disabled=true;
                     info.disabled=true;
@@ -296,7 +296,7 @@ else
                         }
                     });
             }
-            
+
             //Featured Courses
             function f_course_sel(){
                 var f_c=document.getElementsByName('featured_c');
@@ -323,7 +323,7 @@ else
                                 console.log(data.responseText);
                                 return true;
                             }
-                        } 
+                        }
                     });
                     if(t==true){
                         alert("Data Not Added Try Again");
@@ -332,9 +332,9 @@ else
                 }
                 alert("Successfully Added");
             }
-            
+
         </script>
-        
+
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--if lte IE 8>
@@ -344,7 +344,7 @@ else
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -357,7 +357,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
             <h3>Index Page</h3>
             <div id="accordion">
@@ -382,9 +382,9 @@ else
                               <td style="padding:5px;">
                                   <input name="input_<?php echo $row['id']?>" style="padding:10px;" type="text" class="form-control" value="<?php echo urldecode($row['link'])?>" disabled />
                                 </td>
-                             
+
                               <td style="padding:5px;width:100px;height:100px;overflow:hidden;">
-                                  <img id="img_display<?php echo $row['id']?>" style="width:180px;height:100px;object-fit:cover" src="<?php echo ".".$row['image_src']?>" />
+                                  <img id="img_display<?php echo $row['id']?>" style="width:180px;height:100px;object-fit:cover" src="<?php echo ".".$row['image_src']?>" alt="image"/>
                                   <input id="img_choose<?php echo $row['id']?>" type="file" style="width:200px;display:none;"/></td>
                               <td>
                                   <input id="edit_update<?php echo $row['id']?>" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="edit_('<?php echo $row['id']?>')" /><br>
@@ -392,7 +392,7 @@ else
                               </td>
                           </tr>
                           <?php } ?>
- 
+
                           <tr id="add_one" style="display:none">
                               <td style="padding:5px;"></td>
                               <td style="padding:5px;"><input type="text" name="input_" class="form-control" placeholder="Heading"/></td>
@@ -400,12 +400,12 @@ else
                               <td style="padding:5px;"><input type="file" id="img_choose" name="" style="margin:5px;" /></td>
                               <td><input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it();" /></td>
                           </tr>
-                          
+
 	                  </table>
                         <div class="form-group"  style="text-align:center; padding:30px;"><input type="button" style="width:100px;" class="btn btn-primary" value="Add One" onclick="add()"/></div>
 	              </div>
 	            </div>
-			  
+
 			  <h3>Why Select Us</h3>
 			    <div class='row menu-form'>
 	              <div class='col-lg-6' style="width:100%; height:100%">
@@ -429,9 +429,9 @@ else
                               <td style="padding:5px;">
                                   <input name="input_f<?php echo $row['id']?>" style="padding:10px;" type="text" class="form-control" value="<?php echo urldecode($row['info'])?>" disabled />
                                 </td>
-                             
+
                               <td style="padding:5px;width:100px;height:100px;overflow:hidden;">
-                                  <img id="img_displayf<?php echo $row['id']?>" style="width:100px;height:100px;" src="<?php echo ".".$row['img_src']?>" />
+                                  <img id="img_displayf<?php echo $row['id']?>" style="width:100px;height:100px;" src="<?php echo ".".$row['img_src']?>" alt="image"/>
                                   <input id="img_choosef<?php echo $row['id']?>" type="file" style="width:200px;display:none;"/></td>
                               <td>
                                   <input id="edit_updatef<?php echo $row['id']?>" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="edit_f('<?php echo $row['id']?>')" /><br>
@@ -439,7 +439,7 @@ else
                               </td>
                           </tr>
                           <?php } ?>
- 
+
                           <tr id="add_onef" style="display:none">
                               <td style="padding:5px;"></td>
                               <td style="padding:5px;"><input type="text" name="input_f" class="form-control" placeholder="Heading"/></td>
@@ -447,12 +447,12 @@ else
                               <td style="padding:5px;"><input type="file" id="img_choosef" name="" style="margin:5px;" /></td>
                               <td><input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it_f();" /></td>
                           </tr>
-                          
+
 	                  </table>
                         <div class="form-group"  style="text-align:center; padding:30px;"><input type="button" style="width:100px;" class="btn btn-primary" value="Add One" onclick="add_f()"/></div>
 	              </div>
 	            </div>
-			  
+
                 <h3>Featured Courses</h3>
 			    <div class='row menu-form'>
 	              <div class='col-lg-6'>
@@ -467,7 +467,7 @@ else
 	                    </div>
 	                    <button type="button" class="btn btn-primary" onclick="f_course_sel()">Submit</button>
 	                  </form>
-                      
+
 	              </div>
 	            </div>
 	            <h3>Service Section List</h3>

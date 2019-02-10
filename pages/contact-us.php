@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +31,8 @@ else
   <title>CourseBrother.com | Contact</title>
 </head>
 <body>
-  
-  
+
+
   <!-- MAIN_CONTAINER -->
   <div class="main-container">
        <!-- MySQL connector --!>
@@ -43,7 +43,7 @@ else
 <!-- LOGIN_REGISTER_MODALS -->
     <?php include '../includes/login-register-modal.php' ?>
     <!-- /LOGIN_REGISTER_MODALS -->
-      
+
       <!-- NEWSLETTER_POPUP -->
     <?php include '../includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
@@ -64,21 +64,21 @@ else
             <?php $res=$conn->query("SELECT * FROM `contact_info`");?>
             <div class="contact_us__meet__container__info__item">
               <div class='contact_us__meet__container__info__item__container'>
-                <img src='..\assets\svg\Icons\white\phone-receiver.svg' />
+                <img src='..\assets\svg\Icons\white\phone-receiver.svg' alt="image" />
                 <h4><?php echo $res->fetch_assoc()['info'];?></h4>
               </div>
             </div>
             <div class="contact_us__meet__container__info__item">
               <div class='contact_us__meet__container__info__item__container'>
                 <a href='mailto:shyam.d@gmail.com'>
-                  <img src='..\assets\svg\Icons\white\mail-black-envelope-symbol.svg' />
+                  <img src='..\assets\svg\Icons\white\mail-black-envelope-symbol.svg' alt="image"/>
                 </a>
                 <h4><?php echo $res->fetch_assoc()['info'];?></h4>
               </div>
             </div>
             <div class="contact_us__meet__container__info__item">
               <div class='contact_us__meet__container__info__item__container'>
-                <img src='..\assets\svg\Icons\white\maps-and-flags.svg' />
+                <img src='..\assets\svg\Icons\white\maps-and-flags.svg' alt="image"/>
                 <h4 style="max-width:55%;"><?php echo $res->fetch_assoc()['info'];?></h4>
               </div>
             </div>
@@ -105,7 +105,7 @@ else
 
     </div>
     <!-- /CONTACT_US -->
-    
+
 
     <!-- FOOTER -->
     <?php include '../includes/footer.php' ?>
@@ -146,4 +146,4 @@ else
     <script src="../js/preloader.js"></script>
 
 </body>
-</html> 
+</html>

@@ -1,14 +1,14 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		
+
 		<meta http-equiv="Cache-control" content="public">
 		<meta charset="utf-8" />
 		<title>Dashboard - Course Delete Menu</title>
@@ -43,7 +43,7 @@ else
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
+
         <script>
             function delete_it(a){
                 var f= new FormData();
@@ -64,7 +64,7 @@ else
                             alert("Something went wrong submit again");
                         }
                     }
-                });         
+                });
             }
         </script>
 
@@ -77,7 +77,7 @@ else
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -90,11 +90,11 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
 
             <div class='row menu-form' style="overflow-x:scroll">
-                
+
               <div id="edit" class='col-lg-6'>
                   <h2 class='menu-text'>Course Edit Menu</h2>
                   <form class='menu-content'  method="post" action="">
@@ -111,7 +111,7 @@ else
                           </td>
                           <td style="padding:10px" ><input type=text-area class="form-control" value="<?php echo $row['heading'];?>" disabled/>
                           </td>
-                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>"/>
+                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>" alt="image"/>
                               <input  name="<?php echo $row['id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
                           </td>
                           <td><input type="button" class="btn btn-primary" style="width:80px" value="Delete" onclick="delete_it('<?php echo $row['id'];?>');"/>

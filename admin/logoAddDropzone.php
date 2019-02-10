@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +50,7 @@ else
 	</head>
 
 	<body class="no-skin">
-    
+
     <?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -63,7 +63,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-						
+
 					<?php include('./settingsContainer.php'); ?>
 
 						<div class="row menu-form">
@@ -79,7 +79,7 @@ else
 				                    <div class="form-group">
 				                      <label for="exampleInputPassword1">Add Description</label>
 				                      <input type="text" class="form-control" placeholder="Ex: Alps are the third highest mountains in the world">
-				                    </div> 
+				                    </div>
 				                    <div class="logo__add__buttons form-group">
 				                    	<label for='fileToUpload'>Choose Logo</label>
 										<input type="file" name="fileToUpload" id="fileToUpload">
@@ -91,7 +91,7 @@ else
 								<div id="preview-template" class="hide">
 									<div class="dz-preview dz-file-preview">
 										<div class="dz-image">
-											<img data-dz-thumbnail="" />
+											<img data-dz-thumbnail="" alt="image"/>
 										</div>
 
 										<div class="dz-details">
@@ -188,6 +188,6 @@ else
 		<script src="assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
-		
+
 	</body>
 </html>

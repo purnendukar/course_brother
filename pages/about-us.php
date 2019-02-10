@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +31,8 @@ else
   <title>CourseBrother.com | About</title>
 </head>
 <body>
-  
-  
+
+
   <!-- MAIN_CONTAINER -->
   <div class="main-container">
        <!-- MySQL connector --!>
@@ -43,7 +43,7 @@ else
 <!-- LOGIN_REGISTER_MODALS -->
     <?php include '../includes/login-register-modal.php' ?>
     <!-- /LOGIN_REGISTER_MODALS -->
-      
+
       <!-- NEWSLETTER_POPUP -->
     <?php include '../includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
@@ -67,7 +67,7 @@ else
         <div class="about_us__services__container">
           <?php $res=$conn->query("SELECT * FROM `provide`");?>
           <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\journey.svg" />
+            <img src="..\assets\svg\Icons\white\journey.svg" alt="image"/>
             <h5>versatility</h5>
             <p>
               <?php echo urldecode($res->fetch_assoc()['content']);?>
@@ -75,7 +75,7 @@ else
           </div>
 
           <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\stopwatch.svg" />
+            <img src="..\assets\svg\Icons\white\stopwatch.svg" alt="image" />
             <h5>convenience</h5>
             <p>
             <?php echo urldecode($res->fetch_assoc()['content']);?>
@@ -83,7 +83,7 @@ else
           </div>
 
           <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\customer.svg" />
+            <img src="..\assets\svg\Icons\white\customer.svg" alt="image"/>
             <h5>authenticity</h5>
             <p>
               Get access to 1000+ courses from leading course providers offering recognized and industry standard
@@ -91,7 +91,7 @@ else
           </div>
 
           <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\support.svg" />
+            <img src="..\assets\svg\Icons\white\support.svg" alt="image"/>
             <h5>support</h5>
             <p>
             <?php echo urldecode($res->fetch_assoc()['content']);?>
@@ -107,7 +107,7 @@ else
         <div class='about_us__founders__container'>
           <?php while($row=$res->fetch_assoc()){?>
           <div class="about_us__founders__item">
-            <img src=".<?php echo $row['img_src']?>" />
+            <img src=".<?php echo $row['img_src']?>" alt="image"/>
             <h4><?php echo urldecode($row['name'])?></h4>
             <h5><?php echo urldecode($row['position'])?></h5>
             <p>
@@ -115,14 +115,14 @@ else
             </p>
           </div>
           <?php } ?>
-          
+
         </div>
 
       </div>
 
     </div>
     <!-- /ABOUT_US -->
-    
+
 
     <!-- FOOTER -->
     <?php include '../includes/footer.php' ?>
@@ -163,4 +163,4 @@ else
     <script src="../js/preloader.js"></script>
 
 </body>
-</html> 
+</html>

@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@ else
 
   <!-- CUSTOM CSS -->
   <link rel='stylesheet' href='../styles/style.css' />
-    
+
     <script>
         function filter(a){
             var u_id="";
@@ -35,7 +35,7 @@ else
             var a_id="";
             var c_id="";
             var d_id="";
-            
+
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlhttp = new XMLHttpRequest();
@@ -53,7 +53,7 @@ else
             var aff= document.getElementsByClassName("affiliate");
             var course= document.getElementsByClassName("c_id");
             var dmode= document.getElementsByClassName("d_mode");
- 
+
             for(var i=0;i<univ.length;i++){
                 if(univ[i].checked)
                     u_id=u_id+(univ[i].value)+",";
@@ -70,18 +70,18 @@ else
                 if(course[i].checked)
                     c_id=c_id+(course[i].value)+",";
             }
-            
+
             for(var i=0;i<dmode.length;i++){
                 if(dmode[i].checked)
                     d_id=d_id+(dmode[i].value)+",";
             }
             xmlhttp.open("GET","get_detail?u_id="+u_id+"&s_id="+s_id+"&a_id="+a_id+"&c_id="+c_id+"&d_id="+d_id+"&course=all");
             xmlhttp.send();
-            
+
         }
-        
+
         function clear_all(){
-            
+
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlhttp = new XMLHttpRequest();
@@ -99,7 +99,7 @@ else
             var aff= document.getElementsByClassName("affiliate");
             var course= document.getElementsByClassName("c_id");
             var dmode= document.getElementsByClassName("d_mode");
- 
+
             for(var i=0;i<univ.length;i++){
                 if(univ[i].checked)
                     univ[i].checked=false;
@@ -116,7 +116,7 @@ else
                 if(course[i].checked)
                     course[i].checked=false;
             }
-            
+
             for(var i=0;i<dmode.length;i++){
                 if(dmode[i].checked)
                     dmode[i].checked=false;
@@ -137,11 +137,11 @@ else
     <!-- /LOGIN_REGISTER_MODALS -->
 
     <?php include '../includes/navbar-main.php'; ?>
-      
+
       <!-- NEWSLETTER_POPUP -->
     <?php include '../includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
-      
+
     <!-- MAIN_CONTAINER -->
     <main class="main_container">
       <!-- FILTER_RESULTS -->
@@ -151,14 +151,14 @@ else
           <h3>filter results</h3>
           <button onclick="clear_all();">clear all</button>
         </div>
-          
+
         <div class="filter_results__item">
           <div class="filter_results__item__head">
             <h5>course category</h5>
             <i class='fa fa-angle-up'></i>
           </div>
           <div class="filter_results__item__content">
-              
+
             <form class='filter_results__item__form'>
               <!-- <input type="text" placeholder='search category' /> -->
             </form>
@@ -261,7 +261,7 @@ else
             </div>
           </div>
         </div>
-        
+
         <div class="filter_results__item">
           <div class="filter_results__item__head">
             <h5>course type</h5>
@@ -300,7 +300,7 @@ else
       </div>
       <!-- /FILTER_RESULTS -->
 
-        <?php 
+        <?php
         // Remove unnecessary words from the search term and return them as an array
         function filterSearchKeys($query){
             $query = trim(preg_replace("/(\s+)+/", " ", $query));
@@ -346,7 +346,7 @@ else
         $course="";
         if(isset($_GET['course'])){
         if(strtoupper($_GET['course'])!='ALL'){
-            
+
             $course = filterSearchKeys(strtolower($_GET['course']));
             $c_id = table_search($course,"courses",$conn);
             $s_id=table_search($course,"subject",$conn);
@@ -375,7 +375,7 @@ else
                 if([ ".implode(" , ",$c_id)." ].includes(parseInt(course[i].value)))
                     course[i].checked=\"checked\";
             }
-            
+
             for(var i=0;i<dmode.length;i++){
                 if([ ".implode(" , ",$d_id)." ].includes(parseInt(dmode[i].value)))
                     dmode[i].checked=\"checked\";
@@ -396,7 +396,7 @@ else
                 if($count_t==0){
                     $str=$str." (".$temp.")";
                 }else{
-                    $str=$str." and (".$temp.")";    
+                    $str=$str." and (".$temp.")";
                 }
                 $count_t++;
             }
@@ -413,7 +413,7 @@ else
                 if($count_t==0){
                     $str=$str." (".$temp.")";
                 }else{
-                    $str=$str." and (".$temp.")";    
+                    $str=$str." and (".$temp.")";
                 }
                 $count_t++;
             }
@@ -430,7 +430,7 @@ else
                 if($count_t==0){
                     $str=$str." (".$temp.")";
                 }else{
-                    $str=$str." and (".$temp.")";    
+                    $str=$str." and (".$temp.")";
                 }
                 $count_t++;
             }
@@ -447,7 +447,7 @@ else
                 if($count_t==0){
                     $str=$str." (".$temp.")";
                 }else{
-                    $str=$str." and (".$temp.")";    
+                    $str=$str." and (".$temp.")";
                 }
                 $count_t++;
             }
@@ -464,11 +464,11 @@ else
                 if($count_t==0){
                     $str=$str." (".$temp.")";
                 }else{
-                    $str=$str." and (".$temp.")";    
+                    $str=$str." and (".$temp.")";
                 }
                 $count_t++;
             }
-            
+
             $sql_2="select * from full_detail where ".$str;
         }else{
             $sql_2="select * from full_detail ";
@@ -477,7 +477,7 @@ else
       ?>
       <!-- COURSE_RESULTS -->
       <div id="show_result" class="course_results">
-          
+
         <div class="course_results__head">
             <h3>FOUND <b id="num_res"><?php if($res_=$conn->query("select count(c_id) as c from (".$sql_2.") as t")) echo $res_->fetch_assoc()['c']; else echo "0";  ?></b> RESULT(S) <?php if($course!='ALL'){?> FOR <b id="course"><?php echo strtoupper($_GET['course']);?></b><?php }?> </h3>
 
@@ -490,7 +490,7 @@ else
             ?>
           <div class="course_results__item">
             <div class="course_results__item__img">
-              <img src="<?php echo ".".$res_u['img_src'];?>" />
+              <img src="<?php echo ".".$res_u['img_src'];?>" alt="image" />
             </div>
             <div class="course_results__item__content">
               <div class="course_results__item__content__head">
@@ -499,7 +499,7 @@ else
               </div>
               <div class="course_results__item__content__info">
                 <div class="course_results__item__content__info__dur">
-                  <img src="../assets/svg/Icons/red/stopwatch.svg" />
+                  <img src="../assets/svg/Icons/red/stopwatch.svg" alt="image"/>
                   <h5><?php echo $row_2['duration']?> years</h5>
                 </div>
                 <div class="course_results__item__content__info__dm">
@@ -516,7 +516,7 @@ else
               <button>add to compare</button>
             </div>
           </div>
-            <?php } 
+            <?php }
       }?>
 
         </div>
@@ -527,7 +527,7 @@ else
 
       <!-- AD_BANNERS -->
       <div class="ad_banners">
-        
+
         <div class="ad_banners__item">
           <h4>ad banner</h4>
         </div>
@@ -543,7 +543,7 @@ else
 
     </main>
     <!-- /MAIN_CONTAINER -->
-    
+
 
     <!-- FOOTER -->
     <?php include '../includes/footer.php' ?>
@@ -564,7 +564,7 @@ else
   <!-- TweenMax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
   <!-- EasyTabs -->
-  <script 
+  <script
     src='https://cdnjs.cloudflare.com/ajax/libs/jquery.easytabs/3.2.0/jquery.easytabs.min.js'>
   </script>
   <!-- WOW JS -->
@@ -587,7 +587,7 @@ else
         });
     }, 1000);
     </script>
-    
+
     <script src="../js/preloader.js"></script>
 </body>
-</html> 
+</html>
