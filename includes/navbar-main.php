@@ -1,11 +1,11 @@
-<?php 
+<?php
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
 if($s[count($s)-2]=='pages'){
     $d=$d.".";
 }
-//MySQL connector 
+//MySQL connector
 $conn=connect_mysql();
 ?>
 <!-- PRELOADER -->
@@ -19,56 +19,26 @@ $conn=connect_mysql();
     <div class='navbar_main__appendix__container'>
         <!-- new -->
       <div class="navbar_main__appendix__info">
-        <div class="navbar_main__appendix__info__item">
-          <!-- <h5>credible institutes</h5> -->
-          <span class='tooltip' title='For formal education courses, check the status of the listed universities on the UGC DEB website. https://www.ugc.ac.in/deb/'>
-            <img src="<?php echo $d?>./assets/svg/Icons/white/apartments.svg" />
-          </span>
-        </div>
-        <div class="navbar_main__appendix__info__item">
-          <!-- <h5>transparent information</h5> -->
-          <span class='tooltip' title='CourseBrother.com is not a study center and has no role in admission decisions, 
-            examinations and / or awarding any degree or diploma'>
-            <img src="<?php echo $d?>./assets/svg/Icons/white/information.svg" />
-          </span>
-        </div>
-        <div class="navbar_main__appendix__info__item">
-          <!-- <h5>genuine fee</h5> -->
-          <span class='tooltip' title='CourseBrother.com charges no extra fee. No discount is offered by the course provider of any of the courses listed'>
-            <img src="<?php echo $d?>./assets/svg/Icons/white/give-money.svg" />
-          </span>
-        </div>
-        <div class="navbar_main__appendix__info__item">
-          <!-- <h5>counselling support</h5> -->
-          <span class='tooltip' title='Get expert and dedicated counselling support to make an informed education decision'>
-            <img src="<?php echo $d?>./assets/svg/Icons/white/phone-receiver.svg" />
-          </span>
-        </div>
-        <div class="navbar_main__appendix__info__item">
-          <!-- <h5>study material</h5> -->
-          <span class='tooltip' title='Study material is provided by the respective course providers'>
-            <img src="<?php echo $d?>./assets/svg/Icons/white/books-stack-of-three.svg" />
-          </span>
-        </div>
+        
       </div>
-        
+
         <!-- new end -->
-        
+
       <div class="navbar_main__appendix__login">
         <span><img src="<?php echo $d?>./assets/svg/Icons/red/log-in.svg" /></span>
         <h5>login</h5>
       </div>
-      
+
       <div class="navbar_main__appendix__register">
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" /></span>
         <h5>register</h5>
       </div>
-      
+
       <div class="navbar_main__appendix__cart">
         <h5>cart</h5>
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/shopping-cart.svg" /></span>
       </div>
-    </div>  
+    </div>
 
   </div>
 
@@ -79,14 +49,14 @@ $conn=connect_mysql();
       <div class="navbar_main__header__logo">
         <a href='<?php echo $d?>./'><img src="<?php echo $d?>./assets/svg/cb-logo.svg" /></a>
       </div>
-        
+
       <div class="navbar_main__header__search">
         <form method="get" action="<?php echo $d?>./pages/course-results" target="_blank" >
           <input id="bar" name="course" type="text" placeholder='search for courses     eg: mba, bba' value="<?php if(isset($_GET['course']))echo $_GET['course']; else echo ""; ?>"/>
           <input type="submit" value="LET'S GO!">
         </form>
       </div>
-        
+
 
         <?php // echo "<script>getElementByName('course').value='".$_GET['course']."';</script>"?>
       <div class="navbar_main__header__contact">
@@ -113,11 +83,11 @@ $conn=connect_mysql();
     <div class="navbar_main__courses__container">
         <!-- dynamically showing menu -->
         <?php
-            
+
             $sql="select * from menu";
             $res=$conn->query($sql);
             while($row=$res->fetch_assoc()){
-                ?> 
+                ?>
                 <div class="navbar_main__courses__item">
                     <h3><?php echo $row["menu_name"];?></h3>
                     <span><i class="fa fa-angle-down"></i></span>
@@ -197,12 +167,10 @@ $conn=connect_mysql();
                         <?php } ?>
                     </div>
                 </div>
-        <?php } ?>  
+        <?php } ?>
 
 
     </div>
   </div>
 
 </div>
-
- 
