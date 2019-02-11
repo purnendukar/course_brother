@@ -122,7 +122,7 @@ else
                       <input name="about" type="text" class="form-control" placeholder="About Universities" required>
                     </div>
                     <div class="form-group">
-                      <label for="image">About university</label>
+                      <label for="image">University Image</label>
                       <input name="image" type="file" class="form-control" placeholder="About Universities" required>
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary">Submit</button>
