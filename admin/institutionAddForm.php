@@ -79,21 +79,27 @@ else
                  $errors[]="extension not allowed, please choose a JPEG or PNG file.";
               }
               if(empty($errors)==true){
-                 move_uploaded_file($file_tmp,".".$file_path.$file_name);
-                  $img_src=$file_path.$file_name;
+								$img_src=$file_path.rand().$file_name;
+                move_uploaded_file($file_tmp,".".$img_src);
               }else{
                   print_r($errors);
               }
            }
             if(isset($_POST['u_name'])){
                 $u_name=strtoupper($_POST['u_name']);
-                $keyword=$u_name;
-                $res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."')");
-                if($res){
-                    echo "<script>alert('Successfully Added');window.location.href='./institutionAddForm';</script>";
-                }else{
-                    echo "<script>alert('Failed')</script>";
-                }
+								$keyword=$u_name;
+								if(file_exists('../'.strtolower($u_name))){
+									echo "<script>alert('University Name already exist')</script>";
+								}else{
+									$res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."')");
+									if($res){
+										$u_name=str_replace(" ",'-',$u_name);
+										echo "<script>alert('Successfully Added');window.location.href='./institutionAddForm';</script>";
+									}else{
+										echo "<script>alert('Failed')</script>";
+									}
+									mkdir("../".strtolower($u_name));
+								}
            }
         } ?>
 		<div class="main-container ace-save-state" id="main-container">

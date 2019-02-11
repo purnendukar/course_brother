@@ -22,8 +22,8 @@ $conn_p=connect_mysql_page();
                          $errors[]="extension not allowed, please choose a JPEG or PNG file.";
                       }
                       if(empty($errors)==true){
-                         if(move_uploaded_file($file_tmp,"../.".$file_path.$file_name)){
-                             $path=$file_path.$file_name;
+                        $path=$file_path.rand().$file_name;
+                         if(move_uploaded_file($file_tmp,"../.".$path)){
                              if($conn_p->query("UPDATE `universities` SET img_src='".$path."' where u_id=".$u_id)){
                                 echo $path;
                              }
