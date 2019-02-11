@@ -1,0 +1,291 @@
+//Declaring Variables
+$rustyRed: #de4651;
+$buttonRed: #9b1515;
+$blue: #0E216C;
+$grey: grey;
+$shadowWhite: #FAF6F6;
+$darkGrey: #474849;
+$white: white;
+$pink: #fccfcf;
+
+//global styling
+*{
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    
+}
+
+
+//beginning of siema
+
+.container{
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    width: 100vw;
+    .siema {
+        position: relative;
+        margin-top: .3rem;
+        margin-bottom: .3rem;
+        width: 100%;
+        &__image {
+            width: 100%;
+            height: 100%;
+        }
+        .siema__image{
+            height: 60vh;
+            display: flex;
+            box-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            overflow: hidden
+        }
+        
+        img {
+            position: relative;
+            width: 100%;
+            opacity: 0.6;
+        }
+        .siema__text {
+            position: absolute;
+            width:100%;
+            line-height: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            h1{
+                font-size: 30px;
+            }
+            p{
+                font-size: 24px;
+            }
+            .siema__image__button {
+                position: relative;
+                text-align: center;
+                font-size: 23px;
+                background-color: $rustyRed;
+                border: none;
+                outline: none;
+                box-shadow: 1px 1px 1px 1px $buttonRed;
+                width: 100px;
+                height: 50px;
+                border-radius: 5px; 
+                cursor: pointer;
+                text-decoration: none;
+                color: white;    
+                z-index: 100;           
+                &:hover {
+                    cursor: pointer;
+                    color: grey;
+                }
+
+            }
+        }
+
+    }
+   button i {
+        opacity: 0.4;
+   }
+      
+      img {
+        width: 100%;
+      }
+      
+      .siema {
+        margin: 1rem 0;
+        position: relative;
+      }
+
+      %siema__button {
+        position: absolute;
+        background: rgba(76, 175, 80, 0.0);
+        font-size: 70px;
+        font-weight: bold;
+        color: white;
+        width: 100px;
+        height: 100px;
+        border: none;
+        border-radius: 50%;
+        outline: none;
+        &:hover{
+            cursor: pointer;
+        }
+      }
+      
+      .prev {
+        @extend %siema__button;
+        left: 0;
+        top: 45%;
+      }
+      
+      .next {
+        @extend %siema__button;
+        right: 20px;
+        top: 45%;
+      }
+      
+}
+  
+
+//beginning of main content
+.main{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+
+    //beginning of left main content
+    .main__contents{
+        width: 70%;
+        height: auto;
+        overflow-y: hidden;
+        //beginning of each pieces of left main content
+        .main__contents__snippets{
+            width: 25%;
+            height: 287px;
+            img{
+                width: 100%;
+                height: 150px;
+            }
+            a {
+                text-decoration: none;
+               
+            }
+            h3 {
+                color: $darkGrey;
+                font-size: 15px;
+                padding: 8px;
+                padding-top: 17px;
+                &:hover{
+                    color: $grey;
+                 }
+            }
+            p {
+                font-size: 12px;
+                padding: 8px;
+                color: $grey;
+            }
+            box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.315);
+            border-top: 5px solid $rustyRed;
+            border-radius: 5px 5px 5px 5px;
+            margin: 2%;
+            &:hover{
+                // transform: scale(1.03);
+                box-shadow: 1px 1px 12px 1px rgba(0, 0, 0, 0.315);
+            }
+            transition: .5s ease-in-out;
+        }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+    display: flex;
+    flex-direction: row;
+
+    //beginning of sidebar conten
+    hr{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        width: 40%;
+    }
+    .main__sidebar__side{
+        h2{
+            color: $rustyRed;
+            font-size: 17px;
+            padding-bottom: 25px;
+        }
+        p{
+            color: $grey;
+            font-size: 10px;
+            line-height: 17px;
+        }
+    }
+    .main__sidebar__social{
+        .main__sidebar__social__bar {
+            display: flex;
+            flex-direction: row;
+        }
+        h2{
+            color: $rustyRed;
+            font-size: 17px;
+            padding-bottom: 25px;
+        }
+        li{
+            list-style-type: none;
+            padding-bottom: 4px;
+            margin: 15px;
+        }
+        #facebook {
+            color: #3b5998;
+            
+        }
+        #twitter {
+            color: #1DA1F2;
+            
+        }
+        #instagram {
+            color: #c32aa3;
+        }
+        #linkedIn {
+            color: #007bb5;
+            
+        }
+        i {
+            padding-right: 5px;
+            font-size: 30px;
+        }
+        i:hover {
+            
+                font-size: 33px;
+                transition: .2s;
+        }
+        }
+    }
+
+    .main__sidebar__tagbar {
+        h2 {
+            color: $rustyRed;
+            font-size: 17px;
+            padding-bottom: 25px;
+        }
+        .main__sidebar__tagbar__tags{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 70%;
+
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 100px;
+                margin-top: 10px;
+                margin-right: 20px;
+                height: 40px;
+                border: 2.5px solid $rustyRed;
+                border-radius: 30px;
+                
+            }
+            a {
+                color: $grey;
+                font-weight: bold;
+                font-size: 15px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                text-decoration: none;
+                &:hover {
+                    color: $darkGrey;
+                }
+            }
+        }
+    }
+
+//End of side bar content
