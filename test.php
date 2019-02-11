@@ -41,7 +41,7 @@
         <meta name='description' content='".$row['meta_desc']."'>
         <meta name='keywords' content='course brother, coursebrother,".$row['meta_key']."'>
         <meta name='author' content='course brother'>
-        <script>window.location.href='../../pages/course-detail?id='+".$row['id']."</script>
+        <script>window.location.href='../../../pages/course-detail?id='+".$row['id']."</script>
     </head>
 </html>";
         fwrite($myfile, $txt);

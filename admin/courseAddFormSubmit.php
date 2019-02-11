@@ -50,7 +50,7 @@ if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fe
         <meta name='description' content='".$meta_desc."'>
         <meta name='keywords' content='course brother, coursebrother,".$meta_keys."'>
         <meta name='author' content='course brother'>
-        <script>window.location.href='../../pages/course-detail?id='+".$id."</script>
+        <script>window.location.href='../../../pages/course-detail?id='+".$id."</script>
     </head>
 </html>";
             fwrite($myfile, $txt);

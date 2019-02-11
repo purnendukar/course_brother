@@ -6,6 +6,6 @@
         <meta name='description' content='Diploma in Finance from Annamalai university'>
         <meta name='keywords' content='course brother, coursebrother,FINANCE'>
         <meta name='author' content='course brother'>
-        <script>window.location.href='../../pages/course-detail?id='+14</script>
+        <script>window.location.href='../../../pages/course-detail?id='+14</script>
     </head>
 </html>
