@@ -114,6 +114,10 @@ else
                     return;
                 }
                 formData.append("aff",t);
+                var meta_desc=document.getElementsByName("meta_desc")[0].value;
+                var meta_keys=document.getElementsByName("meta_keys")[0].value;
+                formData.append("meta_keys",meta_keys);
+                formData.append("meta_desc",meta_desc);
                 formData.append("id","<?php echo $_GET['id']?>");
                 $.ajax({
                     url: "./courseAddFormupdate.php",
@@ -201,7 +205,7 @@ else
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Description</label>
-                      <input name="c_desc" type="text" class="form-control" value="<?php echo $conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['overview']; ?>" required>
+                      <input name="c_desc" type="text" class="form-control" value="<?php echo urldecode($conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['overview']); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Course Structure</label><br/>
@@ -210,7 +214,7 @@ else
                             $c_struc=explode("|",$c_struc);
                             for($i=0;$i<count($c_struc);$i++){
                                 $s=str_replace("<br>","\n",$c_struc[$i]);
-                                echo "<p>Semester ".($i+1)."</p>"."<textarea name='sem_struc' class=\"form-control\">".$s."</textarea>";
+                                echo "<p>Semester ".($i+1)."</p>"."<textarea name='sem_struc' class=\"form-control\">".urldecode($s)."</textarea>";
                             }?>
                         </div>
                		</div>
@@ -234,16 +238,12 @@ else
                		<input class="form-control" value="<?php echo $conn_p->query("select * from delivery_mode where id=".$row['d_mode_id'])->fetch_assoc()['d_mode']; ?>" disabled/>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Meta Name</label>
-                      <input type="text" class="form-control" placeholder="Meta Name">
-                    </div>
-                    <div class="form-group">
                       <label for="exampleInputPassword1">Meta Description</label>
-                      <input type="text" class="form-control" placeholder="Meta Description">
+                      <input type="text" name="meta_desc" class="form-control" placeholder="Meta Description" value="<?php echo $row['meta_desc']?>">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Meta Tag</label>
-                      <input type="text" class="form-control" placeholder="Meta Tag">
+                      <label for="exampleInputPassword1">Meta Keyword</label>
+                      <input type="text"  name="meta_keys" class="form-control" placeholder="Meta Tag" value="<?php echo $row['meta_key']?>">
                     </div>
                     <br>
                     <input type="submit" class="btn btn-primary" name="btnsubmit" value="Update"/>

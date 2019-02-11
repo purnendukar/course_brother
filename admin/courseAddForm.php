@@ -169,6 +169,10 @@ else
                 }
                 formData.append("aff",t);
                 formData.append("d_mode_id",d_mode_id);
+                var meta_desc=document.getElementsByName("meta_desc")[0].value;
+                var meta_keys=document.getElementsByName("meta_keys")[0].value;
+                formData.append("meta_keys",meta_keys);
+                formData.append("meta_desc",meta_desc);
                 $.ajax({
                     url: "./courseAddFormSubmit.php",
                     type: 'POST',
@@ -182,7 +186,7 @@ else
                             alert("Successfully Added");
                             window.location.href="./courseAddForm";
                         }else{
-                            alert("Something went wrong submit again");
+                            alert(data.responseText);
                         }
                     }
                 });
@@ -291,16 +295,12 @@ else
                		</select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Meta Name</label>
-                      <input type="text" class="form-control" placeholder="Meta Name">
-                    </div>
-                    <div class="form-group">
                       <label for="exampleInputPassword1">Meta Description</label>
-                      <input type="text" class="form-control" placeholder="Meta Description">
+                      <input type="text" name="meta_desc" class="form-control" placeholder="Meta Description">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Meta Tag</label>
-                      <input type="text" class="form-control" placeholder="Meta Tag">
+                      <label for="exampleInputPassword1">Meta Keyword</label>
+                      <input type="text" name="meta_keys" class="form-control" placeholder="Meta Keyword">
                     </div>
                     <br>
                     <input type="submit" class="btn btn-primary" name="btnsubmit" value="Submit"/>

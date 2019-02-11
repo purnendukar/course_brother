@@ -82,7 +82,7 @@ else
                           <tr class="form-group">
                               <th style="text-align:center; padding:10px">Id</th>
                               <th style="text-align:center; padding:10px">University</th>
-                              <th style="text-align:center; padding:10px">Program</th>
+                              <th style="text-align:center; padding:10px">Delivery Mode</th>
                               <th style="text-align:center; padding:10px">Course Name</th>
                               <th style="text-align:center; padding:10px">Specialisation</th>
                           </tr>
@@ -91,7 +91,7 @@ else
                           ?>
                           <td style="padding:10px"><?php echo $row['id'];?></td>
                           <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from universities where u_id='.$row['u_id'])->fetch_assoc()['u_name'];?>" disabled/></td>
-                          <td style="padding:10px"><input type="text" class="form-control"  value="<?php echo $conn_p->query('select * from program where p_id='.$row['prg_id'])->fetch_assoc()['p_name'];?>" disabled/></td>
+                          <td style="padding:10px"><input type="text" class="form-control"  value="<?php echo $conn_p->query('select * from delivery_mode where id='.$row['d_mode_id'])->fetch_assoc()['d_mode'];?>" disabled/></td>
                           <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from courses where id='.$row['c_id'])->fetch_assoc()['c_name'];?>" disabled/></td>
                           <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from subject where id='.$row['s_id'])->fetch_assoc()['sub_name'];?>" disabled/></td>
                           <td style="padding:10px"><input type="button" class="btn btn-primary" onclick="edit(<?php echo $row['id'];?>)" style="width:80px; " value="Edit"/>
