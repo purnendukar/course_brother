@@ -345,133 +345,137 @@ else
         }
         $course="";
         if(isset($_GET['course'])){
-        if(strtoupper($_GET['course'])!='ALL'){
+          if(strtoupper($_GET['course'])!='ALL'){
 
-            $course = filterSearchKeys(strtolower($_GET['course']));
-            $c_id = table_search($course,"courses",$conn);
-            $s_id=table_search($course,"subject",$conn);
-            $u_id=table_search($course,"universities",$conn);
-            $a_id=table_search($course,"affiliation",$conn);
-            $d_id=table_search($course,"delivery_mode",$conn);
-            echo "<script>
-            var univ= document.getElementsByClassName(\"univ_id\");
-            var sub= document.getElementsByClassName(\"sub\");
-            var aff= document.getElementsByClassName(\"affiliate\");
-            var course= document.getElementsByClassName(\"c_id\");
-            var dmode= document.getElementsByClassName(\"d_mode\");
-            for(var i=0;i<univ.length;i++){
-                if([ ".implode(" , ",$u_id)." ].includes(parseInt(univ[i].value)))
-                    univ[i].checked=\"checked\";
-            }
-            for(var i=0;i<sub.length;i++){
-                if([ ".implode(" , ",$s_id)." ].includes(parseInt(sub[i].value)))
-                    sub[i].checked=\"checked\";
-            }
-            for(var i=0;i<aff.length;i++){
-                if([ ".implode(" , ",$a_id)." ].includes(parseInt(aff[i].value)))
-                    aff[i].checked=\"checked\";
-            }
-            for(var i=0;i<course.length;i++){
-                if([ ".implode(" , ",$c_id)." ].includes(parseInt(course[i].value)))
-                    course[i].checked=\"checked\";
-            }
+              $course = filterSearchKeys(strtolower($_GET['course']));
+              $c_id = table_search($course,"courses",$conn);
+              $s_id=table_search($course,"subject",$conn);
+              $u_id=table_search($course,"universities",$conn);
+              $a_id=table_search($course,"affiliation",$conn);
+              $d_id=table_search($course,"delivery_mode",$conn);
+              echo "<script>
+              var univ= document.getElementsByClassName(\"univ_id\");
+              var sub= document.getElementsByClassName(\"sub\");
+              var aff= document.getElementsByClassName(\"affiliate\");
+              var course= document.getElementsByClassName(\"c_id\");
+              var dmode= document.getElementsByClassName(\"d_mode\");
+              for(var i=0;i<univ.length;i++){
+                  if([ ".implode(" , ",$u_id)." ].includes(parseInt(univ[i].value)))
+                      univ[i].checked=\"checked\";
+              }
+              for(var i=0;i<sub.length;i++){
+                  if([ ".implode(" , ",$s_id)." ].includes(parseInt(sub[i].value)))
+                      sub[i].checked=\"checked\";
+              }
+              for(var i=0;i<aff.length;i++){
+                  if([ ".implode(" , ",$a_id)." ].includes(parseInt(aff[i].value)))
+                      aff[i].checked=\"checked\";
+              }
+              for(var i=0;i<course.length;i++){
+                  if([ ".implode(" , ",$c_id)." ].includes(parseInt(course[i].value)))
+                      course[i].checked=\"checked\";
+              }
 
-            for(var i=0;i<dmode.length;i++){
-                if([ ".implode(" , ",$d_id)." ].includes(parseInt(dmode[i].value)))
-                    dmode[i].checked=\"checked\";
-            }
-            </script>";
-            $str="";
-            $temp="";
-            $count_=0;
-            $count_t=0;
-            foreach($c_id as $id){
-                if($count_== 0)
-                    $temp=$temp." c_id=".$id;
-                else
-                    $temp=$temp." or c_id=".$id;
-                $count_++;
-            }
-            if($temp!=""){
-                if($count_t==0){
-                    $str=$str." (".$temp.")";
-                }else{
-                    $str=$str." and (".$temp.")";
-                }
-                $count_t++;
-            }
-            $temp="";
-            $count_=0;
-            foreach($s_id as $id){
-                if($count_== 0)
-                    $temp=$temp." s_id=".$id;
-                else
-                    $temp=$temp." or s_id=".$id;
-                $count_++;
-            }
-            if($temp!=""){
-                if($count_t==0){
-                    $str=$str." (".$temp.")";
-                }else{
-                    $str=$str." and (".$temp.")";
-                }
-                $count_t++;
-            }
-            $temp="";
-            $count_=0;
-            foreach($u_id as $id){
-                if($count_== 0)
-                    $temp=$temp." u_id=".$id;
-                else
-                    $temp=$temp." or u_id=".$id;
-                $count_++;
-            }
-            if($temp!=""){
-                if($count_t==0){
-                    $str=$str." (".$temp.")";
-                }else{
-                    $str=$str." and (".$temp.")";
-                }
-                $count_t++;
-            }
-            $temp="";
-            $count_=0;
-            foreach($a_id as $id){
-                if($count_== 0)
-                    $temp=$temp." a_id=".$id;
-                else
-                    $temp=$temp." or a_id=".$id;
-                $count_++;
-            }
-            if($temp!=""){
-                if($count_t==0){
-                    $str=$str." (".$temp.")";
-                }else{
-                    $str=$str." and (".$temp.")";
-                }
-                $count_t++;
-            }
-            $temp="";
-            $count_=0;
-            foreach($d_id as $id){
-                if($count_== 0)
-                    $temp=$temp." d_mode_id=".$id;
-                else
-                    $temp=$temp." or d_mode_id=".$id;
-                $count_++;
-            }
-            if($temp!=""){
-                if($count_t==0){
-                    $str=$str." (".$temp.")";
-                }else{
-                    $str=$str." and (".$temp.")";
-                }
-                $count_t++;
-            }
+              for(var i=0;i<dmode.length;i++){
+                  if([ ".implode(" , ",$d_id)." ].includes(parseInt(dmode[i].value)))
+                      dmode[i].checked=\"checked\";
+              }
+              </script>";
+              $str="";
+              $temp="";
+              $count_=0;
+              $count_t=0;
+              foreach($c_id as $id){
+                  if($count_== 0)
+                      $temp=$temp." c_id=".$id;
+                  else
+                      $temp=$temp." or c_id=".$id;
+                  $count_++;
+              }
+              if($temp!=""){
+                  if($count_t==0){
+                      $str=$str." (".$temp.")";
+                  }else{
+                      $str=$str." and (".$temp.")";
+                  }
+                  $count_t++;
+              }
+              $temp="";
+              $count_=0;
+              foreach($s_id as $id){
+                  if($count_== 0)
+                      $temp=$temp." s_id=".$id;
+                  else
+                      $temp=$temp." or s_id=".$id;
+                  $count_++;
+              }
+              if($temp!=""){
+                  if($count_t==0){
+                      $str=$str." (".$temp.")";
+                  }else{
+                      $str=$str." and (".$temp.")";
+                  }
+                  $count_t++;
+              }
+              $temp="";
+              $count_=0;
+              foreach($u_id as $id){
+                  if($count_== 0)
+                      $temp=$temp." u_id=".$id;
+                  else
+                      $temp=$temp." or u_id=".$id;
+                  $count_++;
+              }
+              if($temp!=""){
+                  if($count_t==0){
+                      $str=$str." (".$temp.")";
+                  }else{
+                      $str=$str." and (".$temp.")";
+                  }
+                  $count_t++;
+              }
+              $temp="";
+              $count_=0;
+              foreach($a_id as $id){
+                  if($count_== 0)
+                      $temp=$temp." a_id=".$id;
+                  else
+                      $temp=$temp." or a_id=".$id;
+                  $count_++;
+              }
+              if($temp!=""){
+                  if($count_t==0){
+                      $str=$str." (".$temp.")";
+                  }else{
+                      $str=$str." and (".$temp.")";
+                  }
+                  $count_t++;
+              }
+              $temp="";
+              $count_=0;
+              foreach($d_id as $id){
+                  if($count_== 0)
+                      $temp=$temp." d_mode_id=".$id;
+                  else
+                      $temp=$temp." or d_mode_id=".$id;
+                  $count_++;
+              }
+              if($temp!=""){
+                  if($count_t==0){
+                      $str=$str." (".$temp.")";
+                  }else{
+                      $str=$str." and (".$temp.")";
+                  }
+                  $count_t++;
+              }
 
-            $sql_2="select * from full_detail where ".$str;
+              $sql_2="select * from full_detail where ".$str;
+          }else{
+              $sql_2="select * from full_detail ";
+          }
         }else{
-            $sql_2="select * from full_detail ";
+          $course="ALL";
+          $sql_2="select * from full_detail ";
         }
         $res_2=$conn->query($sql_2);
       ?>
@@ -523,7 +527,6 @@ else
 
       </div>
       <!-- /COURSE_RESULTS -->
-        <?php } ?>
 
       <!-- AD_BANNERS -->
       <div class="ad_banners">

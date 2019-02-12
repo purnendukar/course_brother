@@ -22,28 +22,33 @@
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./">HOME</a>
           <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/about-us">ABOUT US</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/contact-us">CONTACT US</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/course-results?course=all">COURSES</a>
-        <a href="#">SERVICES</a>
+        <a href="<?php $s=$_SERVER['REQUEST_URI'];
+            $s=explode('/',$s);
+            $d="";
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
+                echo ".";
+            }?>./blogPage">BLOGS</a>
       </div>
     </div>
     <div class="footer__policies">
@@ -52,37 +57,37 @@
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/ship-del-policy">shipping & delivery policy</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/refund-policy">refund policy</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/disclaimer">disclaimer</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/terms-conditions">terms & conditions</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/privacy-policy">privacy policy</a>
         <a href="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage' ){
                 echo ".";
             }?>./pages/legal">legal policy</a>
       </div>
@@ -93,7 +98,7 @@
         <form method="post" action="<?php $s=$_SERVER['REQUEST_URI'];
             $s=explode('/',$s);
             $d="";
-            if($s[count($s)-2]=='pages'){
+            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
                 echo ".";
             }?>./pages/subscribe?url=<?php echo $_SERVER['REQUEST_URI'];?>">
           <input name="u_name" type='text' placeholder='YOUR NAME' />

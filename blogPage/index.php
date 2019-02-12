@@ -30,9 +30,7 @@
 </head>
 <body>
 	<div class="main-container">
-		<script>
-			new Siema();
-		</script>
+		
 		<!-- MySQL connector --!>
 		<?php
 			include "../includes/mysql_connect.php";
