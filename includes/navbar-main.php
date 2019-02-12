@@ -2,7 +2,7 @@
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
-if($s[count($s)-2]=='pages'){
+if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
     $d=$d.".";
 }
 //MySQL connector

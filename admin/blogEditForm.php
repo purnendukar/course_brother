@@ -102,16 +102,7 @@ else
                           </td>
                             <?php echo"</tr>";}
                             ?>
-                        </table><!--
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Edit</label>
-                      <input type="email" class="form-control" placeholder="Add Option">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Edit</label>
-                      <input type="text" class="form-control" placeholder="Add Option">
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-primary">Submit</button> -->
+                        </table>
                   </form>
               </div>
             </div>
