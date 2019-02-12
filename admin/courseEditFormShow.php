@@ -205,10 +205,6 @@ else
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Description</label>
-                      <?php $str="asd asdfg s, df "; $t=urlencode($str);
-                        echo $t."<br/>";
-                        echo urldecode($t);
-                        ?>
                       <input name="c_desc" type="text" class="form-control" value="<?php echo urldecode($conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['overview']); ?>" required>
                     </div>
                     <div class="form-group">
