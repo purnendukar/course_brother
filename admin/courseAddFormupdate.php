@@ -14,7 +14,7 @@ if($conn->query("UPDATE `full_detail` SET `fees`=".$fees.",`duration`=".$duratio
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
     if($conn->query("UPDATE `about_course` SET `overview`='".$desc."', `structure`='".$sem_struc."' where id=".$id)){
         if($conn->query("UPDATE `fee_structure` SET `structure`='".$fees_struc."' WHERE id=".$id)){
-            $row=$conn->query("select * from full_detail where id=".$id)->fetch_assoc();;
+            $row=$conn->query("select * from full_detail where id=".$id)->fetch_assoc();
             $u_id=$row['u_id'];
             $c_id=$row['c_id'];
             $u_name=$conn->query("SELECT * FROM `universities` where u_id=".$u_id)->fetch_assoc()['u_name'];
