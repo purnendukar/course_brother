@@ -1,8 +1,14 @@
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else
+  ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Blogs</title>
 	<link rel="stylesheet" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -57,7 +63,6 @@
 						<p>Contrary to popular belief, Lorem Ipsum is not.</p>
 						<button class="siema__image__button">Read</button>
 					</div>
-					
 				</div>
 				<div class="siema__image">
 					<img src="images/image2.jpeg" alt="">
@@ -130,7 +135,6 @@
 				</div>
 			</div>
 		</div>
-	<script src="app.js"></script>
 		<!-- FOOTER -->
 		<?php include '../includes/footer.php' ?>
 		<!-- /FOOTER -->
@@ -146,7 +150,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
   <!-- WOW JS -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js'></script>
-    <script src='../js/navbar.js'></script>
+	<script src='../js/navbar.js'></script>
+	
+    <script src="../js/preloader.js"></script>
     <script>
     setInterval(function(){
         var t = parseInt(Math.random()*10000000);
@@ -162,6 +168,6 @@
         });
     }, 1000);
     </script>
-    <script src="../js/preloader.js"></script>
+	<script src="app.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const mySiema = new Siema({
+var mySiema = new Siema({
     duration: 500,
     loop: true,
     easing: 'ease-out',
