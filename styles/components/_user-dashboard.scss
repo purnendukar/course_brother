@@ -1,0 +1,593 @@
+// User Dashboard Styling
+.user_dashboard {
+
+  $dashboardGrey: #979797;
+
+  width: 100%;
+  height: auto;
+
+  .dashboard__header {
+
+    width: 100%;
+    height: 55rem;
+    display: flex;
+    flex-direction: column;
+
+    &__bg {
+
+      position: relative;
+      width: 100%;
+      height: 50%;
+      position: relative;
+      background: linear-gradient(to right, transparentize($blush-pink, 0.15) 60%, transparentize(black, 0.4)), url('http://yesofcorsa.com/wp-content/uploads/2017/11/Students-Wallpaper-Background-1024x682.jpg');
+      background: {
+        position: center;
+        size: cover;
+      }
+
+      &__circle {
+        width: 18rem;
+        height: 18rem;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 2.5px solid white;
+        position: absolute;
+        bottom: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &__info {
+
+        width: 85%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: -0.5rem;
+
+        &__id {
+          padding: 0.8rem 2rem 1.1rem 2rem;
+          border: 2px solid white;
+          color: white;
+          font-size: 1.3rem;
+          cursor: pointer;
+          border-radius: 0.5rem;
+          transition: 0.2s;
+          &:hover {
+            color: $rusty-red;
+            background-color: white;
+          }
+        }
+
+        &__appendix {
+          display: flex;
+          &__item {
+            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 1.5rem;
+            }
+            p {
+              padding-left: 0.5rem;
+              color: white;
+              font-size: 1.2rem;
+              font-weight: $medium;
+            }
+          }
+        }
+
+      }
+
+    }
+
+    &__main {
+
+      width: 85%;
+      margin: 0 auto;
+      height: 50%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        position: absolute;
+        height: 15rem;
+        width: 15rem;
+        border-radius: 50%;
+        left: 50%;
+        top: -21%;
+        transform: translateX(-50%);
+      }
+
+      // Main Header Info
+      &__info {
+
+        width: 100%;
+        margin-top: 17rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__media {
+
+          width: 15%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &__item {
+            text-align: center;
+            i {
+              line-height: 4.5rem;
+              height: 4.5rem;
+              width: 4.5rem;
+              transition: 0.2s;
+            }
+            &:nth-child(1) {
+              i {
+                border-radius: 50%;
+                color: #55ACEE;
+                border: 2px solid #55ACEE;
+                &:hover {
+                  color: white;
+                  background-color: #55ACEE;
+                  border: 2px solid #55ACEE;
+                }
+              }
+            }
+            &:nth-child(2) {
+              i {
+                border-radius: 50%;
+                color: #3B5999;
+                border: 2px solid #3B5999;
+                &:hover {
+                  color: white;
+                  background-color: #3B5999;
+                  border: 2px solid #3B5999;
+                }
+              }
+            }
+            &:nth-child(3) {
+              i {
+                border-radius: 50%;
+                color: #DD4B39;
+                border: 2px solid #DD4B39;
+                &:hover {
+                  color: white;
+                  background-color: #DD4B39;
+                  border: 2px solid #DD4B39;
+                }
+              }
+            }
+          }
+
+        }
+
+        &__personal {
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          &__name {
+            color: #384047;
+            font-weight: $semiBold;
+            font-size: 2rem;
+            margin: 0 0 1.8rem 0;
+          }
+
+          &__occupation {
+            margin: 0 0 1rem 0;
+            color: $blush-pink;
+            font-weight: $medium;
+            font-size: 1.4rem;
+          }
+
+          &__email {
+            color: #8d8d8d;
+            margin: 0;
+            font-weight: $medium;
+          }
+
+        }
+
+        &__cv {
+          width: 15%;
+          button {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background-color: white;
+            border: 2px solid $blush-pink;
+            border-radius: 0.5rem;
+            color: lighten($blush-pink, 10%);
+            font-weight: $semiBold;
+            font-size: 1.4rem;
+            transition: 0.3s;
+            cursor: pointer;
+            &:hover {
+              border: 2px solid lighten($blush-pink, 10%);
+              background-color: lighten($blush-pink, 10%);
+              color: white;
+            }
+          }
+        }
+
+      }
+
+      
+
+      &__navbar {
+
+        margin-top: 8rem;
+        padding: 3rem;
+        box-shadow: 0 0 3px 1px #00000042;
+        border-radius: 0.5rem;
+        box-sizing: border-box; 
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 0;
+
+        &--fixed {
+          position: fixed;
+          width: 100vw;
+          height: 5rem;
+          left: 0;
+          top: 6.3rem;
+          background-color: white;
+        }
+
+        ul {
+
+          width: 70%;
+          display: flex;
+          justify-content: space-between;
+
+          a:link, a:visited, a:active {
+            text-decoration: none;
+            color: $dashboardGrey;
+          }
+
+          .dashboard__navbar--active a {
+            color: lighten($blush-pink, 10%);
+          }
+
+          li {
+            list-style-type: none;
+            font-weight: $semiBold;
+            font-size: 1.4rem;
+            cursor: pointer;
+            position: relative;
+          }
+
+          li.dashboard__navbar--active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            transform: scaleX(1.2);
+            bottom: -2.35rem;
+            height: 0.17rem;
+            background-color: $blush-pink;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  // Dashboard Content
+  .dashboard__content {
+
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem; 
+
+    &__skills {
+
+      width: 67%;
+
+      // Dashboard About
+      &__about {
+        h3 {
+          font-weight: $semiBold;
+        }
+        p {
+          font-weight: $medium;
+          color: #949494;
+          line-height: 2rem;
+          font-size: 1.35rem;
+        }
+      }
+
+      // Dashboard Education
+      &__education {
+
+        margin-top: 2rem;
+
+        h3 {
+          font-weight: $semiBold;
+        }
+
+        &__item {
+
+          display: flex;
+          margin-top: 2rem;
+
+          img {
+            width: 4.5rem;
+            height: 4.5rem;
+            padding-right: 2rem;
+          }
+
+          &__content {
+
+            display: flex;
+            flex-direction: column;
+
+            h6 {
+              margin: 0;
+              font-size: 1.3rem;
+              font-weight: $semiBold;
+              color: darken($dashboardGrey, 10%);
+            }
+
+            &__degree {
+              display: flex;
+              align-items: center;
+              margin-top: 1rem; 
+              h5 {
+                margin: 0;
+                font-size: 1.6rem;
+                color: $blush-pink;
+              }
+              h6 {
+                color: $dashboardGrey;
+                font-size: 1.5rem;
+                font-weight: $medium;
+                padding-left: 1rem;
+              }
+            }
+
+            p {
+              font-size: 1.4rem;
+              font-weight: $medium;
+              color: $dashboardGrey;
+              line-height: 2rem;
+            }
+
+          }
+
+        }
+
+      }
+
+      // Dashboard Experience and Work
+      &__workexp {
+
+        margin-top: 2rem;
+
+        h3 {
+          font-weight: $semiBold;
+        }
+
+        &__item {
+
+          display: flex;
+          justify-content: space-between;
+          margin-top: 2rem;
+
+          &__circle {
+            width: 1.3rem;
+            height: 1.3rem;
+            border: 2px solid lighten($blush-pink, 10%);
+            background-color: white;
+            border-radius: 50%;
+            margin-left: 2rem;
+          }
+
+          &__content {
+
+            width: 91%;
+
+            h6 {
+              margin: 0;
+              margin-top: 1rem;
+              font-size: 1.3rem;
+              font-weight: $semiBold;
+              color: $dashboardGrey;
+            }
+
+            &__work {
+              display: flex;
+              align-items: center;
+              h5 {
+                margin: 0;
+                font-size: 1.6rem;
+                color: $blush-pink;
+              }
+              h6 {
+                margin: 0;
+                color: darken($dashboardGrey, 10%);
+                font-size: 1.6rem;
+                font-weight: $medium; 
+                padding-left: 1rem;
+              }
+            }
+
+            p {
+              font-size: 1.4rem;
+              font-weight: $medium;
+              color: $dashboardGrey;
+              line-height: 2rem;
+            }
+
+          }
+
+        }
+
+      }
+
+      // Dashboard Professional Skills
+      &__proskills {
+
+        margin-bottom: 3rem;
+
+        h3 {
+          font-weight: $semiBold;
+        }
+
+        &__items {
+          display: flex;
+        }
+
+        &__item {
+          display: flex;
+          align-items: center;
+          padding-right: 2rem;
+          height: 2rem;
+          i {
+            color: $blush-pink;
+          }
+          h6 {
+            font-size: 1.4rem;
+            padding-left: 0.8rem;
+            font-weight: $medium;
+            color: darken($dashboardGrey, 5%);
+          }
+        }
+
+      }
+
+      // Dashboard Awards
+      &__awards {
+
+        margin-top: 2rem;
+
+        h3 {
+          font-weight: $semiBold;
+        }
+
+        &__item {
+
+          display: flex;
+          justify-content: space-between;
+          margin-top: 2rem;
+
+          &__circle {
+            width: 1.3rem;
+            height: 1.3rem;
+            border: 2px solid lighten($blush-pink, 10%);
+            background-color: white;
+            border-radius: 50%;
+            margin-left: 2rem;
+          }
+
+          &__content {
+
+            width: 91%;
+
+            h6 {
+              margin: 0;
+              margin-top: 1rem;
+              font-size: 1.3rem;
+              font-weight: $semiBold;
+              color: $dashboardGrey;
+            }
+
+            &__work {
+              display: flex;
+              align-items: center;
+              h5 {
+                margin: 0;
+                font-size: 1.6rem;
+                color: $blush-pink;
+              }
+            }
+
+            p {
+              font-size: 1.4rem;
+              font-weight: $medium;
+              color: $dashboardGrey;
+              line-height: 2rem;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+  
+    &__overview {
+
+      width: 33%;
+      padding-left: 4rem;
+
+      h3 {
+        font-weight: $medium;
+        font-size: 1.6rem;
+      }
+
+      &__container {
+        width: 100%;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.267);
+        padding: 2rem 2rem 0.5rem 2rem;
+        box-sizing: border-box;
+      }
+
+      &__item {
+
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        padding-left: 0.5rem;
+
+        i {
+          color: $blush-pink;
+          font-size: 3rem;
+          height: 4rem;
+          width: 4rem;
+        }
+
+        &__content {
+          padding-left: 2rem;
+          padding-top: 1.4rem;
+          h5 {
+            margin: 0;
+            color: #222222;
+            &:nth-child(2) {
+              color: $dashboardGrey;
+              font-size: 1.4rem;
+              font-weight: $medium;
+              padding-top: 0.6rem;
+            }
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}
