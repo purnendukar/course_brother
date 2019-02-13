@@ -46,6 +46,7 @@
       }
     ?>
     <?php $user=$conn->query("SELECT * FROM `register_user` WHERE email='".$_COOKIE['email']."'")->fetch_assoc(); ?>
+    <?php $user_info=$conn->query("select * from user_info where email='".$_COOKIE['email']."'")->fetch_assoc();?>
     <!-- USER_DASHBOARD -->
     <div class="user_dashboard">
 
@@ -63,12 +64,12 @@
             <div class="dashboard__header__bg__info__appendix">
               <div class="dashboard__header__bg__info__appendix__item">
                 <img src="../assets/svg/Icons/white/maps-and-flags.svg" alt="Location Icon" />
-                <p>Kolkata, West Bengal</p>
+                <p><?php echo $user['city'];?></p>
               </div>
 
               <div class="dashboard__header__bg__info__appendix__item">
-                <img src="../assets/svg/Icons/white/stopwatch.svg" alt="Location Icon" />
-                <p>Member Since 2016</p>
+                <img src="<?php if(isset($user_info['img_src'])){echo $user_info['img_src'];}else{echo "../assets/svg/Icons/white/stopwatch.svg";}?>" alt="Location Icon" />
+                <p>Member Since <?php $since=new DateTime($user['created']); echo $since->format("Y");?></p>
               </div>
             </div>
 
@@ -92,7 +93,7 @@
             </div>
             <div class="dashboard__header__main__info__personal">
               <h4 class='dashboard__header__main__info__personal__name'><?php echo $user['f_name']." ".$user['l_name']; ?></h4>
-              <h5 class="dashboard__header__main__info__personal__occupation">Magician</h5>
+              <h5 class="dashboard__header__main__info__personal__occupation"><?php if(isset($user_info['occupation'])){echo ucwords($user_info['occupation']);}?></h5>
               <h5 class='dashboard__header__main__info__personal__email'><?php echo $user['email'];?></h5>
             </div>
             <div class="dashboard__header__main__info__cv">
@@ -117,7 +118,7 @@
 
       <!-- DASHBOARD__CONTENT -->
       <div class="dashboard__content">
-        <?php $user_info=$conn->query("select * from user_info where email='".$_COOKIE['email']."'")->fetch_assoc();?>
+        
         <!-- DASHBOARD_SKILLS -->
         <div class="dashboard__content__skills">
 
