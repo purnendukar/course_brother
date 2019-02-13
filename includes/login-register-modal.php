@@ -54,6 +54,7 @@ function login(){
         complete: function (data) {
             if(data.responseText=='1'){
                 alert("Loged In");
+                window.location.href="<?php echo $d ?>./pages/user-dashboard";
             }else{
                 console.log(data.responseText);
                 alert(data.responseText);

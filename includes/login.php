@@ -8,6 +8,7 @@ $pass=$_POST['pass'];
 $email=$_POST['email'];
 
 if($conn->query("select * from register_user where email='".$email."' and pass='".$pass."'")->fetch_assoc()){
+    setcookie("email",$email,time()+43200,"/");
     echo "1";
 }else{
     echo "Incorrect Email-id or Password";

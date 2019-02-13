@@ -33,16 +33,19 @@
 			include "../includes/mysql_connect.php";
 			$conn=connect_mysql();
 		?>
-
+    <!-- LOGIN_REGISTER_MODALS -->
+    <?php include '../includes/login-register-modal.php' ?>
+    <!-- /LOGIN_REGISTER_MODALS -->
     <!-- NAVBAR_SCROLL -->
     <?php include '../includes/navbar-main.php' ?>
     <!-- /NAVBAR_SCROLL -->
 
-    <!-- LOGIN_REGISTER_MODALS -->
-    <?php include '../includes/login-register-modal.php' ?>
-    <!-- /LOGIN_REGISTER_MODALS -->
-
-
+    <?php 
+      if(!(isset($_COOKIE['email']))){
+        header("Location:../index.php");
+      }
+    ?>
+    <?php $user=$conn->query("SELECT * FROM `register_user` WHERE email='".$_COOKIE['email']."'")->fetch_assoc(); ?>
     <!-- USER_DASHBOARD -->
     <div class="user_dashboard">
 
@@ -73,7 +76,7 @@
           
         </div>
         <div class="dashboard__header__main">
-          <img src="" alt="Student Image" />
+          <img src="../assets/svg/Icons/white/user.svg" alt="Student Image" />
           <div class="dashboard__header__main__info">
 
             <div class="dashboard__header__main__info__media">
@@ -88,9 +91,9 @@
               </div>
             </div>
             <div class="dashboard__header__main__info__personal">
-              <h4 class='dashboard__header__main__info__personal__name'>Lionel Messi</h4>
+              <h4 class='dashboard__header__main__info__personal__name'><?php echo $user['f_name']." ".$user['l_name']; ?></h4>
               <h5 class="dashboard__header__main__info__personal__occupation">Magician</h5>
-              <h5 class='dashboard__header__main__info__personal__email'>leomessi@magician.com</h5>
+              <h5 class='dashboard__header__main__info__personal__email'><?php echo $user['email'];?></h5>
             </div>
             <div class="dashboard__header__main__info__cv">
               <button>Download CV &nbsp; <i class='fa fa-arrow-down'></i></button>
@@ -114,33 +117,34 @@
 
       <!-- DASHBOARD__CONTENT -->
       <div class="dashboard__content">
-
+        <?php $user_info=$conn->query("select * from user_info where email='".$_COOKIE['email']."'")->fetch_assoc();?>
         <!-- DASHBOARD_SKILLS -->
         <div class="dashboard__content__skills">
 
           <div id='CandidateAbout' class="dashboard__content__skills__about">
             <h3>Candidate's About</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rem quo hic facere, dignissimos dolorem. Ipsam, qui ipsum officiis cupiditate iure quis nam voluptas, reprehenderit enim expedita repellendus debitis doloribus aliquam necessitatibus asperiores voluptates. Harum fuga adipisci deleniti consectetur labore?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, quo!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nemo ipsam ut, numquam adipisci ad unde vitae laborum architecto. Laboriosam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus.</p>
+            <p><?php echo $user_info['about']; ?></p>
           </div>
 
           <div id='Education' class="dashboard__content__skills__education">
 
             <h3>Education</h3>
-
+            <?php $user_edu=$conn->query("SELECT * FROM `user_education` where email='".$_COOKIE['email']."'");
+            while($edu_row=$user_edu->fetch_assoc()){
+            ?>
             <div class="dashboard__content__skills__education__item">
               <img src="../assets/svg/Icons/red/students-cap.svg" alt="Graduation Hat" />
               <div class="dashboard__content__skills__education__item__content">
-                <h6>2012 - 2014</h6>
+                <h6><?php echo $edu_row['join_year'];?> - <?php echo $edu_row['complete_year'];?></h6>
                 <div class="dashboard__content__skills__education__item__content__degree">
-                  <h5>College of the Greats</h5>
-                  <h6>Masters in magic</h6>
+                  <h5><?php echo $edu_row['organisation'];?></h5>
+                  <h6><?php echo $edu_row['degree'];?></h6>
                 </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, soluta distinctio? Sed nostrum officia, voluptatem saepe ex earum veniam cum!</p>
+                <p><?php echo $edu_row['about'];?></p>
               </div>
             </div>
-
-            <div class="dashboard__content__skills__education__item">
+            <?php } ?>
+            <!-- <div class="dashboard__content__skills__education__item">
               <img src="../assets/svg/Icons/red/graduate-diploma.svg" alt="Graduation Hat" />
               <div class="dashboard__content__skills__education__item__content">
                 <h6>2009 - 2012</h6>
@@ -150,37 +154,29 @@
                 </div>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, soluta distinctio? Sed nostrum officia, voluptatem saepe ex earum veniam cum!</p>
               </div>
-            </div>
+            </div> -->
 
           </div>
 
           <div id='WorkExperience' class="dashboard__content__skills__workexp">
 
             <h3>Work & Experience</h3>
-
+            <?php $user_exp=$conn->query("SELECT * FROM `user_work_exp` where email='".$_COOKIE['email']."'");
+            while($exp_row=$user_exp->fetch_assoc()){
+            ?>
             <div class="dashboard__content__skills__workexp__item">
               <div class="dashboard__content__skills__workexp__item__circle"></div>
               <div class="dashboard__content__skills__workexp__item__content">
                 <div class="dashboard__content__skills__workexp__item__content__work">
-                  <h5>Magician</h5>
-                  <h6>FC Barcelona</h6>
+                  <h5><?php echo $exp_row['position']?></h5>
+                  <h6><?php echo $exp_row['company_name']?></h6>
                 </div>
-                <h6>2000 - 2099</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi veritatis. Asperiores ipsa est quo placeat maxime vel laudantium non!</p>
+                <h6><?php echo $exp_row['start_date']?> - <?php echo $exp_row['end_date']?></h6>
+                <p><?php echo $exp_row['about_work'];?></p>
               </div>
             </div>
-            
-            <div class="dashboard__content__skills__workexp__item">
-              <div class="dashboard__content__skills__workexp__item__circle"></div>
-              <div class="dashboard__content__skills__workexp__item__content">
-                <div class="dashboard__content__skills__workexp__item__content__work">
-                  <h5>Control Freak</h5>
-                  <h6>Argentina</h6>
-                </div>
-                <h6>2010 - 2019</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi veritatis. Asperiores ipsa est quo placeat maxime vel laudantium non!</p>
-              </div>
-            </div>  
+            <?php } ?>
+             
 
           </div>
 
@@ -189,20 +185,14 @@
             <h3>Professional Skills</h3>
 
             <div class="dashboard__content__skills__proskills__items">
+              <?php $temp=explode(",",$user_info['skills']);
+              for($i=0;$i<count($temp);$i++){
+              ?>
               <div class="dashboard__content__skills__proskills__item">
                 <i class="fas fa-award"></i>
-                <h6>Magic</h6>
+                <h6><?php echo $temp[$i];?></h6>
               </div>
-              
-              <div class="dashboard__content__skills__proskills__item">
-                <i class="fas fa-award"></i>
-                <h6>Control</h6>
-              </div>
-
-              <div class="dashboard__content__skills__proskills__item">
-                <i class="fas fa-award"></i>
-                <h6>Balance</h6>
-              </div>
+              <?php } ?>
             </div>
 
           </div>
@@ -210,28 +200,20 @@
           <div id='Awards' class="dashboard__content__skills__awards">
 
             <h3>Awards</h3>
-
+            <?php $user_award=$conn->query("select * from user_award where email='".$_COOKIE['email']."'");
+            while($award_row=$user_award->fetch_assoc()){
+            ?>
             <div class="dashboard__content__skills__awards__item">
               <div class="dashboard__content__skills__awards__item__circle"></div>
               <div class="dashboard__content__skills__awards__item__content">
                 <div class="dashboard__content__skills__awards__item__content__work">
-                  <h5>Top Scorer La Liga</h5>
+                  <h5><?php echo $award_row['award'];?></h5>
                 </div>
-                <h6>JAN 2019</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi veritatis. Asperiores ipsa est quo placeat maxime vel laudantium non!</p>
+                <h6><?php echo $award_row['award_date'];?></h6>
+                <p><?php echo $award_row['about'];?></p>
               </div>
             </div>
-            
-            <div class="dashboard__content__skills__awards__item">
-              <div class="dashboard__content__skills__awards__item__circle"></div>
-              <div class="dashboard__content__skills__awards__item__content">
-                <div class="dashboard__content__skills__awards__item__content__work">
-                  <h5>Most assists in La Liga</h5>
-                </div>
-                <h6>FEB 2019</h6>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, commodi veritatis. Asperiores ipsa est quo placeat maxime vel laudantium non!</p>
-              </div>
-            </div>  
+            <?php } ?>
 
           </div>
 
@@ -249,7 +231,7 @@
               <i class='fas fa-sliders-h'></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Experience</h5>
-                <h5>5 - 10 Years</h5>
+                <h5><?php echo $user_info['experience']?></h5>
               </div>
             </div>
 
@@ -257,7 +239,7 @@
               <i class='fas fa-hourglass-half'></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Age</h5>
-                <h5>31 Years</h5>
+                <h5><?php $now=new DateTime(); $dob=new DateTime($user_info['dob']); echo $now->diff($dob)->y;?></h5>
               </div>
             </div>
             
@@ -281,7 +263,7 @@
               <i class="fas fa-transgender"></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Gender</h5>
-                <h5>Male</h5>
+                <h5><?php echo ucwords($user_info['gender'])?></h5>
               </div>
             </div>
 
@@ -289,7 +271,7 @@
               <i class="fas fa-language"></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Language</h5>
-                <h5>Spanish, English</h5>
+                <h5><?php echo ucwords($user_info['language'])?></h5>
               </div>
             </div>
 
@@ -326,6 +308,7 @@
   <!-- CUSTOM JS -->
   <script src='../js/navbar.js'></script>
   <script src='../js/userDashboard.js'></script>
+  <script src="../js/preloader.js"></script>
 
 </body>
 </html> 

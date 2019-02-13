@@ -23,7 +23,7 @@ $conn=connect_mysql();
       </div>
 
         <!-- new end -->
-
+      <?php if(!(isset($_COOKIE['email']))){?>
       <div class="navbar_main__appendix__login">
         <span><img src="<?php echo $d?>./assets/svg/Icons/red/log-in.svg"  alt="icon"/></span>
         <h5>login</h5>
@@ -33,7 +33,7 @@ $conn=connect_mysql();
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" alt="icon" /></span>
         <h5>register</h5>
       </div>
-
+      <?php } ?>
       <div class="navbar_main__appendix__cart">
         <h5>cart</h5>
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/shopping-cart.svg" alt="icon" /></span>
