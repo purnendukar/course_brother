@@ -104,7 +104,7 @@ $('.back-to-top').click(() => {
 });
 
 
-
+try{
 // For Login Modal Display
 const loginButton = document.querySelector('.navbar_main__appendix__login');
 const loginModal = document.querySelector('.login_modal');
@@ -160,7 +160,9 @@ loginHereButton.addEventListener('click', () => {
   loginModal.classList.add('login_modal--active');
   registerModal.classList.remove('register_modal--active');
 });
-
+}catch(err){
+  
+}
 
 // For Navbar Item Dropdown
 const navbarList = document.querySelectorAll('.navbar_main__courses__item');
