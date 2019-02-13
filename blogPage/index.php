@@ -106,11 +106,14 @@ else
 				<div class="main__sidebar__side">
 					<h2>Popular Blogs</h2>
 					<?php $res=$conn->query("SELECT * FROM `blogs` ORDER BY `read_count` DESC");
-					$count=0;
-					while($count<5 && $row=$res->fetch_assoc()){
+					$count_t=0;
+					while($row=$res->fetch_assoc()){
+					    if($count_t>=5){
+					        break;
+					    }
 					?>
 						<p style="width:70%; margin-bottom:5px;"><?php echo "<a href='#' style='text-decoration:none;'>".$row['heading']."</a>";?></p>
-					<?php $count+=1; } ?>
+					<?php $count_t += 1; } ?>
 				</div>
 				<hr>
 				<div class="main__sidebar__social">
