@@ -1,9 +1,16 @@
+<?php
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
+  ob_start("ob_gzhandler");
+else
+  ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-control" content="public">
   <link rel="shortcut icon" href="..\assets\images\favicon.png" type="image/png" />
 
   <!-- NORMALIZE CSS -->
@@ -169,10 +176,10 @@
               <div class="dashboard__content__skills__workexp__item__circle"></div>
               <div class="dashboard__content__skills__workexp__item__content">
                 <div class="dashboard__content__skills__workexp__item__content__work">
-                  <h5><?php echo $exp_row['position']?></h5>
-                  <h6><?php echo $exp_row['company_name']?></h6>
+                  <h5><?php echo $exp_row['position'];?></h5>
+                  <h6><?php echo $exp_row['company_name'];?></h6>
                 </div>
-                <h6><?php echo $exp_row['start_date']?> - <?php echo $exp_row['end_date']?></h6>
+                <h6><?php echo $exp_row['start_date'];?> - <?php echo $exp_row['end_date']?></h6>
                 <p><?php echo $exp_row['about_work'];?></p>
               </div>
             </div>
