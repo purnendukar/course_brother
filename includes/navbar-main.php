@@ -2,7 +2,7 @@
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
-if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
+if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart'){
     $d=$d.".";
 }
 //MySQL connector
@@ -34,7 +34,7 @@ $conn=connect_mysql();
         <h5>register</h5>
       </div>
       <?php } ?>
-      <div class="navbar_main__appendix__cart">
+      <div class="navbar_main__appendix__cart" onclick="window.location='<?php echo $d?>./cart'">
         <h5>cart</h5>
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/shopping-cart.svg" alt="icon" /></span>
       </div>

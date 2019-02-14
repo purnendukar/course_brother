@@ -1,0 +1,264 @@
+.container *{
+  margin:0;
+  padding: 0;
+}
+.container {
+  width: 90%;
+  padding-top:20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: auto;
+}
+
+.container .container__header {
+  width: 100%;
+}
+
+.container .container__header button {
+  background-color: #BF1E1E;
+  margin-bottom: 20px;
+  font-size: 17px;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0.2px 0.2px 10px 0 black;
+          box-shadow: 0.2px 0.2px 10px 0 black;
+  outline: none;
+  cursor: pointer;
+}
+
+.container .container__header button:hover {
+  -webkit-box-shadow: 0.5px 0.5px 15px 0 black;
+          box-shadow: 0.5px 0.5px 15px 0 black;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.container .container__header h1 {
+  color: #BF1E1E;
+  margin-bottom: 20px;
+}
+
+.container .container__header hr {
+  width: 100%;
+  height: 5px;
+  background-color: #BF1E1E;
+  border: none;
+}
+
+.container__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.container__main .container__main__courses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 65%;
+  margin-top: 30px;
+}
+
+.container__main .container__main__courses__items {
+  width: 90%;
+  height: 200px;
+  -webkit-box-shadow: 0.1px 0.1px 10px 0 grey;
+          box-shadow: 0.1px 0.1px 10px 0 grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 25px;
+}
+
+.container__main .container__main__courses__items img {
+  border: 2px solid #BF1E1E;
+  width: 160px;
+  height: 160px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container__main .container__main__courses__items__description {
+  width:100%;
+  margin: 20px 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container__main .container__main__courses__items__description h2 {
+  color: #BF1E1E;
+  font-size: 17px;
+}
+
+.container__main .container__main__courses__items__description p {
+  line-height: 20px;
+  font-size: 9px;
+  color: grey;
+}
+
+.container__main .container__main__courses__items__description .container__main__courses__items__description__middle {
+  border-top: 0.5px solid #eff0f2;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid #eff0f2;
+}
+
+.container__main .container__main__courses__items__description .container__main__courses__items__description__middle__time {
+  color: #BF1E1E;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.container__main .container__main__courses__items__description .container__main__courses__items__description__middle__delivery {
+  color: #BF1E1E;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.container__main .container__main__courses__items__description .container__main__courses__items__description__cost {
+  color: #BF1E1E;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.container__main .container__main__courses__items__description .container__main__courses__items__description__cost span {
+  font-size: 10px;
+  font-weight: normal;
+  color: grey;
+}
+
+.container__main button {
+  margin: 0 20px 20px 0 ;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 20px 0 20px;
+  height: 40px;
+  border: none;
+  border-radius: 2px;
+  -webkit-box-shadow: 0.1px 0.1px 5px 0 black;
+          box-shadow: 0.1px 0.1px 5px 0 black;
+  font-size: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background-color: #BF1E1E;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container__main button:hover {
+  -webkit-box-shadow: 0.5px 0.5px 10px 0 black;
+          box-shadow: 0.5px 0.5px 10px 0 black;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.container__main__checkout {
+  background-color: #BF1E1E;
+  margin-top: 30px;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 30px;
+  width: 30%;
+  padding: 20px;
+  height: 250px ;
+  color: white;
+  border-radius: 7px;
+  -webkit-box-shadow: 0.1px 0.1px 10px 0 grey;
+          box-shadow: 0.1px 0.1px 10px 0 grey;
+}
+
+.container__main__checkout .price {
+  font-weight: normal;
+}
+
+.container__main__checkout hr {
+  border-color: #eff0f2;
+  outline: none;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.container__main__checkout .container__main__checkout__column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container__main__checkout .container__main__checkout__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container__main__checkout button {
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0.3px 0.3px 10px 0 black;
+          box-shadow: 0.3px 0.3px 10px 0 black;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 150px;
+  height: 40px;
+  color: #BF1E1E;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  margin-top: 30px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.container__main__checkout button:hover {
+  -webkit-box-shadow: 0.1px 0.1px 20px 0 black;
+          box-shadow: 0.1px 0.1px 20px 0 black;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+/*# sourceMappingURL=styles.css.map */

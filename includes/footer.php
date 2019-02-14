@@ -1,3 +1,11 @@
+<?php
+$s=$_SERVER['REQUEST_URI'];
+$s=explode('/',$s);
+$d="";
+if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart'){
+    $d=$d.".";
+}
+?>
 <!-- FOOTER -->
 <div class="footer">
   <div class="footer__container wow fadeIn">
@@ -19,88 +27,28 @@
     <div class="footer__quick_links">
       <h3>QUICK LINKS</h3>
       <div class="links">
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./">HOME</a>
-          <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/about-us">ABOUT US</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/contact-us">CONTACT US</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/course-results?course=all">COURSES</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./blogPage">BLOGS</a>
+        <a href="<?php echo $d; ?>./">HOME</a>
+        <a href="<?php echo $d; ?>./pages/about-us">ABOUT US</a>
+        <a href="<?php echo $d; ?>./pages/contact-us">CONTACT US</a>
+        <a href="<?php echo $d; ?>./pages/course-results?course=all">COURSES</a>
+        <a href="<?php echo $d; ?>./blogs">BLOGS</a>
       </div>
     </div>
     <div class="footer__policies">
       <h3>our policies</h3>
       <div class="links">
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/ship-del-policy">shipping & delivery policy</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/refund-policy">refund policy</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/disclaimer">disclaimer</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/terms-conditions">terms & conditions</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/privacy-policy">privacy policy</a>
-        <a href="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage' ){
-                echo ".";
-            }?>./pages/legal">legal policy</a>
+        <a href="<?php echo $d; ?>./pages/ship-del-policy">shipping & delivery policy</a>
+        <a href="<?php echo $d; ?>./pages/refund-policy">refund policy</a>
+        <a href="<?php echo $d; ?>./pages/disclaimer">disclaimer</a>
+        <a href="<?php echo $d; ?>./pages/terms-conditions">terms & conditions</a>
+        <a href="<?php echo $d; ?>./pages/privacy-policy">privacy policy</a>
+        <a href="<?php echo $d; ?>./pages/legal">legal policy</a>
       </div>
     </div>
     <div class="footer__newsletter">
       <h3>SUBSCRIBE TO NEWSLETTER</h3>
       <div class="newsletter_form">
-        <form method="post" action="<?php $s=$_SERVER['REQUEST_URI'];
-            $s=explode('/',$s);
-            $d="";
-            if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
-                echo ".";
-            }?>./pages/subscribe?url=<?php echo $_SERVER['REQUEST_URI'];?>">
+        <form method="post" action="<?php echo $d; ?>./pages/subscribe?url=<?php echo $_SERVER['REQUEST_URI'];?>">
           <input name="u_name" type='text' placeholder='YOUR NAME' />
           <br />
           <input name="u_email" type='email' placeholder='YOUR EMAIL' />
