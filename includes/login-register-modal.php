@@ -1,11 +1,13 @@
 <?php ob_start();?>
-<?php 
+<?php
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
-if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogPage'){
+$url="";
+if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart'){
     $d=$d.".";
 }
+
 ?>
 
 <script>
@@ -54,7 +56,13 @@ function login(){
         complete: function (data) {
             if(data.responseText=='1'){
                 alert("Loged In");
-                window.location.href="<?php echo $d ?>./pages/user-dashboard";
+                var now=new Date();
+                 console.log(now.toUTCString());
+                 now.setTime(now.getTime()+ 10*365*24*60*60*1000);
+                 console.log(now.toUTCString());
+                 var tr=now.toUTCString();
+                 document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
+                window.location.href=window.location;
             }else{
                 console.log(data.responseText);
                 alert(data.responseText);

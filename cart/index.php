@@ -48,7 +48,10 @@ else
     <!-- NAVBAR_MAIN -->
     <?php include '../includes/navbar-main.php' ?>
     <!-- /NAVBAR_MAIN -->
-
+    <?php
+      if(isset($_COOKIE['email'])){
+        $cart=$conn->query("select * from user_cart where email='".$_COOKIE['email']."'");
+    ?>
         <div class="container">
             <div class="container__header">
                 <button class="container__back">BACK TO COURSES</button>
@@ -57,67 +60,77 @@ else
             </div>
             <div class="container__main">
                 <div class="container__main__courses">
+                  <?php if($cart->num_rows){
+                    while($cart_row=$cart->fetch_assoc()){
+                    $detail=$conn->query("select * from full_detail where id=".$cart_row['f_id'])->fetch_assoc();
+                  ?>
                     <div class="container__main__courses__items">
-                        <div class="container__main__courses__items__img"><img src="image.jpg" alt=""></div>
+                        <div class="container__main__courses__items__img"><img src="<?php echo ".".$conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['img_src'];?>" alt="University Image"></div>
                         <div class="container__main__courses__items__description">
                             <div class="container__main__courses__items__description__above">
-                                <h2>MBA IN SUPPLY CHAIN</h2>
-                                <p>ASSAM DOWNTOWN UNIVERSITY</p>
+                                <h2><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['c_id'])->fetch_assoc()['sub_name']; ?></h2>
+                                <p><?php echo $conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['u_name']; ?></p>
                             </div>
-                            
+
                             <div class="container__main__courses__items__description__middle">
-                                <p class="container__main__courses__items__description__middle__time">2 YEARS</p>
+                                <p class="container__main__courses__items__description__middle__time"><?php if($detail['duration']>1){echo $detail['duration']." YEARS";}else{echo $detail['duration']." YEAR";}?></p>
                                 <p class="container__main__courses__items__description__middle__delivery">DELIVERY MODE</p>
                             </div>
-                            
-                            <p class="container__main__courses__items__description__cost">Rs 34,000 <span>(annual)</span></p>
-                            
+
+                            <p class="container__main__courses__items__description__cost">Rs <?php echo $detail['fees']; ?> <span>(Full fees)</span></p>
+
                         </div>
                         <button>Remove</button>
                     </div>
-                    <div class="container__main__courses__items">
-                        <div class="container__main__courses__items__img"><img src="image.jpg" alt=""></div>
-                        <div class="container__main__courses__items__description">
-                            <div class="container__main__courses__items__description__above">
-                                <h2>MBA IN SUPPLY CHAIN</h2>
-                                <p >ASSAM DOWNTOWN UNIVERSITY</p>
-                            </div>
-                            
-                            <div class="container__main__courses__items__description__middle">
-                                <p class="container__main__courses__items__description__middle__time">2 YEARS</p>
-                                <p class="container__main__courses__items__description__middle__delivery">DELIVERY MODE</p>
-                                <P>BOOKS, ONLINE SHOPPING</P>
-                            </div>
-                            <div class="container__main__courses__items__description__below">
-                                <p class="container__main__courses__items__description__cost">Rs 34,000 <span>(annual)</span></p>
-                            </div>
-                            
-                        </div>
-                        <button>Remove</button>
-                    </div>
+                  <?php }
+                    }else{
+                    echo "<div style='padding-bottom:100px;'>Cart is Empty</div>";
+                  }?>
                 </div>
                 <div class="container__main__checkout">
+                  <?php if(isset($_COOKIE['email'])){
+                    $cart=$conn->query("select * from user_cart where email='".$_COOKIE['email']."'");
+                    if($cart->num_rows){
+                      $total_=0;
+                  ?>
                     <div class="container__main__checkout__column">
+                      <?php while($cart_row=$cart->fetch_assoc()){
+                      $detail=$conn->query("select * from full_detail where id=".$cart_row['f_id'])->fetch_assoc();
+                      $total_+=$detail['fees'];
+                      ?>
                         <div class="container__main__checkout__row">
-                            <P>MBA IN SUPPLY CHAIN</P>
-                            <P class="price">Rs 34,000</P>
+                            <p><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['c_id'])->fetch_assoc()['sub_name']; ?></p>
+                            <p class="price">Rs <?php echo $detail['fees']; ?></p>
                         </div>
-                        <div class="container__main__checkout__row">
-                            <P>MBA IN HR MANAGEMENT</P>
-                            <P class="price">Rs 23,000</P>
-                        </div>
+                      <?php }?>
                     </div>
+
                     <hr>
                     <div class="container__main__checkout__total">
                         <div class="container__main__checkout__row">
                             <p>GRAND TOTAL</p>
-                            <p class="price">Rs 57,000</p>
+                            <p class="price">Rs <?php echo $total_;?></p>
                         </div>
                     </div>
                     <button>CHECKOUT</button>
+                  <?php }else{
+                      echo "Cart is Empty";
+                    }}?>
                 </div>
             </div>
+
         </div>
+    <?php } else{
+      echo "<script>
+        alert('Login to see your cart');
+        const loginButton = document.querySelector('.navbar_main__appendix__login');
+        const loginModal = document.querySelector('.login_modal');
+        const loginModalBackdrop = document.querySelector('.login_modal__backdrop');
+        const loginModalClose = document.querySelector('.login_modal__close');
+        loginModalBackdrop.classList.add('login_modal__backdrop--active');
+        loginModal.classList.add('login_modal--active');
+      </script>";
+    }?>
     <!-- FOOTER -->
     <?php include '../includes/footer.php' ?>
     <!-- /FOOTER -->
