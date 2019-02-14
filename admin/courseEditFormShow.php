@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,13 +42,13 @@ else
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
+
         <script>
-            
-            
+
+
             function submit_it(){
                 var duration=document.getElementsByName('duration')[0].value;
-                
+
                 var formData = new FormData();
                 formData.append("fees",document.getElementsByName('fees')[0].value);
                 formData.append("duration",duration);
@@ -67,7 +67,7 @@ else
                         alert("Fill semester "+(i+1)+" Structure");
                         return;
                     }
-                    s+=escape(te[i].value);
+                    s+=te[i].value;
                     count++;
                 }
                 }catch(e){
@@ -136,9 +136,9 @@ else
                         }
                     }
                 });
-                
+
             }
-            
+
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -150,7 +150,7 @@ else
 	</head>
 
 	<body class="no-skin">
-		
+
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -163,10 +163,10 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
+
             <?php include('./settingsContainer.php'); ?>
             <div class='row menu-form'>
-                <?php if(isset($_GET['id'])){ 
+                <?php if(isset($_GET['id'])){
                 $id=$_GET['id'];
                 $row=$conn_p->query("select * from full_detail where id=".$id)->fetch_assoc();
                 ?>
@@ -210,7 +210,7 @@ else
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Course Structure</label><br/>
                         <div id="structure_sec">
-                            <?php $c_struc=$conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['structure']; 
+                            <?php $c_struc=$conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['structure'];
                             $c_struc=explode("|",$c_struc);
                             for($i=0;$i<count($c_struc);$i++){
                                 $s=str_replace("<br>","\n",$c_struc[$i]);
@@ -221,7 +221,7 @@ else
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Fee Structure</label><br/>
                         <div id="structure_fees">
-                            <?php $f_struc=$conn_p->query("select * from fee_structure where id=".$row['id'])->fetch_assoc()['structure']; 
+                            <?php $f_struc=$conn_p->query("select * from fee_structure where id=".$row['id'])->fetch_assoc()['structure'];
                             $f_struc=explode(",",$f_struc);
                             for($i=0;$i<count($f_struc);$i++){
                                 echo "<p>Semester ".($i+1)."</p>"."<input type='number' step=\"0.1\" class=\"form-control\" name='sem_fees' value='".$f_struc[$i]."' />";

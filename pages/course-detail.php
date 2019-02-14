@@ -41,7 +41,7 @@ else
   <!-- MAIN_CONTAINER -->
   <div class="main-container">
 
-      <!-- MySQL connector --!>
+      <!-- MySQL connector -->
   <?php
         include "../includes/mysql_connect.php";
         $conn=connect_mysql();
@@ -133,7 +133,7 @@ else
               <h3 class='main_content__title'>COURSE OVERVIEW</h3>
 
               <p class='main_content__body'>
-                <?php echo $row_1['overview']; ?>
+                <?php echo urldecode($row_1['overview']); ?>
               </p>
             </div>
 
@@ -143,13 +143,13 @@ else
                 <?php $sem=explode("|",$row_1['structure']);
                   for($i=0;$i<count($sem);$i++){
                       if($i==0){
-                          ?>1ST SEMESTER <br><br><?php echo $sem[$i]; ?><br><br><br><?php
+                          ?>1ST SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
                       }else if($i==1){
-                          ?>2ND SEMESTER <br><br><?php echo $sem[$i]; ?><br><br><br><?php
+                          ?>2ND SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
                       }else if($i==2){
-                          ?>3RD SEMESTER <br><br><?php echo $sem[$i]; ?><br><br><br><?php
+                          ?>3RD SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
                       }else{
-                          echo ($i+1)?>TH SEMESTER <br><br><?php echo $sem[$i]; ?><br><br><br><?php
+                          echo ($i+1)?>TH SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
                       }
                   }
                   ?>
@@ -241,7 +241,7 @@ else
             <h4 class='related_courses__item__name'><?php $p=$conn->query("select c_name from courses where id=".$row_t['c_id']); echo $p->fetch_assoc()['c_name']; ?> in <?php $p=$conn->query("select sub_name from subject where id=".$row_t['s_id']); echo $p->fetch_assoc()['sub_name']; ?></h4>
             <div class="related_courses__item__info">
               <h4 class='related_courses__item__info__price'>Rs <?php echo $row_t['fees'] ?></h4>
-              <h4 class='related_courses__item__info__duration'><?php echo $row_t['duration']?> YEARS</h4>
+              <h4 class='related_courses__item__info__duration'><?php if($row_t['duration']>1){echo $row_t['duration']." YEARS";}else{echo $row_t['duration']." YEAR";}?>  </h4>
             </div>
           </div>
             <?php } ?>

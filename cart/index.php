@@ -48,16 +48,17 @@ else
     <!-- NAVBAR_MAIN -->
     <?php include '../includes/navbar-main.php' ?>
     <!-- /NAVBAR_MAIN -->
-    <?php
-      if(isset($_COOKIE['email'])){
-        $cart=$conn->query("select * from user_cart where email='".$_COOKIE['email']."'");
-    ?>
+
         <div class="container">
             <div class="container__header">
-                <button class="container__back">BACK TO COURSES</button>
+                <button class="container__back" onclick="window.location.href='../pages/course-results'">BACK TO COURSES</button>
                 <h1> MY COURSE CART</h1>
                 <hr>
             </div>
+            <?php
+              if(isset($_COOKIE['email'])){
+                $cart=$conn->query("select * from user_cart where email='".$_COOKIE['email']."'");
+            ?>
             <div class="container__main">
                 <div class="container__main__courses">
                   <?php if($cart->num_rows){
@@ -99,7 +100,7 @@ else
                       $total_+=$detail['fees'];
                       ?>
                         <div class="container__main__checkout__row">
-                            <p><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['c_id'])->fetch_assoc()['sub_name']; ?></p>
+                            <p><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['c_id'])->fetch_assoc()['sub_name']."<br>(".$conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['u_name'].")"; ?></p>
                             <p class="price">Rs <?php echo $detail['fees']; ?></p>
                         </div>
                       <?php }?>
@@ -118,19 +119,20 @@ else
                     }}?>
                 </div>
             </div>
-
+          <?php } else{
+            echo "<div style='padding:50px; width:100%;'></div>
+            <script>
+              alert('Login to see your cart');
+              const loginButton = document.querySelector('.navbar_main__appendix__login');
+              const loginModal = document.querySelector('.login_modal');
+              const loginModalBackdrop = document.querySelector('.login_modal__backdrop');
+              const loginModalClose = document.querySelector('.login_modal__close');
+              loginModalBackdrop.classList.add('login_modal__backdrop--active');
+              loginModal.classList.add('login_modal--active');
+            </script>";
+          }?>
         </div>
-    <?php } else{
-      echo "<script>
-        alert('Login to see your cart');
-        const loginButton = document.querySelector('.navbar_main__appendix__login');
-        const loginModal = document.querySelector('.login_modal');
-        const loginModalBackdrop = document.querySelector('.login_modal__backdrop');
-        const loginModalClose = document.querySelector('.login_modal__close');
-        loginModalBackdrop.classList.add('login_modal__backdrop--active');
-        loginModal.classList.add('login_modal--active');
-      </script>";
-    }?>
+
     <!-- FOOTER -->
     <?php include '../includes/footer.php' ?>
     <!-- /FOOTER -->
