@@ -1,0 +1,209 @@
+$rustyRed: #de4651;
+$Grapefruit: #ff5e5b;
+$buttonRed: #9b1515;
+$blue: #0E216C;
+$grey: grey;
+$shadowWhite: #FAF6F6;
+$darkGrey: #474849;
+$white: white;
+$pink: #fccfcf;
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal--content {
+  background-color: #fefefe;
+  margin: auto;
+  border-radius: 11px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+ h3{
+     align-self: center;
+ }
+.modal--content__header {
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    background-color: $rustyRed;
+    color: white;
+    h1{
+        margin-left: 20px;
+    }
+    i {
+        margin-right: 20px;
+        font-size: 40px;
+        &:hover {
+          cursor: pointer;
+          font-size: 41px;
+          transition: .2s;
+  
+      }
+    }
+}
+
+.add div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $rustyRed;
+    border-radius: 30px;
+    color: white;
+    font-size: 150px;
+    width: 200px;
+    height: 200px;
+    margin-left: 15%;
+    margin-right: 15%;
+    opacity: 0.6;
+    position: relative;
+    top: 300px;
+    &:hover {
+        cursor: pointer;
+        font-size: 152px;
+        transition: .2s;
+
+    }
+}
+
+div.modal--content__comparisontable{
+    display: flex;
+    flex-direction: column;
+    img{
+      max-width: 100%;
+      width: auto;
+      height: auto;
+    }
+    ul.modal--content__comparisontable__row{
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      width: 100%;
+      flex-wrap: wrap;
+      li{
+        flex: 1;
+        padding: 15px;
+        color: #434647;
+        
+      }
+      .modal--content__comparisontable__row__tag{
+        color: #535b5e;
+        font-weight: bold;
+        border: none;
+        width: 200px;
+        border-bottom: 3px solid $rustyRed;
+      }
+    }
+  }
+  
+  
+  /* very first row */
+  div.modal--content__comparisontable ul.modal--content__comparisontable__row:first-of-type li{
+    
+    text-align: center;
+    border-top: 3px solid $rustyRed;
+    h3 {
+        padding-top: 30%;
+        color: grey;
+        font-size: 27px;
+    }
+  }
+  
+  /* very last row */
+  div.modal--content__comparisontable ul.modal--content__comparisontable__row:last-of-type li{
+    text-align: center;
+    // box-shadow: 0 6px 6px rgba(0,0,0,0.23);
+
+  }
+  
+ 
+  
+  .modal--content__comparisontable__row {
+    button {
+        background-color: $rustyRed;
+        width: 100%;
+        height: 40px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 18px;
+        &:hover {
+            cursor: pointer;
+            font-size: 19px;
+            transition: .2s;
+    
+        }
+    }
+  }
+
+  .modal--content__comparisontable__row__remove i {
+        width: 25px;
+        height: 25px;
+        background-color: $Grapefruit;
+        border-radius: 50%;
+        margin-right: 10px;
+        padding-top: 4px;
+  }
+
+.floating {
+  height: 15vh;
+  background-color: #fff;
+  box-shadow: 5px 0px 5px 0px grey;
+  p{
+    color: grey;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 1%;
+  }
+
+  .floating__form {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin-left: 1%;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  input {
+    border: none;
+    background-color:  rgb(196, 196, 196);
+    color: grey;
+    width: 25%;
+    padding: 5px;
+    
+  }
+  button {
+    border: none;
+    outline: none;
+    background-color: $rustyRed;
+    color: white;
+    width: 16%;
+  }
+  
+}

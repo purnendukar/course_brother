@@ -27,6 +27,9 @@ else
 
   <!-- CUSTOM CSS -->
   <link rel='stylesheet' href='../styles/style.css' />
+  <link rel="stylesheet" href="./comparePage/styles.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  
 
     <script>
         function filter(a){
@@ -141,6 +144,11 @@ else
       <!-- NEWSLETTER_POPUP -->
     <?php include '../includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
+
+    <!--COMPARE PAGE-->
+    <?php include "./comparePage/index.php"; ?>
+    <!--COMPARE PAGE-->
+
 
     <!-- MAIN_CONTAINER -->
     <main class="main_container">
@@ -517,7 +525,7 @@ else
             </div>
             <div class="course_results__item__buttons">
               <button onclick=<?php echo "\"window.location.href='./course-detail?id=".$row_2['id']."'\""; ?>  >go to course</button>
-              <button>add to compare</button>
+              <button onclick="compare_('<?php echo $row_2['id'];?>')">add to compare</button>
             </div>
           </div>
             <?php }
@@ -592,5 +600,7 @@ else
     </script>
 
     <script src="../js/preloader.js"></script>
+
+    <script src="./comparePage/app.js"></script>
 </body>
 </html>
