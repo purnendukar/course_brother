@@ -57,7 +57,6 @@ else
                   sum+=parseInt(t[i].innerHTML.replace("Rs ",''));
                 }
               }
-              alert(sum);
               document.getElementById("grand_total").innerHTML="Rs "+sum;
           }
         });
