@@ -29,6 +29,40 @@ else
 
     <!-- CUSTOM CSS -->
     <link rel='stylesheet' href='../styles/style.css' />
+    <script>
+      function remove_cart(a){
+        var f=new FormData();
+        f.append('id',a);
+        $.ajax({
+          url: "./cart_remove.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            console.log(data.responseText);
+            if(data.responseText=='1'){
+              alert("Item Removed");
+              document.getElementById('item'+a).style.display="none";
+              document.getElementById('item_checkout'+a).style.display="none";
+            }else{
+              alert("Something went wrong submit again");
+            }
+            var t= document.getElementsByClassName("price");
+              var sum=0;
+            var temp=document.getElementsByClassName("container__main__checkout__row");
+              for(var i=0;i<t.length-1;i++){
+                if(temp[i].style.display!="none"){
+                  sum+=parseInt(t[i].innerHTML.replace("Rs ",''));
+                }
+              }
+              alert(sum);
+              document.getElementById("grand_total").innerHTML="Rs "+sum;
+          }
+        });
+      }
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -65,11 +99,11 @@ else
                     while($cart_row=$cart->fetch_assoc()){
                     $detail=$conn->query("select * from full_detail where id=".$cart_row['f_id'])->fetch_assoc();
                   ?>
-                    <div class="container__main__courses__items">
+                    <div class="container__main__courses__items" id="item<?php echo $cart_row['id'];?>">
                         <div class="container__main__courses__items__img"><img src="<?php echo ".".$conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['img_src'];?>" alt="University Image"></div>
                         <div class="container__main__courses__items__description">
                             <div class="container__main__courses__items__description__above">
-                                <h2><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['c_id'])->fetch_assoc()['sub_name']; ?></h2>
+                                <h2><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['s_id'])->fetch_assoc()['sub_name']; ?></h2>
                                 <p><?php echo $conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['u_name']; ?></p>
                             </div>
 
@@ -81,7 +115,7 @@ else
                             <p class="container__main__courses__items__description__cost">Rs <?php echo $detail['fees']; ?> <span>(Full fees)</span></p>
 
                         </div>
-                        <button>Remove</button>
+                        <button onclick="remove_cart('<?php echo $cart_row['id'];?>')">Remove</button>
                     </div>
                   <?php }
                     }else{
@@ -99,8 +133,8 @@ else
                       $detail=$conn->query("select * from full_detail where id=".$cart_row['f_id'])->fetch_assoc();
                       $total_+=$detail['fees'];
                       ?>
-                        <div class="container__main__checkout__row">
-                            <p><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['c_id'])->fetch_assoc()['sub_name']."<br>(".$conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['u_name'].")"; ?></p>
+                        <div class="container__main__checkout__row" id="item_checkout<?php echo $cart_row['id'];?>">
+                            <p><?php echo $conn->query("select * from courses where id=".$detail['c_id'])->fetch_assoc()['c_name']." IN ".$conn->query("select * from subject where id=".$detail['s_id'])->fetch_assoc()['sub_name']."<br>(".$conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['u_name'].")"; ?></p>
                             <p class="price">Rs <?php echo $detail['fees']; ?></p>
                         </div>
                       <?php }?>
@@ -110,7 +144,7 @@ else
                     <div class="container__main__checkout__total">
                         <div class="container__main__checkout__row">
                             <p>GRAND TOTAL</p>
-                            <p class="price">Rs <?php echo $total_;?></p>
+                            <p class="price" id="grand_total">Rs <?php echo $total_;?></p>
                         </div>
                     </div>
                     <button>CHECKOUT</button>
