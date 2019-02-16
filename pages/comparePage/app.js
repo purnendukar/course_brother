@@ -46,7 +46,6 @@ function compare_(a) {
         processData: false,
         data: f,
         complete: function (data) {
-            console.log(data.responseText);
             if(data.responseText.indexOf("`")){
               info=data.responseText.split("`");
               add_remove_[i].innerHTML='<button class="modal--content__comparisontable__row__remove" onclick="remove_compare(\''+i+'\')" ><i class="far fa-trash-alt"></i>REMOVE</i></button><img class="c_univ" src=".'+info[0].toString()+'" />';

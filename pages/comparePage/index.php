@@ -52,7 +52,7 @@
 
 						<ul class="modal--content__comparisontable__row">
 							<li class="modal--content__comparisontable__row__tag">FEE TYPE</li>
-							<li name="pay_type">Annual Payment, One Time Payment</li>
+							<li name="pay_type"><!--Annual Payment, One Time Payment--></li>
 							<li name="pay_type"></li>
 							<li name="pay_type"></li>
 							<li name="pay_type"></li>
