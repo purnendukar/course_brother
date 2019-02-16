@@ -29,7 +29,7 @@ else
   <link rel='stylesheet' href='../styles/style.css' />
   <link rel="stylesheet" href="./comparePage/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  
+
 
     <script>
         function filter(a){
@@ -172,7 +172,7 @@ else
             </form>
             <div class="filter_results__item__check">
                 <?php $res_t=$conn->query("select * from courses"); while($row_t=$res_t->fetch_assoc()){ ?>
-              <input class="c_id" type="checkbox" value="<?php echo $row_t['id']; ?>" onclick="<?php echo "filter('".$_GET['course']."');" ?>"> <?php echo $row_t['c_name']; ?> <br><?php } ?>
+              <input class="c_id" type="checkbox" value="<?php echo $row_t['id']; ?>" onclick="<?php echo "filter('".$row_t['c_name']."');" ?>"> <?php echo $row_t['c_name']; ?> <br><?php } ?>
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@ else
                 <?php $sql_3="select * from universities";
                     $res_3=$conn->query($sql_3);
                     while($row_3=$res_3->fetch_assoc()){
-                        ?><input class="univ_id" type="checkbox" value="<?php echo $row_3['u_id'] ?>" onclick="<?php echo "filter('".$_GET['course']."');" ?>"/> <?php echo $row_3['u_name']; ?><br/><?php
+                        ?><input class="univ_id" type="checkbox" value="<?php echo $row_3['u_id'] ?>" onclick="<?php echo "filter('".$row_3['u_name']."');" ?>"/> <?php echo $row_3['u_name']; ?><br/><?php
                     }
                 ?>
             </div>
@@ -210,7 +210,7 @@ else
                 <?php $sql_3="select * from subject";
                     $res_3=$conn->query($sql_3);
                     while($row_3=$res_3->fetch_assoc()){
-                        ?><input class="sub" type="checkbox" value="<?php echo $row_3['id'] ?>" onclick="<?php echo "filter('".$_GET['course']."');" ?>"/> <?php echo $row_3['sub_name']; ?><br/><?php
+                        ?><input class="sub" type="checkbox" value="<?php echo $row_3['id'] ?>" onclick="<?php echo "filter('".$row_3['sub_name']."');" ?>"/> <?php echo $row_3['sub_name']; ?><br/><?php
                     }
                 ?>
             </div>
@@ -248,7 +248,7 @@ else
               <?php $sql_3="select * from affiliation";
                     $res_3=$conn->query($sql_3);
                     while($row_3=$res_3->fetch_assoc()){
-                        ?><input class="affiliate"  type="checkbox" value="<?php echo $row_3['id'];?>" onclick="<?php echo "filter('".$_GET['course']."');" ?>" /> <?php echo $row_3['a_name']; ?><br/><?php
+                        ?><input class="affiliate"  type="checkbox" value="<?php echo $row_3['id'];?>" onclick="<?php echo "filter('".$row_3['a_name']."');" ?>" /> <?php echo $row_3['a_name']; ?><br/><?php
                     }
                 ?>
             </div>
@@ -299,7 +299,7 @@ else
                     $res=$conn->query("select * from delivery_mode");
                     while($row=$res->fetch_assoc()){
                 ?>
-              <input class="d_mode" value="<?php echo $row['id']; ?>" type="checkbox" onclick="<?php echo "filter('".$_GET['course']."');" ?>" > <?php echo $row['d_mode']; ?><br>
+              <input class="d_mode" value="<?php echo $row['id']; ?>" type="checkbox" onclick="<?php echo "filter('".$row['d_mode']."');" ?>" > <?php echo $row['d_mode']; ?><br>
                 <?php }?>
             </div>
           </div>

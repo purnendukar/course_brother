@@ -30,7 +30,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
         <a href="<?php echo $d; ?>./">HOME</a>
         <a href="<?php echo $d; ?>./pages/about-us">ABOUT US</a>
         <a href="<?php echo $d; ?>./pages/contact-us">CONTACT US</a>
-        <a href="<?php echo $d; ?>./pages/course-results?course=all">COURSES</a>
+        <a href="<?php echo $d; ?>./pages/course-results">COURSES</a>
         <a href="<?php echo $d; ?>./blogs">BLOGS</a>
       </div>
     </div>
