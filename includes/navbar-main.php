@@ -2,7 +2,7 @@
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
-if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart'){
+if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart' || $s[count($s)-2]=='forms'){
     $d=$d.".";
 }
 //MySQL connector

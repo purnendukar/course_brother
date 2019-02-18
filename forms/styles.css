@@ -1,0 +1,162 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#tab-container {
+  background-color: #e6e8ed;
+  text-align: center;
+  width: 75%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  margin-top: 30px;
+}
+
+#tab-container form {
+  padding: 30px;
+}
+
+#tab-container ul {
+  height: 90px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #de4651;
+}
+
+#tab-container li {
+  width: 30%;
+  font-size: 25px;
+  list-style-type: none;
+  padding: 30px;
+  border-right: 2px solid white;
+}
+
+#tab-container li a {
+  text-decoration: none;
+  color: white;
+}
+
+#tab-container li a:hover {
+  color: #e6e8ed;
+}
+
+#tab-container #date {
+  font-size: 20px;
+  color: grey;
+}
+
+#tab-container .name {
+  width: 38%;
+}
+
+#tab-container .lastname {
+  width: 40%;
+}
+
+#tab-container .course select {
+  font-size: 20px;
+  min-width: 45%;
+}
+
+.form_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.form_form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 30px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form_form div .salutation {
+  width: 6%;
+}
+
+.radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+select {
+  width: 22%;
+  height: 50px;
+  padding: 5px;
+  padding-left: 10px;
+  border: 2px solid #de4651;
+  border-radius: 5px;
+  font-size: 20px;
+  color: grey;
+  outline: none;
+}
+
+.input_ {
+  outline: none;
+  font-size: 20px;
+  width: 30%;
+  height: 40px;
+  padding: 5px;
+  border: 2px solid #de4651;
+  border-radius: 5px;
+  color: grey;
+}
+
+#step3 select {
+  width: 45%;
+}
+
+#step3 input {
+  width: 45%;
+}
+
+.radio2 {
+  width: 40%;
+}
+
+.form_form button {
+  border: none;
+  outline: none;
+  width: 100px;
+  height: 40px;
+  color: white;
+  background-color: #de4651;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+#step2 .next {
+  position: relative;
+  left: 90%;
+}
+/*# sourceMappingURL=styles.css.map */
