@@ -199,6 +199,136 @@ else
       }
       
     }
+    function work_edit(a,b){
+      var work_i=document.getElementsByClassName("work_i"+b);
+      var work=document.getElementsByClassName("work_"+b);
+      var f = new FormData();
+      f.append('id',b);
+      if(a=='edit'){
+        for(var i=0 ;i<work_i.length;i++){
+          work_i[i].style.display="";
+        }
+        for(var i=0;i<work.length;i++){
+          work[i].style.display="none";
+        }
+
+      }else if(a=='update'){
+        f.append('position',work_i[0].value);
+        f.append('company',work_i[1].value);
+        f.append('start_',work_i[3].value);
+        f.append('end_',work_i[4].value);
+        f.append('about',work_i[5].value);
+        about.style.display="block";
+        $.ajax({
+          url: "./user_dashboard/work_update.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert("Data Updated Successfully");
+              for(var i=0 ;i<work_i.length;i++){
+                work_i[i].style.display="none";
+              }
+              for(var i=0;i<work.length;i++){
+                work[i].style.display="";
+              }
+              work[0].innerHTML=work_i[0].value;
+              work[1].innerHTML=work_i[1].value;
+              work[2].innerHTML=work_i[3].value+" - "+work_i[4].value;
+              work[3].innerHTML=work_i[5].value;
+            }else{
+              alert("Data Not Updated Try Again");
+              console.log(data.responseText);
+            }
+          }
+        });
+      }else{
+        $.ajax({
+          url: "./user_dashboard/work_delete.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert("Data deleted Successfully");
+              document.getElementById("work_sec"+b).style.display="none";
+            }else{
+              alert("Data Not deleted Try Again");
+              console.log(data.responseText);
+            }
+          }
+        });
+      }
+    }
+    function add_work(a){
+      var work_i=document.getElementsByClassName("work_i");
+      if(a=="add"){
+        document.getElementById("work_sec").style.display="";
+      }else if(a=="cancel"){
+        for(var i=0;i<work_i.length;i++){
+          work_i[i].value="";
+        }
+        document.getElementById("work_sec").style.display="none";
+      }else{
+        var done=false;
+        var f=new FormData();
+        f.append('position',work_i[0].value);
+        f.append('company',work_i[1].value);
+        f.append('start_',work_i[2].value);
+        f.append('end_',work_i[3].value);
+        f.append('about',work_i[4].value);
+        about.style.display="block";
+        $.ajax({
+          url: "./user_dashboard/work_insert.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText.indexOf("success") !== false){
+              alert("Data Updated Successfully");
+              for(var i=0 ;i<work_i.length;i++){
+                work_i[i].style.display="none";
+              }
+              var id=data.responseText.replace("success","");
+              document.getElementById("work_sec_have")+='
+              <div id="work_sec'+id+'" class="dashboard__content__skills__workexp__item">
+                <div class="dashboard__content__skills__workexp__item__circle"></div>
+                <div class="dashboard__content__skills__workexp__item__content">
+                  <div class="dashboard__content__skills__workexp__item__content__work">
+                    <h5 class="work_'+id+'"><?php echo urldecode($exp_row['position']);?></h5>
+                    <h6 class="work_'+id+'"><?php echo urldecode($exp_row['company_name']);?></h6>
+                    <input class="work_i'+id+'" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['position']);?>"/>
+                    <input class="work_i'+id+'" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['company_name']);?>"/>
+                  </div>
+                  <h6 class="work_'+id+'"><?php echo $exp_row['start_date'];?> - <?php echo $exp_row['end_date']?></h6>
+                  <div class="work_i'+id+'" style="display:none;">
+                    <input class="work_i'+id+'" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['start_date'];?>"/> - <input class="work_i<?php echo $exp_row['id']?>" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['end_date']?>"/>
+                  </div>
+                  <p class="work_'+id+'"><?php echo urldecode($exp_row['about_work']);?></p>
+                  <textarea class="work_i'+id+'" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo urldecode($exp_row['about_work']);?></textarea>
+                  <div style="margin-top:15px;">
+                    <a class="work_'+id+'" href="javascript:work_edit(\'edit\',\''+id+'\');" style="text-decoration:none;">Edit</a>
+                    <a class="work_'+id+'" href="javascript:work_edit('delete',\''+id+'\');" style="text-decoration:none;margin-left:15px;">Delete</a>
+                    <button onclick="work_edit(\'update\',\''+id+'\');" class="work_i'+id+'" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button>
+                  </div>
+                </div>
+              </div>
+              ';
+            }else{
+              alert("Data Not Updated Try Again");
+              console.log(data.responseText);
+            }
+          }
+        });
+      }
+    }
   </script>
 
   <title>CourseBrother.com | User Dashboard</title>
@@ -350,8 +480,8 @@ else
                 </div>
                 <textarea placeholder="About the Course" class="add_edu" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"></textarea>
                 <div style="margin-top:15px;">
-                  <a id="edit_qual" href="javascript:add_cancel('add');" style="text-decoration:none;">Add it</a>
-                  <a id="delete_qual" href="javascript:add_cancel('delete');" style="text-decoration:none;margin-left:15px;">Cancel</a>
+                  <a href="javascript:add_cancel('add');" style="text-decoration:none;">Add it</a>
+                  <a href="javascript:add_cancel('delete');" style="text-decoration:none;margin-left:15px;">Cancel</a>
                 </div>
               </div>
             </div>
@@ -361,23 +491,52 @@ else
           <div id='WorkExperience' class="dashboard__content__skills__workexp">
 
             <h3>Work & Experience</h3>
-            <?php $user_exp=$conn->query("SELECT * FROM `user_work_exp` where email='".$_COOKIE['email']."'");
-            while($exp_row=$user_exp->fetch_assoc()){
-            ?>
-            <div class="dashboard__content__skills__workexp__item">
+            <div id="work_sec_have">
+              <?php $user_exp=$conn->query("SELECT * FROM `user_work_exp` where email='".$_COOKIE['email']."'");
+              while($exp_row=$user_exp->fetch_assoc()){
+              ?>
+              <div id="work_sec<?php echo $exp_row['id'];?>" class="dashboard__content__skills__workexp__item">
+                <div class="dashboard__content__skills__workexp__item__circle"></div>
+                <div class="dashboard__content__skills__workexp__item__content">
+                  <div class="dashboard__content__skills__workexp__item__content__work">
+                    <h5 class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['position']);?></h5>
+                    <h6 class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['company_name']);?></h6>
+                    <input class="work_i<?php echo $exp_row['id']?>" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['position']);?>"/>
+                    <input class="work_i<?php echo $exp_row['id']?>" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['company_name']);?>"/>
+                  </div>
+                  <h6 class="work_<?php echo $exp_row['id']?>"><?php echo $exp_row['start_date'];?> - <?php echo $exp_row['end_date']?></h6>
+                  <div class="work_i<?php echo $exp_row['id']?>" style="display:none;">
+                    <input class="work_i<?php echo $exp_row['id']?>" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['start_date'];?>"/> - <input class="work_i<?php echo $exp_row['id']?>" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['end_date']?>"/>
+                  </div>
+                  <p class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['about_work']);?></p>
+                  <textarea class="work_i<?php echo $exp_row['id']?>" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo urldecode($exp_row['about_work']);?></textarea>
+                  <div style="margin-top:15px;">
+                    <a class="work_<?php echo $exp_row['id']?>" href="javascript:work_edit('edit','<?php echo $exp_row['id'];?>');" style="text-decoration:none;">Edit</a>
+                    <a class="work_<?php echo $exp_row['id']?>" href="javascript:work_edit('delete','<?php echo $exp_row['id'];?>');" style="text-decoration:none;margin-left:15px;">Delete</a>
+                    <button onclick="work_edit('update','<?php echo $exp_row['id'];?>');" class="work_i<?php echo $exp_row['id']?>" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </div>
+            <div id="work_sec" class="dashboard__content__skills__workexp__item" style="display:none">
               <div class="dashboard__content__skills__workexp__item__circle"></div>
               <div class="dashboard__content__skills__workexp__item__content">
                 <div class="dashboard__content__skills__workexp__item__content__work">
-                  <h5><?php echo $exp_row['position'];?></h5>
-                  <h6><?php echo $exp_row['company_name'];?></h6>
+                  <input class="work_i" type="text" placeholder="Position" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
+                  <input class="work_i" type="text" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
                 </div>
-                <h6><?php echo $exp_row['start_date'];?> - <?php echo $exp_row['end_date']?></h6>
-                <p><?php echo $exp_row['about_work'];?></p>
+                <div>
+                  <input class="work_i" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/> - <input class="work_i" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
+                </div>
+                <textarea class="work_i" placeholder="About Job" class="add_edu" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo urldecode($exp_row['about_work']);?></textarea>
+                <div style="margin-top:15px;">
+                  <a class="work_i" href="javascript:add_work('add_it');" style="text-decoration:none;">Add it</a>
+                  <a class="work_i" href="javascript:add_work('cancel');" style="text-decoration:none;margin-left:15px;">Cancel</a>
+                </div>
               </div>
             </div>
-            <?php } ?>
-             
-
+            <a id="add_work" style="text-decoration:none;margin:10px 0px;display:block;" href="javascript:add_work('add')">Add +</a>
           </div>
 
           <div id='ProfessionalSkills' class="dashboard__content__skills__proskills">
