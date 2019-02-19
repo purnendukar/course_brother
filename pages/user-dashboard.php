@@ -153,6 +153,52 @@ else
         document.getElementById("add_edu").style.display="none";
       }
     }
+    function add_cancel(a){
+      var done=false;
+      var input_= document.getElementsByClassName("add_edu");
+      if(a=='add'){
+        var f = new FormData();
+        f.append('join_',input_[0].value);
+        f.append('end_',input_[1].value);
+        f.append('univ_',input_[2].value);
+        f.append('qual_',input_[3].value);
+        f.append('about',input_[4].value);
+        about.style.display="block";
+        $.ajax({
+          url: "./user_dashboard/add_edu.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText.indexOf("success") !== false){
+              done=true;
+              var id=data.responseText.replace('success','');
+              document.getElementById("education_main").innerHTML+='<div id="edu_'+id+'" class="dashboard__content__skills__education__item"><img src="../assets/svg/Icons/red/students-cap.svg" alt="Graduation Hat" /><div class="dashboard__content__skills__education__item__content"><h6 class="non_edit'+id+'">'+input_[0].value+' - '+input_[1].value+'</h6>                  <div><input class="edit'+id+'" type="number" min="1940" max="2099" value="'+input_[0].value+'" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/><p class="edit'+id+'" style="display:none">-</p><input class="edit'+id+'" type="number" min="1940" max="2099" value="'+input_[1].value+'" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/></div>                 <div class="dashboard__content__skills__education__item__content__degree">                    <h5 class="non_edit'+id+'">'+input_[2].value+'</h5>                    <h6 class="non_edit'+id+'">'+input_[3].value+'</h6>                  </div>                  <div>                    <input class="edit'+id+'" type="text" placeholder="Universities" value="'+input_[2].value+'" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/>                    <input class="edit'+id+'" type="text" placeholder="Qualification" value="'+input_[3].value+'" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/>                  </div>                  <p class="non_edit'+id+'">'+input_[4].value+'</p>                  <textarea class="edit'+id+'" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;display:none;resize:vertical;">'+input_[4].value+'</textarea>                  <div><a id="edit_qual'+id+'" href="javascript:qual_edit(\'edit\',\''+id+'\');" style="text-decoration:none;">Edit</a><a id="delete_qual'+id+'" href="javascript:qual_edit(\'delete\',\''+id+'\');" style="text-decoration:none;margin-left:15px;">Delete</a><button onclick="qual_edit(\'update\',\''+id+'\');" id="update_qual'+id+'" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button></div></div></div>';
+              alert("Data Updated Successfully");
+              if(done==true){
+                document.getElementById("edu_").style.display="none";
+                document.getElementById("add_edu").style.display="";
+                for(var i=0;i<input_.length;i++){
+                  input_[i].value="";
+                }
+              }
+            }else{
+              alert("Data Not Updated Try Again");
+              console.log(data.responseText);
+            }
+          }
+        });
+      }else{
+        document.getElementById("edu_").style.display="none";
+        document.getElementById("add_edu").style.display="";
+        for(var i=0;i<input_.length;i++){
+          input_[i].value="";
+        }
+      }
+      
+    }
   </script>
 
   <title>CourseBrother.com | User Dashboard</title>
@@ -266,44 +312,46 @@ else
           <div id='Education' class="dashboard__content__skills__education">
 
             <h3>Education</h3>
-            <?php $user_edu=$conn->query("SELECT * FROM `user_education` where email='".$_COOKIE['email']."'");
-            while($edu_row=$user_edu->fetch_assoc()){
-            ?>
-            <div id="edu_<?php echo $edu_row['id'];?>" class="dashboard__content__skills__education__item">
-              <img src="../assets/svg/Icons/red/students-cap.svg" alt="Graduation Hat" />
-              <div class="dashboard__content__skills__education__item__content">
-                <h6 class="non_edit<?php echo $edu_row['id']; ?>"><?php echo $edu_row['join_year'];?> - <?php echo $edu_row['complete_year'];?></h6>
-                <div><input class="edit<?php echo $edu_row['id']; ?>" type="number" min="1940" max="2099" value="<?php echo $edu_row['join_year'];?>" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/><p class="edit<?php echo $edu_row['id']; ?>" style="display:none">-</p><input class="edit<?php echo $edu_row['id']; ?>" type="number" min="1940" max="2099" value="<?php echo $edu_row['complete_year'];?>" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/></div>
-                <div class="dashboard__content__skills__education__item__content__degree">
-                  <h5 class="non_edit<?php echo $edu_row['id']; ?>"><?php echo $edu_row['organisation'];?></h5>
-                  <h6 class="non_edit<?php echo $edu_row['id']; ?>"><?php echo $edu_row['degree'];?></h6>
-                </div>
-                <div>
-                  <input class="edit<?php echo $edu_row['id']; ?>" type="text" placeholder="Universities" value="<?php echo $edu_row['organisation'];?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/>
-                  <input class="edit<?php echo $edu_row['id']; ?>" type="text" placeholder="Qualification" value="<?php echo $edu_row['degree'];?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/>
-                </div>
-                <p class="non_edit<?php echo $edu_row['id']; ?>"><?php echo $edu_row['about'];?></p>
-                <textarea class="edit<?php echo $edu_row['id']; ?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;display:none;resize:vertical;"><?php echo $edu_row['about'];?></textarea>
-                <div>
-                  <a id="edit_qual<?php echo $edu_row['id']?>" href="javascript:qual_edit('edit','<?php echo $edu_row['id'];?>');" style="text-decoration:none;">Edit</a>
-                  <a id="delete_qual<?php echo $edu_row['id']?>" href="javascript:qual_edit('delete','<?php echo $edu_row['id'];?>');" style="text-decoration:none;margin-left:15px;">Delete</a>
-                  <button onclick="qual_edit('update','<?php echo $edu_row['id'];?>');" id="update_qual<?php echo $edu_row['id']?>" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button>
+            <div id="education_main">
+              <?php $user_edu=$conn->query("SELECT * FROM `user_education` where email='".$_COOKIE['email']."'");
+              while($edu_row=$user_edu->fetch_assoc()){
+              ?>
+              <div id="edu_<?php echo $edu_row['id'];?>" class="dashboard__content__skills__education__item">
+                <img src="../assets/svg/Icons/red/students-cap.svg" alt="Graduation Hat" />
+                <div class="dashboard__content__skills__education__item__content">
+                  <h6 class="non_edit<?php echo $edu_row['id']; ?>"><?php echo $edu_row['join_year'];?> - <?php echo $edu_row['complete_year'];?></h6>
+                  <div><input class="edit<?php echo $edu_row['id']; ?>" type="number" min="1940" max="2099" value="<?php echo $edu_row['join_year'];?>" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/><p class="edit<?php echo $edu_row['id']; ?>" style="display:none">-</p><input class="edit<?php echo $edu_row['id']; ?>" type="number" min="1940" max="2099" value="<?php echo $edu_row['complete_year'];?>" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/></div>
+                  <div class="dashboard__content__skills__education__item__content__degree">
+                    <h5 class="non_edit<?php echo $edu_row['id']; ?>"><?php echo urldecode($edu_row['organisation']);?></h5>
+                    <h6 class="non_edit<?php echo $edu_row['id']; ?>"><?php echo urldecode($edu_row['degree']);?></h6>
+                  </div>
+                  <div>
+                    <input class="edit<?php echo $edu_row['id']; ?>" type="text" placeholder="Universities" value="<?php echo urldecode($edu_row['organisation']);?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/>
+                    <input class="edit<?php echo $edu_row['id']; ?>" type="text" placeholder="Qualification" value="<?php echo urldecode($edu_row['degree']);?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;display:none;"/>
+                  </div>
+                  <p class="non_edit<?php echo $edu_row['id']; ?>"><?php echo urldecode($edu_row['about']);?></p>
+                  <textarea class="edit<?php echo $edu_row['id']; ?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;display:none;resize:vertical;"><?php echo urldecode($edu_row['about']);?></textarea>
+                  <div>
+                    <a id="edit_qual<?php echo $edu_row['id']?>" href="javascript:qual_edit('edit','<?php echo $edu_row['id'];?>');" style="text-decoration:none;">Edit</a>
+                    <a id="delete_qual<?php echo $edu_row['id']?>" href="javascript:qual_edit('delete','<?php echo $edu_row['id'];?>');" style="text-decoration:none;margin-left:15px;">Delete</a>
+                    <button onclick="qual_edit('update','<?php echo $edu_row['id'];?>');" id="update_qual<?php echo $edu_row['id']?>" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button>
+                  </div>
                 </div>
               </div>
+              <?php } ?>
             </div>
-            <?php } ?>
             <div id="edu_" class="dashboard__content__skills__education__item" style="display:none;">
               <img src="../assets/svg/Icons/red/students-cap.svg" alt="Graduation Hat" />
               <div class="dashboard__content__skills__education__item__content">
-                <div><input placeholder="Join Year" class="add_edu" type="number" min="1940" max="2099" value="<?php echo $edu_row['join_year'];?>" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/> - <input class="add_edu" placeholder="End Year" type="number" min="1940" max="2099" value="<?php echo $edu_row['complete_year'];?>" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/></div>
+                <div><input placeholder="Join Year" class="add_edu" type="number" min="1940" max="2099" value="" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/> - <input class="add_edu" placeholder="End Year" type="number" min="1940" max="2099" value="" style="width:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/></div>
                 <div>
-                  <input class="add_edu" type="text" placeholder="Universities" value="<?php echo $edu_row['organisation'];?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
-                  <input class="add_edu" type="text" placeholder="Qualification" value="<?php echo $edu_row['degree'];?>" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
+                  <input class="add_edu" type="text" placeholder="Universities" value="" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
+                  <input class="add_edu" type="text" placeholder="Qualification" value="" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
                 </div>
-                <textarea placeholder="About the Course" class="add_edu" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo $edu_row['about'];?></textarea>
+                <textarea placeholder="About the Course" class="add_edu" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"></textarea>
                 <div style="margin-top:15px;">
-                  <a id="edit_qual" href="javascript:qual_edit('edit','<?php echo $edu_row['id'];?>');" style="text-decoration:none;">Add it</a>
-                  <a id="delete_qual" href="javascript:qual_edit('delete','<?php echo $edu_row['id'];?>');" style="text-decoration:none;margin-left:15px;">Cancel</a>
+                  <a id="edit_qual" href="javascript:add_cancel('add');" style="text-decoration:none;">Add it</a>
+                  <a id="delete_qual" href="javascript:add_cancel('delete');" style="text-decoration:none;margin-left:15px;">Cancel</a>
                 </div>
               </div>
             </div>
