@@ -34,7 +34,7 @@ else
       var about_input=document.getElementById("about_input");
       var update_about=document.getElementById("update_about");
       var edit_about=document.getElementById("edit_about");
-      
+
       if(a=="edit"){
         about.style.display="none";
         about_input.style.display="block";
@@ -94,7 +94,7 @@ else
         f.append("univ",edit_[3].value);
         f.append("degree",edit_[4].value);
         f.append("about",edit_[5].value);
-        
+
         $.ajax({
           url: "./user_dashboard/edu_update.php",
           type: 'POST',
@@ -197,7 +197,7 @@ else
           input_[i].value="";
         }
       }
-      
+
     }
     function work_edit(a,b){
       var work_i=document.getElementsByClassName("work_i"+b);
@@ -269,11 +269,13 @@ else
       var work_i=document.getElementsByClassName("work_i");
       if(a=="add"){
         document.getElementById("work_sec").style.display="";
+        document.getElementById("add_work").style.display="none";
       }else if(a=="cancel"){
         for(var i=0;i<work_i.length;i++){
           work_i[i].value="";
         }
         document.getElementById("work_sec").style.display="none";
+        document.getElementById("add_work").style.display="";
       }else{
         var done=false;
         var f=new FormData();
@@ -293,37 +295,56 @@ else
           complete: function (data) {
             if(data.responseText.indexOf("success") !== false){
               alert("Data Updated Successfully");
-              for(var i=0 ;i<work_i.length;i++){
-                work_i[i].style.display="none";
-              }
               var id=data.responseText.replace("success","");
-              document.getElementById("work_sec_have")+='
-              <div id="work_sec'+id+'" class="dashboard__content__skills__workexp__item">
-                <div class="dashboard__content__skills__workexp__item__circle"></div>
-                <div class="dashboard__content__skills__workexp__item__content">
-                  <div class="dashboard__content__skills__workexp__item__content__work">
-                    <h5 class="work_'+id+'"><?php echo urldecode($exp_row['position']);?></h5>
-                    <h6 class="work_'+id+'"><?php echo urldecode($exp_row['company_name']);?></h6>
-                    <input class="work_i'+id+'" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['position']);?>"/>
-                    <input class="work_i'+id+'" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['company_name']);?>"/>
-                  </div>
-                  <h6 class="work_'+id+'"><?php echo $exp_row['start_date'];?> - <?php echo $exp_row['end_date']?></h6>
-                  <div class="work_i'+id+'" style="display:none;">
-                    <input class="work_i'+id+'" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['start_date'];?>"/> - <input class="work_i<?php echo $exp_row['id']?>" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['end_date']?>"/>
-                  </div>
-                  <p class="work_'+id+'"><?php echo urldecode($exp_row['about_work']);?></p>
-                  <textarea class="work_i'+id+'" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo urldecode($exp_row['about_work']);?></textarea>
-                  <div style="margin-top:15px;">
-                    <a class="work_'+id+'" href="javascript:work_edit(\'edit\',\''+id+'\');" style="text-decoration:none;">Edit</a>
-                    <a class="work_'+id+'" href="javascript:work_edit('delete',\''+id+'\');" style="text-decoration:none;margin-left:15px;">Delete</a>
-                    <button onclick="work_edit(\'update\',\''+id+'\');" class="work_i'+id+'" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button>
-                  </div>
-                </div>
-              </div>
-              ';
+              document.getElementById("work_sec_have").innerHTML+='<div id="work_sec'+id+'" class="dashboard__content__skills__workexp__item"><div class="dashboard__content__skills__workexp__item__circle"></div><div class="dashboard__content__skills__workexp__item__content"><div class="dashboard__content__skills__workexp__item__content__work"><h5 class="work_'+id+'">'+work_i[0].value+'</h5><h6 class="work_'+id+'">'+work_i[1].value+'</h6><input class="work_i'+id+'" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[0].value+'"/><input class="work_i'+id+'" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[1].value+'"/></div><h6 class="work_'+id+'">'+work_i[2].value+' - '+work_i[3].value+'</h6><div class="work_i'+id+'" style="display:none;"><input class="work_i'+id+'" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[2].value+'"/> - <input class="work_i'+id+'" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[3].value+'"/></div><p class="work_'+id+'">'+work_i[4].value+'</p><textarea class="work_i'+id+'" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;">'+work_i[4].value+'</textarea><div style="margin-top:15px;"><a class="work_'+id+'" href="javascript:work_edit(\'edit\',\''+id+'\');" style="text-decoration:none;">Edit</a><a class="work_'+id+'" href="javascript:work_edit(\'delete\',\''+id+'\');" style="text-decoration:none;margin-left:15px;">Delete</a><button onclick="work_edit(\'update\',\''+id+'\');" class="work_i'+id+'" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button></div> </div></div>';
+              done=true;
+              if(done){
+                for(var i=0 ;i<work_i.length;i++){
+                  work_i[i].value="";
+                }
+                document.getElementById("add_work").style.display="";
+                document.getElementById("work_sec").style.display="none";
+              }
             }else{
               alert("Data Not Updated Try Again");
               console.log(data.responseText);
+            }
+          }
+        });
+      }
+    }
+    function skill_edit(a){
+      var skill_edit=document.getElementById("skill_edit");
+      var skills=document.getElementById("skills");
+      var skill_input=document.getElementById("skill_input");
+      if(skill_edit.innerHTML=='Edit'){
+        skill_input.style.display="";
+        skill_edit.innerHTML="Update";
+        skills.style.display="none";
+      }else{
+        skill_input.style.display="none";
+        skill_edit.innerHTML="Edit";
+        skills.style.display="";
+        var f=new FormData();
+        f.append('skill',skill_input.value);
+        $.ajax({
+          url: "./user_dashboard/skill_update.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              skills.innerHTML="";
+              var str=skill_input.value.split(",");
+              for(var i=0;i<str.length;i++){
+                skills.innerHTML+='<div class="dashboard__content__skills__proskills__item"><i class="fas fa-award"></i><h6>'+str[i]+'</h6></div>';
+              }
+              alert('Successfully Updated');
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
             }
           }
         });
@@ -334,11 +355,11 @@ else
   <title>CourseBrother.com | User Dashboard</title>
 </head>
 <body>
-  
-  
+
+
   <!-- MAIN_CONTAINER -->
   <div class="main-container">
-    <!-- MySQL connector --!>
+    <!-- MySQL connector -->
 		<?php
 			include "../includes/mysql_connect.php";
 			$conn=connect_mysql();
@@ -350,7 +371,7 @@ else
     <?php include '../includes/navbar-main.php' ?>
     <!-- /NAVBAR_SCROLL -->
 
-    <?php 
+    <?php
       if(!(isset($_COOKIE['email']))){
         header("Location:../index.php");
       }
@@ -384,7 +405,7 @@ else
             </div>
 
           </div>
-          
+
         </div>
         <div class="dashboard__header__main">
           <img src="../assets/svg/Icons/white/user.svg" alt="Student Image" />
@@ -427,7 +448,7 @@ else
 
       <!-- DASHBOARD__CONTENT -->
       <div class="dashboard__content">
-        
+
         <!-- DASHBOARD_SKILLS -->
         <div class="dashboard__content__skills">
 
@@ -485,7 +506,7 @@ else
                 </div>
               </div>
             </div>
-            <a id="add_edu" style="text-decoration:none;margin:10px 0px;display:block;" href="javascript:add_edu()">Add +</a>
+            <a id="add_edu" style="text-decoration:none;margin:10px 0px;" href="javascript:add_edu()">Add +</a>
           </div>
 
           <div id='WorkExperience' class="dashboard__content__skills__workexp">
@@ -536,14 +557,14 @@ else
                 </div>
               </div>
             </div>
-            <a id="add_work" style="text-decoration:none;margin:10px 0px;display:block;" href="javascript:add_work('add')">Add +</a>
+            <a id="add_work" style="text-decoration:none;margin:10px 0px;" href="javascript:add_work('add')">Add +</a>
           </div>
 
           <div id='ProfessionalSkills' class="dashboard__content__skills__proskills">
 
             <h3>Professional Skills</h3>
 
-            <div class="dashboard__content__skills__proskills__items">
+            <div id="skills" class="dashboard__content__skills__proskills__items">
               <?php $temp=explode(",",$user_info['skills']);
               for($i=0;$i<count($temp);$i++){
               ?>
@@ -553,7 +574,10 @@ else
               </div>
               <?php } ?>
             </div>
-
+            <div style="padding-top:20px;">
+              <input type="text" id="skill_input" style="display: none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $user_info['skills'];?>" />
+              <a id="skill_edit" href="javascript:skill_edit();" style="text-decoration:none;">Edit</a>
+            </div>
           </div>
 
           <div id='Awards' class="dashboard__content__skills__awards">
@@ -601,7 +625,7 @@ else
                 <h5><?php $now=new DateTime(); $dob=new DateTime($user_info['dob']); echo $now->diff($dob)->y;?></h5>
               </div>
             </div>
-            
+
             <div class="dashboard__content__overview__item">
               <i class="far fa-money-bill-alt"></i>
               <div class="dashboard__content__overview__item__content">
@@ -644,7 +668,7 @@ else
 
     </div>
     <!-- /USER_DASHBOARD -->
-    
+
 
     <!-- FOOTER -->
     <?php include '../includes/footer.php' ?>
@@ -670,4 +694,4 @@ else
   <script src="../js/preloader.js"></script>
 
 </body>
-</html> 
+</html>
