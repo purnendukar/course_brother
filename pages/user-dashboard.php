@@ -350,6 +350,115 @@ else
         });
       }
     }
+    function award(a,b){
+      var show_=document.getElementsByClassName("award_show"+b);
+      var award_input=document.getElementsByClassName("award_input"+b);
+      var update_=document.getElementById("award_update"+b);
+      var not_update_=document.getElementById("award_not_update"+b);
+      var f=new FormData();
+      f.append('id',b);
+      if(a=="edit"){
+        for(var i=0;i<show_.length;i++){
+          show_[i].style.display="none";
+          award_input[i].style.display="block";
+        }
+        update_.style.display="";
+        not_update_.style.display="none";
+      }else if(a=="delete"){
+        $.ajax({
+          url: "./user_dashboard/award_delete.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert('Successfully Deleted');
+              document.getElementById("award_row"+b).style.display="none";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong! Try Again');
+            }
+          }
+        });
+      }else{
+        f.append('award_',award_input[0].value);
+        f.append('date_',award_input[1].value);
+        f.append('about',award_input[2].value);
+        $.ajax({
+          url: "./user_dashboard/award_update.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert('Successfully Updated');
+              for(var i=0;i<show_.length;i++){
+                show_[i].style.display="";
+                show_[i].innerHTML=award_input[i].value;
+                award_input[i].style.display="none";
+              }
+              update_.style.display="none";
+              not_update_.style.display="";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
+            }
+          }
+        });
+      }
+    }
+    function new_award(a){
+      var award_row=document.getElementById("award_row");
+      var add_new=document.getElementById("new_award");
+      var award_input=document.getElementsByClassName("award_input");
+      if(a=='add'){
+        award_row.style.display="";
+        add_new.style.display="none";
+      }else if(a=='cancel'){
+        award_row.style.display="none";
+        add_new.style.display="";
+        for(var i=0;i<award_input.length;i++){
+          award_input.value="";
+        }
+      }else{
+        var done=false;
+        award_row.style.display="";
+        add_new.style.display="none";
+        var f=new FormData();
+        f.append('award_',award_input[0].value);
+        f.append('date_',award_input[1].value);
+        f.append('about',award_input[2].value);
+        $.ajax({
+          url: "./user_dashboard/award_insert.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText.indexOf("success") !== false){
+              var id=data.responseText.replace("success","");
+              alert('Successfully Updated');
+              document.getElementById("award_sec").innerHTML+='<div id="award_row'+id+'" class="dashboard__content__skills__awards__item"><div class="dashboard__content__skills__awards__item__circle"></div><div class="dashboard__content__skills__awards__item__content"><div class="dashboard__content__skills__awards__item__content__work"><h5 class="award_show'+id+'">'+award_input[0].value+'</h5><input placeholder="Award Name" class="award_input'+id+'" type="text" value="'+award_input[0].value+'" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/></div><h6 class="award_show'+id+'">'+award_input[1].value+'</h6><input placeholder="Award Date" class="award_input'+id+'" type="date" value="'+award_input[1].value+'" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/><p class="award_show'+id+'">'+award_input[2].value+'</p><textarea placeholder="About Award" class="award_input'+id+'" style="display:none;resize:vertical;width:100%;min-height:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;">'+award_input[2].value+'</textarea><div id="award_update'+id+'" style="margin-top:10px;display:none;"><a style="text-decoration:none;" href="javascript:award(\'update\',\''+id+'\')">Update</a></div><div id="award_not_update'+id+'"><a  style="text-decoration:none;margin:10px 10px 10px 0;" href="javascript:award(\'edit\',\''+id+'\')">Edit</a><a style="text-decoration:none;margin:10px;" href="javascript:award(\'delete\',\''+id+'\')">Delete</a></div></div></div>';
+              if(done){
+                for(var i=0;i<award_input.length;i++){
+                  award_input.value="";
+                }
+              }
+              award_row.style.display="none";
+              add_new.style.display="";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
+            }
+          }
+        });
+      }
+    }
   </script>
 
   <title>CourseBrother.com | User Dashboard</title>
@@ -575,7 +684,7 @@ else
               <?php } ?>
             </div>
             <div style="padding-top:20px;">
-              <input type="text" id="skill_input" style="display: none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $user_info['skills'];?>" />
+              <input type="text" id="skill_input" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $user_info['skills'];?>" />
               <a id="skill_edit" href="javascript:skill_edit();" style="text-decoration:none;">Edit</a>
             </div>
           </div>
@@ -583,23 +692,51 @@ else
           <div id='Awards' class="dashboard__content__skills__awards">
 
             <h3>Awards</h3>
-            <?php $user_award=$conn->query("select * from user_award where email='".$_COOKIE['email']."'");
-            while($award_row=$user_award->fetch_assoc()){
-            ?>
-            <div class="dashboard__content__skills__awards__item">
+            <div id="award_sec">
+              <?php $user_award=$conn->query("select * from user_award where email='".$_COOKIE['email']."'");
+              while($award_row=$user_award->fetch_assoc()){
+              ?>
+              <div id="award_row<?php echo $award_row['id'];?>" class="dashboard__content__skills__awards__item">
+                <div class="dashboard__content__skills__awards__item__circle"></div>
+                <div class="dashboard__content__skills__awards__item__content">
+                  <div class="dashboard__content__skills__awards__item__content__work">
+                    <h5 class="award_show<?php echo $award_row['id']; ?>"><?php echo urldecode($award_row['award']);?></h5>
+                    <input placeholder="Award Name" class="award_input<?php echo $award_row['id']; ?>" type="text" value="<?php echo urldecode($award_row['award']);?>" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
+                  </div>
+                  <h6 class="award_show<?php echo $award_row['id']; ?>"><?php echo urldecode($award_row['award_date']);?></h6>
+                  <input placeholder="Award Date" class="award_input<?php echo $award_row['id']; ?>" type="date" value="<?php echo urldecode($award_row['award_date']);?>" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
+                  <p class="award_show<?php echo $award_row['id']; ?>"><?php echo urldecode($award_row['about']);?></p>
+                  <textarea placeholder="About Award" class="award_input<?php echo $award_row['id']; ?>" style="display:none;resize:vertical;width:100%;min-height:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"><?php echo urldecode($award_row['about']);?></textarea>
+                  <div id="award_update<?php echo $award_row['id']; ?>" style="margin-top:10px;display:none;">
+                    <a style="text-decoration:none;" href="javascript:award('update','<?php echo $award_row['id']; ?>')">Update</a>
+                  </div>
+                  <div id="award_not_update<?php echo $award_row['id']; ?>">
+                    <a  style="text-decoration:none;margin:10px 10px 10px 0;" href="javascript:award('edit','<?php echo $award_row['id']; ?>')">Edit</a>
+                    <a style="text-decoration:none;margin:10px;" href="javascript:award('delete','<?php echo $award_row['id']; ?>')">Delete</a>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </div>
+            <div id="award_row" class="dashboard__content__skills__awards__item" style="display:none">
               <div class="dashboard__content__skills__awards__item__circle"></div>
               <div class="dashboard__content__skills__awards__item__content">
                 <div class="dashboard__content__skills__awards__item__content__work">
-                  <h5><?php echo $award_row['award'];?></h5>
+                  <input placeholder="Award Name" class="award_input" type="text" value="" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
                 </div>
-                <h6><?php echo $award_row['award_date'];?></h6>
-                <p><?php echo $award_row['about'];?></p>
+                <input placeholder="Award Date" class="award_input" type="date" value="" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/>
+                <textarea placeholder="About Award" class="award_input" style="resize:vertical;width:100%;min-height:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"></textarea>
+
+                <div id="award_not_update" style="margin-top:10px;">
+                  <a  style="text-decoration:none;margin:10px 10px 10px 0;" href="javascript:new_award('add_it')">Add it</a>
+                  <a style="text-decoration:none;margin:10px;" href="javascript:new_award('cancel')">Cancel</a>
+                </div>
               </div>
             </div>
-            <?php } ?>
-
           </div>
-
+          <div id="new_award" style="margin-top:20px;">
+            <a href="javascript:new_award('add')" style="text-decoration:none;">Add +</a>
+          </div>
         </div>
         <!-- /DASHBOARD_SKILLS -->
 

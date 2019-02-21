@@ -62,7 +62,7 @@ function login(){
                  console.log(now.toUTCString());
                  var tr=now.toUTCString();
                  document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
-                window.location.href=window.location;
+                window.location.href="http://localhost/course_brother/pages/user-dashboard";
             }else{
                 console.log(data.responseText);
                 alert(data.responseText);
