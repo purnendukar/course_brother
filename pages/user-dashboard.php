@@ -446,11 +446,149 @@ else
               document.getElementById("award_sec").innerHTML+='<div id="award_row'+id+'" class="dashboard__content__skills__awards__item"><div class="dashboard__content__skills__awards__item__circle"></div><div class="dashboard__content__skills__awards__item__content"><div class="dashboard__content__skills__awards__item__content__work"><h5 class="award_show'+id+'">'+award_input[0].value+'</h5><input placeholder="Award Name" class="award_input'+id+'" type="text" value="'+award_input[0].value+'" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/></div><h6 class="award_show'+id+'">'+award_input[1].value+'</h6><input placeholder="Award Date" class="award_input'+id+'" type="date" value="'+award_input[1].value+'" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"/><p class="award_show'+id+'">'+award_input[2].value+'</p><textarea placeholder="About Award" class="award_input'+id+'" style="display:none;resize:vertical;width:100%;min-height:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;">'+award_input[2].value+'</textarea><div id="award_update'+id+'" style="margin-top:10px;display:none;"><a style="text-decoration:none;" href="javascript:award(\'update\',\''+id+'\')">Update</a></div><div id="award_not_update'+id+'"><a  style="text-decoration:none;margin:10px 10px 10px 0;" href="javascript:award(\'edit\',\''+id+'\')">Edit</a><a style="text-decoration:none;margin:10px;" href="javascript:award(\'delete\',\''+id+'\')">Delete</a></div></div></div>';
               if(done){
                 for(var i=0;i<award_input.length;i++){
-                  award_input.value="";
+                  document.getElementById("lang").innerHTML=award_input.value="";
                 }
               }
               award_row.style.display="none";
               add_new.style.display="";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
+            }
+          }
+        });
+      }
+    }
+    function edit_language(){
+      var lang_input=document.getElementById("lang_input");
+      var lang_edit=document.getElementById("lang_edit");
+      var lang=document.getElementById("lang");
+      if(lang_input.style.display!="none"){
+        var f=new FormData();
+        f.append('lang',lang_input.value);
+        $.ajax({
+          url: "./user_dashboard/edit_lang.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert('Successfully Updated');
+              lang.innerHTML=lang_input.value;
+              lang_edit.innerHTML="Edit";
+              lang_input.style.display="none";
+              lang.style.display="";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
+            }
+          }
+        });
+      }else{
+        lang_input.style.display="";
+        lang_edit.innerHTML="Update";
+        lang.style.display="none";
+      }
+    }
+    function edit_gender(){
+      var gender_input=document.getElementById("gender_input");
+      var gender_edit=document.getElementById("gender_edit");
+      var gender=document.getElementById("gender");
+      if(gender_input.style.display!="none"){
+        var f=new FormData();
+        f.append('gender',gender_input.value);
+        $.ajax({
+          url: "./user_dashboard/edit_gender.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert('Successfully Updated');
+              gender.innerHTML=gender_input.value;
+              gender_edit.innerHTML="Edit";
+              gender_input.style.display="none";
+              gender.style.display="";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
+            }
+          }
+        });
+      }else{
+        gender_input.style.display="";
+        gender_edit.innerHTML="Update";
+        gender.style.display="none";
+      }
+    }
+    function occu_edit(){
+      var occu=document.getElementsByClassName("occu_i");
+      var occu_edit=document.getElementById("occu_edit");
+      var occu_show=document.getElementById("occu_show");
+      if(occu_show.style.display!="none"){
+        occu_show.style.display="none";
+        occu_edit.style.display="";
+      }else{
+        if(occu[0].value==""){
+          alert("Fill all input");
+          return;
+        }
+        var f=new FormData();
+        f.append('occu',occu[0].value);
+        $.ajax({
+          url: "./user_dashboard/edit_occu.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert('Successfully Updated');
+              occu_show.innerHTML=occu[0].value+' <a href="javascript:occu_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Edit</a>';
+              occu_show.style.display="";
+              occu_edit.style.display="none";
+            }else{
+              console.log(data.responseText);
+              alert('Something went wrong');
+            }
+          }
+        });
+      }
+    }
+    
+    function f_name_edit(){
+      var name=document.getElementsByClassName("name_i");
+      var name_edit=document.getElementById("name_edit");
+      var name_show=document.getElementById("name_show");
+      if(name_show.style.display!="none"){
+        name_show.style.display="none";
+        name_edit.style.display="";
+      }else{
+        if(name[0].value=="" || name[1].value==""){
+          alert("Fill all input");
+          return;
+        }
+        var f=new FormData();
+        f.append('f_name',name[0].value);
+        f.append('l_name',name[1].value);
+        $.ajax({
+          url: "./user_dashboard/edit_name.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText=='1'){
+              alert('Successfully Updated');
+              name_show.innerHTML=name[0].value+" "+name[1].value+' <a href="javascript:f_name_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Edit</a>';
+              name_show.style.display="";
+              name_edit.style.display="none";
             }else{
               console.log(data.responseText);
               alert('Something went wrong');
@@ -532,8 +670,17 @@ else
               </div>
             </div>
             <div class="dashboard__header__main__info__personal">
-              <h4 class='dashboard__header__main__info__personal__name'><?php echo $user['f_name']." ".$user['l_name']; ?></h4>
-              <h5 class="dashboard__header__main__info__personal__occupation"><?php if(isset($user_info['occupation'])){echo ucwords($user_info['occupation']);}?></h5>
+              <div id="name_edit" class='dashboard__header__main__info__personal__name' style="display:none;font-size:1.5rem;">
+                <input class="name_i" placeholder="First Name" type="text" value="<?php echo urldecode($user['f_name']);?>" style="width:120px;padding: 5px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;"/> 
+                <input class="name_i" placeholder="Last Name" type="text" value="<?php echo urldecode($user['l_name']);?>" style="width:120px;padding: 5px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;"/> 
+                <a href="javascript:f_name_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Update</a>
+              </div>
+              <h4 id="name_show" class='dashboard__header__main__info__personal__name'><?php echo urldecode($user['f_name'])." ".urldecode($user['l_name']); ?> <a href="javascript:f_name_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Edit</a></h4>
+              <div id="occu_edit" class='dashboard__header__main__info__personal__name' style="display:none;font-size:1.5rem;">
+                <input class="occu_i" placeholder="First Name" type="text" value="<?php echo urldecode($user_info['occupation']);?>" style="width:120px;padding: 5px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;"/> 
+                <a href="javascript:occu_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Update</a>
+              </div>
+              <h5 id="occu_show" class="dashboard__header__main__info__personal__occupation"><?php if(isset($user_info['occupation'])){echo ucwords(urldecode($user_info['occupation']));}?> <a href="javascript:occu_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Edit</a></h5>
               <h5 class='dashboard__header__main__info__personal__email'><?php echo $user['email'];?></h5>
             </div>
             <div class="dashboard__header__main__info__cv">
@@ -783,7 +930,15 @@ else
               <i class="fas fa-transgender"></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Gender</h5>
-                <h5><?php echo ucwords($user_info['gender'])?></h5>
+                <h5 id="gender"><?php echo ucwords($user_info['gender'])?></h5>
+                <select id="gender_input" style="display:none;padding:5px;margin:3px;border:1px solid #cccccc;border-radius:3px;">
+                  <option value="-">-</option>
+                  <option value="Male" <?php if($user_info['gender']=='male') echo "selected"; ?>>Male</option>
+                  <option value="Female" <?php if($user_info['gender']=='female') echo "selected"; ?>>Female</option>
+                </select>
+                <div style="margin-top:5px;">
+                  <a id="gender_edit" href="javascript:edit_gender();" style="margin-top:20px;text-decoration:none">Edit</a>
+                </div>
               </div>
             </div>
 
@@ -791,7 +946,11 @@ else
               <i class="fas fa-language"></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Language</h5>
-                <h5><?php echo ucwords($user_info['language'])?></h5>
+                <h5 id="lang"><?php echo ucwords(urldecode($user_info['language']))?></h5>
+                <input id="lang_input" type="text" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo ucwords(urldecode($user_info['language']))?>"/>
+                <div style="margin-top:5px;">
+                  <a id="lang_edit" href="javascript:edit_language();" style="margin-top:20px;text-decoration:none">Edit</a>
+                </div>
               </div>
             </div>
 

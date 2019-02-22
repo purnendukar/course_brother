@@ -34,10 +34,21 @@ $conn=connect_mysql();
         <h5>register</h5>
       </div>
       <?php } ?>
-      <div class="navbar_main__appendix__cart" onclick="window.location='<?php echo $d?>./cart'">
+      <div class="navbar_main__appendix__cart" onclick="window.location='<?php echo $d?>./cart'" style="cursor:pointer;">
         <h5>cart</h5>
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/shopping-cart.svg" alt="icon" /></span>
       </div>
+      
+      <?php if(isset($_COOKIE['email'])){?>
+        <div class="navbar_main__appendix__register " style="margin-right:0;margin-left:5rem;" onclick="window.location='<?php echo $d?>./pages/user-dashboard'">
+        <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" alt="icon" /></span>
+        <h5>My Profile</h5>
+      </div>
+      <div class="navbar_main__appendix__login" onclick="window.location='<?php echo $d?>./includes/logout.php'">
+        <span><img src="<?php echo $d?>./assets/svg/Icons/red/log-in.svg"  alt="icon"/></span>
+        <h5>Logout</h5>
+      </div>
+      <?php } ?>
     </div>
 
   </div>
@@ -83,7 +94,6 @@ $conn=connect_mysql();
     <div class="navbar_main__courses__container">
         <!-- dynamically showing menu -->
         <?php
-
             $sql="select * from menu";
             $res=$conn->query($sql);
             while($row=$res->fetch_assoc()){

@@ -1,0 +1,146 @@
+$rustyRed: #de4651;
+$buttonRed: #9b1515;
+$blue: #0E216C;
+$grey: grey;
+$shadowWhite: #FAF6F6;
+$darkGrey: #474849;
+$white: white;
+$pink: #fccfcf;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+#tab-container {
+    background-color: #e6e8ed;
+    text-align: center;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    margin-top: 30px;
+    form{
+        padding: 30px;
+
+    }
+    ul {
+        height:90px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $rustyRed;
+
+    }
+
+    li {
+        width: 30%;
+        font-size: 25px;
+        list-style-type: none;
+        padding: 30px;
+        border-right: 2px solid white;
+        
+        a {
+            text-decoration: none;
+            color: white;
+            &:hover {
+                color: #e6e8ed;;
+            }
+        }
+    }
+
+    #date{
+        font-size: 20px;
+        color: $grey;
+    }
+    .name {
+        width: 38%;
+    }
+    .lastname {
+        width: 40%;
+    }
+    .course {
+        select {
+            font-size: 20px;
+            min-width: 45%;
+        }
+    }
+    
+}
+form {
+        
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    div {
+        display: flex;
+        padding: 30px;
+        flex-direction: row;
+        justify-content: space-between;
+        .salutation {
+            width: 6%;
+        }
+    }
+}
+.radio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+select {
+    width: 22%;
+    height: 50px;
+    padding: 5px;
+    padding-left: 10px;
+    border: 2px solid $rustyRed;
+    border-radius: 5px;
+    font-size: 20px;
+    color: $grey;
+    outline: none;
+}
+input {
+    outline: none;
+    font-size: 20px;
+    width: 30%;
+    height: 40px;
+    padding: 5px;
+    border: 2px solid $rustyRed;
+    border-radius: 5px;
+    color: $grey;
+}
+
+#step3 {
+    select {
+        width: 45%;
+    }
+    input  {
+        width: 45%;
+    }
+}
+
+.radio2 {
+    width: 40%;
+}
+
+
+
+form button {
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: $rustyRed;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 15px;
+}
+
+#step2 .next {
+    position: relative;
+    left: 90%;
+}

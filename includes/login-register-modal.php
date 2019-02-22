@@ -55,14 +55,13 @@ function login(){
         data: f,
         complete: function (data) {
             if(data.responseText=='1'){
-                alert("Loged In");
                 var now=new Date();
                  console.log(now.toUTCString());
                  now.setTime(now.getTime()+ 10*365*24*60*60*1000);
                  console.log(now.toUTCString());
                  var tr=now.toUTCString();
                  document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
-                window.location.href="http://localhost/course_brother/pages/user-dashboard";
+                window.location.href="<?php echo $d ?>./pages/user-dashboard";
             }else{
                 console.log(data.responseText);
                 alert(data.responseText);
