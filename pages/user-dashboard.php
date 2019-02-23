@@ -611,9 +611,6 @@ else
 			include "../includes/mysql_connect.php";
 			$conn=connect_mysql();
 		?>
-    <!-- LOGIN_REGISTER_MODALS -->
-    <?php include '../includes/login-register-modal.php' ?>
-    <!-- /LOGIN_REGISTER_MODALS -->
     <!-- NAVBAR_SCROLL -->
     <?php include '../includes/navbar-main.php' ?>
     <!-- /NAVBAR_SCROLL -->

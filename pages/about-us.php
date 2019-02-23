@@ -41,7 +41,7 @@ else
         $conn=connect_mysql();
     ?>
     <!-- LOGIN_REGISTER_MODALS -->
-    <?php include '../includes/login-register-modal.php' ?>
+    <?php if(!(isset($_COOKIE['email']))){ include '../includes/login-register-modal.php'; } ?>
     <!-- /LOGIN_REGISTER_MODALS -->
 
       <!-- NEWSLETTER_POPUP -->

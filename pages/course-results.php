@@ -134,9 +134,9 @@ else
 
   <!-- MAIN_CONTAINER -->
   <div class="main-container main_container__results">
-      <?php include '../includes/mysql_connect.php';?>
-      <!-- LOGIN_REGISTER_MODALS -->
-    <?php include '../includes/login-register-modal.php' ?>
+    <?php include '../includes/mysql_connect.php';?>
+    <!-- LOGIN_REGISTER_MODALS -->
+    <?php if(!(isset($_COOKIE['email']))){ include '../includes/login-register-modal.php'; } ?>
     <!-- /LOGIN_REGISTER_MODALS -->
 
     <?php include '../includes/navbar-main.php'; ?>
