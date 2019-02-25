@@ -58,6 +58,7 @@ if($row=$user_info->fetch_assoc()){
 
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();
+$dompdf->set_option('isHtml5ParserEnabled', true);
 $dompdf->loadHtml($str);
 
 // (Optional) Setup the paper size and orientation
