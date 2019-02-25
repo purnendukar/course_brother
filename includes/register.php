@@ -15,6 +15,7 @@ if($conn->query("select * from register_user where email='".$email."'")->fetch_a
     echo "Email Id Already Used";
 }else{
     if($conn->query("INSERT INTO `register_user`(`f_name`, `l_name`, `city`, `phn_no`, `email`, `pass`) VALUES ('".$f_name."','".$l_name."','".$city."','".$phn_no."','".$email."','".$pass."')")){
+        $conn->query("INSERT INTO `user_info`(`email`) value ('".$email."') ");
         echo "1";
     }else{
         echo "Something Went Wrong";

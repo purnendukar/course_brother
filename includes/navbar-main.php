@@ -171,7 +171,7 @@ $conn=connect_mysql();
                                 $t1=$conn->query("select * from courses where id=".$row1['c_id'])->fetch_assoc()['c_name'];
                                 $t2=$conn->query("select * from subject where id=".$row1['s_id'])->fetch_assoc()['sub_name'];
                           ?>
-                            <a href="<?php echo $d."./pagescourse-results?course=".$t1." in ".$t2?>"><li><?php echo $t2 ?></li></a>
+                            <a href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t2 ?></li></a>
                           <?php } ?>
                       </div>
                         <?php } ?>
