@@ -2,8 +2,10 @@
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
-if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart' || $s[count($s)-2]=='forms'){
+if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='cart'){
     $d=$d.".";
+}else if($s[count($s)-2]=='forms'){
+  $d="../.";
 }
 //MySQL connector
 $conn=connect_mysql();

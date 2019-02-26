@@ -7,21 +7,13 @@ $darkGrey: #474849;
 $white: white;
 $pink: #fccfcf;
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-
-
-
 #tab-container {
     background-color: #e6e8ed;
     text-align: center;
     width: 75%;
     margin-left: 12.5%;
     margin-right: 12.5%;
-    margin-top: 30px;
+    margin-top: 180px;
     form{
         padding: 30px;
 
@@ -69,7 +61,7 @@ $pink: #fccfcf;
     }
     
 }
-form {
+.form {
         
     display: flex;
     flex-direction: column;
@@ -90,7 +82,7 @@ form {
     justify-content: space-around;
 }
 
-select {
+.select {
     width: 22%;
     height: 50px;
     padding: 5px;
@@ -101,7 +93,7 @@ select {
     color: $grey;
     outline: none;
 }
-input {
+.input {
     outline: none;
     font-size: 20px;
     width: 30%;
@@ -127,7 +119,7 @@ input {
 
 
 
-form button {
+.form button {
     border: none;
     outline: none;
     width: 100px;

@@ -39,9 +39,9 @@ if($row=$user_info->fetch_assoc()){
         }else{
             if($td==true){
                 $td=false;
-                $str.='</td><td style="width:200px;vertical-align:top;" ><p style="font-size:20px;color:black">'.$skill[$i++].'</p>';
+                $str.='</td><td style="width:200px;vertical-align:top;" ><p style="font-size:20px;color:black">'.$skill[$i].'</p>';
             }else{
-                $str.='<p style="font-size:20px;color:black">'.$skill[$i++].'</p>';
+                $str.='<p style="font-size:20px;color:black">'.$skill[$i].'</p>';
             }
         }
     }

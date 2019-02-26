@@ -1,6 +1,5 @@
 <?php
     include "../includes/mysql_connect.php";
-    
     $conn=connect_mysql();
 
     $name="".$_POST['uname'];
