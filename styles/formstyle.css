@@ -79,6 +79,9 @@
     position:relative;
     left:95%;
     transform: translateX(-100%);
+    cursor:pointer;
+    outline:none;
+    border:none;
 }
 
 #step2{
@@ -92,9 +95,15 @@
 .program_select{
     width:96%;
     display:flex;
-    background-color: red;
+    padding:15px 0;
+    margin-top:15px;
 }
 .program_select div{
     margin:auto;
 }
-
+#step2 select{
+    padding: 5px;
+    border:none;
+    width:45%;
+    margin:0 0 2% 2%;
+}

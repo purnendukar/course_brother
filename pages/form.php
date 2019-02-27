@@ -102,6 +102,23 @@
                             <?php } ?>
                         </div>
                     </div>
+                    <div style="margin-top:25px;">
+                        <select id="course" required>
+                            <option value="">course</option>
+                        </select>
+                        <select id="specialization" required>
+                            <option value="">specialization</option>
+                        </select>
+                        <select id="branch" required>
+                            <option value="">branch</option>
+                        </select>
+                        <select id="delivery_mode" required>
+                            <option value="">delivery mode</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
+                    </div>
                 </div>
             </div>
         </div>
