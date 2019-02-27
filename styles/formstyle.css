@@ -80,3 +80,21 @@
     left:95%;
     transform: translateX(-100%);
 }
+
+#step2{
+    width:100%;
+    padding:2%;
+}
+.choose_program h5{
+    font-size:18px;
+    text-align: center;
+}
+.program_select{
+    width:96%;
+    display:flex;
+    background-color: red;
+}
+.program_select div{
+    margin:auto;
+}
+

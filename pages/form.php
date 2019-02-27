@@ -91,7 +91,17 @@
                     </div>
                 </div>
                 <div id="step2">
-                    sdad 
+                    <div class="choose_program">
+                        <h5>Choose Program</h5>
+                        <div class="program_select">
+                            <?php $res=$conn->query("select * from program");
+                            while($row=$res->fetch_assoc()){?>
+                                <div>
+                                    <input type='radio' name='program' value='<?php echo $row['p_id'];?>'/> <?php echo $row['program'];?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
