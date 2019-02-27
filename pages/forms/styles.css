@@ -12,13 +12,13 @@ body{
   margin-top: 180px;
   margin-bottom:30px;
 }
-
 #tab-container form {
   padding: 30px;
 }
 
-#tab-container ul {
-  height: 90px;
+#tab-container .etabs {
+  height: 70px;
+  width:100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,17 +30,21 @@ body{
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #de4651;
+  margin:0;
+  padding:0;
 }
 
-#tab-container li {
-  width: 30%;
-  font-size: 25px;
+.etabs .tab {
+  width: 20%;
+  height:100%;
+  font-size: 20px;
   list-style-type: none;
-  padding: 30px;
-  border-right: 2px solid white;
+  border: 1px solid white;
 }
 
-#tab-container li a {
+.etabs .tab a {
+  position: relative;
+  top:25px;
   text-decoration: none;
   color: white;
 }
@@ -50,7 +54,7 @@ body{
 }
 
 #tab-container #date {
-  font-size: 20px;
+  font-size: 15px;
   color: grey;
 }
 
@@ -63,7 +67,7 @@ body{
 }
 
 #tab-container .course select {
-  font-size: 20px;
+  font-size: 15px;
   min-width: 45%;
 }
 
@@ -110,22 +114,20 @@ body{
 }
 
 .select {
-  width: 22%;
-  height: 50px;
+  width: 20%;
   padding: 5px;
-  padding-left: 10px;
   border: 2px solid #de4651;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 15px;
   color: grey;
   outline: none;
 }
 
 .input {
   outline: none;
-  font-size: 20px;
+  font-size: 15px;
   width: 30%;
-  height: 40px;
+  height: 25px;
   padding: 5px;
   border: 2px solid #de4651;
   border-radius: 5px;
@@ -151,14 +153,15 @@ body{
   height: 40px;
   color: white;
   background-color: #de4651;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   border: 2px solid white;
   border-radius: 15px;
 }
-
-#step2 .next {
-  position: relative;
-  left: 90%;
+.next {
+  text-align: center;
+  position:relative;
+  left:100%;
+  transform: translateX(-100%);
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,82 @@
+.container_{
+    position:relative;
+    padding:30px;
+}
+.container_ *{
+    margin:0;
+    padding:0;
+}
+.form_container{
+    width:80%;
+    background-color: #e6e8ed;
+    margin:auto;
+}
+.steps{
+    height: 60px;
+    width:100%;
+    background-color: #de4651;
+}
+.steps li{
+    width: 50%;
+    height:100%;
+    font-size: 20px;
+    list-style-type: none;
+    float:left;
+}
+.steps li a{
+    position: relative;
+    top:20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align:center;
+    display: block
+}
+.steps li a:hover {
+    color: white;
+}
+#step1{
+    width:100%;
+    padding:2%;
+}
+#step1 div{
+    margin-bottom:25px;
+    width:100%;
+}
+#step1 div input{
+    padding: 8px;
+    border:none;
+}
+#step1 div select{
+    padding: 5px;
+    border:none;
+}
+.name input{
+    width:40%;
+    margin-left:1%;
+}
+.name select{
+    width:10%;
+}
+.contact input{
+    width:46%;
+    margin:auto;
+}
+.address textarea{
+    width:46%;
+    min-height:80px;
+    padding: 8px;
+    resize:vertical;
+}
+.address div{
+    width:100%;
+    margin-top:7px;
+}
+.next{
+    color:white;
+    background-color: #de4651;
+    border-radius:5px;
+    position:relative;
+    left:95%;
+    transform: translateX(-100%);
+}

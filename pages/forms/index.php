@@ -56,7 +56,7 @@
                     <div class="contact">
                             <input class="input" type="email" placeholder="email">
                             <input class="input" type="text" placeholder="Mobile Numbe"/>
-                            <input class="input" type="date" name="bday" max="1979-12-31" min="2001-12-31" placeholder="Date of birth"/>
+                            <input class="input" type="date" name="bday" placeholder="Date of birth"/>
                     </div>
                     
                     <div class="radio">
@@ -74,8 +74,7 @@
                             <option value="Course Info">Course Info</option>
                         </select>
                     </div>
-                    
-                    <button>Next</button>
+                    <div><button class="next">Next</button></div>
                 </form>
             </div>
             <div id="step2">
@@ -107,10 +106,9 @@
                         <input class="input" type="text" placeholder="Mother's Firstname" required>
                         <input class="input" type="text" placeholder="Mother's lastname" required>
                     </div>
-                    
                     <div class="marital">
-                        <input class="input" id="date" type="date" name="bday" max="1979-12-31" min="2001-12-31" placeholder="Date of birth">
                         <select class="select"  name="Marital" id="marital" required>
+                            <option value="">Marital Status</option>
                             <option value="married">Married</option>
                             <option value="unmarried">Unmarried</option>
                             <option value="divorced">Divorced</option>
@@ -119,12 +117,14 @@
                     </div>
                     <div class="gender">
                         <select  class="select" name="gender" id="gender" required>
+                            <option value="">Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="others">Others</option>
                         </select>
                         <input class="input" id="adhar" type="text" placeholder="Adharcard Number" required widthh: auto>
                         <select  class="select" name="Blood Group" id="blood__group" required>
+                            <option value="">Blood Group</option>
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                             <option value="A+">A+</option>
@@ -132,16 +132,19 @@
                     </div>
                     <div class="caste">
                         <select  class="select" name="caste" id="caste" required>
+                            <option value="">Caste</option>
                             <option value="General">General</option>
                             <option value="OBC">OBC</option>
                             <option value="SC">SC</option>
                         </select>
                         <select  class="select" name="nationality" id="nationality" required>
+                            <option value="">Nationality</option>
                             <option value="Indian">Indian</option>
                             <option value="German">German</option>
                             <option value="British">British</option>
                         </select>
                         <select class="select"  name="domicile" id="domicile" required>
+                            <option value="">Domicile</option>
                             <option value="Indian">Indian</option>
                             <option value="German">German</option>
                             <option value="British">British</option>
@@ -182,7 +185,7 @@
                             <option value="Choose">Defence Personal</option>
                         </select>
                     </div>
-                    <h3>Are you an existing student with NGA-SCE/Alumni</h3>
+                    <!-- <h3>Are you an existing student with NGA-SCE/Alumni</h3>
                     <div class="radio2">
                         <input id="student_yes" type="radio" name="boolean" >
                         <lable for="student_yes">Yes</lable>
@@ -207,12 +210,11 @@
                         <select  class="select" name="course name" id="">
                             <option value="Choose">Do you want opt for Lateral Admission?</option>
                         </select>
-                    </div>
+                    </div>-->
                     <div class="button"></div>
                         <button class="back">Back</button>
                         <button class="next">Next</button>
-                    </div>
-                    
+                    </div> 
                 </form>
             </div>
         </div>

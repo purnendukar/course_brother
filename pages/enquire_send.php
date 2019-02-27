@@ -44,7 +44,7 @@ try {
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Enquiry';
-    $mail->AltBody = $str;
+    $mail->Body    = $str;
 
     $mail->send();
     echo 'Message has been sent';
