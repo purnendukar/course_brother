@@ -16,14 +16,14 @@
     width:100%;
     background-color: #de4651;
 }
-.steps li{
+.steps .stepnum{
     width: 50%;
     height:100%;
     font-size: 20px;
     list-style-type: none;
     float:left;
 }
-.steps li a{
+.steps .stepnum a{
     position: relative;
     top:20px;
     text-decoration: none;
@@ -32,7 +32,7 @@
     text-align:center;
     display: block
 }
-.steps li a:hover {
+.steps .stepnum a:hover {
     color: white;
 }
 #step1{
@@ -87,6 +87,7 @@
 #step2{
     width:100%;
     padding:2%;
+    display:none;
 }
 .choose_program h5{
     font-size:18px;

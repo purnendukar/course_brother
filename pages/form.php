@@ -37,19 +37,19 @@
             <div class="form_container">
                 <div>
                     <ul class="steps">
-                        <li><a href="#">Step 1</a></li>
-                        <li><a href="#">Step 2</a></li>
+                        <li class="stepnum"><a href="javascript:page_(0)">Step 1</a></li>
+                        <li class="stepnum"><a href="javascript:page_(1)">Step 2</a></li>
                     </ul>
                 </div>
-                <div id="step1">
+                <form id="step1" class="form" method="post" action="javascript:next_form('1');">
                     <div class="name">
                         <select name="salutation">
                             <option value="Mr.">Mr<option>
                             <option value="Miss">Miss<option>
                             <option value="Mrs.">Mrs<option>
                         </select>
-                        <input name="f_name" type="text" placeholder="First Name" required/>
-                        <input name="l_name" type="text" placeholder="Last Name" required/>
+                        <input name="f_name" type="text" placeholder="First Name" />
+                        <input name="l_name" type="text" placeholder="Last Name"/>
                     </div>
                     <div class="name">
                         <select name="salutation" disabled>
@@ -57,8 +57,8 @@
                             <option value="Miss">Miss<option>
                             <option value="Mrs.">Mrs<option>
                         </select>
-                        <input name="f_f_name" type="text" placeholder="Father's First Name" required/>
-                        <input name="f_l_name" type="text" placeholder="father's Last Name" required/>
+                        <input name="f_f_name" type="text" placeholder="Father's First Name" />
+                        <input name="f_l_name" type="text" placeholder="Father's Last Name" />
                     </div>
                     <div class="name">
                         <select name="salutation" disabled>
@@ -66,17 +66,17 @@
                             <option value="Miss">Miss<option>
                             <option value="Mrs." selected>Mrs<option>
                         </select>
-                        <input name="m_f_name" type="text" placeholder="Mother's First Name" required/>
-                        <input name="m_l_name" type="text" placeholder="Mother's Last Name" required/>
+                        <input name="m_f_name" type="text" placeholder="Mother's First Name" />
+                        <input name="m_l_name" type="text" placeholder="Mother's Last Name" />
                     </div>
                     <div class="contact">
-                        <input name="email" type="email" placeholder="Email ID" required>
-                        <input name="email" type="text" placeholder="Contact Number" required>
+                        <input name="email" type="email" placeholder="Email ID" >
+                        <input name="email" type="text" placeholder="Contact Number">
                     </div>
                     <div class="address">
-                        <textarea name="p_addr" placeholder="Permanent Address" required></textarea>
-                        <textarea id="c_addr" name="c_addr" placeholder="Current Address" required></textarea>
-                        <div><input type="checkbox"> Current Address is same as Permanent Address</div>
+                        <textarea name="p_addr" placeholder="Permanent Address" ></textarea>
+                        <textarea id="c_addr" name="c_addr" placeholder="Current Address" ></textarea>
+                        <div><input type="checkbox" onchange="remove_c_addr(this);"> Current Address is same as Permanent Address</div>
                     </div>
                     <div class="contact">
                         <input name="email" type="email" placeholder="Alternate Email ID(Optional)">
@@ -84,42 +84,42 @@
                     </div>
                     <div class="identification">
                         <p style="padding-left:8px;">Identity Prove: </p>
-                        <input type="file" required/>
+                        <input type="file" />
                     </div>
                     <div>
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
                     </div>
-                </div>
-                <div id="step2">
+                </form>
+                <form id="step2" class="form" method="post">
                     <div class="choose_program">
                         <h5>Choose Program</h5>
                         <div class="program_select">
                             <?php $res=$conn->query("select * from program");
                             while($row=$res->fetch_assoc()){?>
                                 <div>
-                                    <input type='radio' name='program' value='<?php echo $row['p_id'];?>'/> <?php echo $row['program'];?>
+                                    <input onclick="program_select('<?php echo $row['p_id'];?>')" type='radio' name='program' value='<?php echo $row['p_id'];?>'/> <?php echo $row['program'];?>
                                 </div>
                             <?php } ?>
                         </div>
                     </div>
                     <div style="margin-top:25px;">
-                        <select id="course" required>
-                            <option value="">course</option>
+                        <select id="_course_" name="_course_" onchange="_course(this);" required>
+                            <option value="">Course</option>
                         </select>
-                        <select id="specialization" required>
-                            <option value="">specialization</option>
+                        <select id="specialization" name="_sub_" onchange="_sub(this);" required>
+                            <option value="">Specialization</option>
                         </select>
-                        <select id="branch" required>
-                            <option value="">branch</option>
+                        <select id="college" name="_univ_" onchange="_univ(this)" required>
+                            <option value="">College</option>
                         </select>
-                        <select id="delivery_mode" required>
-                            <option value="">delivery mode</option>
+                        <select id="delivery_mode" name="_d_mode_" required>
+                            <option value="">Delivery mode</option>
                         </select>
                     </div>
                     <div>
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <?php include"../includes/footer.php";?>
@@ -156,6 +156,7 @@
     }, 1000);
     </script>
     <script src="../js/preloader.js"></script>
+    <script src="../js/formjs.js"></script>
     
 </body>
 </html>
