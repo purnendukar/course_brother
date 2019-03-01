@@ -39,17 +39,19 @@
                     <ul class="steps">
                         <li class="stepnum"><a href="javascript:page_(0)">Step 1</a></li>
                         <li class="stepnum"><a href="javascript:page_(1)">Step 2</a></li>
+                        <li class="stepnum"><a href="javascript:page_(2)">Step 3</a></li>
                     </ul>
                 </div>
                 <form id="step1" class="form" method="post" action="javascript:next_form('1');">
+                    <h5>Personal Information</h5>
                     <div class="name">
                         <select name="salutation">
                             <option value="Mr.">Mr<option>
                             <option value="Miss">Miss<option>
                             <option value="Mrs.">Mrs<option>
                         </select>
-                        <input name="f_name" type="text" placeholder="First Name" />
-                        <input name="l_name" type="text" placeholder="Last Name"/>
+                        <input name="f_name" type="text" placeholder="First Name" required/>
+                        <input name="l_name" type="text" placeholder="Last Name" required/>
                     </div>
                     <div class="name">
                         <select name="salutation" disabled>
@@ -57,8 +59,8 @@
                             <option value="Miss">Miss<option>
                             <option value="Mrs.">Mrs<option>
                         </select>
-                        <input name="f_f_name" type="text" placeholder="Father's First Name" />
-                        <input name="f_l_name" type="text" placeholder="Father's Last Name" />
+                        <input name="f_f_name" type="text" placeholder="Father's First Name" required/>
+                        <input name="f_l_name" type="text" placeholder="Father's Last Name" required/>
                     </div>
                     <div class="name">
                         <select name="salutation" disabled>
@@ -66,31 +68,31 @@
                             <option value="Miss">Miss<option>
                             <option value="Mrs." selected>Mrs<option>
                         </select>
-                        <input name="m_f_name" type="text" placeholder="Mother's First Name" />
-                        <input name="m_l_name" type="text" placeholder="Mother's Last Name" />
+                        <input name="m_f_name" type="text" placeholder="Mother's First Name" required/>
+                        <input name="m_l_name" type="text" placeholder="Mother's Last Name" required/>
                     </div>
                     <div class="contact">
-                        <input name="email" type="email" placeholder="Email ID" >
-                        <input name="email" type="text" placeholder="Contact Number">
+                        <input name="email" type="email" placeholder="Email ID" required/>
+                        <input name="email" type="text" placeholder="Contact Number" required/>
                     </div>
                     <div class="address">
-                        <textarea name="p_addr" placeholder="Permanent Address" ></textarea>
-                        <textarea id="c_addr" name="c_addr" placeholder="Current Address" ></textarea>
+                        <textarea name="p_addr" placeholder="Permanent Address" required></textarea>
+                        <textarea id="c_addr" name="c_addr" placeholder="Current Address" required></textarea>
                         <div><input type="checkbox" onchange="remove_c_addr(this);"> Current Address is same as Permanent Address</div>
                     </div>
                     <div class="contact">
-                        <input name="email" type="email" placeholder="Alternate Email ID(Optional)">
-                        <input name="email" type="text" placeholder="Alternate Contact Number">
+                        <input name="email" type="email" placeholder="Alternate Email ID(Optional)" />
+                        <input name="email" type="text" placeholder="Alternate Contact Number" />
                     </div>
                     <div class="identification">
                         <p style="padding-left:8px;">Identity Prove: </p>
-                        <input type="file" />
+                        <input type="file" required/>
                     </div>
                     <div>
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
                     </div>
                 </form>
-                <form id="step2" class="form" method="post">
+                <form id="step2" class="form" method="post" action="javascript:next_form('2');">
                     <div class="choose_program">
                         <h5>Choose Program</h5>
                         <div class="program_select">
@@ -115,6 +117,48 @@
                         <select id="delivery_mode" name="_d_mode_" required>
                             <option value="">Delivery mode</option>
                         </select>
+                    </div>
+                    <div>
+                        <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
+                    </div>
+                </form>
+                <form id="step3" class="form" method="post" action="javascipt:add_to_cart();">
+                    <div class="acadamics">
+                        <h5>Acadamics Information</h5>
+                        <div id="10th" class="a_details">
+                            <h6>10th Acadamic</h6>
+                            <div class="details">
+                                <input class="input" type="text" min="1950" placeholder="Name of School" />
+                                <input  class="input" type="text" placeholder="Percentage" />
+                                <input  class="input" type="text" placeholder="Board" />
+                                <input  class="input" type="number" min="1950" placeholder="Year of Completion" />
+                            </div>
+                        </div>
+                        <div id="12th_diploma" class="a_details">
+                            <h6>12th or Diploma Acadamic</h6>
+                            <div class="details">
+                                <select class="input" onchange="hs_diploma(this)">
+                                    <option value="12th">12th</option>
+                                    <option value="Diploma">Diploma</option>
+                                </select>
+                                <input name="d_spec" class="input" type="text" placeholder="Stream"/>
+                                <input name="univ" class="input" type="text" min="1950" placeholder="Name of School" />
+                                <input class="input" type="text" placeholder="Percentage" />
+                                <input class="input" type="text" placeholder="Board" />
+                                <input class="input" type="number" min="1950" placeholder="Year of Completion" />
+                            </div>
+                        </div>
+                        <div id="graduation" class="a_details">
+                            <h6>Graduation</h6>
+                            <div class="details">
+                                <input class="input" type="text" min="1950" placeholder="Name of College" />
+                                <input  class="input" type="text" placeholder="Percentage" />
+                                <input  class="input" type="text" placeholder="Degree" />
+                                <input  class="input" type="text" placeholder="Specialisation" />
+                                <input  class="input" type="text" placeholder="Board" />
+                                <input  class="input" type="number" min="1950" placeholder="Year of Completion" />
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>

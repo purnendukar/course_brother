@@ -16,11 +16,12 @@ if(isset($_POST['course'])){
 }
 include "./mysql_connect.php";
 $conn=connect_mysql();
-if($res=$conn->query("select distinct(s_id) as s_id from full_detail where ".$condition)){
+
+if($res=$conn->query("select distinct(s_id) as s from full_detail where ".$condition)){
     $i=0;
     echo "success";
     while($row=$res->fetch_assoc()){
-        $t=$conn->query("select * from subject where id=".$row['s_id'])->fetch_assoc();
+        $t=$conn->query("select * from subject where id=".$row['s'])->fetch_assoc();
         if($i>0){
             echo "|";
         }

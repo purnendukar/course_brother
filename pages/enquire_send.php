@@ -54,6 +54,6 @@ try {
 
     mail($e,"Enquiry",$str,"From: ".$email);
     $t=explode("/",$_GET['url']);
-    header("Location: ".$t[count($t)-1]);
+    //header("Location: ".$t[count($t)-1]);
     
 ?>

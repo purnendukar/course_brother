@@ -17,7 +17,7 @@
     background-color: #de4651;
 }
 .steps .stepnum{
-    width: 50%;
+    width: 33.33%;
     height:100%;
     font-size: 20px;
     list-style-type: none;
@@ -38,6 +38,11 @@
 #step1{
     width:100%;
     padding:2%;
+}
+#step1 h5{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom:20px;
 }
 #step1 div{
     margin-bottom:25px;
@@ -107,4 +112,25 @@
     border:none;
     width:45%;
     margin:0 0 2% 2%;
+}
+#step3{
+    width:100%;
+    padding:2%;
+    display: none;
+}
+.acadamics h5{
+    font-size: 20px;
+    text-align: center;
+}
+.details .input{
+    width:44%;
+    margin:1%;
+    padding: 5px;
+}
+.a_details h6{
+    font-size:17px;
+    padding:15px 0 ;
+}
+.acadamics{
+    margin-bottom: 30px;
 }
