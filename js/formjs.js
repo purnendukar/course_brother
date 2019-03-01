@@ -276,3 +276,32 @@ function acadamic_details_needed(){
         d.style.display="block";
     }
 }
+function add_to_cart(){
+    var salutation=document.getElementsByName("salutation");
+    var s_name=salutation[0].value+" "+document.getElementsByName("f_name")[0].value+" "+document.getElementsByName("l_name")[0].value;
+    var f_name=salutation[1].value+" "+document.getElementsByName("f_f_name")[0].value+" "+document.getElementsByName("f_l_name")[0].value;
+    var m_name=salutation[3].value+" "+document.getElementsByName("m_f_name")[0].value+" "+document.getElementsByName("m_l_name")[0].value;
+    var t=document.getElementsByName("phn_no");
+    var phn_no=t[0].value;
+    var a_phn_no="";
+    if(t[1].value!=""){
+        a_phn_no=t[1].value;
+    }
+    var t=document.getElementsByName("email");
+    var email=t[0].value;
+    var a_email
+    if(t[1].value!=""){
+        a_email=t[1].value;
+    }
+    var p_addr=document.getElementsByName("p_addr");
+    var c_addr="";
+    if(document.getElementById("same_addr").checked){
+        c_addr=document.getElementsByName("c_addr");
+    }
+    var identity=document.getElementById("identity");
+    delivery_mode=document.getElementById("delivery_mode");
+    var inst=document.getElementsByClassName("inst");
+    var degree=document.getElementsByClassName("degree");
+    var univ=document.getElementById("univ");
+    
+}

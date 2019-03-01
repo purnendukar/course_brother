@@ -73,20 +73,20 @@
                     </div>
                     <div class="contact">
                         <input name="email" type="email" placeholder="Email ID" required/>
-                        <input name="email" type="text" placeholder="Contact Number" required/>
+                        <input name="phn_no" type="text" placeholder="Contact Number" required/>
                     </div>
                     <div class="address">
                         <textarea name="p_addr" placeholder="Permanent Address" required></textarea>
                         <textarea id="c_addr" name="c_addr" placeholder="Current Address" required></textarea>
-                        <div><input type="checkbox" onchange="remove_c_addr(this);"> Current Address is same as Permanent Address</div>
+                        <div><input id="same_addr" type="checkbox" onchange="remove_c_addr(this);"> Current Address is same as Permanent Address</div>
                     </div>
                     <div class="contact">
                         <input name="email" type="email" placeholder="Alternate Email ID(Optional)" />
-                        <input name="email" type="text" placeholder="Alternate Contact Number" />
+                        <input name="phn_no" type="text" placeholder="Alternate Contact Number" />
                     </div>
                     <div class="identification">
                         <p style="padding-left:8px;">Identity Prove: </p>
-                        <input type="file" required/>
+                        <input id="identity" type="file" required/>
                     </div>
                     <div>
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
@@ -128,35 +128,35 @@
                         <div id="10th" class="a_details">
                             <h6>10th Acadamic</h6>
                             <div class="details">
-                                <input class="input" type="text" min="1950" placeholder="Name of School" />
-                                <input  class="input" type="text" placeholder="Percentage" />
-                                <input  class="input" type="text" placeholder="Board" />
-                                <input  class="input" type="number" min="1950" placeholder="Year of Completion" />
+                                <input  class="input inst" type="text" min="1950" placeholder="Name of School" />
+                                <input  class="input precent" type="text" placeholder="Percentage" />
+                                <input  class="input board" type="text" placeholder="Board" />
+                                <input  class="input c_year" type="number" min="1950" placeholder="Year of Completion" />
                             </div>
                         </div>
                         <div id="12th_diploma" class="a_details">
                             <h6>12th or Diploma Acadamic</h6>
                             <div class="details">
-                                <select class="input" onchange="hs_diploma(this)">
+                                <select class="input degree" onchange="hs_diploma(this)">
                                     <option value="12th">12th</option>
                                     <option value="Diploma">Diploma</option>
                                 </select>
-                                <input name="d_spec" class="input" type="text" placeholder="Stream"/>
-                                <input name="univ" class="input" type="text" min="1950" placeholder="Name of School" />
-                                <input class="input" type="text" placeholder="Percentage" />
-                                <input class="input" type="text" placeholder="Board" />
-                                <input class="input" type="number" min="1950" placeholder="Year of Completion" />
+                                <input name="d_spec spec" class="input" type="text" placeholder="Stream"/>
+                                <input name="univ" class="input inst" type="text" min="1950" placeholder="Name of School" />
+                                <input class="input precent" type="text" placeholder="Percentage" />
+                                <input class="input board" type="text" placeholder="Board" />
+                                <input class="input c_year" type="number" min="1950" placeholder="Year of Completion" />
                             </div>
                         </div>
                         <div id="graduation" class="a_details">
                             <h6>Graduation</h6>
                             <div class="details">
-                                <input class="input" type="text" min="1950" placeholder="Name of College" />
-                                <input  class="input" type="text" placeholder="Percentage" />
-                                <input  class="input" type="text" placeholder="Degree" />
-                                <input  class="input" type="text" placeholder="Specialisation" />
-                                <input  class="input" type="text" placeholder="Board" />
-                                <input  class="input" type="number" min="1950" placeholder="Year of Completion" />
+                                <input class="input inst" type="text" min="1950" placeholder="Name of College" />
+                                <input  class="input precent" type="text" placeholder="Percentage" />
+                                <input  class="input degree" type="text" placeholder="Degree" />
+                                <input  class="input spec" type="text" placeholder="Specialisation" />
+                                <input  class="input board" type="text" placeholder="Board" />
+                                <input  class="input c_year" type="number" min="1950" placeholder="Year of Completion" />
                             </div>
                         </div>
                     </div>
