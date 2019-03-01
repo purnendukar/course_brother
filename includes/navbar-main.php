@@ -113,7 +113,7 @@ $conn=connect_mysql();
                             $res1=$conn->query("select * from universities");
                             while($row1=$res1->fetch_assoc()){
                           ?>
-                            <a href="<?php echo $d."./pages/course-results?course=".$row1['u_name']?>"><li><?php echo $row1['u_name'] ?></li></a>
+                            <a target="blank" href="<?php echo $d."./pages/course-results?course=".$row1['u_name']?>"><li><?php echo $row1['u_name'] ?></li></a>
                           <?php } ?>
                       </div>
                         <?php } ?>
@@ -128,7 +128,7 @@ $conn=connect_mysql();
                                 $t1=$conn->query("select * from courses where id=".$row1['c_id'])->fetch_assoc()['c_name'];
                                 $t2=$conn->query("select * from subject where id=".$row1['s_id'])->fetch_assoc()['sub_name'];
                           ?>
-                            <a href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t1." in ".$t2 ?></li></a>
+                            <a target="blank" href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t1." in ".$t2 ?></li></a>
                           <?php } ?>
                       </div>
                         <?php } ?>
@@ -143,7 +143,7 @@ $conn=connect_mysql();
                                 $t1=$conn->query("select * from courses where id=".$row1['c_id'])->fetch_assoc()['c_name'];
                                 $t2=$conn->query("select * from subject where id=".$row1['s_id'])->fetch_assoc()['sub_name'];
                           ?>
-                            <a href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t1." in ".$t2 ?></li></a>
+                            <a target="blank" href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t1." in ".$t2 ?></li></a>
                           <?php } ?>
                       </div>
                         <?php } ?>
@@ -158,7 +158,7 @@ $conn=connect_mysql();
                                 $t1=$conn->query("select * from courses where id=".$row1['c_id'])->fetch_assoc()['c_name'];
                                 $t2=$conn->query("select * from subject where id=".$row1['s_id'])->fetch_assoc()['sub_name'];
                           ?>
-                            <a href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t2 ?></li></a>
+                            <a target="blank" href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t2 ?></li></a>
                           <?php } ?>
                       </div>
                         <?php } ?>
@@ -173,7 +173,7 @@ $conn=connect_mysql();
                                 $t1=$conn->query("select * from courses where id=".$row1['c_id'])->fetch_assoc()['c_name'];
                                 $t2=$conn->query("select * from subject where id=".$row1['s_id'])->fetch_assoc()['sub_name'];
                           ?>
-                            <a href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t2 ?></li></a>
+                            <a target="blank" href="<?php echo $d."./pages/course-results?course=".$t1." in ".$t2?>"><li><?php echo $t2 ?></li></a>
                           <?php } ?>
                       </div>
                         <?php } ?>

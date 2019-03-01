@@ -179,7 +179,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
               class="featured_courses__body__item">
 
                 <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
@@ -197,7 +197,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                  <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
+                  <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -212,7 +212,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -228,7 +228,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
+                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -243,7 +243,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -259,7 +259,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
+                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -274,7 +274,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -290,7 +290,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
+                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
@@ -305,7 +305,7 @@ else
                     $res=$conn->query($sql);
                     while($row=$res->fetch_assoc() and $flag<4){
               ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 0.900)), url('<?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['img_src'];?>') 100% 80%/cover;"
+            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
               class="featured_courses__body__item">
               <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
               <div class="featured_courses__body__item__course">
@@ -321,7 +321,7 @@ else
               </div>
               <div class="featured_courses__body__item__buttons">
                 <button>apply now</button>
-                <button onclick=<?php echo "\"window.location.href='./pages/course-detail?id=".$row['id']."'\""?>)>read more</button>
+                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
             <?php $flag++;}?>
