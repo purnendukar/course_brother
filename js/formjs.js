@@ -384,3 +384,25 @@ function validimage(a){
     }
     return true;
 }
+function set_course(a){
+    var formData=new FormData();
+    
+    $.ajax({
+        url: "../pages/form_submit.php",
+        type: 'POST',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        complete: function (data) {
+            console.log(data.responseText);
+            var s=data.responseText;
+            if(s=='1' || s=='11' || s=='111'){
+                alert("Successfully Added");
+                window.location.href="../cart"
+            }else{
+                alert("Something went wrong");
+            }
+        }
+    });
+}

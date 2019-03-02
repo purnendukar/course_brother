@@ -114,7 +114,7 @@ else
             <li class='tab'>FEE</li>
             <li class='tab'>ELIGIBILITY</li>
           </ul>
-          <button>APPLY NOW</button>
+          <button onclick="window.location.href='./form?id=<?php echo $_GET['id'];?>'">APPLY NOW</button>
         </div>
         <div class="course_detail__body__main">
           <div id='tab-container' class="main_content tab-container">

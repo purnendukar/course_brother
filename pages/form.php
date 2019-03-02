@@ -205,6 +205,6 @@
     </script>
     <script src="../js/preloader.js"></script>
     <script src="../js/formjs.js"></script>
-    
+    <script>set_course('<?php echo $_GET['id']; ?>');</script>
 </body>
 </html>
