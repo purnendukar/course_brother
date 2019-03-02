@@ -84,4 +84,6 @@
 
     $t=explode("/",$_GET['url']);
     
+    header("Location: ".$t[count($t)-1]);
+    
 ?>
