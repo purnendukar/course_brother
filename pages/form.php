@@ -22,6 +22,11 @@
     <title>Document</title>
 </head>
 <body>
+    <?php 
+        if(!(isset($_COOKIE['email']))){
+            echo "<script>alert('Login to fill the form');window.location.href='../';</script>";
+        }
+    ?>
     <!-- MAIN_CONTAINER -->
     <div class="main-container">
         <!-- MySQL connector -->

@@ -367,6 +367,7 @@ function add_to_cart(){
             var s=data.responseText;
             if(s=='1' || s=='11' || s=='111'){
                 alert("Successfully Added");
+                window.location.href="../cart"
             }else{
                 alert("Something went wrong");
             }
