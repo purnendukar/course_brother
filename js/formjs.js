@@ -10,6 +10,11 @@ function remove_c_addr(a){
 }
 var page=0;
 function next_form(id){
+    if(id==1){
+        if(!validimage(document.getElementById("identity"))){
+            return;
+        }
+    }
     var s=document.getElementsByClassName("form");
     s[id-1].style.display="none";
     s[id].style.display="block";
@@ -280,7 +285,7 @@ function add_to_cart(){
     var salutation=document.getElementsByName("salutation");
     var s_name=salutation[0].value+" "+document.getElementsByName("f_name")[0].value+" "+document.getElementsByName("l_name")[0].value;
     var f_name=salutation[1].value+" "+document.getElementsByName("f_f_name")[0].value+" "+document.getElementsByName("f_l_name")[0].value;
-    var m_name=salutation[3].value+" "+document.getElementsByName("m_f_name")[0].value+" "+document.getElementsByName("m_l_name")[0].value;
+    var m_name=salutation[2].value+" "+document.getElementsByName("m_f_name")[0].value+" "+document.getElementsByName("m_l_name")[0].value;
     var t=document.getElementsByName("phn_no");
     var phn_no=t[0].value;
     var a_phn_no="";
@@ -289,19 +294,92 @@ function add_to_cart(){
     }
     var t=document.getElementsByName("email");
     var email=t[0].value;
-    var a_email
+    var a_email="";
     if(t[1].value!=""){
         a_email=t[1].value;
     }
-    var p_addr=document.getElementsByName("p_addr");
+    var p_addr=document.getElementsByName("p_addr")[0].value;
     var c_addr="";
     if(document.getElementById("same_addr").checked){
-        c_addr=document.getElementsByName("c_addr");
+        c_addr=p_addr;
+    }else{
+        c_addr=document.getElementsByName("c_addr")[0].value;
     }
-    var identity=document.getElementById("identity");
-    delivery_mode=document.getElementById("delivery_mode");
+    delivery_mode=document.getElementById("delivery_mode").value;
     var inst=document.getElementsByClassName("inst");
     var degree=document.getElementsByClassName("degree");
-    var univ=document.getElementById("univ");
+    var spec_t=document.getElementsByClassName("spec_");
+    var percent=document.getElementsByClassName("percent");
+    var c_year=document.getElementsByClassName("c_year");
+    var board=document.getElementsByClassName("board");
+    var formData=new FormData();
+    formData.append("s_name",s_name);
+    formData.append("f_name",f_name);
+    formData.append("m_name",m_name);
+    formData.append("phn_no",phn_no);
+    formData.append("a_phn_no",a_phn_no);
+    formData.append("p_addr",p_addr);
+    formData.append("c_addr",c_addr);
+    formData.append("email",email);
+    formData.append("a_email",a_email);
+    formData.append("prg",program);
+    formData.append("course",course);
+    formData.append("spec",spec);
+    formData.append("d_mode",delivery_mode);
+    formData.append("college",college);
+    formData.append("10_inst",inst[0].value);
+    formData.append("10_percent",percent[0].value);
+    formData.append("10_board",board[0].value);
+    formData.append("10_c_year",c_year[0].value);
+    formData.append('image', $('input[type=file]')[0].files[0]); 
+    if(program=='2'){
+        formData.append("12_inst",inst[1].value);
+        formData.append("12_percent",percent[1].value);
+        formData.append("12_board",board[1].value);
+        formData.append("12_c_year",c_year[1].value);
+        formData.append("12_degree",degree[0].value);
+        formData.append("12_spec",spec_t[0].value);
+    }
+    if(program=='1' || program=='5'){
+        formData.append("12_inst",inst[1].value);
+        formData.append("12_percent",percent[1].value);
+        formData.append("12_board",board[1].value);
+        formData.append("12_c_year",c_year[1].value);
+        formData.append("12_degree",degree[0].value);
+        formData.append("12_spec",spec_t[0].value);
+        
+        formData.append("g_inst",inst[2].value);
+        formData.append("g_percent",percent[2].value);
+        formData.append("g_board",board[2].value);
+        formData.append("g_c_year",c_year[2].value);
+        formData.append("g_degree",degree[1].value);
+        formData.append("g_spec",spec_t[1].value);
+    }
+    $.ajax({
+        url: "../pages/form_submit.php",
+        type: 'POST',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        complete: function (data) {
+            console.log(data.responseText);
+            var s=data.responseText;
+            if(s=='1' || s=='11' || s=='111'){
+                alert("Successfully Added");
+            }else{
+                alert("Something went wrong");
+            }
+        }
+    });
     
+}
+function validimage(a){
+    var identity=a.files[0];
+    const validImageTypes = ['image/jpeg', 'image/png' ,'image/jpg'];
+    if (!validImageTypes.includes(identity['type'])) {
+        alert("Upload jpeg or jpg or png file");
+        return false;
+    }
+    return true;
 }

@@ -86,7 +86,7 @@
                     </div>
                     <div class="identification">
                         <p style="padding-left:8px;">Identity Prove: </p>
-                        <input id="identity" type="file" required/>
+                        <input id="identity" type="file" accept="image/*" data-type='image' onchange="validimage(this)" required/>
                     </div>
                     <div>
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
@@ -122,16 +122,16 @@
                         <input style="padding:10px 20px 10px 20px;" class="next" type="submit" value="Next"/>
                     </div>
                 </form>
-                <form id="step3" class="form" method="post" action="javascipt:add_to_cart();">
+                <form id="step3" class="form" method="post" action="javascript:add_to_cart();">
                     <div class="acadamics">
                         <h5>Acadamics Information</h5>
                         <div id="10th" class="a_details">
                             <h6>10th Acadamic</h6>
                             <div class="details">
-                                <input  class="input inst" type="text" min="1950" placeholder="Name of School" />
-                                <input  class="input precent" type="text" placeholder="Percentage" />
-                                <input  class="input board" type="text" placeholder="Board" />
-                                <input  class="input c_year" type="number" min="1950" placeholder="Year of Completion" />
+                                <input  class="input inst" type="text" min="1950" placeholder="Name of School" required/>
+                                <input  class="input percent" type="number" step="0.01" max="100" placeholder="Percentage" required/>
+                                <input  class="input board" type="text" placeholder="Board" required />
+                                <input  class="input c_year" type="number" min="1950" placeholder="Year of Completion" required/>
                             </div>
                         </div>
                         <div id="12th_diploma" class="a_details">
@@ -141,22 +141,22 @@
                                     <option value="12th">12th</option>
                                     <option value="Diploma">Diploma</option>
                                 </select>
-                                <input name="d_spec spec" class="input" type="text" placeholder="Stream"/>
-                                <input name="univ" class="input inst" type="text" min="1950" placeholder="Name of School" />
-                                <input class="input precent" type="text" placeholder="Percentage" />
-                                <input class="input board" type="text" placeholder="Board" />
-                                <input class="input c_year" type="number" min="1950" placeholder="Year of Completion" />
+                                <input name="d_spec" class="input  spec_" type="text" placeholder="Stream" required/>
+                                <input name="univ" class="input inst" type="text" min="1950" placeholder="Name of School" required/>
+                                <input class="input percent" type="number" step="0.01" max="100" placeholder="Percentage" required/>
+                                <input class="input board" type="text" placeholder="Board" required/>
+                                <input class="input c_year" type="number" min="1950" placeholder="Year of Completion" required/>
                             </div>
                         </div>
                         <div id="graduation" class="a_details">
                             <h6>Graduation</h6>
                             <div class="details">
-                                <input class="input inst" type="text" min="1950" placeholder="Name of College" />
-                                <input  class="input precent" type="text" placeholder="Percentage" />
-                                <input  class="input degree" type="text" placeholder="Degree" />
-                                <input  class="input spec" type="text" placeholder="Specialisation" />
-                                <input  class="input board" type="text" placeholder="Board" />
-                                <input  class="input c_year" type="number" min="1950" placeholder="Year of Completion" />
+                                <input class="input inst" type="text" min="1950" placeholder="Name of College" required />
+                                <input  class="input percent" type="number" step="0.01" max="100" placeholder="Percentage" required/>
+                                <input  class="input degree" type="text" placeholder="Degree" required/>
+                                <input  class="input spec_" type="text" placeholder="Specialisation" required/>
+                                <input  class="input board" type="text" placeholder="Board" required/>
+                                <input  class="input c_year" type="number" min="1950" placeholder="Year of Completion" required/>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,6 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.easytabs/3.2.0/jquery.easytabs.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
