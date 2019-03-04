@@ -96,7 +96,8 @@ else
                 <div class="container__main__courses">
                   <?php if($cart->num_rows){
                     while($cart_row=$cart->fetch_assoc()){
-                    $detail=$conn->query("select * from full_detail where id=".$cart_row['f_id'])->fetch_assoc();
+                      $f_id=$conn->query("select * from admission_form where id=".$cart_row['a_id'])->fetch_assoc()['f_d_id'];
+                      $detail=$conn->query("select * from full_detail where id=".$f_id)->fetch_assoc();
                   ?>
                     <div class="container__main__courses__items" id="item<?php echo $cart_row['id'];?>">
                         <div class="container__main__courses__items__img"><img src="<?php echo ".".$conn->query("select * from universities where u_id=".$detail['u_id'])->fetch_assoc()['img_src'];?>" alt="University Image"></div>
@@ -129,7 +130,8 @@ else
                   ?>
                     <div class="container__main__checkout__column">
                       <?php while($cart_row=$cart->fetch_assoc()){
-                      $detail=$conn->query("select * from full_detail where id=".$cart_row['f_id'])->fetch_assoc();
+                      $f_id=$conn->query("select * from admission_form where id=".$cart_row['a_id'])->fetch_assoc()['f_d_id'];
+                      $detail=$conn->query("select * from full_detail where id=".$f_id)->fetch_assoc();
                       $total_+=$detail['fees'];
                       ?>
                         <div class="container__main__checkout__row" id="item_checkout<?php echo $cart_row['id'];?>">

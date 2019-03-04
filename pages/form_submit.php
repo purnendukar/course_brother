@@ -75,6 +75,7 @@
                             echo "0";
                         }
                     }
+                    $conn->query("INSERT INTO `user_cart`(`email`, `a_id`) VALUES ('".urldecode($_COOKIE['email'])."','".$a_id."')");
                 }
             }
         }else{

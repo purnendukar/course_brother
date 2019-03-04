@@ -367,7 +367,7 @@ function add_to_cart(){
             var s=data.responseText;
             if(s=='1' || s=='11' || s=='111'){
                 alert("Successfully Added");
-                window.location.href="../cart"
+                window.location.href="../cart";
             }else{
                 alert("Something went wrong");
             }
@@ -386,9 +386,9 @@ function validimage(a){
 }
 function set_course(a){
     var formData=new FormData();
-    
+    formData.append('id',a);
     $.ajax({
-        url: "../pages/form_submit.php",
+        url: "../pages/apply_from.php",
         type: 'POST',
         cache: false,
         contentType: false,
@@ -397,11 +397,166 @@ function set_course(a){
         complete: function (data) {
             console.log(data.responseText);
             var s=data.responseText;
-            if(s=='1' || s=='11' || s=='111'){
-                alert("Successfully Added");
-                window.location.href="../cart"
-            }else{
-                alert("Something went wrong");
+            var arr=s.split("`");
+            if(arr.length==5){
+                var p=document.getElementsByName("program");
+                program=arr[0];
+                course=arr[1];
+                college=arr[3];
+                delivery_mode=arr[4];
+                spec=arr[2];
+                for(var i=0;i<p.length;i++){
+                    if(p[i].value==program){
+                        p[i].checked=true;
+                        set_the_course();
+                    }
+                }
+            }
+        }
+    });
+}
+var program="";
+var course="";
+var college="";
+var delivery_mode="";
+var spec="";
+function set_the_course(){
+    var formData=new FormData();
+        formData.append("prog",program);
+        $.ajax({
+            url: "../includes/choose_program.php",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            complete: function (data) {
+                console.log(data.responseText);
+                if(data.responseText.includes("success")){
+                    var t=data.responseText.replace("success","");
+                    t=t.split("|");
+                    var course_=document.getElementById('_course_');
+                    while(course_.options.length){
+                        course_.options.remove(0);
+                    }
+                    var opt=new Option('Course', '');
+                    course_.options.add(opt);
+                    for(var i=0;i<t.length;i++){
+                        var temp=t[i].split(",");
+                        opt= new Option(temp[0], temp[1]);
+                        course_.options.add(opt);
+                        if(temp[1]==course){
+                            course_.options[course_.options.length-1].selected=true;
+                        }
+                    }
+                    set_the_spec();
+                }
+            }
+        });
+}
+function set_the_spec(){
+    var formData=new FormData();
+        formData.append("prog",program);
+        formData.append("course",course);
+        $.ajax({
+            url: "../includes/choose_course.php",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            complete: function (data) {
+                console.log(data.responseText);
+                if(data.responseText.includes("success")){
+                    var t=data.responseText.replace("success","");
+                    t=t.split("|");
+                    var sub=document.getElementById('specialization');
+                    while(sub.options.length){
+                        sub.options.remove(0);
+                    }
+                    var opt=new Option('Specialization', '');
+                    sub.options.add(opt);
+                    for(var i=0;i<t.length;i++){
+                        var temp=t[i].split(",");
+                        opt= new Option(temp[0], temp[1]);
+                        sub.options.add(opt);
+                        if(temp[1]==spec){
+                            sub.options[sub.options.length-1].selected=true;
+                        }
+                    }
+                    set_the_univ();
+                }
+            }
+        });
+}
+function set_the_univ(){
+    var formData=new FormData();
+        formData.append("prog",program);
+        formData.append("course",course);
+        formData.append("spec",spec);
+        $.ajax({
+            url: "../includes/choose_univ.php",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            complete: function (data) {
+                console.log(data.responseText);
+                if(data.responseText.includes("success")){
+                    var t=data.responseText.replace("success","");
+                    t=t.split("|");
+                    var univ_=document.getElementById('college');
+                    while(univ_.options.length){
+                        univ_.options.remove(0);
+                    }
+                    var opt=new Option('College', '');
+                    univ_.options.add(opt);
+                    for(var i=0;i<t.length;i++){
+                        var temp=t[i].split(",");
+                        opt= new Option(temp[0], temp[1]);
+                        univ_.options.add(opt);
+                        if(temp[1]==college){
+                            univ_.options[univ_.options.length-1].selected=true;
+                        }
+                    }
+                    set_the_dmode();
+                }
+            }
+        });
+}
+function set_the_dmode(){
+    var formData=new FormData();
+    formData.append("prog",program);
+    formData.append("course",course);
+    formData.append("spec",spec);
+    formData.append("coll",college);
+    $.ajax({
+        url: "../includes/choose_dmode.php",
+        type: 'POST',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        complete: function (data) {
+            console.log(data.responseText);
+            if(data.responseText.includes("success")){
+                var t=data.responseText.replace("success","");
+                t=t.split("|");
+                var delivery_mode_=document.getElementById('delivery_mode');
+                while(delivery_mode_.options.length){
+                    delivery_mode_.options.remove(0);
+                }
+                var opt=new Option('Delivery mode', '');
+                delivery_mode_.options.add(opt);
+                for(var i=0;i<t.length;i++){
+                    var temp=t[i].split(",");
+                    opt= new Option(temp[0], temp[1]);
+                    delivery_mode_.options.add(opt);
+                    if(temp[1]==delivery_mode){
+                        delivery_mode_.options[delivery_mode_.options.length-1].selected=true;
+                    }
+                }
             }
         }
     });
