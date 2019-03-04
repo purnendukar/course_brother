@@ -147,7 +147,12 @@ div.modal--content__comparisontable ul.modal--content__comparisontable__row .mod
   width: 200px;
   border-bottom: 3px solid #de4651;
 }
-
+div.modal--content__comparisontable ul.modal--content__comparisontable__row .modal--content__comparisontable__row__tag_ {
+  color: #535b5e;
+  border: none;
+  width: 200px;
+  border-bottom: 3px solid #de4651;
+}
 /* very first row */
 div.modal--content__comparisontable ul.modal--content__comparisontable__row:first-of-type li {
   text-align: center;

@@ -49,17 +49,25 @@ function compare_(a) {
             if(data.responseText.indexOf("`")){
               info=data.responseText.split("`");
               add_remove_[i].innerHTML='<button class="modal--content__comparisontable__row__remove" onclick="remove_compare(\''+i+'\')" ><i class="far fa-trash-alt"></i>REMOVE</i></button><img class="c_univ" src=".'+info[0].toString()+'" />';
+              _course_[i].classList.add("modal--content__comparisontable__row__tag_");
               _course_[i].innerHTML=info[1];
               fees_[i].innerHTML="Rs "+info[6];
+              fees_[i].classList.add("modal--content__comparisontable__row__tag_");
               desc_[i].innerHTML=info[4];
+              desc_[i].classList.add("modal--content__comparisontable__row__tag_");
               sub_[i].innerHTML=info[3];
+              sub_[i].classList.add("modal--content__comparisontable__row__tag_");
               univ_[i].innerHTML=info[2];
+              univ_[i].classList.add("modal--content__comparisontable__row__tag_");
               if(info[5]>1){
                 duration_[i].innerHTML=info[5]+" Years";
+                duration_[i].classList.add("modal--content__comparisontable__row__tag_");
               }else{
                 duration_[i].innerHTML=info[5]+"Year";
+                duration_[i].classList.add("modal--content__comparisontable__row__tag_");
               }
               d_mode_[i].innerHTML=info[7];
+              d_mode_[i].classList.add("modal--content__comparisontable__row__tag_");
             }else{
                 alert("Something went wrong try again again");
             }
