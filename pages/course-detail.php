@@ -294,7 +294,6 @@ else
           complete: function(data){
                     //data contains the response from the php file.
                     //u can pass it here to the javascript function
-                    console.log(data);
                 }
         });
     }, 1000);
