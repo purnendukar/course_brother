@@ -190,12 +190,12 @@ $conn=connect_mysql();
 <!-- STUDENT_POPUP -->
 <div class="student_popup">
   <audio>
-    <source src="audio/pop.wav" type="audio/wav">
-    <source src="audio/pop.mp3" type="audio/mpeg">
+    <source src="<?php echo $d;?>./audio/pop.wav" type="audio/wav">
+    <source src="<?php echo $d;?>./audio/pop.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio> 
   <div class="student_popup__image">
-    <img src="assets/svg/Icons/white/user.svg" alt="profile image" />
+    <img src="<?php echo $d;?>./assets/svg/Icons/white/user.svg" alt="profile image" />
   </div>
   <div class="student_popup__name"></div>
   <div class="student_popup__city"></div>
