@@ -205,3 +205,51 @@ function changeNavlistWidth(index, multiplier = 1) {
 }; 
 
 
+
+
+// -------------------------------
+// For Random Student Popups
+const studentPopup = document.querySelector('.student_popup');
+const studentPopupChildren = studentPopup.children;
+const studentPhrase = document.querySelector('.student_popup__text p');
+const studentPopupAudio = document.querySelector('.student_popup audio');
+
+const randomCities = ['Kolkata', 'Mumbai', 'Allahabad', 'Delhi', 'Sikkim', 'Patna', 'Kerala', 'Bangalore', 'Chennai', 'Pune', 'Jaipur', 'Agra'];
+const randomNames = ['Rahul', 'Noor', 'Suman', 'Rajni', 'Brian', 'Shyam', 'Komal', 'Hemant', 'Aarav', 'Vivan', 'Aditya', 'Vihaan', 'Arjun', 'Ansh'];
+const formNames = [
+                  'Global Family Managed Business (GFMB)', 
+                  'Luxury Brand Management', 
+                  'Masters of Global Business (MGB)', 
+                  'Global MBA (GMBA)', 
+                  'Executive MBA (EMBA)', 
+                  'Bachelor of Business Administration (BBA)', 
+                  'Bachelor of Business Communication (BBC)', 
+                  'Bachelor of Data Science (BDS)', 
+                  'Bachelor of Economics'
+                  ];
+
+function showStudentPopup() {
+
+  let randomName = Math.floor(Math.random() * randomNames.length);
+  let randomCity = Math.floor(Math.random() * randomCities.length);
+  let randomForm = Math.floor(Math.random() * formNames.length);
+  studentPopupAudio.play();
+
+  studentPopupChildren[2].textContent = randomNames[randomName];
+  studentPopupChildren[3].textContent = randomCities[randomCity];
+  studentPhrase.textContent = `has just filled out the ${formNames[randomForm]} form`;
+
+  studentPopup.classList.add('student_popup--active');
+  setTimeout(() => {
+    studentPopup.classList.remove('student_popup--active');
+  }, 5000);
+
+};
+
+(function studentPopupLoop () {
+  let rand = Math.floor(Math.random() * 150000);
+  setTimeout(() => {
+    showStudentPopup();
+    studentPopupLoop();
+  }, rand);
+}());
