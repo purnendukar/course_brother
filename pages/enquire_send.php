@@ -36,7 +36,7 @@
     mail($to, $subject, $message, $headers);
     
     //if the message is sent successfully print "Mail sent correctly". Otherwise print "Mail failed" 
-    echo $mail_sent ? "Mail sent" : "Mail failed";
+    echo $mail_sent ? "<script>alert('Enquiry send')</script>" : "<script>alert('Something went wrong')</script>";
     
     
 //   $to = "rijusuman1996@gmail.com"; // <– replace with your address here
@@ -83,7 +83,7 @@
 // }
 
     $t=explode("/",$_GET['url']);
-    
+    echo "";
     header("Location: ".$t[count($t)-1]);
     
 ?>
