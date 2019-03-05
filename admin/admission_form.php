@@ -45,7 +45,7 @@ else
         
         <script>
             function view_admission(a){
-                window.location.href="./addmission_form_view?id="+a;
+                window.location.href="./admission_form_view?id="+a;
             }
         </script>
 
@@ -73,7 +73,7 @@ else
             
             <?php include('./settingsContainer.php'); ?>
 
-            <div class='row menu-form' style="overflow-x:scroll">
+            <div class='row menu-form' style="overflow:auto;">
                 
               <div id="edit" class='col-lg-6' style="width:100%;">
                   <h2 class='menu-text'>Course Edit Menu</h2>
@@ -81,21 +81,23 @@ else
                       <table style="width:100%">
                           <tr class="form-group">
                               <th style="text-align:center; padding:10px">Id</th>
-                              <th style="text-align:center; padding:10px">University</th>
-                              <th style="text-align:center; padding:10px">Delivery Mode</th>
+                              <th style="text-align:center; padding:10px">Student Name</th>
+                              <th style="text-align:center; padding:10px">University Name</th>
                               <th style="text-align:center; padding:10px">Course Name</th>
                               <th style="text-align:center; padding:10px">Specialisation</th>
+                              <th style="text-align:center; padding:10px">Delivery Mode</th>
                           </tr>
-                          <?php $res=$conn_p->query("select * from full_detail");
+                          <?php $res=$conn_p->query("select * from admission_form");
                             while($row=$res->fetch_assoc()){ echo "<tr class=\"form-group\">";
+                                $temp=$conn_p->query("select * from full_detail where id=".$row['f_d_id'])->fetch_assoc();
                           ?>
                           <td style="padding:10px"><?php echo $row['id'];?></td>
-                          <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from universities where u_id='.$row['u_id'])->fetch_assoc()['u_name'];?>" disabled/></td>
-                          <td style="padding:10px"><input type="text" class="form-control"  value="<?php echo $conn_p->query('select * from delivery_mode where id='.$row['d_mode_id'])->fetch_assoc()['d_mode'];?>" disabled/></td>
-                          <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from courses where id='.$row['c_id'])->fetch_assoc()['c_name'];?>" disabled/></td>
-                          <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from subject where id='.$row['s_id'])->fetch_assoc()['sub_name'];?>" disabled/></td>
-                          <td style="padding:10px"><input type="button" class="btn btn-primary" onclick="edit_admission(<?php echo $row['id'];?>)" style="width:80px; " value="Edit"/>
-                          <td style="padding:10px"><input type="button" class="btn btn-primary" onclick="view_admission(<?php echo $row['id'];?>)" style="width:80px; " value="View"/>
+                          <td style="padding:10px"><input type="text" class="form-control" value="<?php echo urldecode($row['stud_name']);?>" disabled/></td>
+                          <td style="padding:10px"><input type="text" class="form-control"  value="<?php echo $conn_p->query('select * from universities where u_id='.$temp['u_id'])->fetch_assoc()['u_name'];?>" disabled/></td>
+                          <td style="padding:10px"><input type="text" class="form-control"  value="<?php echo $conn_p->query('select * from courses where id='.$temp['c_id'])->fetch_assoc()['c_name'];?>" disabled/></td>
+                          <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from subject where id='.$temp['s_id'])->fetch_assoc()['sub_name'];?>" disabled/></td>
+                          <td style="padding:10px"><input type="text" class="form-control" value="<?php echo $conn_p->query('select * from delivery_mode where id='.$temp['d_mode_id'])->fetch_assoc()['d_mode'];?>" disabled/></td>
+                          <td style="padding:10px"><input type="button" class="btn btn-primary" style="margin:5px;" onclick="edit_admission(<?php echo $row['id'];?>)" style="width:80px; " value="Edit"/><input type="button" class="btn btn-primary" style="margin:5px;" onclick="view_admission(<?php echo $row['id'];?>)" style="width:80px; " value="View"/></td>
                           <?php echo "</tr>"; }?>
                       </table>
                     <!-- <div class="form-group">
