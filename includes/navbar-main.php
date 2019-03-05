@@ -87,9 +87,7 @@ $conn=connect_mysql();
         </div>
 
       </div>
-
     </div>
-
   </div>
 
   <div class="navbar_main__courses">

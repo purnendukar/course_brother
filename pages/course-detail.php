@@ -33,6 +33,21 @@ else
 
   <!-- CUSTOM CSS -->
   <link rel='stylesheet' href='../styles/style.css' />
+  <script>
+    function apply_now(){
+      if(document.cookie){
+        window.location.href='./form?id=<?php echo $_GET['id'];?>';
+      }else{
+        alert('Login to apply');
+        const loginButton = document.querySelector('.navbar_main__appendix__login');
+        const loginModal = document.querySelector('.login_modal');
+        const loginModalBackdrop = document.querySelector('.login_modal__backdrop');
+        const loginModalClose = document.querySelector('.login_modal__close');
+        loginModalBackdrop.classList.add('login_modal__backdrop--active');
+        loginModal.classList.add('login_modal--active');
+      }
+    }
+  </script>
 
   <title>CourseBrothers | One Stop Destination for Learning</title>
 </head>
@@ -114,7 +129,7 @@ else
             <li class='tab'>FEE</li>
             <li class='tab'>ELIGIBILITY</li>
           </ul>
-          <button onclick="window.location.href='./form?id=<?php echo $_GET['id'];?>'">APPLY NOW</button>
+          <button onclick="apply_now();">APPLY NOW</button>
         </div>
         <div class="course_detail__body__main">
           <div id='tab-container' class="main_content tab-container">

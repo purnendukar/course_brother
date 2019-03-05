@@ -22,11 +22,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
-        if(!(isset($_COOKIE['email']))){
-            echo "<script>alert('Login to fill the form');window.location.href='../';</script>";
-        }
-    ?>
     <!-- MAIN_CONTAINER -->
     <div class="main-container">
         <!-- MySQL connector -->
@@ -34,11 +29,15 @@
             include "../includes/mysql_connect.php";
             $conn=connect_mysql();
         ?>
+        <!-- LOGIN_REGISTER_MODALS -->
+        <?php if(!(isset($_COOKIE['email']))){ include '../includes/login-register-modal.php'; } ?>
+        <!-- /LOGIN_REGISTER_MODALS -->
 
         <!-- NAVBAR_MAIN -->
         <?php include('../includes/navbar-main.php'); ?>
         <!-- /NAVBAR_MAIN -->
         <div class="container_">
+            <?php if(isset($_COOKIE['email'])){?>
             <div class="form_container">
                 <div>
                     <ul class="steps">
@@ -170,6 +169,18 @@
                     </div>
                 </form>
             </div>
+            <?php }else{
+                echo "<div style='padding:100px; width:100%;'></div>
+                <script>
+                  alert('Login to fill form');
+                  const loginButton = document.querySelector('.navbar_main__appendix__login');
+                  const loginModal = document.querySelector('.login_modal');
+                  const loginModalBackdrop = document.querySelector('.login_modal__backdrop');
+                  const loginModalClose = document.querySelector('.login_modal__close');
+                  loginModalBackdrop.classList.add('login_modal__backdrop--active');
+                  loginModal.classList.add('login_modal--active');
+                </script>";
+            }?>
         </div>
         <?php include"../includes/footer.php";?>
     </div>
