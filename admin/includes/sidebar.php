@@ -297,6 +297,34 @@
 						</ul>
 					</li>
 					<li class="">
+						<a href="#" class='dropdown-toggle'>
+							<i class="menu-icon fa fa-book"></i>
+							<span class="menu-text"> Specialisation </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							
+							<li class="">
+								<a href="#">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-plus"></b> &nbsp; Add
+								</a>
+							</li>
+							<li class="">
+								<a href="#">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-edit"></b> &nbsp; Edit
+								</a>
+							</li>
+							<li class="">
+								<a href="#">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-minus"></b> &nbsp; Delete
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-bars"></i>
 							<span class="menu-text"> User </span>
@@ -332,9 +360,9 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="#">
+								<a href="./admission_form">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form 1
+									Admission Form
 								</a>
 							</li>
 
