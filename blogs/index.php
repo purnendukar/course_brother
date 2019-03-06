@@ -56,31 +56,25 @@ else
 
 		<div class="container">
 			<div class="siema">
-				<div class="siema__image">
-					<img src="images/image3.jpeg" alt="">
-					<div class="siema__text">
-						<h1>Give me money, I will give you Honey</h1>
-						<p>Contrary to popular belief, Lorem Ipsum is not.</p>
-						<button class="siema__image__button">Read</button>
+				<?php $res=$conn->query("SELECT * FROM `blogs` ORDER BY `read_count` DESC");
+					$count_t=0;
+					while($row=$res->fetch_assoc()){
+					    if($count_t>=3){
+					        break;
+					    }
+				?>
+					<div class="siema__image">
+						<img src=".<?php echo $row['thumnail']; ?>" alt="">
+						<div class="siema__text">
+							<h1><?php echo $row['heading'];?></h1>
+							<p><?php echo substr(str_replace('<br>','',$row['content']),0,60)."..."; ?></p>
+							<button class="siema__image__button" onclick="window.location.href='./blog-detail?id=<?php echo $row['id'];?>'" >Read</button>
+						</div>
 					</div>
-				</div>
-				<div class="siema__image">
-					<img src="images/image2.jpeg" alt="">
-					<div class="siema__text">
-						<h1>Give me money, I will give you Honey</h1>
-						<p>Contrary to popular belief, Lorem Ipsum is not.</p>
-						<button class="siema__image__button">Read</button>
-					</div>
-				</div>
-				<div class="siema__image">
-					<img src="images/image1.jpeg" alt="">
-					<div class="siema__text">
-						<h1>Give me money, I will give you Honey</h1>
-						<p>Contrary to popular belief, Lorem Ipsum is not.</p>
-						<button class="siema__image__button">Read</button>
-					</div>
-				</div>
-		
+				<?php 
+						$count_t+=1;
+					}
+				?>
 			</div>
 			<button class="next"><i class="fas fa-chevron-right"></i></button>
 			<button class="prev"><i class="fas fa-chevron-left"></i></button>
@@ -96,7 +90,7 @@ else
 					<img src="<?php echo ".".$row['thumnail']?>" alt="Blog Image">
 					<a href=""><h3><?php echo $row['heading']?></h3></a>
 					
-					<p><?php echo substr(str_replace('<br>','',$row['content']),0,60)."<a href='#'>...Read More</a>";?></p>
+					<p><?php echo substr(str_replace('<br>','',$row['content']),0,60)."... <a style='color:red;' href='./blog-detail?id=".$row["id"]."'>Read More</a>";?></p>
 				
 				</div>
 				<?php } ?>

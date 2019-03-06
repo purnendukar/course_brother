@@ -73,7 +73,8 @@
 }
 
 .container .siema .siema__text .siema__image__button {
-  position: relative;
+  position: absolute;
+  top:120px;
   text-align: center;
   font-size: 23px;
   background-color: #de4651;
@@ -87,6 +88,7 @@
   cursor: pointer;
   text-decoration: none;
   color: white;
+  z-index: 1000;
 }
 
 .container .siema .siema__text .siema__image__button:hover {

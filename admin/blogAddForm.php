@@ -28,7 +28,7 @@ else
 		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
-		<!--if lte IE 9>
+		<!--if lte IE 9-->
 			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<!endif-->
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
@@ -58,7 +58,8 @@ else
         <?php if(isset($_POST['submit'])){
             $title="";
             $content="";
-            $errors[]="";
+						$errors[]="";
+						$path1="";
             if(isset($_POST['title'])){
                 $title=$_POST['title'];
             }
@@ -84,10 +85,33 @@ else
                 }else{
                     print_r($errors);
                 }
-            }
+						}
+						if(isset($_FILES['image1'])){
+							$errors= array();
+							$file_name = $_FILES['image1']['name'];
+							$file_size =$_FILES['image1']['size'];
+							$file_tmp =$_FILES['image1']['tmp_name'];
+							$file_type=$_FILES['image1']['type'];
+							$t=explode('.',$_FILES['image1']['name']);
+							$file_ext=strtolower(end($t));
+							$file_path="./assets/images/blogs_thumnail/";
+
+							$extensions= array("jpeg","jpg","png");
+							if(in_array($file_ext,$extensions)=== false){
+									 $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+							}
+							if(empty($errors)==true){
+								$path1=$file_path.rand().$file_name;
+									 if(move_uploaded_file($file_tmp,".".$path1)){
+
+									 }
+							}else{
+									print_r($errors);
+							}
+					}
             if(isset($_POST['title'])){
                 $content=preg_replace("/[\n\r]/",'<br>',$_POST['content']);
-                $res=$conn_p->query("INSERT INTO `blogs`(`heading`, `content`, `thumnail`) VALUES ('".$title."','".$content."','".$path."')");
+                $res=$conn_p->query("INSERT INTO `blogs`(`heading`, `content`,`img_src`,`content_2`,`thumnail`,`author`) VALUES ('".$title."','".$content."','".$path1."','".$_POST['content1']."','".$path."','".$conn->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['f_name']."')");
                 if($res){
                     echo "<script>alert('Successfully Added');window.location.href='./blogAddForm';</script>";
                 }else{
@@ -117,12 +141,20 @@ else
                       <input name="title" type="text" class="form-control" placeholder="Blog Title" required>
                     </div>
                     <div class="form-group">
-                      <label for="content">Content</label>
+                      <label for="content">Content 2</label>
                       <textarea name="content" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Content" required></textarea>
+                    </div>
+										<div class="form-group">
+                      <label for="image1">Content Picture</label>
+                      <input name="image1" type="file" accept="image/*" class="form-control" >
+                    </div>
+										<div class="form-group">
+                      <label for="content">Content 2</label>
+                      <textarea name="content1" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Content"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="image">Thumnail</label>
-                      <input name="image" type="file" class="form-control" placeholder="About Universities" required>
+                      <input name="image" type="file" accept="image/*" class="form-control" required>
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                   </form>

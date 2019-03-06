@@ -34,6 +34,26 @@ function register(){
         complete: function (data) {
             if(data.responseText=='1'){
                 alert("Successfully Registered");
+                $.ajax({
+                    url: "<?php echo $d ?>./includes/login.php",
+                    type: 'POST',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: f,
+                    complete: function (data) {
+                        if(data.responseText=='1'){
+                            var now=new Date();
+                            now.setTime(now.getTime()+ 10*365*24*60*60*1000);
+                            var tr=now.toUTCString();
+                            document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
+                            window.location.href=window.location;
+                        }else{
+                            console.log(data.responseText);
+                            alert("Not Able to Login try again");
+                        }
+                    }
+                  });
             }else{
                 console.log(data.responseText);
                 alert(data.responseText);
@@ -56,15 +76,13 @@ function login(){
         complete: function (data) {
             if(data.responseText=='1'){
                 var now=new Date();
-                 console.log(now.toUTCString());
-                 now.setTime(now.getTime()+ 10*365*24*60*60*1000);
-                 console.log(now.toUTCString());
-                 var tr=now.toUTCString();
-                 document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
-                window.location.href="<?php echo $d ?>./pages/user-dashboard";
+                now.setTime(now.getTime()+ 10*365*24*60*60*1000);
+                var tr=now.toUTCString();
+                document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
+                window.location.href=window.location;
             }else{
                 console.log(data.responseText);
-                alert(data.responseText);
+                alert("Not Able to Login try again");
             }
         }
     });

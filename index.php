@@ -37,7 +37,11 @@ else
   <!-- CUSTOM CSS -->
   <link rel='stylesheet' href='./styles/style.css' />
 
-
+  <script>
+    function apply_form(a){
+      window.location.href="./pages/forms?id="+a;
+    }
+  </script>
 
   <title>CourseBrother.com | One Stop Destination for Learning</title>
 </head>
@@ -196,7 +200,7 @@ else
                 </div>
               </div>
               <div class="featured_courses__body__item__buttons">
-                <button>apply now</button>
+                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
                   <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
@@ -498,7 +502,7 @@ else
             <p><?php echo substr($row_t['content'],0,100)."..."; ?>
             </p>
             <div class="latest_blogs__item__continue">
-              <a href="">continue reading</a>
+              <a href="./blogs/blog-detail?id=<?php echo $row_t['id'];?>">continue reading</a>
             </div>
           </div>
         </div>
