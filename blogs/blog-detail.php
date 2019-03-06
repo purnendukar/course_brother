@@ -112,7 +112,7 @@
           <?php
             $row_2=$conn->query("SELECT * FROM blogs ORDER BY RAND() LIMIT 1")->fetch_assoc();
           ?>
-          <div class="blog_detail__see_more__item" onclick="window.location.href='./blog-detail?id=<?php echo $row_1['id'];?>'">
+          <div class="blog_detail__see_more__item" onclick="window.location.href='./blog-detail?id=<?php echo $row_2['id'];?>'">
             <img src=".<?php echo $row_2['thumnail']?>" alt="" />
             <div class="blog_detail__see_more__item__title">
               <h5><?php echo $row_2['heading']; ?></h5>
