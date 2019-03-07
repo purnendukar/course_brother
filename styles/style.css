@@ -702,6 +702,107 @@ body {
   width: 25.5rem;
 }
 
+@media screen and (max-width: 480px) {
+  .blog_detail__header {
+    width: 100%;
+    height: 30rem;
+    margin: 0;
+    padding: 4rem 2rem 2rem 2rem;
+  }
+  .blog_detail__header__title h1 {
+    font-size: 2rem;
+    width: 30rem;
+    margin: 0;
+  }
+  .blog_detail__header__title h3 {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.5rem;
+  }
+  .blog_detail__footer {
+    margin-top: 3rem;
+  }
+  .blog_detail__footer__desc h4 {
+    font-size: 1.2rem;
+  }
+  .blog_detail__footer__desc h4 b {
+    font-size: 1.3rem;
+  }
+  .blog_detail__footer__desc h5 {
+    font-size: 1.2rem;
+  }
+  .blog_detail__footer__desc h5 b {
+    font-size: 1.2rem;
+  }
+  .blog_detail__footer__share {
+    width: 28rem;
+    margin-top: 4rem;
+  }
+  .blog_detail__footer__share__item {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+  }
+  .blog_detail__content {
+    width: 100%;
+    padding: 2rem;
+  }
+  .blog_detail__content p {
+    line-height: 2rem;
+    font-size: 1.4rem;
+  }
+  .blog_detail__content__image img {
+    height: 15rem;
+  }
+  .blog_detail__content__image p {
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+  }
+  .blog_detail__content__sep {
+    margin-top: 5rem;
+  }
+  .blog_detail__aside {
+    padding: 1rem;
+    display: none;
+  }
+  .blog_detail__aside__ad {
+    padding: 1rem;
+    height: 10rem;
+    margin-bottom: 2rem;
+  }
+  .blog_detail__see_more {
+    padding: 0 2rem 2rem 2rem;
+  }
+  .blog_detail__see_more__items {
+    margin: 0;
+    margin-top: 3rem;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
+  }
+  .blog_detail__see_more__item {
+    height: 10rem;
+    width: 15.7rem;
+  }
+  .blog_detail__see_more__item:nth-child(odd) {
+    margin-right: 2rem;
+    margin-bottom: 8rem;
+  }
+  .blog_detail__see_more__item:nth-child(even) {
+    margin-right: 0;
+    margin-bottom: 8rem;
+  }
+  .blog_detail__see_more__item__title {
+    padding: 1rem;
+  }
+  .blog_detail__see_more__item__title h5 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+}
+
 .college_dashboard {
   width: 100%;
   position: relative;
@@ -1806,6 +1907,64 @@ body {
   100% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .course_detail {
+    width: 100%;
+    margin: 14rem 0;
+  }
+  .course_detail__header {
+    height: 30rem;
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 77, 0.9)), to(rgba(219, 50, 77, 0.9))), url("../assets/images/header-bg.jpg");
+    background: linear-gradient(0deg, rgba(219, 50, 77, 0.9), rgba(219, 50, 77, 0.9)), url("../assets/images/header-bg.jpg");
+  }
+  .course_detail__header .detail__skew {
+    display: none;
+  }
+  .course_detail__header .detail__info {
+    padding-left: 0;
+    padding: 3rem;
+  }
+  .course_detail__header .detail__info__head h2 {
+    font-size: 2.2rem;
+  }
+  .course_detail__header .detail__info__head h5 {
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+    margin: 0rem;
+    margin-top: -1.5rem;
+  }
+  .course_detail__header .detail__info__appendix {
+    width: 25rem;
+  }
+  .course_detail__header .detail__info__appendix h4 {
+    font-size: 1.3rem;
+  }
+  .course_detail__header .detail__info__appendix h5 {
+    font-size: 1.4rem;
+    padding-left: 2.5rem;
+    margin-right: 0;
+  }
+  .course_detail__header .detail__info .detail__info__payment__onetime h4:nth-child(1), .course_detail__header .detail__info .detail__info__payment__annual h4:nth-child(1) {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+  }
+  .course_detail__header .detail__info .detail__info__payment__onetime h4:nth-child(2), .course_detail__header .detail__info .detail__info__payment__annual h4:nth-child(2) {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .course_detail__header .detail__info__payment {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .course_detail__header .detail__info__payment__annual {
+    margin: 0;
+    margin-top: 1rem;
+  }
+  .course_detail__header .detail__img img {
+    display: none;
   }
 }
 
@@ -5543,12 +5702,5 @@ body {
     height: 3rem;
     width: 3rem;
   }
-}
-.policy__content{
-  width: 80%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 3rem 3rem;
 }
 /*# sourceMappingURL=style.css.map */

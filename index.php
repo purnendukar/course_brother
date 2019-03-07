@@ -9,6 +9,7 @@ else
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="coursebrother.com">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Cache-control" content="public">
   <link rel="shortcut icon" href="assets\images\favicon.png" type="image/png" />
@@ -39,7 +40,7 @@ else
 
   <script>
     function apply_form(a){
-      window.location.href="./pages/forms?id="+a;
+      window.location.href="./pages/form?id="+a;
     }
   </script>
 
@@ -231,7 +232,7 @@ else
                 </div>
               </div>
               <div class="featured_courses__body__item__buttons">
-                <button>apply now</button>
+                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
                 <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
@@ -262,7 +263,7 @@ else
                 </div>
               </div>
               <div class="featured_courses__body__item__buttons">
-                <button>apply now</button>
+                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
                 <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
@@ -293,7 +294,7 @@ else
                 </div>
               </div>
               <div class="featured_courses__body__item__buttons">
-                <button>apply now</button>
+                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
                 <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>
@@ -324,7 +325,7 @@ else
                 </div>
               </div>
               <div class="featured_courses__body__item__buttons">
-                <button>apply now</button>
+                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
                 <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
               </div>
             </div>

@@ -106,7 +106,7 @@ else
 					        break;
 					    }
 					?>
-						<p style="width:70%; margin-bottom:5px;"><?php echo "<a href='#' style='text-decoration:none;'>".$row['heading']."</a>";?></p>
+						<p style="width:70%; margin-bottom:5px;"><?php echo "<a href='./blog-detail?id=".$row['id']."' style='text-decoration:none;'>".$row['heading']."</a>";?></p>
 					<?php $count_t += 1; } ?>
 				</div>
 				<hr>
@@ -120,7 +120,7 @@ else
 					</div>
 					
 				</div>
-				<hr>
+				<!-- <hr>
 				<div class="main__sidebar__tagbar">
 					<h2>Tags</h2>
 					<div class="main__sidebar__tagbar__tags">
@@ -129,7 +129,7 @@ else
 						<div><a href="">React</a></div>
 						<div><a href="">Ruby & Rails & a bit of javascript</a></div>
 					</div>	
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<!-- FOOTER -->
