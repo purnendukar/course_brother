@@ -91,7 +91,7 @@ else
 								if(file_exists('../'.strtolower($u_name))){
 									echo "<script>alert('University Name already exist')</script>";
 								}else{
-									$res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."')");
+									$res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`,`fees`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."','".$_POST['reg_fees']."')");
 									if($res){
 										$u_name=str_replace(" ",'-',$u_name);
 										echo "<script>alert('Successfully Added');window.location.href='./institutionAddForm';</script>";
@@ -126,6 +126,10 @@ else
                     <div class="form-group">
                       <label for="about">About university</label>
                       <input name="about" type="text" class="form-control" placeholder="About Universities" required>
+                    </div>
+										<div class="form-group">
+                      <label for="reg_fees">Registration Fees</label>
+                      <input name="reg_fees" type="text" class="form-control" placeholder="Registration Fees" required>
                     </div>
                     <div class="form-group">
                       <label for="image">University Image</label>

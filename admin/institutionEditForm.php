@@ -53,11 +53,11 @@ else
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
         <script>
-            function send_data(u_id,u_name,about,image){
+            function send_data(u_id,u_name,about,image,reg_fees){
                 $.ajax({
                       type: "POST",
                       url: "./includes/update_univesities.php",
-                      data: {u_id:u_id,u_name:u_name,about:about},
+                      data: {u_id:u_id,u_name:u_name,about:about,reg_fees:reg_fees},
                       complete: function(data){
                                 //data contains the response from the php file.
                                 //u can pass it here to the javascript function
@@ -98,6 +98,7 @@ else
                 var but=document.getElementsByName(a+"edit_update");
                 var u_name=document.getElementsByName(a+"u_name");
                 var about=document.getElementsByName(a+"about");
+                var reg_fees=document.getElementsByName(a+"reg_fees");
                 var img=document.getElementsByName(a+"img");
                 var image=document.getElementsByName(a+"image");
                 if(but[0].value=="Edit"){
@@ -107,13 +108,15 @@ else
                     img[0].style.display="none";
                     image[0].style.display="block";
                     image[0].disable=false;
-
+                    reg_fees[0].disabled=false;
                 }else{
+                  if(confirm("Want to Update?")){if(confirm("Going to update")){
                     console.log(image[0].files);
-                    send_data(a,u_name[0].value,about[0].value,img[0]);
+                    send_data(a,u_name[0].value,about[0].value,img[0],reg_fees[0].value);
                     but[0].value="Edit";
                     u_name[0].disabled=true;
                     about[0].disabled=true;
+                    reg_fees[0].disabled=true;
                     //if(image[0].files.length==0){
                         img[0].style.display="block";
                         image[0].style.display="none";
@@ -121,6 +124,7 @@ else
 //                        img[0].style.display="none";
 //                        image[0].style.display="block";
 //                    }
+                  }}
                 }
 
             }
@@ -131,28 +135,6 @@ else
 	<body class="no-skin">
 
 		<?php include('./includes/navbar.php'); ?>
-
-        <?php
-//        if(isset($_POST['submit'])){
-//            $t=0;
-//            $count=0;
-//            $res=$conn_p->query("select * from universities");
-//            while($row=$res->fetch_assoc()){
-//                if(isset($_POST[$row['u_id']."u_name"]) && isset($_POST[$row['u_id']."about"])){
-//                    $u_name=strtoupper($_POST[$row['u_id']."u_name"]);
-//                    $key=str_replace("UNIVERSITY","",$_POST[$row['u_id']."u_name"]);
-//                    $key=str_replace("COLLEGE","",$key);
-//                    if($conn_p->query("UPDATE `universities` SET `u_name`='".$u_name."',`about`='".$_POST[$row['u_id']."about"]."',`keyword`='".$key."' where u_id=".$row['u_id']))
-//                        $t++;
-//                }
-//                $count++;
-//            }
-//            if($t==$count){
-//                echo"<script>alert('Successfully Updated');</script>";
-//            }
-//            echo"<script>window.location.href='./institutionEditForm.php';</script>";
-//        }
-        ?>
 
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
@@ -178,6 +160,7 @@ else
                                 <th width="30px" style="text-align:center; padding:10px">Id</th>
                                 <th style="text-align:center; padding:10px">University Name</th>
                                 <th style="text-align:center; padding:10px">About Universities</th>
+                                <th style="text-align:center; padding:10px">Registration Fees</th>
                                 <th style="text-align:center; padding:10px">Image</th>
                             </tr>
                             <?php $res=$conn_p->query("select * from universities");
@@ -188,6 +171,8 @@ else
                           <td style="padding:10px" ><input name="<?php echo $row['u_id']."u_name";?>" type=text-area class="form-control" value="<?php echo $row['u_name'];?>" disabled/>
                           </td>
                           <td style="padding:10px" ><input name="<?php echo $row['u_id']."about";?>" type=text-area class="form-control" value="<?php echo $row['about'];?>" disabled/>
+                          </td>
+                          <td style="padding:10px" ><input name="<?php echo $row['u_id']."reg_fees";?>" type=text-area class="form-control" value="<?php echo $row['fees'];?>" disabled/>
                           </td>
                           <td style="text-align:center; padding:10px"><img name="<?php echo $row['u_id']."img"; ?>" width="100px" src="<?php echo ".".$row['img_src'];?>" alt="image"/>
                               <input id="<?php echo $row['u_id']."image"?>" name="<?php echo $row['u_id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>

@@ -44,7 +44,7 @@ if(isset($_POST['u_name'])){
 
     $status= false;
 
-    $sql="UPDATE `universities` SET `u_name`='".$u_name."',`about`='".$about."',`keyword`='".$key."' where u_id=".$u_id;
+    $sql="UPDATE `universities` SET `u_name`='".$u_name."',`about`='".$about."',`keyword`='".$key."',`fees`=".$_POST['reg_fees']." where u_id=".$u_id;
     if($conn_p->query($sql)){
         echo "1";
     }

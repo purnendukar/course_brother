@@ -53,6 +53,7 @@ else
 
         <script>
          function delete_(a){
+					 if(confirm("Want to delete data of id "+a+"?")){if(confirm("Going to delete data of id "+a)){
              var d=document.getElementById('row'+a);
              $.ajax({
                       type: "POST",
@@ -70,7 +71,7 @@ else
                           }
                         }
                     });
-
+					 }}
          }
         </script>
 

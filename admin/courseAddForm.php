@@ -75,6 +75,7 @@ else
             }
 
             function submit_it(){
+                if(confirm("Want to add?")){if(confirm("Going to add")){
                 var duration=document.getElementsByName('duration')[0].value;
                 var univ=document.getElementsByName("univ")[0];
                 var u_id=univ.options[univ.selectedIndex].value;
@@ -190,7 +191,7 @@ else
                         }
                     }
                 });
-
+                }}
             }
 
         </script>

@@ -79,9 +79,11 @@ else
                     but[0].value="Update";
                     s_name[0].disabled=false;
                 }else{
+									if(confirm("Want to Update id "+a+" data?")){if(confirm("Going to Update id "+a+" data")){
                     send_data(a,s_name[0].value,);
                     but[0].value="Edit";
                     s_name[0].disabled=true;
+									}}
                 }
 
             }
