@@ -47,35 +47,39 @@ else
         <script>
             
             function add_it(a,b){
-                var input_=document.getElementsByName("input_");
-                var head=input_[0];
-                var content=input_[1];
-                if(head.value==""||content.value==""){
-                    alert("Fill all Feild");
-                    return;
-                }
-                var formData= new FormData();
-                formData.append('id',a);
-                formData.append('head',escape(head.value));
-                formData.append('content',escape(content.value));
-                
-                $.ajax({
-                        url: "./newsletter_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Data Added Succedd fully");
-                                window.location.href="./newsletterEditForm.php?id="+b;
-                            }else{
-                                console.log(data.responseText);
-                                alert("Data Not Added Try Again");
-                            }
-                        }
-                    });
+                if(confirm("Do you want to update?")){
+					if(confirm("Going to update")){
+						var input_=document.getElementsByName("input_");
+						var head=input_[0];
+						var content=input_[1];
+						if(head.value==""||content.value==""){
+							alert("Fill all Feild");
+							return;
+						}
+						var formData= new FormData();
+						formData.append('id',a);
+						formData.append('head',escape(head.value));
+						formData.append('content',escape(content.value));
+						
+						$.ajax({
+								url: "./newsletter_update.php",
+								type: 'POST',
+								cache: false,
+								contentType: false,
+								processData: false,
+								data: formData,
+								complete: function (data) {
+									if(data.responseText=='1'){
+										alert("Data Added Succedd fully");
+										window.location.href="./newsletterEditForm.php?id="+b;
+									}else{
+										console.log(data.responseText);
+										alert("Data Not Added Try Again");
+									}
+								}
+							});
+					}
+				}
             }
         </script>
 
@@ -106,7 +110,7 @@ else
             <?php 
                 $u_id='';
                 $id='';
-                if(isset($_GET['u_id']) && isset($_GET['id'])){
+                if(isset($_GET['id'])){
                     $u_id=$_GET['u_id'];
                     $id=$_GET['id'];
                 }else{

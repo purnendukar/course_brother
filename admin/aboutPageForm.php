@@ -62,6 +62,7 @@ else
                     img_display.style.display="none";
                     img_choose.style.display="block";
                 }else{
+                    if(confirm("Want to update?")){if(confirm("Going to Update")){
                     var formData=new FormData();
                     formData.append('id',a);
                     formData.append('name',name.value);
@@ -110,9 +111,11 @@ else
                     butt.value="Edit";
                     img_display.style.display="block";
                     img_choose.style.display="none";
+                    }}
                 }
             }
             function delete_it(a){
+                if(confirm("Want to delete id "+a+" data?")){
                 if(confirm("Going to delete id "+a+" data")){
                 var formData= new FormData();
                 formData.append("id",a);
@@ -134,8 +137,10 @@ else
                         }
                     });
                 }
+                }
             }
             function about_edit(){
+                if(confirm("Want to update?")){if(confirm("Going to Update")){
                 var about = document.getElementById("about");
                 var f=new FormData();
                 f.append('content',about.value);
@@ -156,8 +161,10 @@ else
                             }
                         }
                 });
+                }}
             }
             function provide_edit(){
+                if(confirm("Want to update?")){if(confirm("Going to Update")){
                 var about = document.getElementsByName("provide_");
                 var f=new FormData();
                 for(var i=0;i<about.length;i++){
@@ -179,6 +186,7 @@ else
                             }
                         }
                 });
+                }}
             }
             function add_f(){
                 var add_one=document.getElementById('add_onef');
@@ -189,6 +197,7 @@ else
                 }
             }
             function add_it_f(){
+                if(confirm("Want to Add?")){if(confirm("Going to Add")){
                 var input_=document.getElementsByName("input_f");
                 var name=input_[0];
                 var position=input_[1];
@@ -219,6 +228,7 @@ else
                             }
                         }
                     });
+                }}
             }
         </script>
 

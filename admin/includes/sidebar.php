@@ -110,7 +110,7 @@
 							<li class="">
 								<a href="./logoEditDropzone">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
+									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
 
@@ -146,25 +146,6 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
               			<i class="menu-icon fa fa-file"></i>
-							<span class="menu-text"> Index Page </span>
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<ul class="submenu">
-							
-							<li class="">
-								<a href="./indexPageForm">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
-								</a>
-							</li>
-
-						</ul>
-					</li> <!-- Index Page Side Option Ends -->
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-              			<i class="menu-icon fa fa-file"></i>
 							<span class="menu-text"> Blogs </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -180,13 +161,7 @@
 							<li class="">
 								<a href="./blogEditForm">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
-								</a>
-							</li>
-							<li class="">
-								<a href="./blogDeleteForm">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-minus"></b> &nbsp; Delete
+									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
 
@@ -201,16 +176,12 @@
 						</a>
 
 						<ul class="submenu">
-							<?php $r=$conn_p->query("select * from universities");
-							while($ro=$r->fetch_assoc()){ ?>
 							<li class="">
-								<a href="./newsletterEditForm?id=<?php echo $ro['u_id'];?>">
+								<a href="./newsletterall">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; <?php echo $ro['u_name']?>
+									<b class="fa fa-edit"></b> &nbsp; Universities
 								</a>
 							</li>
-							<?php } ?>
-
 						</ul>
 					</li><!-- Blog Section -->
                     
@@ -226,7 +197,7 @@
 							<li class="">
 								<a href="./Testimonial">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
+									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
 
@@ -253,7 +224,7 @@
 							<li class="">
 								<a href="./institutionEditForm">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
+									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
 							<li class="">
@@ -284,13 +255,7 @@
 							<li class="">
 								<a href="./courseEditForm">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
-								</a>
-							</li>
-							<li class="">
-								<a href="./courseDeleteForm">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-minus"></b> &nbsp; Delete
+									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
 
@@ -313,7 +278,7 @@
 							<li class="">
 								<a href="./specialisation_edit">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Edit
+									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
 							<li class="">

@@ -62,48 +62,52 @@ else
                     img_display.style.display="none";
                     img_choose.style.display="block";
                 }else{
-                    var formData=new FormData();
-                    formData.append('id',a);
-                    formData.append('head',escape(head.value));
-                    formData.append('para',escape(para.value));
-                    formData.append('about',escape(about.value));
+                    if(confirm("Want to Update id "+a+" ?")){
+                        if(confirm("Going to Update id "+a)){
+                            var formData=new FormData();
+                            formData.append('id',a);
+                            formData.append('head',escape(head.value));
+                            formData.append('para',escape(para.value));
+                            formData.append('about',escape(about.value));
 
-                    $.ajax({
-                        url: "./testimonial_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='01'){
-                                alert("Data Updated");
-                            }else{
-                                alert("Data Not Updated");
-                                window.location.href="./Testimonial.php";
-                            }
-                        }
-                    });
-                    var img_form=new FormData();
-                        img_form.append('image',$('#img_choose'+a+'')[0].files[0]);
-                        img_form.append('id',a);
-                        $.ajax({
-                            url: "./testimonial_update.php",
-                            type: 'POST',
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            data: img_form,
-                            complete: function (data) {
-                                if(data.responseText!='0'){
-                                    img_display.src="."+data.responseText;
-                                    alert("Image Updated");
-                                }else{
-                                    console.log(data.responseText);
-                                    alert("Image Not Updated");
+                            $.ajax({
+                                url: "./testimonial_update.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: formData,
+                                complete: function (data) {
+                                    if(data.responseText=='01'){
+                                        alert("Data Updated");
+                                    }else{
+                                        alert("Data Not Updated");
+                                        window.location.href="./Testimonial.php";
+                                    }
                                 }
-                            }
-                        });
+                            });
+                            var img_form=new FormData();
+                                img_form.append('image',$('#img_choose'+a+'')[0].files[0]);
+                                img_form.append('id',a);
+                                $.ajax({
+                                    url: "./testimonial_update.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: img_form,
+                                    complete: function (data) {
+                                        if(data.responseText!='0'){
+                                            img_display.src="."+data.responseText;
+                                            alert("Image Updated");
+                                        }else{
+                                            console.log(data.responseText);
+                                            alert("Image Not Updated");
+                                        }
+                                    }
+                                });
+                        }
+                    }
                     head.disabled=true;
                     para.disabled=true;
                     about.disabled=true;
@@ -113,26 +117,28 @@ else
                 }
             }
             function delete_(a){
-                if(confirm("Going to delete id "+a+" data")){
-                var formData= new FormData();
-                formData.append("id",a);
-                $.ajax({
-                        url: "./testimonial_delete.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Deleted");
-                                document.getElementById("row"+a).style.display="none";
-                            }else{
-                                console.log(data.responseText);
-                                alert("Not Deleted");
+                if(confirm("want to delete id "+a+"?")){
+                    if(confirm("Going to delete id "+a+" data")){
+                    var formData= new FormData();
+                    formData.append("id",a);
+                    $.ajax({
+                            url: "./testimonial_delete.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Deleted");
+                                    document.getElementById("row"+a).style.display="none";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Not Deleted");
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }
             function add(){
@@ -144,36 +150,40 @@ else
                 }
             }
             function add_it(){
-                var input_=document.getElementsByName("input_");
-                var head=input_[0];
-                var para=input_[1];
-                var about=input_[2];
-                if(head.value==""||para.value==""||about.value==""||document.getElementById('img_choose').value==''){
-                    alert("Fill all Feild");
-                    return;
-                }
-                var formData= new FormData();
-                formData.append('head',escape(head.value));
-                formData.append('para',escape(para.value));
-                formData.append('about',escape(about.value));
-                formData.append('image',$('#img_choose')[0].files[0]);
-                $.ajax({
-                        url: "./testimonial_add.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Data Added Succedd fully");
-                                window.location.href="./Testimonial.php"
-                            }else{
-                                console.log(data.responseText);
-                                alert("Data Not Added Try Again");
-                            }
+                if(confirm("Want to add?")){
+                    if(confirm("Going to add data")){
+                        var input_=document.getElementsByName("input_");
+                        var head=input_[0];
+                        var para=input_[1];
+                        var about=input_[2];
+                        if(head.value==""||para.value==""||about.value==""||document.getElementById('img_choose').value==''){
+                            alert("Fill all Feild");
+                            return;
                         }
-                    });
+                        var formData= new FormData();
+                        formData.append('head',escape(head.value));
+                        formData.append('para',escape(para.value));
+                        formData.append('about',escape(about.value));
+                        formData.append('image',$('#img_choose')[0].files[0]);
+                        $.ajax({
+                                url: "./testimonial_add.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: formData,
+                                complete: function (data) {
+                                    if(data.responseText=='1'){
+                                        alert("Data Added Succedd fully");
+                                        window.location.href="./Testimonial.php"
+                                    }else{
+                                        console.log(data.responseText);
+                                        alert("Data Not Added Try Again");
+                                    }
+                                }
+                            });
+                    }
+                }
             }
         </script>
 

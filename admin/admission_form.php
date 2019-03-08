@@ -171,7 +171,6 @@ else
 								<div class="row">
 									<div class="col-xs-12">
 										<h3 class="header smaller lighter blue">Admission Data Tables</h3>
-
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>

@@ -61,75 +61,79 @@ else
                     img_display.style.display="none";
                     img_choose.style.display="block";
                 }else{
-                    var formData=new FormData();
-                    formData.append('id',a);
-                    formData.append('head',escape(head.value));
-                    formData.append('link',escape(link.value));
+                    if(confirm("Want to Update?")){if(confirm("Going to update")){
+                        var formData=new FormData();
+                        formData.append('id',a);
+                        formData.append('head',escape(head.value));
+                        formData.append('link',escape(link.value));
 
-                    $.ajax({
-                        url: "./slider_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='01'){
-                                alert("Data Updated");
-                            }else{
-                                alert("Data Not Updated");
-                                window.location.href="./indexPageForm";
-                            }
-                        }
-                    });
-                    var img_form=new FormData();
-                        img_form.append('image',$('#img_choose'+a+'')[0].files[0]);
-                        img_form.append('id',a);
                         $.ajax({
                             url: "./slider_update.php",
                             type: 'POST',
                             cache: false,
                             contentType: false,
                             processData: false,
-                            data: img_form,
+                            data: formData,
                             complete: function (data) {
-                                if(data.responseText!='0'){
-                                    img_display.src="."+data.responseText;
-                                    alert("Image Updated");
+                                if(data.responseText=='01'){
+                                    alert("Data Updated");
                                 }else{
-                                    console.log(data.responseText);
-                                    alert("Image Not Updated");
+                                    alert("Data Not Updated");
+                                    window.location.href="./indexPageForm";
                                 }
                             }
                         });
-                    head.disabled=true;
-                    link.disabled=true;
-                    butt.value="Edit";
-                    img_display.style.display="block";
-                    img_choose.style.display="none";
-                }
+                        var img_form=new FormData();
+                            img_form.append('image',$('#img_choose'+a+'')[0].files[0]);
+                            img_form.append('id',a);
+                            $.ajax({
+                                url: "./slider_update.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: img_form,
+                                complete: function (data) {
+                                    if(data.responseText!='0'){
+                                        img_display.src="."+data.responseText;
+                                        alert("Image Updated");
+                                    }else{
+                                        console.log(data.responseText);
+                                        alert("Image Not Updated");
+                                    }
+                                }
+                            });
+                        head.disabled=true;
+                        link.disabled=true;
+                        butt.value="Edit";
+                        img_display.style.display="block";
+                        img_choose.style.display="none";
+                    }
+                }}
             }
             function delete_(a){
-                if(confirm("Going to delete id "+a+" data")){
-                var formData= new FormData();
-                formData.append("id",a);
-                $.ajax({
-                        url: "./slider_delete.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Deleted");
-                                document.getElementById("row"+a).style.display="none";
-                            }else{
-                                console.log(data.responseText);
-                                alert("Not Deleted");
-                            }
-                        }
-                    });
+                if(confirm("Want to delete?")){
+                    if(confirm("Going to delete id "+a+" data")){
+                        var formData= new FormData();
+                        formData.append("id",a);
+                        $.ajax({
+                                url: "./slider_delete.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: formData,
+                                complete: function (data) {
+                                    if(data.responseText=='1'){
+                                        alert("Deleted");
+                                        document.getElementById("row"+a).style.display="none";
+                                    }else{
+                                        console.log(data.responseText);
+                                        alert("Not Deleted");
+                                    }
+                                }
+                            });
+                    }
                 }
             }
             function add(){
@@ -141,34 +145,36 @@ else
                 }
             }
             function add_it(){
-                var input_=document.getElementsByName("input_");
-                var head=input_[0];
-                var link=input_[1];
-                if(head.value==""||link.value==""||document.getElementById('img_choose').value==''){
-                    alert("Fill all Feild");
-                    return;
-                }
-                var formData= new FormData();
-                formData.append('head',escape(head.value));
-                formData.append('link',escape(link.value));
-                formData.append('image',$('#img_choose')[0].files[0]);
-                $.ajax({
-                        url: "./slider_add.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Data Added Successfully");
-                                window.location.href="./indexPageForm";
-                            }else{
-                                console.log(data.responseText);
-                                alert("Data Not Added Try Again");
+                if(confirm("Want to Update?")){if(confirm("Going to update")){
+                    var input_=document.getElementsByName("input_");
+                    var head=input_[0];
+                    var link=input_[1];
+                    if(head.value==""||link.value==""||document.getElementById('img_choose').value==''){
+                        alert("Fill all Feild");
+                        return;
+                    }
+                    var formData= new FormData();
+                    formData.append('head',escape(head.value));
+                    formData.append('link',escape(link.value));
+                    formData.append('image',$('#img_choose')[0].files[0]);
+                    $.ajax({
+                            url: "./slider_add.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Data Added Successfully");
+                                    window.location.href="./indexPageForm";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
                             }
-                        }
-                    });
+                        });
+                }}
             }
 
             //Features
@@ -186,76 +192,80 @@ else
                     img_display.style.display="none";
                     img_choose.style.display="block";
                 }else{
-                    var formData=new FormData();
-                    formData.append('id',a);
-                    formData.append('head',escape(head.value));
-                    formData.append('info',escape(info.value));
+                    if(confirm("Want to Update?")){if(confirm("Going to update")){
+                        var formData=new FormData();
+                        formData.append('id',a);
+                        formData.append('head',escape(head.value));
+                        formData.append('info',escape(info.value));
 
-                    $.ajax({
-                        url: "./feature_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='01'){
-                                alert("Data Updated");
-                            }else{
-                                alert("Data Not Updated");
-                                window.location.href="./indexPageForm";
-                            }
-                        }
-                    });
-                    var img_form=new FormData();
-                        img_form.append('image',$('#img_choosef'+a+'')[0].files[0]);
-                        img_form.append('id',a);
                         $.ajax({
                             url: "./feature_update.php",
                             type: 'POST',
                             cache: false,
                             contentType: false,
                             processData: false,
-                            data: img_form,
+                            data: formData,
                             complete: function (data) {
-                                if(data.responseText!='0'){
-                                    img_display.src="."+data.responseText;
-                                    alert("Image Updated");
+                                if(data.responseText=='01'){
+                                    alert("Data Updated");
                                 }else{
-                                    console.log(data.responseText);
-                                    alert("Image Not Updated");
+                                    alert("Data Not Updated");
+                                    window.location.href="./indexPageForm";
                                 }
                             }
                         });
+                        var img_form=new FormData();
+                            img_form.append('image',$('#img_choosef'+a+'')[0].files[0]);
+                            img_form.append('id',a);
+                            $.ajax({
+                                url: "./feature_update.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: img_form,
+                                complete: function (data) {
+                                    if(data.responseText!='0'){
+                                        img_display.src="."+data.responseText;
+                                        alert("Image Updated");
+                                    }else{
+                                        console.log(data.responseText);
+                                        alert("Image Not Updated");
+                                    }
+                                }
+                            });
 
-                    butt.value="Edit";
-                    head.disabled=true;
-                    info.disabled=true;
-                    img_display.style.display="block";
-                    img_choose.style.display="none";
+                        butt.value="Edit";
+                        head.disabled=true;
+                        info.disabled=true;
+                        img_display.style.display="block";
+                        img_choose.style.display="none";
+                    }}
                 }
             }
             function delete_f(a){
-                if(confirm("Going to delete id "+a+" data")){
-                var formData= new FormData();
-                formData.append("id",a);
-                $.ajax({
-                        url: "./feature_delete.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Deleted");
-                                document.getElementById("rowf"+a).style.display="none";
-                            }else{
-                                console.log(data.responseText);
-                                alert("Not Deleted");
+                if(confirm("Want to delete id "+a+"?")){
+                    if(confirm("Going to delete id "+a+" data")){
+                    var formData= new FormData();
+                    formData.append("id",a);
+                    $.ajax({
+                            url: "./feature_delete.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Deleted");
+                                    document.getElementById("rowf"+a).style.display="none";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Not Deleted");
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }
             function add_f(){
@@ -274,63 +284,67 @@ else
                     alert("Fill all Feild");
                     return;
                 }
-                var formData= new FormData();
-                formData.append('head',escape(head.value));
-                formData.append('info',escape(info.value));
-                formData.append('image',$('#img_choosef')[0].files[0]);
-                $.ajax({
-                        url: "./feature_add.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Data Added Succedd fully");
-                                window.location.href="./indexPageForm";
-                            }else{
-                                console.log(data.responseText);
-                                alert("Data Not Added Try Again");
+                if(confirm("Want to add?")){if(confirm("Going to add")){
+                    var formData= new FormData();
+                    formData.append('head',escape(head.value));
+                    formData.append('info',escape(info.value));
+                    formData.append('image',$('#img_choosef')[0].files[0]);
+                    $.ajax({
+                            url: "./feature_add.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Data Added Succedd fully");
+                                    window.location.href="./indexPageForm";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
                             }
-                        }
-                    });
+                        });
+                }}
             }
 
             //Featured Courses
             function f_course_sel(){
-                var f_c=document.getElementsByName('featured_c');
-                var t=false;
-                for(var i=0;i<f_c.length;i++){
-                    var formData= new FormData();
-                    formData.append('id',f_c[i].value);
-                    if(f_c[i].checked){
-                        formData.append('check','yes');
-                    }else{
-                        formData.append('check','no');
-                    }
-                    t=$.ajax({
-                       url: "./featured_checked.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                return false;
-                            }else{
-                                console.log(data.responseText);
-                                return true;
-                            }
+                if(confirm("Going to update")){
+                    var f_c=document.getElementsByName('featured_c');
+                    var t=false;
+                    for(var i=0;i<f_c.length;i++){
+                        var formData= new FormData();
+                        formData.append('id',f_c[i].value);
+                        if(f_c[i].checked){
+                            formData.append('check','yes');
+                        }else{
+                            formData.append('check','no');
                         }
-                    });
-                    if(t==true){
-                        alert("Data Not Added Try Again");
-                        return;
+                        t=$.ajax({
+                        url: "./featured_checked.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    return false;
+                                }else{
+                                    console.log(data.responseText);
+                                    return true;
+                                }
+                            }
+                        });
+                        if(t==true){
+                            alert("Data Not Added Try Again");
+                            return;
+                        }
                     }
+                    alert("Successfully Added");
                 }
-                alert("Successfully Added");
             }
 
         </script>
@@ -470,47 +484,7 @@ else
 
 	              </div>
 	            </div>
-	            <h3>Service Section List</h3>
-			    <div class='row menu-form'>
-	              <div class='col-lg-6'>
-	                  <h2 class='menu-text'>Edit Service Section List</h2>
-	                  <form class='menu-content'>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 1</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 1</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 2</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 2</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 3</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 3</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Heading 4</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <div class="form-group">
-	                      <label for="exampleInputEmail1">Edit Description 4</label>
-	                      <input type="email" class="form-control" placeholder="Add Option">
-	                    </div>
-	                    <button type="submit" class="btn btn-primary">Submit</button>
-	                  </form>
-	              </div>
-	            </div>
+	            
 			</div>
 
 					</div><!-- /.page-content -->

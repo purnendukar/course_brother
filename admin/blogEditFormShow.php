@@ -44,35 +44,38 @@ else
 		<script src="assets/js/ace-extra.min.js"></script>
 
         <script>
-
-
             function submit_it(a){
-                var input_=document.getElementsByName('input_');
-                var formData = new FormData();
-                formData.append('id',a);
-                formData.append('title',input_[0].value);
-                formData.append('content',input_[1].value);
-                formData.append('image', $('input[type=file]')[0].files[0]);
-                $.ajax({
-                    url: "./blogeAddFormupdate.php",
-                    type: 'POST',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: formData,
-                    complete: function (data) {
-                        console.log(data.responseText);
-                        if(data.responseText=='1' || data.responseText=='11'){
-                            alert("Successfully Added");
-                            window.location.href="./blogEditForm";
-                        }else{
-                            alert("Something went wrong submit again");
-                        }
-                    }
-                });
+                if(confirm("Want to update?")){
+									if(confirm("Going to Update")){
+										var input_=document.getElementsByName('input_');
+										var formData = new FormData();
+										formData.append('id',a);
+										formData.append('title',input_[0].value);
+										formData.append('content',input_[1].value);
+										formData.append('image1', $('input[type=file]')[0].files[0]);
+										formData.append('content2',input_[2].value);
+										formData.append('image', $('input[type=file]')[1].files[0]);
+										$.ajax({
+												url: "./blogeAddFormupdate.php",
+												type: 'POST',
+												cache: false,
+												contentType: false,
+												processData: false,
+												data: formData,
+												complete: function (data) {
+														console.log(data.responseText);
+														if(data.responseText=='1' || data.responseText=='11' || data.responseText=='111'){
+																alert("Successfully Added");
+																window.location.href="./blogEditForm";
+														}else{
+																alert("Something went wrong submit again");
+														}
+												}
+										});
+									}
+								}
 
             }
-
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -104,7 +107,7 @@ else
                 $id=$_GET['id'];
                 $row=$conn_p->query("select * from blogs where id=".$id)->fetch_assoc();
                 ?>
-              <div class='col-lg-6'>
+              <div class='col-lg-6' style="width:100%;">
                   <h2 class='menu-text'>Edit Blog</h2>
                   <form class='menu-content' id="form1" name="form1" method="post" action="javascript:submit_it('<?php echo $id; ?>')">
                       
@@ -113,13 +116,24 @@ else
                		<input name="input_" class="form-control" value="<?php echo $row['heading'] ?>" />
                		</div>
                		<div class="form-group">
-                    <label for="exampleInputPassword1">Content</label>
+                    <label for="exampleInputPassword1">Content 1</label>
                		<textarea name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content']); ?></textarea>
+               		</div>
+									 <div class="form-group">
+									 	<?php if($row['img_src']!="" && $row['img_src']!=null){
+											 echo "<img id='blog_img' src='.".$row['img_src']."' style='width:100%;'>";
+										 }?>
+                      <label for="exampleInputPassword1">Blog Image</label>
+                      <input onchange="blog_img_(this);" type="file" accept="image/*" class="form-control">
+                    </div>
+									 <div class="form-group">
+                    <label for="exampleInputPassword1">Content 2</label>
+               		<textarea name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content_2']); ?></textarea>
                		</div>
 
                     <div class="form-group">
                       <label for="exampleInputPassword1">Thumnail</label>
-                      <input id="thumnail" type="file" class="form-control">
+                      <input id="thumnail" type="file" accept="image/*" class="form-control">
                     </div>
                     <br>
                     <input type="submit" class="btn btn-primary" name="btnsubmit" value="Update"/>

@@ -1,4 +1,3 @@
-
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
@@ -47,6 +46,7 @@ else
 
         <script>
             function update_(a){
+				if(confirm("Want to update?")){if(confirm("Going to update")){
                 var input_=document.getElementsByName("input_");
                 var f=new FormData();
                 f.append('id',a);
@@ -67,6 +67,7 @@ else
                             }
                         }
                     });
+				}}
             }
         </script> 
        

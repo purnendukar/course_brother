@@ -62,7 +62,7 @@ else
 
       <main class="all_testimonials__main">
         <div class="all_testimonials__main__sep"></div>
-        <h1 class="all_testimonials__main__title">what students say about us</h1>
+        <h1 class="all_testimonials__main__title">Testimonials</h1>
         <?php $res=$conn->query("SELECT * FROM `testimonial`")?>
         <div class="all_testimonials__main__container">
           <?php while($row=$res->fetch_assoc()){?>

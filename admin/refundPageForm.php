@@ -46,6 +46,7 @@ else
 
         <script>
             function update_(a){
+				if(confirm("Want to update?")){if(confirm("Going to update")){
                 var input_=document.getElementsByName("input_");
                 var f=new FormData();
                 f.append('id',a);
@@ -66,6 +67,7 @@ else
                             }
                         }
                     });
+				}}
             }
         </script> 
        

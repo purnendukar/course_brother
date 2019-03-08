@@ -47,96 +47,98 @@ else
 
 
             function submit_it(){
-                var duration=document.getElementsByName('duration')[0].value;
-
-                var formData = new FormData();
-                formData.append("fees",document.getElementsByName('fees')[0].value);
-                formData.append("duration",duration);
-                formData.append("description",escape(document.getElementsByName('c_desc')[0].value));
-                var i=1;
-                var sem=2*(duration);
-                var s="";
-                var count=0;
-                try{
-                    var te=document.getElementsByName('sem_struc');
-                for(i=0;i<te.length;i++){
-                    if(count>0){
-                        s+="|"
-                    }
-                    if(te[i].value==null || te[i]==""){
-                        alert("Fill semester "+(i+1)+" Structure");
-                        return;
-                    }
-                    s+=te[i].value;
-                    count++;
-                }
-                }catch(e){
-                    alert("Add Course Structure ");
-                    return;
-                }
-                formData.append("sem_struc",s);
-                var i=1;
-                var sem=2*(duration);
-                var s="";
-                var count=0;
-                try{
-                    var te=document.getElementsByName('sem_fees');
-                for(i=0;i<te.length;i++){
-                    if(count>0){
-                        s+=","
-                    }
-                    if(te[i].value==null || te[i].value==""){
-                        alert("Fill semester "+(i+1)+" Fees");
-                        return;
-                    }
-                    s+=te[i].value;
-                    count++;
-                }
-                }catch(e){
-                    alert("Add Fees Structure ");
-                    return;
-                }
-                formData.append("fees_struc",s);
-                var aff=document.getElementsByName("aff");
-                var t="";
-                var count=0;
-                for(var i=0;i<aff.length;i++){
-                    if(aff[i].checked){
-                        if(count>0){
-                            t+=",";
+                if(confirm("Do you want to update?")){
+                    if(confirm("Going to update")){
+                        var duration=document.getElementsByName('duration')[0].value;
+                        var formData = new FormData();
+                        formData.append("fees",document.getElementsByName('fees')[0].value);
+                        formData.append("duration",duration);
+                        formData.append("description",escape(document.getElementsByName('c_desc')[0].value));
+                        var i=1;
+                        var sem=2*(duration);
+                        var s="";
+                        var count=0;
+                        try{
+                            var te=document.getElementsByName('sem_struc');
+                        for(i=0;i<te.length;i++){
+                            if(count>0){
+                                s+="|"
+                            }
+                            if(te[i].value==null || te[i]==""){
+                                alert("Fill semester "+(i+1)+" Structure");
+                                return;
+                            }
+                            s+=te[i].value;
+                            count++;
                         }
-                        t+=aff[i].value;
-                        count++;
-                    }
-                }
-                if(t==""){
-                    alert("Select affiliation");
-                    return;
-                }
-                formData.append("aff",t);
-                var meta_desc=document.getElementsByName("meta_desc")[0].value;
-                var meta_keys=document.getElementsByName("meta_keys")[0].value;
-                formData.append("meta_keys",meta_keys);
-                formData.append("meta_desc",meta_desc);
-                formData.append("id","<?php echo $_GET['id']?>");
-                $.ajax({
-                    url: "./courseAddFormupdate.php",
-                    type: 'POST',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: formData,
-                    complete: function (data) {
-                        console.log(data.responseText);
-                        if(data.responseText=='1'){
-                            alert("Successfully Added");
-                            window.location.href="./courseEditForm";
-                        }else{
-                            alert("Something went wrong submit again");
+                        }catch(e){
+                            alert("Add Course Structure ");
+                            return;
                         }
+                        formData.append("sem_struc",s);
+                        var i=1;
+                        var sem=2*(duration);
+                        var s="";
+                        var count=0;
+                        try{
+                            var te=document.getElementsByName('sem_fees');
+                        for(i=0;i<te.length;i++){
+                            if(count>0){
+                                s+=","
+                            }
+                            if(te[i].value==null || te[i].value==""){
+                                alert("Fill semester "+(i+1)+" Fees");
+                                return;
+                            }
+                            s+=te[i].value;
+                            count++;
+                        }
+                        }catch(e){
+                            alert("Add Fees Structure ");
+                            return;
+                        }
+                        formData.append("fees_struc",s);
+                        var aff=document.getElementsByName("aff");
+                        var t="";
+                        var count=0;
+                        for(var i=0;i<aff.length;i++){
+                            if(aff[i].checked){
+                                if(count>0){
+                                    t+=",";
+                                }
+                                t+=aff[i].value;
+                                count++;
+                            }
+                        }
+                        if(t==""){
+                            alert("Select affiliation");
+                            return;
+                        }
+                        formData.append("aff",t);
+                        var meta_desc=document.getElementsByName("meta_desc")[0].value;
+                        var meta_keys=document.getElementsByName("meta_keys")[0].value;
+                        formData.append("meta_keys",meta_keys);
+                        formData.append("meta_desc",meta_desc);
+                        formData.append("id","<?php echo $_GET['id']?>");
+                        $.ajax({
+                            url: "./courseAddFormupdate.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                console.log(data.responseText);
+                                if(data.responseText=='1'){
+                                    alert("Successfully Added");
+                                    window.location.href="./courseEditForm";
+                                }else{
+                                    alert("Something went wrong submit again");
+                                }
+                            }
+                        });
                     }
-                });
-
+                }
             }
 
         </script>

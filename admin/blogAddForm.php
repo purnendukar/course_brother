@@ -141,7 +141,7 @@ else
                       <input name="title" type="text" class="form-control" placeholder="Blog Title" required>
                     </div>
                     <div class="form-group">
-                      <label for="content">Content 2</label>
+                      <label for="content">Content </label>
                       <textarea name="content" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Content" required></textarea>
                     </div>
 										<div class="form-group">

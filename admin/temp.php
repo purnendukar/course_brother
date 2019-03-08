@@ -1,8 +1,8 @@
 <?php
 if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
   ob_start("ob_gzhandler");
-else 
-  ob_start(); 
+else
+  ob_start();
 ?>
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@ else
 		<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - About Page Add Menu</title>
+		<title>Dashboard - Institution Edit Menu</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -24,8 +24,7 @@ else
 
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
-		<!-- jquery accordian -->
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
 		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
@@ -45,45 +44,27 @@ else
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
 
-        <script>
-            function update_(){
-				if(confirm("Want to update?")){if(confirm("Going to update")){
-                var input_=document.getElementsByName("input_");
-                var f=new FormData();
-                f.append('phn_no',input_[0].value);
-                f.append('email',input_[1].value);
-                f.append('address',input_[2].value);
-                $.ajax({
-                        url: "./contact_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: f,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Updated");
-                            }else{
-                                console.log(data.responseText);
-                                alert("Something went Wrong");
-                            }
-                        }
-                    });
-				}}
-            }
-        </script> 
-       
+		<script>
+				function edit(a){
+						window.location.href="./blogEditFormShow?id="+a;
+				}
+		</script>
+
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--if lte IE 8>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<!endif-->
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
 	</head>
 
 	<body class="no-skin">
-		
-		<?php include('includes/navbar.php'); ?>
+
+		<?php include('./includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
@@ -95,23 +76,37 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
-            
-                    <?php include('./settingsContainer.php'); ?>
-                    <div class='row menu-form'>
-                        <div class='col-lg-6'>
-                            <h2 class='menu-text'>Contact Us</h2>
-                            <div id="tab" class='menu-content' style="width:100%">
-                                <div class="form-group">
-                                <?php $res=$conn_p->query("SELECT * FROM `contact_info`");?>
-                                    <div style="padding:5px">Contact No. : <input class="form-control" name="input_" type="text" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
-                                    <div style="padding:5px">Email : <input class="form-control" name="input_" type="email" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
-                                    <div style="padding:5px">Address : <input class="form-control" name="input_" type="text" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
-                                    <div style="margin:10px;text-align:center;"><input type="button" class="btn btn-primary" value="Update" onclick="update_();" /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
+
+            <?php include('./settingsContainer.php'); ?>
+            <div class='row menu-form' >
+              <div class='col-lg-6' style="width:100%">
+                  <h2 class='menu-text'>Blog Edit Menu</h2>
+                  <form class='menu-content'  method="post" action="">
+                      <table style="width:100%">
+                            <tr style="padding:12px;">
+                                <th width="30px" style="text-align:center; padding:10px">Id</th>
+                                <th style="text-align:center; padding:10px">Title</th>
+                                <th style="text-align:center; padding:10px">Thumnail</th>
+                            </tr>
+                            <?php $res=$conn_p->query("select * from  blogs");
+                            while($row=$res->fetch_assoc()){ echo "<tr class=\"form-group\">";
+                          ?>
+                          <td style="text-align:center; padding:10px"><?php echo $row['id'];?>
+                          </td>
+                          <td style="padding:10px" ><input type=text-area class="form-control" value="<?php echo $row['heading'];?>" disabled/>
+                          </td>
+                          <td style="text-align:center; padding:10px"><img name="<?php echo $row['id']."img"; ?>" width="100px" src="<?php echo ".".$row['thumnail'];?>" alt="image"/>
+                              <input  name="<?php echo $row['id']."image"?>" type="file" class="form-control" style="display:none; width:250px;"/>
+                          </td>
+                          <td><input type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="edit('<?php echo $row['id'];?>');"/>
+                          </td>
+                            <?php echo"</tr>";}
+                            ?>
+                        </table>
+                  </form>
+              </div>
+            </div>
+
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
@@ -127,7 +122,6 @@ else
 
 		<!--[if !IE]> -->
 		<script src="assets/js/jquery-2.1.4.min.js"></script>
-		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 		<!-- <![endif]-->
 
@@ -136,7 +130,6 @@ else
 <![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-			$( "#accordion" ).accordion();
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
 
