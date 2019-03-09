@@ -65,7 +65,27 @@ $(document).ready(function() {
   // Add tooltips
   $('.tooltip').tooltipster({
     theme: 'tooltipster-shadow',
-    maxWidth: '180'
+    maxWidth: "180",
+    contentAsHTML: true
+  });
+
+  // For Policy Icons on right edge
+  const policyIcons = document.querySelector('.policy_icons');
+  const policyIconsArrow = document.querySelector('.policy_icons__arrow');
+
+  policyIconsArrow.addEventListener('click', (e) => {
+    policyIcons.classList.toggle('policy_icons--active');
+    policyIconsArrow.children[0].classList.toggle('arrow-turned');
+  }, false);
+
+  window.addEventListener('scroll', (e) => {
+    if (window.scrollY <= 300) {
+      policyIcons.classList.remove('policy_icons--active');
+      policyIconsArrow.children[0].classList.remove('arrow-turned');
+    } else {
+      policyIcons.classList.add('policy_icons--active');
+      policyIconsArrow.children[0].classList.add('arrow-turned');
+    }
   });
 
 

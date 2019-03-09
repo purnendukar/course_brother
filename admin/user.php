@@ -98,24 +98,28 @@ else
                 }
             }
             function delete_(a){
-                var f=new FormData();
-                f.append("id",a);
-                $.ajax({
-                        url: "./includes/admin_user_delete.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: f,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Data Deleted");
-                                document.getElementById("row_"+a).style.display="none";
-                            }else{
-                                alert("Data Not Deleted");
-                            }
-                        }
-                    });
+				if(confirm("Want to delete data of id "+a+"?")){
+					if(confirm("Going to delete data of id "+a)){
+						var f=new FormData();
+						f.append("id",a);
+						$.ajax({
+								url: "./includes/admin_user_delete.php",
+								type: 'POST',
+								cache: false,
+								contentType: false,
+								processData: false,
+								data: f,
+								complete: function (data) {
+									if(data.responseText=='1'){
+										alert("Data Deleted");
+										document.getElementById("row_"+a).style.display="none";
+									}else{
+										alert("Data Not Deleted");
+									}
+								}
+							});
+					}
+				}
             }
         </script>
 
@@ -130,32 +134,16 @@ else
 	<body class="no-skin">
         
         <?php
-            function user_type($t){
-                $a=array('admin','manager','guest');
-                $str="";
-                for($i=0;$i<3;$i++){
-                    
-                    if($a[$i]==$t){
-                        $str.="<option value='".$a[$i]."' selected>".$a[$i]."</option>";
-                    }else{
-                        $str.="<option value='".$a[$i]."' >".$a[$i]."</option>";
-                    }
-                }
-                return $str;
-            }
             function user_delete($id){
                 if($_COOKIE['user_id']!=$id){
                     return "delete_('".$id."')";
                 }
-                return "";
+                return "alert('you can\'t delete')";
             }
-            
         ?>
-        
 		<?php include('includes/navbar.php'); 
         $conn=connect_mysql();
         ?>
-        
         
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
@@ -193,14 +181,15 @@ else
 														<th>User Name</th>
 														<th>Email</th>
                                                         <th>Full Name</th>
-                                                        <th>Type</th>
+                                                        <th>Pages Access</th>
 														<th class="hidden-480">Phone</th>
+														<th class="hidden-480">City</th>
+														<th class="hidden-480">Address</th>
 
 														<th>
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Date/Time
+															Updated
 														</th>
-														<th class="hidden-480">City</th>
 
 														<th>Edit/Delete</th>
 													</tr>
@@ -220,38 +209,33 @@ else
 														</td>
 
 														<td>
-                                                            <input name='input_".$row['id']."' type='text' style='display:none;width:100%;' value='".$row['u_name']."'/>
-															<a href='#' name='display".$row['id']."' >".$row['u_name']."</a>
+                                                            ".$row['u_name']."
 														</td>
 														<td> 
-                                                            <input name='input_".$row['id']."' type='text' style='display:none;width:100%;' value='".$row['email']."'/>
                                                             <span class='lbl' name='display".$row['id']."' >".$row['email']."</span>
                                                         </td>
                                                         <td>
-                                                            <input name='input_".$row['id']."' type='text' style='display:none;width:100%;' value='".$row['f_name']."'/>
                                                             <span class='lbl' name='display".$row['id']."' >".$row['f_name']."</span>
                                                         </td>
-                                                        <td><select id='select_".$row['id']."' disabled>
-                                                            ".user_type($row['type'])."
-                                                        </select></td>
+                                                        <td style='width:20%;'>".str_replace(",",", ",$row['access'])."</td>
 														<td class='hidden-480'>
-                                                            <input name='input_".$row['id']."' type='text' style='display:none;width:100%;' value='".$row['phn_no']."'/>
                                                             <span class='lbl' name='display".$row['id']."' >".$row['phn_no']."</span>
-                                                        </td>
-														<td>".$row['created']."</td>
-
-														<td class='hidden-480'>
-                                                            <input name='input_".$row['id']."' type='text' style='display:none;width:100%;' value='".$row['city']."'/>
-															<span name='display".$row['id']."' class='label label-sm label-warning'>".$row['city']."</span>
 														</td>
+														<td class='hidden-480'>
+                                                            <span name='display".$row['id']."' class='label label-sm label-warning'>".$row['city']."</span>
+														</td>
+														<td class='hidden-480'>
+                                                            <span class='lbl' name='display".$row['id']."'>".$row['address']."</span>
+														</td>
+														<td>".$row['updated']."</td>
 
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>
-																<a class='blue' href='#'>
+																<!--<a class='blue' href='#'>
 																	<i class='ace-icon fa fa-search-plus bigger-130'></i>
-																</a>
+																</a>-->
 
-																<a class='green' href='#' onclick='edit(\"".$row['id']."\")' class='tooltip-success'>
+																<a class='green' href='./user_edit?id=".$row['id']."' class='tooltip-success'>
 																	<i class='ace-icon fa fa-pencil bigger-130'></i>
 																</a>
 
@@ -267,16 +251,16 @@ else
 																	</button>
 
 																	<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
-																		<li>
+																		<!--<li>
 																			<a href='#' class='tooltip-info' data-rel='tooltip' title='View'>
 																				<span class='blue'>
 																					<i class='ace-icon fa fa-search-plus bigger-120'></i>
 																				</span>
 																			</a>
-																		</li>
+																		</li>-->
 
 																		<li>
-																			<a href='#'  onclick='edit(\"".$row['id']."\")' class='tooltip-success' data-rel='tooltip' title='Edit'>
+																			<a href='./user_edit?id=".$row['id']."'  class='tooltip-success' data-rel='tooltip' title='Edit'>
 																				<span class='green'>
 																					<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
 																				</span>
@@ -351,7 +335,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, null, null,null,null,
+					  null, null,null, null, null,null,null,null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

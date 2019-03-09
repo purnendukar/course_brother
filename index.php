@@ -21,8 +21,7 @@ else
   <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700" rel="stylesheet">
 
   <!-- FONTAWESOME -->
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- jQuery Plugins -->
 
   <!-- RESPONSIVE SLIDES -->
@@ -74,6 +73,31 @@ else
     <!-- NAVBAR_MAIN -->
     <?php include './includes/navbar-main.php' ?>
     <!-- /NAVBAR_MAIN -->
+
+    <!-- POLICY_ICONS -->
+	<div class="policy_icons">
+		<div class="policy_icons__arrow tooltip" title='<h3>OUR POLICIES</h3>'>
+			<i class="fas fa-chevron-left"></i>
+		</div>
+		<div class="policy_icons__container">
+			<div class="policy_icons__item tooltip" title='<b>CREDIBLE INSTITUTES</b> <br><br> For formal education courses, check the status of the listed universities on the UGC DEB website. https://www.ugc.ac.in/deb/'>
+				<img src="./assets/svg/Icons/white/apartments.svg" alt="credible institutes" />
+			</div>
+			<div class="policy_icons__item tooltip" title='<b>TRANSPARENT INFORMATION</b> <br><br> CourseBrother.com is not a study center and has no role in admission decisions, examinations and / or awarding any degree or diploma'>
+				<img src="./assets/svg/Icons/white/information.svg" alt="transparent information" />
+			</div>
+			<div class="policy_icons__item tooltip" title='<b>GENUINE FEE</b> <br><br> CourseBrother.com charges no extra fee. No discount is offered by the course provider of any of the courses listed'>
+				<img src="./assets/svg/Icons/white/give-money.svg" alt="genuine fee" />
+			</div>
+			<div class="policy_icons__item tooltip" title='<b>COUNSELLING SUPPORT</b> <br><br> Get expert and dedicated counselling support to make an informed education decision'>
+				<img src="./assets/svg/Icons/white/phone-receiver.svg" alt="counselling support" />
+			</div>
+			<div class="policy_icons__item tooltip" title='<b>STUDY MATERIAL</b> <br><br> Study material is provided by the respective course providers'>
+				<img src="./assets/svg/Icons/white/books-stack-of-three.svg" alt="study material" />
+			</div>
+		</div>
+	</div>
+	<!-- /POLICY_ICONS -->
 
 
     <!-- HEADER -->

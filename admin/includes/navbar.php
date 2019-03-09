@@ -37,7 +37,6 @@ $conn_p=connect_mysql_page();
                                         $res=$conn->query("select * from user where id=".$_COOKIE['user_id']);
                                         if($row=$res->fetch_assoc()){
                                             $user_name=$row['u_name'];
-                                            $user_type=$row['type'];
                                             echo $row['f_name'];
                                         }
                                     ?>
@@ -75,37 +74,17 @@ $conn_p=connect_mysql_page();
 				</div>
 			</div><!-- /.navbar-container -->
 </div>
-<?php
-
-if($user_type=="content_manager"){
-    $a=['user.php','lead.php','admission_form.php'];
-    $contain=false;
-    for($i=0;$i<count($a);$i++){
-        if(strpos($_SERVER['REQUEST_URI'],$a[$i])){
-            $contain=true;
-            break;
-        }
-    }
-    if($contain===true){
-        echo "<script>alert('You can not access this page');window.location.href='./index.php';</script>";
-    }
-        
-}
-
-
-if($user_type=="author"){
-    $a=['blogAddForm.php','blogEditForm.php','blogDeleteForm.php'];
-    $contain=false;
-    for($i=0;$i<count($a);$i++){
-        if(strpos($_SERVER['REQUEST_URI'],$a[$i])){
-            $contain=true;
-            break;
-        }
-    }
-    if($contain===false){
-        echo "<script>alert('You can not access this page');window.location.href='./index.php';</script>";
-    }
-        
-}
-
+<?php 
+	$r=$conn->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['access'];
+	$r=explode(",",$r);
+	$t=true;
+	for($i=0;$i<count($r);$i++){
+		if(strpos($_SERVER['REQUEST_URI'],$r[$i])!==false){
+			$t=false;
+			break;
+		}
+	}
+	if($t){
+		echo "<script>alert('you cant not access this page');window.location.href='./".$r[0]."';</script>";
+	}
 ?>

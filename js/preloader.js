@@ -13,7 +13,7 @@ const logoAnimation = () => {
     .fromTo(course_, 2, { y: -1000 }, { y: -6, ease: Power3.easeInOut })
     .fromTo(brother, 2, { y: 1000 }, { y: 27, ease: Power3.easeInOut }, '-=1')
     .fromTo(com, 2, { x: -1000 }, { x: 20, ease: Power3.easeInOut }, '-=1')
-    .fromTo(tagline, 2, { opacity: 0 }, { opacity: 1, ease: Power4.easeInOut }, '-=0.4')
+    .fromTo(tagline, 2, {x:-2000},{x:-1,ease:Elastic.easeInOut},'-=0.4')
     ;
 
   return logoAnimTl;
@@ -42,3 +42,4 @@ window.addEventListener('load', () => {
         preloader.classList.add('preloader--fadeOut');
   
 });
+// setTimeout(function(){bodyForOverflow.style.overflowY = 'scroll';preloader.classList.add('preloader--fadeOut');},'10000');

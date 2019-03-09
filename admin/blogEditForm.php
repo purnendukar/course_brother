@@ -150,7 +150,7 @@ else
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>
 																
-																<a class='green' href='./blogEditFormShow.php?id=".$row['id']."' class='tooltip-success'>
+																<a class='green' href='./blogEditFormShow?id=".$row['id']."' class='tooltip-success'>
 																	<i class='ace-icon fa fa-pencil bigger-130'></i>
 																</a>
 
@@ -168,7 +168,7 @@ else
 																	<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
 																		
 																		<li>
-																			<a href='./blogEditFormShow.php?id=".$row['id']."' class='tooltip-success' data-rel='tooltip' title='Edit'>
+																			<a href='./blogEditFormShow?id=".$row['id']."' class='tooltip-success' data-rel='tooltip' title='Edit'>
 																				<span class='green'>
 																					<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
 																				</span>
