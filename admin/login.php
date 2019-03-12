@@ -6,7 +6,7 @@ else
 ?>
 <?php 
 include('./includes/mysql_connect.php'); 
-$conn=connect_mysql("admin");
+$conn=connect_mysql();
 
 if(isset( $_POST['username']) and isset($_POST['password'])){
     $res=$conn->query("select * from user where (u_name='".urlencode($_POST['username'])."' and password='".urlencode($_POST['password'])."') ");
