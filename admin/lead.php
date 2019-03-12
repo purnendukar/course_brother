@@ -10,7 +10,7 @@ else
 		<meta http-equiv="Cache-control" content="public">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>User Table - CourseBrother Admin</title>
+		<title>Lead User Table - CourseBrother Admin</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -78,13 +78,13 @@ else
 						<?php include('./settingsContainer.php'); ?>
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">User dataTables</h3>
+										<h3 class="header smaller lighter blue">Lead User dataTables</h3>
 
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Results Of Page Users
+											Results Of Lead Users
 										</div>
 
 										<!-- div.table-responsive -->
