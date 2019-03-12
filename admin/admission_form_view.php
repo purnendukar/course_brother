@@ -141,12 +141,6 @@ else
                             <div style="font-size:15px;"><p style="width:30%;float:left;"> Percentage: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['percentage']);?></p></div>
                             <div style="font-size:15px;"><p style="width:30%;float:left;"> Completion Year: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['c_year']);?></p></div>
                         <?php } ?>
-                        <?php if($conn_p->query("select * from admission_report where a_id=".$a_id)->fetch_assoc()['status']=='ongoing'){?>
-                            <button class="btn btn-primary" onclick="submit_('accept','<?php echo $a_id;?>');">Accept</button>
-                            <button class="btn btn-primary" onclick="submit_('reject','<?php echo $a_id;?>');">Reject</button>
-                        <?php }else{ ?>
-                            <p style="font-size:18px;margin-top:220px;"><?php echo $conn_p->query("select * from admission_report where a_id=".$a_id)->fetch_assoc()['status']."ed";?></p>
-                        <?php } ?>
                     </div>
                 </div>
                 <?php }?>

@@ -71,6 +71,7 @@ else
                         }
                     }
                 }
+                s+=",profile";
                 var formData=new FormData();
                 formData.append('id',a);
                 formData.append('uname',uname.value);
@@ -126,15 +127,15 @@ else
                   <form method="post" class='menu-content' action="javascript:edit_(<?php echo $_GET['id'];?>)" enctype="multipart/form-data" >
                     <div class="form-group">
                       <label for="username">Username</label>
-                      <input name="username" type="text" class="form-control" placeholder="Username" value="<?php echo $row['u_name'];?>" required>
+                      <input name="username" type="text" class="form-control" placeholder="Username" value="<?php echo urldecode($row['u_name']);?>" required>
                     </div>
                     <div class="form-group">
                       <label for="f_name">Full Name</label>
-                      <input name="f_name" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Full Name" value="<?php echo $row['f_name'];?>" required>
+                      <input name="f_name" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Full Name" value="<?php echo urldecode($row['f_name']);?>" required>
                     </div>
                     <div class="form-group">
                       <label for="email">Email</label>
-                      <input name="email" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Email" value="<?php echo $row['email'];?>" required>
+                      <input name="email" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Email" value="<?php echo urldecode($row['email']);?>" required>
                     </div>
                     <div class="form-group">
                       <label for="pages">Pages</label><br/>
@@ -160,18 +161,20 @@ else
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="specialisation_add,specialisation_edit,specialisation_delete" <?php if(strpos($row['access'], 'specialisation_add,specialisation_edit,specialisation_delete') !== false){echo 'checked';} ?>> Specialisation Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user" <?php if(strpos($row['access'], 'user') !== false){echo 'checked';} ?>> User</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_edit" <?php if(strpos($row['access'], 'user_edit') !== false){echo 'checked';} ?>> User Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="admission_form" <?php if(strpos($row['access'], 'admission_form') !== false){echo 'checked';} ?>> Admission Form</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="lead" <?php if(strpos($row['access'], 'lead') !== false){echo 'checked';} ?>> Leads</div>
                     </div>
                     <div class="form-group">
                       <label for="city">City</label>
-                      <input name="city" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="City" value="<?php echo $row['city'];?>" required>
+                      <input name="city" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="City" value="<?php echo urldecode($row['city']);?>" required>
                     </div>
                     <div class="form-group">
                       <label for="addr">Address</label>
-                      <input name="addr" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Address" value="<?php echo $row['address'];?>" required>
+                      <input name="addr" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Address" value="<?php echo urldecode($row['address']);?>" required>
                     </div>
                     <div class="form-group">
                       <label for="phn_no">Contact Number</label>
-                      <input name="phn_no" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Contact Number" value="<?php echo $row['phn_no'];?>" required>
+                      <input name="phn_no" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="Contact Number" value="<?php echo urldecode($row['phn_no']);?>" required>
                     </div>
                     <div class="form-group">
                       <label for="pass">Password</label>

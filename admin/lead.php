@@ -91,16 +91,6 @@ else
 
 										<!-- div.dataTables_borderWrap -->
 										<div>
-                                            <div style="background:#EFF3F8;width:100%;height:50px;">
-                                                <form method="post" action="./lead">
-                                                    <p style="padding:10px;">
-                                                        From: <input name="from_date" type="date"/> 
-                                                        - <input name="to_date" type="date"/>
-                                                        <input style="margin-left:10px;" type="submit" value="Filter" />
-                                                        <input type="button" onclick="clear_filter()" value="Clear Filter" />
-                                                    </p>
-                                                </form>
-                                            </div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr >
@@ -112,40 +102,20 @@ else
 														<th>Email</th>
                                                         <th>Full Name</th>
 														<th class="hidden-480">Phone</th>
-                                                        <th>Page</th>
-														<th>
-															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Start Time
-														</th>
-                                                        <th>
-															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															End Time
-														</th>
+                                                        <th>City</th>
+														
 													</tr>
 												</thead>
 												<tbody id="filter_data">
 												<?php
-                                                    $sql="SELECT * FROM user_session_track";
-                                                    if(isset($_GET['clear'])){unset($_POST['from_date']);}
-                                                    if(isset($_POST['from_date']) && isset($_POST['to_date']) ){
-                                                        echo "<script>
-                                                            document.getElementsByName('from_date')[0].value='".$_POST['from_date']."';
-                                                            document.getElementsByName('to_date')[0].value='".$_POST['to_date']."';
-                                                        </script>";
-                                                        $t=array_reverse(explode('/',$_POST['from_date']));
-                                                        $from=implode('-',$t);
-                                                        $t=array_reverse(explode('/',$_POST['to_date']));
-                                                        $to=implode('-',$t);
-                                                        $sql.=" where start_time BETWEEN '".$from."' AND '".$to." 23:59:59'";
-                                                        
-                                                    }
+                                                    $sql="SELECT * FROM user_session";
                                                     $result=$conn->query($sql);
                                                     while($row=$result->fetch_assoc())      
                                                     {
-                                                        $row1=$conn->query("select * from user_session where id=".$row['user_id'])->fetch_assoc();
-                                                        $email=$row1['email'];
-                                                        $f_name=$row1['full_name'];
-                                                        $phn_no=$row1['phn_no'];
+                                                        
+                                                        $email=$row['email'];
+                                                        $f_name=$row['full_name'];
+                                                        $phn_no=$row['phn_no'];
 												echo  
 												"<tr id='row_".$row['id']."'>
 														<td class='center'>
@@ -163,10 +133,8 @@ else
                                                             <span class='lbl' name='display".$row['id']."' >".$phn_no."</span>
                                                         </td>
                                                         <td class='hidden-480'>
-                                                            <span class='lbl' name='display".$row['id']."' >".$row['page']."</span>
+                                                            <span class='lbl' name='display".$row['id']."' >".$row['city']."</span>
                                                         </td>
-														<td class='hidden-480'>".$row['start_time']."</td>
-                                                        <td class='hidden-480'>".$row['close_time']."</td>
 														
 													</tr>";} ?>
 												</tbody>
@@ -225,8 +193,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, null, null,
-					  { "bSortable": false }
+					  null, null,null,null
 					],
 					"aaSorting": [],
 					

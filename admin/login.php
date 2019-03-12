@@ -9,7 +9,7 @@ include('./includes/mysql_connect.php');
 $conn=connect_mysql("admin");
 
 if(isset( $_POST['username']) and isset($_POST['password'])){
-    $res=$conn->query("select * from user where (u_name='".$_POST['username']."' and password='".$_POST['password']."') ");
+    $res=$conn->query("select * from user where (u_name='".urlencode($_POST['username'])."' and password='".urlencode($_POST['password'])."') ");
     if($row=$res->fetch_assoc()){
 				$conn->query("UPDATE `user_login` SET `login`=".rand()." where id=".$row['id']);
         setcookie("user_id", $row['id'], time() + (21600));

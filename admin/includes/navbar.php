@@ -26,16 +26,18 @@ $conn_p=connect_mysql_page();
 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
-						
+						<?php 
+                            $conn=connect_mysql();
+							$res=$conn->query("select * from user where id=".$_COOKIE['user_id']);
+							$row=$res->fetch_assoc();
+						?>
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" style="object-fit:cover;width:35px;height:35px;" src="./<?php if($row['profile_pic']!=""){echo $row['profile_pic'];}else{echo "./assets/images/avatars/user.svg";}?>" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									<?php
-                                        $conn=connect_mysql();
-                                        $res=$conn->query("select * from user where id=".$_COOKIE['user_id']);
-                                        if($row=$res->fetch_assoc()){
+                                        if($row){
                                             $user_name=$row['u_name'];
                                             echo $row['f_name'];
                                         }
@@ -51,16 +53,16 @@ $conn_p=connect_mysql_page();
 										<i class="ace-icon fa fa-cog"></i>
 										Settings
 									</a>
-								</li>
+								</li> -->
 
 								<li>
-									<a href="profile.html">
+									<a href="profile">
 										<i class="ace-icon fa fa-user"></i>
 										Profile
 									</a>
 								</li>
 
-								<li class="divider"></li> -->
+								<li class="divider"></li>
 
 								<li>
 									<a href="logout.php">
@@ -84,7 +86,6 @@ $conn_p=connect_mysql_page();
 			break;
 		}
 	}
-	echo "<script>console.log('".$r[count($r)-1]."')</script>";
 	if($t){
 		echo "<script>alert('you cant not access this page');window.location.href='./".$r[0]."';</script>";
 	}

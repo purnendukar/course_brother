@@ -212,20 +212,20 @@ else
                                                             ".$row['u_name']."
 														</td>
 														<td> 
-                                                            <span class='lbl' name='display".$row['id']."' >".$row['email']."</span>
+                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row['email'])."</span>
                                                         </td>
                                                         <td>
-                                                            <span class='lbl' name='display".$row['id']."' >".$row['f_name']."</span>
+                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row['f_name'])."</span>
                                                         </td>
                                                         <td style='width:20%;'>".str_replace(",",", ",$row['access'])."</td>
 														<td class='hidden-480'>
-                                                            <span class='lbl' name='display".$row['id']."' >".$row['phn_no']."</span>
+                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row['phn_no'])."</span>
 														</td>
 														<td class='hidden-480'>
-                                                            <span name='display".$row['id']."' class='label label-sm label-warning'>".$row['city']."</span>
+                                                            <span name='display".$row['id']."' class='label label-sm label-warning'>".urldecode($row['city'])."</span>
 														</td>
 														<td class='hidden-480'>
-                                                            <span class='lbl' name='display".$row['id']."'>".$row['address']."</span>
+                                                            <span class='lbl' name='display".$row['id']."'>".urldecode($row['address'])."</span>
 														</td>
 														<td>".$conn->query("select * from user_login where id=".$row['id'])->fetch_assoc()['time']."</td>
 

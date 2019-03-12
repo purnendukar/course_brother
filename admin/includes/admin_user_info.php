@@ -6,7 +6,6 @@ $id=$_POST['id'];
 $u_name=$_POST['u_name'];
 $email=$_POST['email'];
 $f_name=$_POST['f_name'];
-$type=$_POST['type'];
 $phn_no=$_POST['phn_no'];
 $city=$_POST['city'];
 
