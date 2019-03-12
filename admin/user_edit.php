@@ -53,6 +53,7 @@ else
 
         <script>
             function edit_(a){
+              if(confirm("Want to update?")){if(confirm("Going to update")){
                 var uname=document.getElementsByName('username')[0];
                 var fname=document.getElementsByName('f_name')[0];
                 var email=document.getElementsByName('email')[0];
@@ -99,6 +100,7 @@ else
                         }
                     }
                 });
+              }}
             }
         </script>
 	</head>
