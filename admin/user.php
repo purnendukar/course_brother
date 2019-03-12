@@ -188,7 +188,7 @@ else
 
 														<th>
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Updated
+															Last Login
 														</th>
 
 														<th>Edit/Delete</th>
@@ -227,7 +227,7 @@ else
 														<td class='hidden-480'>
                                                             <span class='lbl' name='display".$row['id']."'>".$row['address']."</span>
 														</td>
-														<td>".$row['updated']."</td>
+														<td>".$conn->query("select * from user_login where id=".$row['id'])->fetch_assoc()['time']."</td>
 
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>

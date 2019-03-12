@@ -4,7 +4,6 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip'))
 else 
   ob_start(); 
 ?>
-
 <?php 
 include('./includes/mysql_connect.php'); 
 $conn=connect_mysql("admin");
@@ -12,17 +11,17 @@ $conn=connect_mysql("admin");
 if(isset( $_POST['username']) and isset($_POST['password'])){
     $res=$conn->query("select * from user where (u_name='".$_POST['username']."' and password='".$_POST['password']."') ");
     if($row=$res->fetch_assoc()){
-        setcookie("user_id", $row['id'], time() + (86400 * 30));
+				$conn->query("UPDATE `user_login` SET `login`=".rand()." where id=".$row['id']);
+        setcookie("user_id", $row['id'], time() + (21600));
         unset($_POST['username']);
         unset($_POST['password']);
-        header("Location: ./");
+        header("Location: ./index");
     }else{
         echo "<script>alert('incorrect username or password');</script>";
     }
 }
 
 ?>
- 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -266,7 +265,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 			</div><!-- /.main-content -->
 		</div><!-- /.main-container -->
         <?php } else{
-            header("Location: ./");
+            header("Location: ./index");
         }?>
 		<!-- basic scripts -->
 

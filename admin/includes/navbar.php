@@ -84,6 +84,7 @@ $conn_p=connect_mysql_page();
 			break;
 		}
 	}
+	echo "<script>console.log('".$r[count($r)-1]."')</script>";
 	if($t){
 		echo "<script>alert('you cant not access this page');window.location.href='./".$r[0]."';</script>";
 	}
