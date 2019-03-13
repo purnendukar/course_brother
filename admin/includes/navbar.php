@@ -94,7 +94,16 @@ $conn_p=connect_mysql_page();
 			$t=false;
 			break;
 		}
+		if(strpos($_SERVER['REQUEST_URI'],'newsletterShow')!==false && strpos($r[$i],'newsletterShow')!==false){
+			$t=false;
+			break;
+		}
+		if(strpos($_SERVER['REQUEST_URI'],'courseEditFormShow')!==false && strpos($r[$i],'courseEditForm')!==false){
+			$t=false;
+			break;
+		}
 	}
+	
 	if($t){
 		echo "<script>alert('you cant not access this page');window.location.href='./".$r[0]."';</script>";
 	}

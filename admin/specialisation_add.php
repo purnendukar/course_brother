@@ -58,6 +58,9 @@ else
             if(isset($_POST['s_name'])){
 				$res=$conn_p->query("INSERT INTO `subject`(`sub_name`, `keyword`) VALUES ('".strtoupper($_POST['s_name'])."','".strtoupper($_POST['s_name'])."')");
 			    if($res){
+						
+    $admin=connect_mysql();
+    $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','added speicalisation ".$_POST['s_name']."')");
 					echo "<script>alert('Successfully Added');window.location.href='./specialisation_add';</script>";
 				}else{
 					echo "<script>alert('Failed')</script>";

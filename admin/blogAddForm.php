@@ -113,6 +113,9 @@ else
                 $content=preg_replace("/[\n\r]/",'<br>',$_POST['content']);
                 $res=$conn_p->query("INSERT INTO `blogs`(`heading`, `content`,`img_src`,`content_2`,`thumnail`,`author`) VALUES ('".$title."','".$content."','".$path1."','".$_POST['content1']."','".$path."','".$conn->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['f_name']."')");
                 if($res){
+									
+    $admin=connect_mysql();
+    $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','blog added ".$_title."')");
                     echo "<script>alert('Successfully Added');window.location.href='./blogAddForm';</script>";
                 }else{
                     echo "<script>alert('Failed')</script>";

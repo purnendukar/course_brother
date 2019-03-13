@@ -60,6 +60,9 @@ if($conn->query("UPDATE `blogs` SET `heading`='".$title."',`content`='".$content
         }
   }
       echo "1";
+      
+    $admin=connect_mysql();
+    $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','update blog id=".$id."')");
 }else{
   echo "0";
 }

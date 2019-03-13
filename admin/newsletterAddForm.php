@@ -46,7 +46,7 @@ else
         
         <script>
             
-            function add_it(a,b){
+            function add_it(a){
                 if(confirm("Do you want to update?")){
 					if(confirm("Going to update")){
 						var input_=document.getElementsByName("input_");
@@ -57,12 +57,12 @@ else
 							return;
 						}
 						var formData= new FormData();
-						formData.append('id',a);
-						formData.append('head',escape(head.value));
+						formData.append('u_id',a);
+						formData.append('heading',escape(head.value));
 						formData.append('content',escape(content.value));
 						
 						$.ajax({
-								url: "./newsletter_update.php",
+								url: "./newsletteradd.php",
 								type: 'POST',
 								cache: false,
 								contentType: false,
@@ -71,7 +71,7 @@ else
 								complete: function (data) {
 									if(data.responseText=='1'){
 										alert("Data Added Succedd fully");
-										window.location.href="./newsletterEditForm?id="+b;
+										window.location.href="./newsletterEditForm?id="+a;
 									}else{
 										console.log(data.responseText);
 										alert("Data Not Added Try Again");
@@ -110,23 +110,21 @@ else
             <?php 
                 $u_id='';
                 $id='';
-                if(isset($_GET['id'])){
+                if(isset($_GET['u_id'])){
                     $u_id=$_GET['u_id'];
-                    $id=$_GET['id'];
                 }else{
                     header('./index.php');
                 }
-                $row=$conn_p->query("select * from news_update where id=".$id)->fetch_assoc();
             ?>
 				<div class='row menu-form'>
 	              <div class='col-lg-6' style="width:100%; height:100%">
-	                  <h2 class='menu-text'>News & Update <?php if(isset($_GET['id'])){echo "For ".$conn_p->query("select * from universities where u_id=".$u_id)->fetch_assoc()['u_name'];} ?></h2>
+	                  <h2 class='menu-text'>News & Update <?php if(isset($_GET['u_id'])){echo "For ".$conn_p->query("select * from universities where u_id=".$u_id)->fetch_assoc()['u_name'];} ?></h2>
                             <div id="add_one" style="width:100%;">
-                                <div style="padding:5px; width:100%;"><input style="width:100%;" type="text" name="input_" class="form-control" required value="<?php echo urldecode($row['heading'])?>"/></div>
-                                <div style="padding:5px; width:100%;"><textarea style="min-width:100%;max-width:100%;height:300px;" type="text" required name="input_" class="form-control" /><?php echo urldecode($row['content']);?></textarea></div>
+                                <div style="padding:5px; width:100%;"><input placeholder="Heading" style="width:100%;" type="text" name="input_" class="form-control" required value=""/></div>
+                                <div style="padding:5px; width:100%;"><textarea placeholder="Content" style="min-width:100%;max-width:100%;height:300px;" type="text" required name="input_" class="form-control" /></textarea></div>
                                 <div style="width:100%;">
                                     <div style="text-align:center;">
-                                        <input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Update" onclick="add_it('<?php echo $id;?>','<?php echo $u_id;?>');" />
+                                        <input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Update" onclick="add_it('<?php echo $u_id;?>');" />
                                     </div>
                                 </div>
                             </div>

@@ -48,5 +48,8 @@ if(isset($_POST['u_name'])){
     if($conn_p->query($sql)){
         echo "1";
     }
+    $admin=connect_mysql();
+    $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','updated university id=".$u_id."')");
+    
 }
 ?>

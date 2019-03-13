@@ -34,6 +34,9 @@ if(isset($_FILES['image'])){
 
     if($conn->query("INSERT INTO testimonial (head,para,about,img_src) VALUES ('".$head."','".$para."','".$about."','".$path."')")){
         echo "1";
+        
+        $admin=connect_mysql();
+        $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','testimonial added')");
     }else{
         echo "0";
     }

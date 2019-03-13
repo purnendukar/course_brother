@@ -102,7 +102,7 @@ else
                 });
               }}
             }
-            function make_check_(a){
+            function make_check(a){
               var t=a.split(',');
               var pages=document.getElementsByName("pages");
               for(var i=0;i<pages.length;i++){
@@ -166,7 +166,7 @@ else
                       <?php $r=$conn_p->query("select * from universities");
                         while($t=$r->fetch_assoc()){
                       ?>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="newsletterall,newsletterEditForm?id=<?php echo $t['u_id']?>" <?php if(strpos($row['access'], 'newsletterall,newsletterEditForm?id='.$t['u_id']) !== false){echo 'checked';} ?>> News & Update of <?php echo $t['u_name'];?></div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="newsletterall,newsletterEditForm?id=<?php echo $t['u_id']?>,newsletterAddForm?u_id=<?php echo $t['u_id']?>" <?php if(strpos($row['access'], 'newsletterall,newsletterEditForm?id='.$t['u_id'].',newsletterAddForm?u_id='.$t['u_id']) !== false){echo 'checked';} ?>> News & Update of <?php echo $t['u_name'];?></div>
                         <?php } ?>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="Testimonial"  > Testimonial Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="institutionAddForm,institutionEditForm,institutionDeleteForm" <?php if(strpos($row['access'], 'institutionAddForm,institutionEditForm,institutionDeleteForm') !== false){echo 'checked';} ?>> University Edit</div>
@@ -174,10 +174,12 @@ else
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="specialisation_add,specialisation_edit,specialisation_delete" <?php if(strpos($row['access'], 'specialisation_add,specialisation_edit,specialisation_delete') !== false){echo 'checked';} ?>> Specialisation Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user" > User</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_edit"> User Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_add"> User Add</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="admission_form" > Admission Form</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="lead" > Leads</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="activity_log" > Activity Log</div>
                     </div>
-                    <script>make_check_('<?php echo $row['access'];?>');</script>
+                    <script>make_check('<?php echo $row['access'];?>');</script>
                     <div class="form-group">
                       <label for="city">City</label>
                       <input name="city" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="City" value="<?php echo urldecode($row['city']);?>" required>

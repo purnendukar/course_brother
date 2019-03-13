@@ -39,6 +39,9 @@ if(isset($_POST['head'])){
     $link=mysqli_real_escape_string($conn, $_POST['link']);
 
     if($conn->query("UPDATE `slide_show` SET `head`='".$head."',`link`='".$link."' WHERE id=".$id)){
+        $admin=connect_mysql();
+        $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','slider updated id=".$id."')");
+
         echo "1";
     }else{
         echo "0";

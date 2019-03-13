@@ -56,6 +56,8 @@ if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fe
             fwrite($myfile, $txt);
             fclose($myfile);
             echo"1";
+            $admin=connect_mysql();
+            $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','course added')");
         }
     }
 }else{

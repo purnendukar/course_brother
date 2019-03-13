@@ -41,6 +41,8 @@ if(isset($_POST['head'])){
 
     if($conn->query("UPDATE `testimonial` SET `head`='".$head."',`para`='".$para."',`about`='".$about."' WHERE id=".$id)){
         echo "1";
+        $admin=connect_mysql();
+        $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','testimonial updated id=".$id."')");
     }else{
         echo "0";
     }

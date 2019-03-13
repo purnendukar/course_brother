@@ -36,6 +36,8 @@ if(isset($_FILES['image'])){
 
     if($conn->query("INSERT INTO `team`(`name`, `img_src`, `position`, `about`) VALUES ('".$name."','".$path."','".$position."','".$about."')")){
         echo "1";
+        $admin=connect_mysql();
+        $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','add on team ".$name."')");
     }else{
         echo "0";
     }

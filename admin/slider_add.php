@@ -35,6 +35,9 @@ if(isset($_FILES['image'])){
 
     if($conn->query("INSERT INTO slide_show (image_src,head,link) VALUES ('".$path."','".$head."','".$link."')")){
         echo "1";
+        $admin=connect_mysql();
+        $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','slide added to slider')");
+
     }else{
         echo "0";
     }

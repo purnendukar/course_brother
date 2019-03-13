@@ -285,6 +285,7 @@ else
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						<button class="btn btn-primary" onclick="window.location.href='./user_add'">Add one</button>
 					</div><!-- /.page-content -->
 				</div>
         <!-- footer section -->

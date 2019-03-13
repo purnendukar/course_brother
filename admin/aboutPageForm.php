@@ -258,7 +258,7 @@ else
             <?php include('./settingsContainer.php'); ?>
             <h3>About Page</h3>
             <div id="accordion">
-			  <h3>Slider</h3>
+			  <h3>About</h3>
 				<div class='row menu-form' >
 	              <div class='col-lg-6' style="width:100%;height:100%">
 	                  <h2 class='menu-text'>About</h2>

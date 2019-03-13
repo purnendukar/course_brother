@@ -44,34 +44,6 @@ else
 
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
-        <script>
-            
-            function delete_(a){
-                if(confirm("Want to delete data of id "+a)){
-                    if(confirm("Going to delete data of id "+a)){
-                        var f=new FormData();
-                        f.append("id",a);
-                        $.ajax({
-                                url: "./newsletterdelete.php",
-                                type: 'POST',
-                                cache: false,
-                                contentType: false,
-                                processData: false,
-                                data: f,
-                                complete: function (data) {
-                                    if(data.responseText=='1'){
-                                        alert("Data Deleted");
-                                        document.getElementById("row_"+a).style.display="none";
-                                    }else{
-                                        alert("Data Not Deleted");
-                                    }
-                                }
-                            });
-                    }
-                }
-            }
-        </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
@@ -83,11 +55,17 @@ else
 
 	<body class="no-skin">
         
-		<?php include('includes/navbar.php'); 
-				$conn=connect_mysql();
-				$conn_p=connect_mysql_page();
+        <?php
+            function user_delete($id){
+                if($_COOKIE['user_id']!=$id){
+                    return "delete_('".$id."')";
+                }
+                return "alert('you can\'t delete')";
+            }
         ?>
-        
+		<?php include('includes/navbar.php'); 
+        $conn=connect_mysql();
+        ?>
         
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
@@ -101,12 +79,13 @@ else
 						<?php include('./settingsContainer.php'); ?>
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">News & Update</h3>
+										<h3 class="header smaller lighter blue">User Activity  dataTables</h3>
+
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											News & Update of <?php echo $conn_p->query("select * from universities where u_id=".$_GET['id'])->fetch_assoc()['u_name'];?>
+											Results Of Page Users
 										</div>
 
 										<!-- div.table-responsive -->
@@ -121,22 +100,25 @@ else
 																<span class="lbl">Sl No</span>
 															</label>
 														</th>
-														<th>Heading</th>
-                                                        <th>Content</th>
+														<th>User Name</th>
+														<th>Email</th>
+                                                        <th>Full Name</th>
+                                                        <th>Activity</th>
+
 														<th>
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Last Updated
+															Activity time 
 														</th>
-														<th>Edit</th>
+
 													</tr>
 												</thead>
 												<tbody>
 												<?php
-                        	$sql="SELECT * FROM news_update where u_id=".$_GET['id']." order by id desc";
-                          $result=$conn_p->query($sql);
-                          while($row=mysqli_fetch_assoc($result))      
-                          {
-											echo  
+                                                    $sql="SELECT * FROM user_activity order by id desc";
+                                                    $result=$conn->query($sql);
+                                                    while($row=mysqli_fetch_assoc($result))      
+                                                    { $row1=$conn->query("select * from user where id=".$row['user_id'])->fetch_assoc();
+												echo  
 												"<tr id='row_".$row['id']."'>
 														<td class='center'>
 															<label class='pos-rel'>
@@ -144,53 +126,19 @@ else
 															</label>
 														</td>
 
-														<td> 
-                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row['heading'])."</span>
-                                                        </td>
-                                                        <td style='width:50%;'>
-                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row['content'])."</span>
-                                                        </td>
-														<td>".$row['updated']."</td>
-
-														<td style='width:120px'>
-															<div class='hidden-sm hidden-xs action-buttons'>
-																
-																<a class='green' href='./newsletterShow?id=".$row['id']."&u_id=".$_GET['id']."' class='tooltip-success'>
-																	<i class='ace-icon fa fa-pencil bigger-130'></i>
-																</a>
-
-																<a class='red' href='javascript:delete_(".$row['id'].")' >
-																	<i class='ace-icon fa fa-trash-o bigger-130'></i>
-																</a>
-															</div>
-
-															<div class='hidden-md hidden-lg'>
-																<div class='inline pos-rel'>
-																	<button class='btn btn-minier btn-yellow dropdown-toggle' data-toggle='dropdown' data-position='auto'>
-																		<i class='ace-icon fa fa-caret-down icon-only bigger-120'></i>
-																	</button>
-
-																	<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
-																		
-																		<li>
-																			<a href='./newsletterShow?id=".$row['id']."&u_id=".$_GET['id']."' class='tooltip-success' data-rel='tooltip' title='Edit'>
-																				<span class='green'>
-																					<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href='javascript:delete_(".$row['id'].")' class='tooltip-error' data-rel='tooltip' title='Delete' >
-																				<span class='red'>
-																					<i class='ace-icon fa fa-trash-o bigger-120'></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
+														<td>
+                                                            ".urldecode($row1['u_name'])."
 														</td>
+														<td> 
+                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row1['email'])."</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row1['f_name'])."</span>
+                                                        </td>
+                                                        <td style='width:20%;'>".$row['activity']."</td>
+														<td>".$row['created']."</td>
+
+														
 													</tr>";} ?>
 												</tbody>
 											</table>
@@ -198,8 +146,6 @@ else
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
-						
-						<button class="btn btn-primary" onclick="window.location.href='./newsletterAddForm?u_id=<?php echo $_GET['id']?>'">Add one</button>
 					</div><!-- /.page-content -->
 				</div>
         <!-- footer section -->
@@ -250,7 +196,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null,
+					  null, null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],
