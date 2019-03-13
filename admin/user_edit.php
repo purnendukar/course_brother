@@ -102,6 +102,17 @@ else
                 });
               }}
             }
+            function make_check_(a){
+              var t=a.split(',');
+              var pages=document.getElementsByName("pages");
+              for(var i=0;i<pages.length;i++){
+                for(var j=0;j<t.length;j++){
+                  if(pages[i].value==t[j]){
+                    pages[i].checked=true;
+                  }
+                }
+              }
+            }
         </script>
 	</head>
 
@@ -141,31 +152,32 @@ else
                     </div>
                     <div class="form-group">
                       <label for="pages">Pages</label><br/>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="index" <?php if(strpos($row['access'], 'index') !== false){echo 'checked';} ?>> Dashboard</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="indexPageForm" <?php if(strpos($row['access'], 'indexPageForm') !== false){echo 'checked';} ?>> Index Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="aboutPageForm" <?php if(strpos($row['access'], 'aboutPageForm') !== false){echo 'checked';} ?>> About us Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="contactPageForm" <?php if(strpos($row['access'], 'contactPageForm') !== false){echo 'checked';} ?>> Contact us Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="shippingPageForm" <?php if(strpos($row['access'], 'shippingPageForm') !== false){echo 'checked';} ?>> Shipping Policy Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="refundPageForm" <?php if(strpos($row['access'], 'refundPageForm') !== false){echo 'checked';} ?>> Refund Policy Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="disclaimerPageForm" <?php if(strpos($row['access'], 'disclaimerPageForm') !== false){echo 'checked';} ?>> Disclaimer Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="termnconditionPageForm" <?php if(strpos($row['access'], 'termnconditionPageForm') !== false){echo 'checked';} ?>> Term & Condition Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="privacyPageForm" <?php if(strpos($row['access'], 'privacyPageForm') !== false){echo 'checked';} ?>> Privacy Policy Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="legalPageForm" <?php if(strpos($row['access'], 'legalPageForm') !== false){echo 'checked';} ?>> Legal Policy Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="index"> Dashboard</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="indexPageForm" > Index Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="aboutPageForm" > About us Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="contactPageForm" > Contact us Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="shippingPageForm" > Shipping Policy Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="refundPageForm" > Refund Policy Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="disclaimerPageForm" > Disclaimer Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="termnconditionPageForm" > Term & Condition Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="privacyPageForm" > Privacy Policy Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="legalPageForm" > Legal Policy Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="blogAddForm,blogEditForm,blogEditFormShow" <?php if(strpos($row['access'], 'blogAddForm,blogEditForm,blogEditFormShow') !== false){echo 'checked';} ?>> Blog</div>
                       <?php $r=$conn_p->query("select * from universities");
                         while($t=$r->fetch_assoc()){
                       ?>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="newsletterall,newsletterEditForm?id=<?php echo $t['u_id']?>" <?php if(strpos($row['access'], 'newsletterall,newsletterEditForm?id='.$t['u_id']) !== false){echo 'checked';} ?>> News & Update of <?php echo $t['u_name'];?></div>
                         <?php } ?>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="Testimonial"  <?php if(strpos($row['access'], 'Testimonial') !== false){echo 'checked';} ?>> Testimonial Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="Testimonial"  > Testimonial Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="institutionAddForm,institutionEditForm,institutionDeleteForm" <?php if(strpos($row['access'], 'institutionAddForm,institutionEditForm,institutionDeleteForm') !== false){echo 'checked';} ?>> University Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="courseAddForm,courseEditForm" <?php if(strpos($row['access'], 'courseAddForm,courseEditForm') !== false){echo 'checked';} ?>> Course Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="specialisation_add,specialisation_edit,specialisation_delete" <?php if(strpos($row['access'], 'specialisation_add,specialisation_edit,specialisation_delete') !== false){echo 'checked';} ?>> Specialisation Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user" <?php if(strpos($row['access'], 'user') !== false){echo 'checked';} ?>> User</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_edit" <?php if(strpos($row['access'], 'user_edit') !== false){echo 'checked';} ?>> User Edit</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="admission_form" <?php if(strpos($row['access'], 'admission_form') !== false){echo 'checked';} ?>> Admission Form</div>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="lead" <?php if(strpos($row['access'], 'lead') !== false){echo 'checked';} ?>> Leads</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user" > User</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_edit"> User Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="admission_form" > Admission Form</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="lead" > Leads</div>
                     </div>
+                    <script>make_check_('<?php echo $row['access'];?>');</script>
                     <div class="form-group">
                       <label for="city">City</label>
                       <input name="city" type="text" class="form-control" style="min-heigth:500px;min-width:100%;max-width:100%;"placeholder="City" value="<?php echo urldecode($row['city']);?>" required>

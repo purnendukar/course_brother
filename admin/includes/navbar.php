@@ -75,13 +75,22 @@ $conn_p=connect_mysql_page();
 					</ul>
 				</div>
 			</div><!-- /.navbar-container -->
+			
 </div>
 <?php 
 	$r=$conn->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['access'];
 	$r=explode(",",$r);
 	$t=true;
+	$temp=explode("/",$_SERVER['REQUEST_URI']);
+	// strpos($_SERVER['REQUEST_URI'],$r[$i])!==false
 	for($i=0;$i<count($r);$i++){
-		if(strpos($_SERVER['REQUEST_URI'],$r[$i])!==false){
+		if($r[$i]=='user_edit'){
+			if(strpos($_SERVER['REQUEST_URI'],$r[$i])!==false){
+				$t=false;
+				break;
+			}
+		}
+		if($temp[count($temp)-1]==$r[$i] || ($temp[count($temp)-1]=='' && $r[$i]=='index')){
 			$t=false;
 			break;
 		}
