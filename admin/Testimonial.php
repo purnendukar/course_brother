@@ -205,7 +205,14 @@ else
                         });
                     }
                 }
-            }
+			}
+			function cancel_add(){
+				var temp=document.getElementsByName('input_');
+				for (var i=0;i<temp.length;i++){
+					temp[i].value="";
+				}
+				document.getElementById('add_one').style.display="none";
+			}
             function add(){
                 var add_one=document.getElementById('add_one');
                 if(add_one.style.display=='none'){
@@ -299,6 +306,15 @@ else
                                                             Selected
                                                         </span>
                                                     </a>
+													<a style="margin-left:15px;" href="javascript:add()">Add new testimonial</a>
+													<div id="add_one" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">			
+														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Student Name"></textarea>
+														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Institute Name"></textarea>
+														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Testimonial"></textarea>
+														<input type="file" id="img_choose" accept="image/*" style="margin:5px;" />
+														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it();" />
+														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add()" />
+													</div>
                                                 </div>
                                                 <thead>
 													<tr >
@@ -307,12 +323,12 @@ else
 																<span class="lbl">Sl No</span>
 															</label>
 														</th>
-														<th>Heading</th>
-														<th>Sub-Heading</th>
-                                                        <th>About</th>
-                                                        <th>Images</th>
-														<th class="hidden-480">Last Updated By</th>
-														<th>Edit/Delete</th>
+														<th style="text-align:center">Student Name</th>
+														<th style="text-align:center">Institute Name</th>
+                                                        <th style="text-align:center">Testimonial</th>
+                                                        <th style="text-align:center">Images</th>
+														<th style="text-align:center" class="hidden-480">Last Updated By</th>
+														<th style="text-align:center">Edit/Delete</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -401,14 +417,7 @@ else
 													</tr>";} ?>
 												</tbody>
 											</table>
-											<div id="add_one" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">			
-												<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Heading"></textarea>
-												<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Sub Heading"></textarea>
-												<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="About"></textarea>
-												<input type="file" id="img_choose" name="" style="margin:5px;" />
-												<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it();" />
-											</div>
-											<div class="form-group"  style="text-align:center; padding:30px;"><input type="button" style="width:100px;" class="btn btn-primary" value="Add One" onclick="add()"/></div>
+											<div class="form-group"  style="text-align:center; padding:30px;"></div>
 										</div>
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
