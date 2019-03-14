@@ -38,10 +38,10 @@ if(isset($_POST['head'])){
     $head=mysqli_real_escape_string($conn, $_POST['head']);
     $para=mysqli_real_escape_string($conn, $_POST['para']);
     $about=mysqli_real_escape_string($conn, $_POST['about']);
-
-    if($conn->query("UPDATE `testimonial` SET `head`='".$head."',`para`='".$para."',`about`='".$about."' WHERE id=".$id)){
+    
+    $admin=connect_mysql();
+    if($conn->query("UPDATE `testimonial` SET `head`='".$head."',`para`='".$para."',`about`='".$about."',`update_by`='".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."' WHERE id=".$id)){
         echo "1";
-        $admin=connect_mysql();
         $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','testimonial updated id=".$id."')");
     }else{
         echo "0";

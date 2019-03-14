@@ -166,7 +166,7 @@ else
                       <?php $r=$conn_p->query("select * from universities");
                         while($t=$r->fetch_assoc()){
                       ?>
-                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="newsletterall,newsletterEditForm?id=<?php echo $t['u_id']?>,newsletterAddForm?u_id=<?php echo $t['u_id']?>" <?php if(strpos($row['access'], 'newsletterall,newsletterEditForm?id='.$t['u_id'].',newsletterAddForm?u_id='.$t['u_id']) !== false){echo 'checked';} ?>> News & Update of <?php echo $t['u_name'];?></div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="newsletterall,newsletterEditForm?id=<?php echo $t['u_id']?>,newsletterAddForm?u_id=<?php echo $t['u_id']?>,newsletterShow" <?php if(strpos($row['access'], 'newsletterall,newsletterEditForm?id='.$t['u_id'].',newsletterAddForm?u_id='.$t['u_id'].',newsletterShow') !== false){echo 'checked';} ?>> News & Update of <?php echo $t['u_name'];?></div>
                         <?php } ?>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="Testimonial"  > Testimonial Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="institutionAddForm,institutionEditForm,institutionDeleteForm" <?php if(strpos($row['access'], 'institutionAddForm,institutionEditForm,institutionDeleteForm') !== false){echo 'checked';} ?>> University Edit</div>

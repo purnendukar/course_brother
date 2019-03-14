@@ -78,10 +78,12 @@ else
                             <div>
                                 <?php $r=$conn_p->query("select * from universities");
                                 while($ro=$r->fetch_assoc()){ ?>
-                                    <a style="margin:20px;display:inline-block;" href="./newsletterEditForm?id=<?php echo $ro['u_id'];?>">
+																	<div style="margin:20px;display:block;">
+                                    <a href="./newsletterEditForm?id=<?php echo $ro['u_id'];?>">
                                         <i class="menu-icon fa fa-caret-right"></i>
                                         <b class="fa fa-edit"></b> &nbsp; <?php echo $ro['u_name']?>
                                     </a>
+																	</div>
                                 <?php } ?>
                             </div>    
                         </div>
