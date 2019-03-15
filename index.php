@@ -107,7 +107,7 @@ else
         <a href="./pages/all-testimonials">
           <ul class="rslides header__testimonial__slides">
             <?php
-              $res=$conn->query("select * from testimonial");
+              $res=$conn->query("select * from testimonial where display='yes'");
                 while($row=$res->fetch_assoc()){
               ?>
             <li class='header__testimonial__slides__item'>

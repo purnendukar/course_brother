@@ -98,6 +98,10 @@ $conn_p=connect_mysql_page();
 			$t=false;
 			break;
 		}
+		if(strpos($_SERVER['REQUEST_URI'],'admission_form_view')!==false ){
+			$t=false;
+			break;
+		}
 		if(strpos($_SERVER['REQUEST_URI'],'courseEditFormShow')!==false && strpos($r[$i],'courseEditForm')!==false){
 			$t=false;
 			break;
@@ -105,6 +109,6 @@ $conn_p=connect_mysql_page();
 	}
 	
 	if($t){
-		echo "<script>alert('you cant not access this page');window.location.href='./".$r[0]."';</script>";
+		echo "<script>alert('you can not access this page');window.location.href='./".$r[0]."';</script>";
 	}
 ?>

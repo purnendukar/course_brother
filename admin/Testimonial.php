@@ -63,6 +63,7 @@ else
                 var img_display=document.getElementById("img_display"+a);
                 var img_choose=document.getElementById("img_choose"+a);
                 var input_= document.getElementsByName('input_'+a);
+				var select_t=document.getElementsByName('select_'+a)[0];
 				if(input_[0].disabled==false){
 					input_[0].value=head_;
                 	input_[1].value=para_;
@@ -72,16 +73,21 @@ else
 					input_[2].disabled=true;
                     img_display.style.display="block";
                     img_choose.style.display="none";
+					select_t.value=select_;
+					select_t.disabled=true;
 				}
 			}
 			var head_;
 			var para_;
 			var about_;
+			var select_;
             function edit_(a){
                 var input_= document.getElementsByName('input_'+a);
                 var head=input_[0];
                 var para=input_[1];
 				var about=input_[2];
+				var select_t=document.getElementsByName('select_'+a)[0];
+				select_=select_t.value;
 				head_=head.value;
 				para_=para.value;
 				about_=about.value;
@@ -91,6 +97,7 @@ else
                     for(var i=0;i<input_.length;i++){
                         input_[i].disabled=false;
                     }
+					select_t.disabled=false;
                     img_display.style.display="none";
                     img_choose.style.display="block";
                 }else{
@@ -101,6 +108,7 @@ else
                             formData.append('head',escape(head.value));
                             formData.append('para',escape(para.value));
                             formData.append('about',escape(about.value));
+							formData.append('display',select_);
 
                             $.ajax({
                                 url: "./testimonial_update.php",
@@ -140,6 +148,7 @@ else
                                 });
                         }
                     }
+					select_t.disabled=true;
                     head.disabled=true;
                     para.disabled=true;
                     about.disabled=true;
@@ -268,7 +277,14 @@ else
 	</head>
 
 	<body class="no-skin">
-
+		
+		<?php 
+			function select_or_not($a){
+				if($a=='yes'){
+					return 'selected';
+				}
+			}
+		?>
 		<?php include('includes/navbar.php'); ?>
 
 		<div class="main-container ace-save-state" id="main-container">
@@ -318,14 +334,21 @@ else
                                                 </div>
                                                 <thead>
 													<tr >
+													<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+															<label class="pos-rel">
+																<input type="checkbox" class="ace">
+																<span class="lbl"></span>
+															</label>
+														</th>
 														<th class="center">
 															<label class="pos-rel">
-																<span class="lbl">Sl No</span>
+																<span class="lbl">S.No</span>
 															</label>
 														</th>
 														<th style="text-align:center">Student Name</th>
 														<th style="text-align:center">Institute Name</th>
                                                         <th style="text-align:center">Testimonial</th>
+                                                        <th style="text-align:center">Display</th>
                                                         <th style="text-align:center">Images</th>
 														<th style="text-align:center" class="hidden-480">Last Updated By</th>
 														<th style="text-align:center">Edit/Delete</th>
@@ -340,8 +363,13 @@ else
 												echo  
 												"<tr id='row".$row['id']."'>
 														<td class='center'>
+															<label class='pos-rel'>
+																<input name='check_id'  value='".$row['id']."'  type='checkbox' class='ace'>
+																<span class='lbl'></span>
+															</label>
+														</td>
+														<td class='center'>
                                                             <label class='pos-rel'>
-                                                                <input name='check_id' type='checkbox' value='".$row['id']."' style='display:none;'/>
 																<span  class='lbl'>".$row['id']."</span>
 															</label>
 														</td>
@@ -354,7 +382,13 @@ else
                                                         </td>
                                                         <td>
                                                             <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>".urldecode($row['about'])."</textarea>
-                                                        </td>
+														</td>
+														<td>
+															<select class='lbl' name='select_".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>
+																<option value='no' ".select_or_not($row['display']).">no</option>
+																<option value='yes' ".select_or_not($row['display']).">yes</option>
+															</select>
+														</td>
                                                         <td>
                                                             <img id='img_display".$row['id']."' class='img_display' src='.".$row['img_src']."' alt='image'/>
                                                             <input id='img_choose".$row['id']."' type='file' style='width:200px;display:none;' accept='image/*'/>
@@ -475,8 +509,8 @@ else
 				.DataTable( {
 					bAutoWidth: false,
 					"aoColumns": [
-					  { "bSortable": false },
-					  null, null, null, null, null,
+					  { "bSortable": false },{ "bSortable": false },
+					  null, null, null, null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],
