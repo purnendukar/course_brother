@@ -280,7 +280,7 @@ else
 		
 		<?php 
 			function select_or_not($a){
-				if($a=='yes'){
+				if($a=='Yes'){
 					return 'selected';
 				}
 			}
@@ -316,19 +316,19 @@ else
 										<div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                                 <div style="background-color: #EFF3F8;padding:15px 15px 5px 15px;">
-                                                    <a href='javascript:delete_checked()' class='tooltip-error' data-rel='tooltip' title='Delete' >
+                                                    <a href='javascript:delete_checked()' class='tooltip-error ' data-rel='tooltip' title='Delete' >
                                                         <span class='red'>
                                                             <i class='ace-icon fa fa-trash-o bigger-120'></i>
                                                             Selected
                                                         </span>
                                                     </a>
-													<a style="margin-left:15px;" href="javascript:add()">Add new testimonial</a>
+													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add()">Add New Testimonial</a>
 													<div id="add_one" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">			
 														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Student Name"></textarea>
 														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Institute Name"></textarea>
 														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="Testimonial"></textarea>
 														<input type="file" id="img_choose" accept="image/*" style="margin:5px;" />
-														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Add it" onclick="add_it();" />
+														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Confirm" onclick="add_it();" />
 														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add()" />
 													</div>
                                                 </div>
@@ -385,8 +385,8 @@ else
 														</td>
 														<td>
 															<select class='lbl' name='select_".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>
-																<option value='no' ".select_or_not($row['display']).">no</option>
-																<option value='yes' ".select_or_not($row['display']).">yes</option>
+																<option value='No' ".select_or_not($row['display']).">No</option>
+																<option value='Yes' ".select_or_not($row['display']).">Yes</option>
 															</select>
 														</td>
                                                         <td>
@@ -394,7 +394,7 @@ else
                                                             <input id='img_choose".$row['id']."' type='file' style='width:200px;display:none;' accept='image/*'/>
                                                         </td>
 														<td class='hidden-480'>
-                                                            <span class='label label-sm label-warning' style='height:auto' name='display".$row['id']."' >".$row['update_by']." <br/> ".$row['updated']."</span>
+                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".str_replace(' ','<br>',$row['updated'])."</span>
 														</td>
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>

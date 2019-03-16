@@ -45,30 +45,50 @@ else
 		<script src="assets/js/ace-extra.min.js"></script>
 
         <script>
-            function update_(a){
-				if(confirm("Want to update?")){if(confirm("Going to update")){
-                var input_=document.getElementsByName("input_");
-                var f=new FormData();
-                f.append('id',a);
-                f.append('content',input_[0].value);
-                $.ajax({
-                        url: "./policies_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: f,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Updated");
-                            }else{
-                                console.log(data.responseText);
-                                alert("Something went Wrong");
-                            }
-                        }
-                    });
-				}}
+            var t=''; 
+            function update_(a,b){
+				var cancel_=document.getElementById('cancel_');
+				var input_=document.getElementsByName("input_");
+				t=input_[0].value;
+				if(b.value=='Edit'){
+					b.value='Update';
+					input_[0].disabled=false;
+					cancel_.style.display="";
+				}else{
+					if(confirm("Want to update?")){if(confirm("Going to update")){
+					var f=new FormData();
+					f.append('id',a);
+					f.append('content',input_[0].value);
+					$.ajax({
+							url: "./policies_update.php",
+							type: 'POST',
+							cache: false,
+							contentType: false,
+							processData: false,
+							data: f,
+							complete: function (data) {
+								if(data.responseText=='1'){
+									alert("Updated");
+									cancel_.style.display="none";
+									input_[0].disabled=true;
+									b.value='Edit';
+								}else{
+									console.log(data.responseText);
+									alert("Something went Wrong");
+								}
+							}
+						});
+					}}
+				}
             }
+			function cancel(){
+                var input_=document.getElementsByName("input_")[0];
+				var cancel_=document.getElementById('cancel_');
+				input_.value=t;
+				input_.disabled=true;
+				document.getElementById('update_').value="Edit";
+				cancel_.style.display="none";
+			}
         </script> 
        
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -102,10 +122,11 @@ else
                                 <div class="form-group">
                                 <?php $res=$conn_p->query("SELECT * FROM `policies` where id=6");?>
                                     <div style="padding:5px"><b>Content : </b>
-                                        <textarea style="min-width:100%;max-width:100%;height:100px;" class="form-control" name="input_" type="text" ><?php echo urldecode($res->fetch_assoc()['content']);?></textarea>
+                                        <textarea disabled style="min-width:100%;max-width:100%;height:100px;" class="form-control" name="input_" type="text" ><?php echo urldecode($res->fetch_assoc()['content']);?></textarea>
                                     </div>
-                                    <div style="margin:10px;text-align:center;"><input type="button" class="btn btn-primary" value="Update" onclick="update_('6');" /></div>
+                                    <div style="margin:10px;text-align:center;"><input type="button" id="update_" class="btn btn-primary" value="Edit" onclick="update_('6',this);" />  <input style="display:none;" id='cancel_' type="button" class="btn btn-primary" value="Cancel" onclick="cancel();" /></div>
                                 </div>
+								<?php include "policies_guide.php";?>
                             </div>
                         </div>
                     </div>

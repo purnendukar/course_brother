@@ -186,7 +186,7 @@ else
         <div class="featured_courses__main__nav">
           <ul>
               <?php
-                $sql1="select * from featured_courses where checked='yes'";
+                $sql1="select * from featured_courses where checked='Yes'";
                     $res1=$conn->query($sql1);
                     while($row1=$res1->fetch_assoc()){
                 ?>
