@@ -37,9 +37,9 @@ if(isset($_FILES['image'])){
 if(isset($_POST['head'])){
     $head=mysqli_real_escape_string($conn, $_POST['head']);
     $link=mysqli_real_escape_string($conn, $_POST['link']);
-
-    if($conn->query("UPDATE `slide_show` SET `head`='".$head."',`link`='".$link."' WHERE id=".$id)){
-        $admin=connect_mysql();
+    $admin=connect_mysql();
+    if($conn->query("UPDATE `slide_show` SET `head`='".$head."',`link`='".$link."',`display`='".$_POST['display']."',update_by='".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."' WHERE id=".$id)){
+        
         $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','slider updated id=".$id."')");
 
         echo "1";

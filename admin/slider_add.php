@@ -32,10 +32,10 @@ if(isset($_FILES['image'])){
     $head=mysqli_real_escape_string($conn, $_POST['head']);
     $link=mysqli_real_escape_string($conn, $_POST['link']);
     
+    $admin=connect_mysql();
 
-    if($conn->query("INSERT INTO slide_show (image_src,head,link) VALUES ('".$path."','".$head."','".$link."')")){
+    if($conn->query("INSERT INTO slide_show (image_src,head,link,update_by) VALUES ('".$path."','".$head."','".$link."','".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."')")){
         echo "1";
-        $admin=connect_mysql();
         $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','slide added to slider')");
 
     }else{

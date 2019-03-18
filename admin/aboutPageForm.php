@@ -73,7 +73,7 @@ else
                     name.disabled=false;
                     position.disabled=false;
                     about.disabled=false;
-                    butt.value="Update";
+					input_[3].disabled=false;
                     img_display.style.display="none";
                     img_choose.style.display="block";
                 }else{
@@ -83,6 +83,7 @@ else
                     formData.append('name',name.value);
                     formData.append('position',position.value);
                     formData.append('about',about.value);
+                    formData.append('display',input_[3].value);
 
                     $.ajax({
                         url: "./team_update.php",
@@ -123,11 +124,25 @@ else
                     name.disabled=true;
                     position.disabled=true;
                     about.disabled=true;
-                    butt.value="Edit";
+					input_[3].disabled=true;
                     img_display.style.display="block";
                     img_choose.style.display="none";
                     }}
                 }
+            }
+			function cancel_(a){
+                var input_= document.getElementsByName('input_'+a);
+                var name=input_[0];
+                var position=input_[1];
+                var about=input_[2];
+                var img_display=document.getElementById("img_display"+a);
+                var img_choose=document.getElementById("img_choose"+a);
+                name.disabled=true;
+                position.disabled=true;
+                about.disabled=true;
+				input_[3].disabled=true;
+                img_display.style.display="block";
+                img_choose.style.display="none";
             }
             function delete_it(a){
                 if(confirm("Want to delete id "+a+" data?")){
@@ -382,13 +397,13 @@ else
                 <h3>Team Member</h3>
                 <div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">Slider</h3>
+										<h3 class="header smaller lighter blue">Team Member</h3>
 
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Results Of Slider
+											Results Of Team Member
 										</div>
 
 										<!-- div.table-responsive -->
@@ -464,7 +479,7 @@ else
                                                             <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:horizontal;height:35px;' disabled>".urldecode($row['about'])."</textarea>
                                                         </td>
 														<td>
-															<select class='lbl' name='select_".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>
+															<select class='lbl' name='input_".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>
 																<option value='No' ".select_or_not($row['display']).">No</option>
 																<option value='Yes' ".select_or_not($row['display']).">Yes</option>
 															</select>
@@ -634,11 +649,6 @@ else
 		<script src="assets/js/ace.min.js"></script>
      <!-- basic scripts -->
 
-		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
-		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-		<!-- <![endif]-->
 
 		<!--[if IE]>
 <script src="assets/js/jquery-1.11.3.min.js"></script>

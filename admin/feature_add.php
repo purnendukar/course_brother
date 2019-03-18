@@ -31,11 +31,11 @@ if(isset($_FILES['image'])){
 }
     $head=mysqli_real_escape_string($conn, $_POST['head']);
     $info=mysqli_real_escape_string($conn, $_POST['info']);
+    $admin=connect_mysql();
     
 
-    if($conn->query("INSERT INTO features (img_src,heading,info) VALUES ('".$path."','".$head."','".$info."')")){
+    if($conn->query("INSERT INTO features (img_src,heading,info,update_by) VALUES ('".$path."','".$head."','".$info."','".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."')")){
         echo "1";
-        $admin=connect_mysql();
         $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','added on why select us')");
 
     }else{

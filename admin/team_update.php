@@ -38,10 +38,10 @@ if(isset($_POST['name'])){
     $name=urlencode($_POST['name']);
     $position=urlencode($_POST['position']);
     $about=mysqli_real_escape_string($conn, $_POST['about']);
-
-    if($conn->query("UPDATE `team` SET `name`='".$name."',`position`='".$position."',`about`='".$about."' WHERE id=".$id)){
+    
+    $admin=connect_mysql();
+    if($conn->query("UPDATE `team` SET `name`='".$name."',`position`='".$position."',`about`='".$about."', `display`='".$_POST['display']."',update_by='".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."' WHERE id=".$id)){
         echo "1";
-        $admin=connect_mysql();
         $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','update on team id=".$id."')");
     }else{
         echo "0";

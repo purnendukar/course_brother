@@ -127,7 +127,7 @@ else
         <div class="header__carousel">
         <div class="header__carousel__container siema">
             <?php
-                $res=$conn->query("select * from slide_show");
+                $res=$conn->query("select * from slide_show where display='yes'");
                 while($row=$res->fetch_assoc()){
             ?>
             <div class="header__carousel__item">
@@ -373,7 +373,7 @@ else
         <div class="site_features__container">
 
           <?php
-                $sql="select * from features";
+                $sql="select * from features where display='yes'";
                 $res=$conn->query($sql);
                 $delay=[0.0,0.2,0.4,0.6,0.8];
                 $i=0;
