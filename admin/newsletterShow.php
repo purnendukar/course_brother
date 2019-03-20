@@ -45,42 +45,63 @@ else
 		<script src="assets/js/ace-extra.min.js"></script>
         
         <script>
-            
+          var head="",content="";
             function add_it(a,b){
+							var butt=document.getElementById("butt");
+							var input_=document.getElementsByName("input_");
+							head=input_[0].value;
+							content=input_[1].value;
+							if(butt.value=="Update"){
                 if(confirm("Do you want to update?")){
-					if(confirm("Going to update")){
-						var input_=document.getElementsByName("input_");
-						var head=input_[0];
-						var content=input_[1];
-						if(head.value==""||content.value==""){
-							alert("Fill all Feild");
-							return;
-						}
-						var formData= new FormData();
-						formData.append('id',a);
-						formData.append('head',escape(head.value));
-						formData.append('content',escape(content.value));
-						
-						$.ajax({
-								url: "./newsletter_update.php",
-								type: 'POST',
-								cache: false,
-								contentType: false,
-								processData: false,
-								data: formData,
-								complete: function (data) {
-									if(data.responseText=='1'){
-										alert("Data Added Succedd fully");
-										window.location.href="./newsletterEditForm?id="+b;
-									}else{
-										console.log(data.responseText);
-										alert("Data Not Added Try Again");
+									if(confirm("Going to update")){
+										if(head.value==""||content.value==""){
+											alert("Fill all Feild");
+											return;
+										}
+										var formData= new FormData();
+										formData.append('id',a);
+										formData.append('u_id',b);
+										formData.append('head',escape(head.value));
+										formData.append('content',escape(content.value));
+										
+										$.ajax({
+												url: "./newsletter_update.php",
+												type: 'POST',
+												cache: false,
+												contentType: false,
+												processData: false,
+												data: formData,
+												complete: function (data) {
+													if(data.responseText=='1'){
+														alert("Data Added Successfully ");
+														butt.value="Edit";
+														input_[0].disabled=true;
+														input_[1].disabled=true;
+													}else{
+														console.log(data.responseText);
+														alert("Data Not Added Try Again");
+													}
+												}
+											});
 									}
 								}
-							});
-					}
-				}
+							}else{
+								butt.value="Update";
+								input_[0].disabled=false;
+								input_[1].disabled=false;
+							}
             }
+						function cancel_(){
+							var butt=document.getElementById("butt");
+							var input_=document.getElementsByName("input_");
+							butt.value="Edit";
+							if(head!="" && content!=""){
+								input_[0].value=head;
+								input_[1].value=content;
+														input_[0].disabled=true;
+														input_[1].disabled=true;
+							}
+						}
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -105,6 +126,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
             
             <?php include('./settingsContainer.php'); ?>
             <?php 
@@ -122,11 +144,12 @@ else
 	              <div class='col-lg-6' style="width:100%; height:100%">
 	                  <h2 class='menu-text'>News & Update <?php if(isset($_GET['id'])){echo "For ".$conn_p->query("select * from universities where u_id=".$u_id)->fetch_assoc()['u_name'];} ?></h2>
                             <div id="add_one" style="width:100%;">
-                                <div style="padding:5px; width:100%;"><input style="width:100%;" type="text" name="input_" class="form-control" required value="<?php echo urldecode($row['heading'])?>"/></div>
-                                <div style="padding:5px; width:100%;"><textarea style="min-width:100%;max-width:100%;height:300px;" type="text" required name="input_" class="form-control" /><?php echo urldecode($row['content']);?></textarea></div>
+                                <div style="padding:5px; width:100%;"><input style="width:100%;" type="text" name="input_" class="form-control" disabled required value="<?php echo urldecode($row['heading'])?>"/></div>
+                                <div style="padding:5px; width:100%;"><textarea style="min-width:100%;max-width:100%;height:300px;" type="text" disabled required name="input_" class="form-control" /><?php echo urldecode($row['content']);?></textarea></div>
                                 <div style="width:100%;">
                                     <div style="text-align:center;">
-                                        <input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Update" onclick="add_it('<?php echo $id;?>','<?php echo $u_id;?>');" />
+                                        <input id="butt" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="add_it('<?php echo $id;?>','<?php echo $u_id;?>');" />
+                                        <input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_();" />
                                     </div>
                                 </div>
                             </div>

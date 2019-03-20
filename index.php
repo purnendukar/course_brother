@@ -510,7 +510,7 @@ else
 
       <div class="latest_blogs__container">
         <?php
-            $sql_t="select * from blogs order by id DESC";
+            $sql_t="select * from blogs where display='Yes'";
             $res_t=$conn->query($sql_t);
             $i=0; // for check number of blogs
             while($i<4 && $row_t=$res_t->fetch_assoc()){

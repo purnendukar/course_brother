@@ -45,15 +45,18 @@ else
 
         <script>
             function submit_it(a){
+							var input_=document.getElementsByName('input_');
+							var butt=document.getElementById('butt');
+							if(butt.value=="Update"){
                 if(confirm("Want to update?")){
 									if(confirm("Going to Update")){
-										var input_=document.getElementsByName('input_');
 										var formData = new FormData();
 										formData.append('id',a);
 										formData.append('title',input_[0].value);
 										formData.append('content',input_[1].value);
 										formData.append('image1', $('input[type=file]')[0].files[0]);
 										formData.append('content2',input_[2].value);
+										formData.append('display',document.getElementsByName("select_")[0].value);
 										formData.append('image', $('input[type=file]')[1].files[0]);
 										$.ajax({
 												url: "./blogeAddFormupdate.php",
@@ -66,6 +69,13 @@ else
 														console.log(data.responseText);
 														if(data.responseText=='1' || data.responseText=='11' || data.responseText=='111'){
 																alert("Successfully Added");
+																butt.value="Edit";
+																for(var i=0;i<input_.length;i++){
+																	input_[i].disabled=true;
+																}
+																document.getElementsByName("image_")[0].disabled=true;
+																document.getElementsByName("image_")[1].disabled=true;
+																document.getElementsByName("select_")[0].disabled=true;
 																window.location.href="./blogEditForm";
 														}else{
 																alert("Something went wrong submit again");
@@ -74,8 +84,48 @@ else
 										});
 									}
 								}
-
+								}else{
+									butt.value="Update";
+									for(var i=0;i<input_.length;i++){
+										input_[i].disabled=false;
+									}
+									document.getElementsByName("image_")[0].disabled=false;
+									document.getElementsByName("image_")[1].disabled=false;
+									document.getElementsByName("select_")[0].disabled=false;
+								}
             }
+						function cancel_(a){
+							var input_=document.getElementsByName('input_');
+							var butt=document.getElementById('butt');
+							if(butt.value=="Update"){
+								butt.value="Edit";
+								var formData= new FormData();
+								formData.append('query','select * from blogs where id='+a);
+								$.ajax({
+									url: "./get_info.php",
+									type: 'POST',
+									cache: false,
+									contentType: false,
+									processData: false,
+									data: formData,
+									complete: function (data) {
+										var temp=data.responseText.split("|");
+										input_[0].value=temp[1];
+										input_[1].value=temp[2];
+										input_[2].value=temp[4];
+										document.getElementsByName("select_")[0].value=temp[9];
+									}
+								});
+								for(var i=0;i<input_.length;i++){
+									input_[i].disabled=true;
+								}
+								document.getElementsByName("image_")[0].value=null;
+								document.getElementsByName("image_")[1].value=null;
+									document.getElementsByName("image_")[0].disabled=true;
+									document.getElementsByName("image_")[1].disabled=true;
+									document.getElementsByName("select_")[0].disabled=true;
+							}
+						}
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -97,9 +147,18 @@ else
 
 			<?php include('includes/sidebar.php'); ?>
 
+			<?php 
+                function select_or_not($a){
+                    if($a=='Yes'){
+                        return 'selected';
+                    }
+                }
+            ?>
+
 			<div class="main-content">
 
 					<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
 
             <?php include('./settingsContainer.php'); ?>
             <div class='row menu-form'>
@@ -109,34 +168,38 @@ else
                 ?>
               <div class='col-lg-6' style="width:100%;">
                   <h2 class='menu-text'>Edit Blog</h2>
-                  <form class='menu-content' id="form1" name="form1" method="post" action="javascript:submit_it('<?php echo $id; ?>')">
+                  <form class='menu-content' id="form1" name="form1">
                       
                     <div class="form-group">
                     <label for="exampleInputPassword1">Title</label>
-               		<input name="input_" class="form-control" value="<?php echo $row['heading'] ?>" />
+               		<input disabled name="input_" class="form-control" value="<?php echo $row['heading'] ?>" />
                		</div>
                		<div class="form-group">
                     <label for="exampleInputPassword1">Content 1</label>
-               		<textarea name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content']); ?></textarea>
+               		<textarea disabled name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content']); ?></textarea>
                		</div>
 									 <div class="form-group">
 									 	<?php if($row['img_src']!="" && $row['img_src']!=null){
 											 echo "<img id='blog_img' src='.".$row['img_src']."' style='width:100%;'>";
 										 }?>
                       <label for="exampleInputPassword1">Blog Image</label>
-                      <input onchange="blog_img_(this);" type="file" accept="image/*" class="form-control">
+                      <input disabled type="file" name="image_" accept="image/*" class="form-control">
                     </div>
 									 <div class="form-group">
                     <label for="exampleInputPassword1">Content 2</label>
-               		<textarea name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content_2']); ?></textarea>
+               		<textarea disabled name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content_2']); ?></textarea>
                		</div>
-
+									 <select class='lbl' name='select_' style='width:100%;resize:vertical;height:auto;' disabled>
+											<option value='No' <?php echo select_or_not($row['display'])?>>No</option>
+											<option value='Yes' <?php echo select_or_not($row['display'])?> >Yes</option>
+										</select>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Thumnail</label>
-                      <input id="thumnail" type="file" accept="image/*" class="form-control">
+                      <input disabled id="thumnail" type="file" name="image_" accept="image/*" class="form-control">
                     </div>
                     <br>
-                    <input type="submit" class="btn btn-primary" name="btnsubmit" value="Update"/>
+                    <input type="button" id="butt" class="btn btn-primary" onclick="submit_it('<?php echo $id; ?>')" name="btnsubmit" value="Edit"/>
+                    <input type="button" class="btn btn-primary" onclick="cancel_('<?php echo $id; ?>')" value="Cancel"/>
                   </form>
               </div>
                 <?php } ?>

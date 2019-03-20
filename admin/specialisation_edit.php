@@ -87,6 +87,28 @@ else
                 }
 
             }
+						function cancel_(a){
+							var but=document.getElementsByName(a+"edit_update")[0];
+              var s_name=document.getElementsByName(a+"s_name")[0];
+							if(s_name.disabled==false){
+								var formData= new FormData();
+								formData.append('query','select * from subject where id='+a);
+								$.ajax({
+									url: "./get_info.php",
+									type: 'POST',
+									cache: false,
+									contentType: false,
+									processData: false,
+									data: formData,
+									complete: function (data) {
+										var temp=data.responseText.split("|");
+										s_name.value=temp[1];
+										s_name.disabled=true;
+										but.value="Edit";
+									}
+								});
+							}
+						}
         </script>
 
 	</head>
@@ -105,6 +127,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
 
             <?php include('./settingsContainer.php'); ?>
 
@@ -114,7 +137,7 @@ else
               <div class='col-lg-6' style="width:90%">
                   <h2 class='menu-text'>Specialisation Edit Menu</h2>
                   <form class='menu-content'  method="post" action="">
-                      <table>
+                      <table style="width:100%;">
                             <tr style="padding:12px;">
                                 <th width="30px" style="text-align:center; padding:10px">Id</th>
                                 <th style="text-align:center; padding:10px">Specialisation Name</th>
@@ -124,9 +147,15 @@ else
                           ?>
                           <td style="text-align:center; padding:10px"><?php echo $row['id'];?>
                           </td>
-                          <td style="padding:10px" ><input name="<?php echo $row['id']."s_name";?>" type=text-area class="form-control" value="<?php echo $row['sub_name'];?>" disabled/>
+                          <td style="padding:10px;width:50%;" >
+														<input  name="<?php echo $row['id']."s_name";?>" type=text-area class="form-control" value="<?php echo $row['sub_name'];?>" disabled/>
                           </td>
-                          <td><input name="<?php echo $row['id']."edit_update" ?>" type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="change_('<?php echo $row['id'];?>');"/>
+													<td>
+														<span class='label label-sm label-warning' style='height:auto;font-size:13px;' ><?php echo $row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]; ?>
+													</td>
+                          <td>
+														<input name="<?php echo $row['id']."edit_update" ?>" type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="change_('<?php echo $row['id'];?>');"/>
+														<input type="button" class="btn btn-primary" style="width:80px" value="Cancel" onclick="cancel_('<?php echo $row['id'];?>');"/>
                           </td>
                             <?php echo"</tr>";}
                             ?>

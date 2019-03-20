@@ -4,7 +4,8 @@ $conn=connect_mysql_page();
 $id=$_POST['id'];
 $title=$_POST['title'];
 $content=$_POST['content'];
-if($conn->query("UPDATE `blogs` SET `heading`='".$title."',`content`='".$content."',`content_2`='".$_POST['content2']."' WHERE id=".$id)){
+$admin=connect_mysql();
+if($conn->query("UPDATE `blogs` SET `heading`='".$title."',`content`='".$content."',`content_2`='".$_POST['content2']."',`display`='".$_POST['display']."',`update_by`='".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."' WHERE id=".$id)){
   if(isset($_FILES['image'])){
             $errors= array();
             $file_name = $_FILES['image']['name'];
@@ -61,7 +62,6 @@ if($conn->query("UPDATE `blogs` SET `heading`='".$title."',`content`='".$content
   }
       echo "1";
       
-    $admin=connect_mysql();
     $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','update blog id=".$id."')");
 }else{
   echo "0";

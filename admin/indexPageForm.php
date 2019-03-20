@@ -461,7 +461,7 @@ else
 	<body class="no-skin">
 
 		<?php include('includes/navbar.php'); ?>
-
+		
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
@@ -476,8 +476,8 @@ else
 			<?php include('includes/sidebar.php'); ?>
 
 			<div class="main-content">
-
 					<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
 
             <?php include('./settingsContainer.php'); ?>
             <h3>Index Page</h3>

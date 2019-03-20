@@ -359,6 +359,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
 
             <?php include('./settingsContainer.php'); ?>
             <h3>About Page</h3>

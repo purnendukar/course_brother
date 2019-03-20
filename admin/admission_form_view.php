@@ -74,6 +74,16 @@ else
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<!endif-->
+        <style>
+            .head_{
+                font-size:20px; 
+                padding: 10px 0;
+                display:block; 
+                width:100%;
+                text-align:center;
+                background-color:#D9D9D9;
+            }
+        </style>
 	</head>
 
 	<body class="no-skin">
@@ -90,6 +100,7 @@ else
 			<div class="main-content">
 
 			<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
 
             <?php include('./settingsContainer.php'); ?>
             <div class='row menu-form'>
@@ -98,48 +109,49 @@ else
                 $row=$conn_p->query("select * from admission_form where id=".$id)->fetch_assoc();
                 $a_id=$row['id'];
                 ?>
-                <div class='col-lg-6' style="width:100%">
+                <div class='col-lg-6' style="width:100%;">
                     <h2 class='menu-text'>Admission Form</h2>
                     <div class='menu-content'>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Student Name: </p><p style="width:70%;float:left;"><?php echo urldecode($row['stud_name']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Father Name: </p><p style="width:70%;float:left;"><?php echo urldecode($row['father_name']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Mother Name: </p><p style="width:70%;float:left;"><?php echo urldecode($row['mother_name']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Email: </p><p style="width:70%;float:left;"><?php echo urldecode($row['email']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Contact Number: </p><p style="width:70%;float:left;"><?php echo urldecode($row['phn_no']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Permanent Address: </p><p style="width:70%;float:left;"><?php echo urldecode($row['p_addr']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Current Address: </p><p style="width:70%;float:left;"><?php echo urldecode($row['c_addr']);?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Alternate E-mail: </p><p style="width:70%;float:left;"><?php if(urldecode($row['a_email'])!=""){echo urldecode($row['a_email']);}else{echo "Not Available";};?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Alternate Number: </p><p style="width:70%;float:left;"><?php if(urldecode($row['a_phn_no'])!=""){echo urldecode($row['a_phn_no']);}else{echo "Not Available";};?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Identity: </p><p style="width:70%;float:left;"><a target="blank" href="<?php echo $row['identity']; ?>">CLick Here</a></p></div>
+                        <div class="head_">Basic Information</div>
+                        <div style="font-size:15px; "><p style="width:30%;display:inline-block;">Student Name: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['stud_name']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Father Name: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['father_name']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Mother Name: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['mother_name']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Email: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['email']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Contact Number: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['phn_no']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Permanent Address: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['p_addr']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Current Address: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($row['c_addr']);?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Alternate E-mail: </p><p style="width:70%;display:inline-block;"><?php if(urldecode($row['a_email'])!=""){echo urldecode($row['a_email']);}else{echo "Not Available";};?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Alternate Number: </p><p style="width:70%;display:inline-block;"><?php if(urldecode($row['a_phn_no'])!=""){echo urldecode($row['a_phn_no']);}else{echo "Not Available";};?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Identity: </p><p style="width:70%;display:inline-block;"><a target="blank" href="<?php echo $row['identity']; ?>">CLick Here</a></p></div>
                         <?php $f_id=$row['f_d_id']; $f=$conn_p->query("select * from full_detail where id=".$f_id)->fetch_assoc();?>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Program: </p><p style="width:70%;float:left;"><?php echo $conn_p->query("select * from program where p_id=".$f['prg_id'])->fetch_assoc()['p_name'];?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Course: </p><p style="width:70%;float:left;"><?php echo $conn_p->query("select * from courses where id=".$f['c_id'])->fetch_assoc()['c_name'];?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Specialisation: </p><p style="width:70%;float:left;"><?php echo $conn_p->query("select * from subject where id=".$f['s_id'])->fetch_assoc()['sub_name'];?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">Delivery Mode: </p><p style="width:70%;float:left;"><?php echo $conn_p->query("select * from delivery_mode where id=".$f['d_mode_id'])->fetch_assoc()['d_mode'];?></p></div>
-                        <div style="font-size:15px;"><p style="width:30%;float:left;">University: </p><p style="width:70%;float:left;"><?php echo $conn_p->query("select * from universities where u_id=".$f['u_id'])->fetch_assoc()['u_name'];?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Program: </p><p style="width:70%;display:inline-block;"><?php echo $conn_p->query("select * from program where p_id=".$f['prg_id'])->fetch_assoc()['p_name'];?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Course: </p><p style="width:70%;display:inline-block;"><?php echo $conn_p->query("select * from courses where id=".$f['c_id'])->fetch_assoc()['c_name'];?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Specialisation: </p><p style="width:70%;display:inline-block;"><?php echo $conn_p->query("select * from subject where id=".$f['s_id'])->fetch_assoc()['sub_name'];?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">Delivery Mode: </p><p style="width:70%;display:inline-block;"><?php echo $conn_p->query("select * from delivery_mode where id=".$f['d_mode_id'])->fetch_assoc()['d_mode'];?></p></div>
+                        <div style="font-size:15px;"><p style="width:30%;display:inline-block;">University: </p><p style="width:70%;display:inline-block;"><?php echo $conn_p->query("select * from universities where u_id=".$f['u_id'])->fetch_assoc()['u_name'];?></p></div>
                         <?php if($detail=$conn_p->query("select * from 10th_education where a_id=".$a_id)->fetch_assoc()){ ?>
-                            <div style="font-size:20px; padding: 10px 0;display:block; width:100%;">10th Education Detail</div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> School Name: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['school_name']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Board: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['board']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Percentage: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['percentage']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Completion Year: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['c_year']);?></p></div>
+                            <div class="head_">10th Education Detail</div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> School Name: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['school_name']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Board: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['board']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Percentage: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['percentage']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Completion Year: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['c_year']);?></p></div>
                         <?php } ?>
                         <?php if($detail=$conn_p->query("select * from 12th_diploma where a_id=".$a_id)->fetch_assoc()){ ?>
-                            <div style="font-size:20px; padding: 10px 0;display:block; width:100%;"><?php echo $detail['degree'];?> Education Detail</div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> School Name: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['institute']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Board: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['board']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Specialisation: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['specialisation']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Percentage: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['percentage']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Completion Year: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['c_year']);?></p></div>
+                            <div class="head_"><?php echo $detail['degree'];?> Education Detail</div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> School Name: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['institute']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Board: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['board']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Specialisation: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['specialisation']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Percentage: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['percentage']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Completion Year: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['c_year']);?></p></div>
                         <?php } ?>
                         <?php if($detail=$conn_p->query("select * from graduation where a_id=".$a_id)->fetch_assoc()){ ?>
-                            <div style="font-size:20px; padding: 10px 0;display:block; width:100%;">Graduation Detail</div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> School Name: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['institute']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Board: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['board']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Course: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['degree']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Specialisation: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['specialisation']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Percentage: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['percentage']);?></p></div>
-                            <div style="font-size:15px;"><p style="width:30%;float:left;"> Completion Year: </p><p style="width:70%;float:left;"><?php echo urldecode($detail['c_year']);?></p></div>
+                            <div class="head_">Graduation Detail</div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> School Name: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['institute']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Board: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['board']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Course: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['degree']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Specialisation: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['specialisation']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Percentage: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['percentage']);?></p></div>
+                            <div style="font-size:15px;"><p style="width:30%;display:inline-block;"> Completion Year: </p><p style="width:70%;display:inline-block;"><?php echo urldecode($detail['c_year']);?></p></div>
                         <?php } ?>
                     </div>
                 </div>

@@ -98,6 +98,7 @@ else
 			<div class="main-content">
 
 					<div class="page-content">
+				<a href="javascript:window.history.back();">Back</a>
 						<?php include('./settingsContainer.php'); ?>
 								<div class="row">
 									<div class="col-xs-12">
@@ -123,6 +124,8 @@ else
 														</th>
 														<th>Title</th>
                             <th>Thumnail</th>
+                            <th>Display(main page)</th>
+                            <th>Last Updated By</th>
 														<th>Edit</th>
 													</tr>
 												</thead>
@@ -143,8 +146,14 @@ else
 														<td> 
                                                             <span class='lbl' name='display".$row['id']."' >".urldecode($row['heading'])."</span>
                                                         </td>
-                                                        <td  style='width:20%;'>
-                                                            <span class='lbl' name='display".$row['id']."' ><img src='.".$row['thumnail']."' style='width:100%;'></span>
+                                                        <td >
+                                                            <span class='lbl' name='display".$row['id']."' ><img style='height:50px;' src='.".$row['thumnail']."' ></span>
+																												</td>
+																											<td>
+																												<span class='lbl'>".$row['display']."</span>
+																											</td>
+																												<td class='hidden-480'>
+																													<span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
 																												</td>
 
 														<td style='width:120px'>
@@ -243,7 +252,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,
+					  null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

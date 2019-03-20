@@ -102,6 +102,10 @@ $conn_p=connect_mysql_page();
 			$t=false;
 			break;
 		}
+		if(strpos($_SERVER['REQUEST_URI'],'blogEditFormShow')!==false && strpos($r[$i],'blogEditForm')!==false){
+			$t=false;
+			break;
+		}
 		if(strpos($_SERVER['REQUEST_URI'],'courseEditFormShow')!==false && strpos($r[$i],'courseEditForm')!==false){
 			$t=false;
 			break;

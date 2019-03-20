@@ -4,6 +4,7 @@ include "./includes/mysql_connect.php";
 $conn=connect_mysql_page();
 
 $id=$_POST['id'];
+$u_id=$_POST['u_id'];
 
 if(isset($_POST['head'])){
     $head=mysqli_real_escape_string($conn, $_POST['head']);
