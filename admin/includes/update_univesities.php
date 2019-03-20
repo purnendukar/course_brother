@@ -36,6 +36,7 @@ $conn_p=connect_mysql_page();
                     echo "0";
                 }
 if(isset($_POST['u_name'])){
+    if(rename("../../".strtolower($_POST['u_name']),"../../".strtolower($conn_p->query("select * from universities where u_id=".$u_id)->fetch_assoc()['u_name']))){}
     $u_name=mysqli_real_escape_string($conn_p,strtoupper($_POST['u_name']));
     $about=mysqli_real_escape_string($conn_p,$_POST['about']);
     $path="";

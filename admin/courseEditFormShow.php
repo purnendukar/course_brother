@@ -249,6 +249,7 @@ else
                     </div>
                     <br>
                     <input type="submit" class="btn btn-primary" name="btnsubmit" value="Update"/>
+                    <input type="button" class="btn btn-primary" onclick="window.location.href='./courseEditForm'" value="Cancel"/>
                   </form>
               </div>
                 <?php } ?>

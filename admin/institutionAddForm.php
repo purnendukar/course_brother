@@ -93,7 +93,6 @@ else
 								}else{
 									$res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`,`fees`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."','".$_POST['reg_fees']."')");
 									if($res){
-										$u_name=str_replace(" ",'-',$u_name);
 										$admin=connect_mysql();
 										$admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','added university ".$u_name."')");
 

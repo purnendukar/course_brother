@@ -125,6 +125,7 @@ else
                             <th>Course Name</th>
                             <th>Specialisation</th>
                             <th>Delivery Mode</th>
+                            <th>Last Updated By</th>
 														<th>Edit</th>
 													</tr>
 												</thead>
@@ -154,6 +155,10 @@ else
 																												<td>
 																													<span class='lbl' name='display".$row['id']."' >".urldecode($conn_p->query("select * from delivery_mode where id=".$row['d_mode_id'])->fetch_assoc()['d_mode'])."</span>
 																												</td>
+																												
+														<td class='hidden-480'>
+															<span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
+														</td>
 
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>
@@ -251,7 +256,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null,null,
+					  null, null,null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

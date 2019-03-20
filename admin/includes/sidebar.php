@@ -227,12 +227,12 @@
 									<b class="fa fa-edit"></b> &nbsp; All
 								</a>
 							</li>
-							<li class="">
+							<!-- <li class="">
 								<a href="./institutionDeleteForm">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-minus"></b> &nbsp; Delete
 								</a>
-							</li>
+							</li> -->
 
 						</ul>
 

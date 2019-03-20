@@ -155,8 +155,8 @@ else
 
 					<div class="page-content">
 						<?php include('./settingsContainer.php'); ?>
-								<div class="row">
-									<div class="col-xs-12">
+						<div class="row">
+								<div class="col-xs-12">
 										<h3 class="header smaller lighter blue">User dataTables</h3>
 
 										<div class="clearfix">

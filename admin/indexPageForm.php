@@ -183,15 +183,29 @@ else
                 var input_= document.getElementsByName('input_'+a);
 				var select_t=document.getElementsByName('select_'+a)[0];
 				if(input_[0].disabled==false){
-					input_[0].value=head_;
-                	input_[1].value=link_;
 					input_[0].disabled=true;
                 	input_[1].disabled=true;
                     img_display.style.display="block";
                     img_choose.style.display="none";
-					select_t.value=select_;
 					select_t.disabled=true;
+					var formData= new FormData();
+					formData.append('query','select head,link,display from slide_show where id='+a);
+					$.ajax({
+						url: "./get_info.php",
+						type: 'POST',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: formData,
+						complete: function (data) {
+							var temp=data.responseText.split("|");
+							input_[0].value=temp[0];
+							input_[1].value=temp[1];
+							select_t.value=temp[2];
+						}
+					});
 				}
+				
             }
             
 			function cancel_add(){
@@ -312,6 +326,22 @@ else
                     img_display.style.display="block";
                     img_choose.style.display="none";
 					select_t.disabled=true;
+					var formData= new FormData();
+					formData.append('query','select heading,info,display from features where id='+a);
+					$.ajax({
+						url: "./get_info.php",
+						type: 'POST',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: formData,
+						complete: function (data) {
+							var temp=data.responseText.split("|");
+							input_[0].value=temp[0];
+							input_[1].value=temp[1];
+							select_t.value=temp[2];
+						}
+					});
 				}
             }
             function delete_f(a){
@@ -543,7 +573,7 @@ else
                                                             <input id='img_choose".$row['id']."' type='file' style='width:200px;display:none;' accept='image/*'/>
                                                         </td>
 														<td class='hidden-480'>
-                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".str_replace(' ','<br>',$row['updated'])."</span>
+                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
 														</td>
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>
@@ -697,7 +727,7 @@ else
                                                             <input id='img_choosef".$row['id']."' type='file' style='width:200px;display:none;' accept='image/*'/>
                                                         </td>
 														<td class='hidden-480'>
-                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".str_replace(' ','<br>',$row['updated'])."</span>
+                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
 														</td>
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>

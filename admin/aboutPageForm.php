@@ -143,6 +143,23 @@ else
 				input_[3].disabled=true;
                 img_display.style.display="block";
                 img_choose.style.display="none";
+				var formData= new FormData();
+					formData.append('query','select name,position,about,display from team where id='+a);
+					$.ajax({
+						url: "./get_info.php",
+						type: 'POST',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: formData,
+						complete: function (data) {
+							var temp=data.responseText.split("|");
+							input_[0].value=temp[0];
+							input_[1].value=temp[1];
+							input_[2].value=temp[2];
+							select_t.value=temp[3];
+						}
+					});
             }
             function delete_it(a){
                 if(confirm("Want to delete id "+a+" data?")){
@@ -473,10 +490,10 @@ else
                                                             <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:vertical;height:35px;' disabled>".urldecode($row['name'])."</textarea>
 														</td>
 														<td> 
-                                                            <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:horizontal;height:35px;' disabled>".urldecode($row['position'])."</textarea>
+                                                            <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:vertical;height:35px;' disabled>".urldecode($row['position'])."</textarea>
                                                         </td>
 														<td> 
-                                                            <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:horizontal;height:35px;' disabled>".urldecode($row['about'])."</textarea>
+                                                            <textarea class='lbl' name='input_".$row['id']."' style='width:100%;resize:vertical;height:35px;' disabled>".urldecode($row['about'])."</textarea>
                                                         </td>
 														<td>
 															<select class='lbl' name='input_".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>
@@ -489,7 +506,7 @@ else
                                                             <input id='img_choose".$row['id']."' type='file' style='width:200px;display:none;' accept='image/*'/>
                                                         </td>
 														<td class='hidden-480'>
-                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".str_replace(' ','<br>',$row['updated'])."</span>
+                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
 														</td>
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>
