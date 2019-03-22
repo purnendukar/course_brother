@@ -53,6 +53,41 @@ else
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
         <script>
+					function delete_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+						var checked_=document.getElementsByName("check_id");
+						var a="";
+                        for(var i=0;i<checked_.length;i++){
+                            if(checked_[i].checked){
+								if(a==''){
+									a+=checked_[i].value
+								}else{
+									a+=","+checked_[i].value;
+								}
+                            }
+						}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./delete_specialisation.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("all selected data deleted");
+                                        }else{
+																					alert("not all selected data deleted");
+                                        }
+																					window.location.href="./specialisation_edit";
+                                    }
+                                });
+                    }
+                }
+            }
             function send_data(id,s_name){
                 $.ajax({
                       type: "POST",
@@ -71,24 +106,41 @@ else
                     });
             }
 
+						function delete_(a){
+							if(confirm("Want to Delete id "+a+" data?")){if(confirm("Going to delete id "+a+" data")){
+								var d=document.getElementById('row_'+a);
+								$.ajax({
+										type: "POST",
+										url: "./delete_specialisation.php",
+										data: {id:a},
+										complete: function(data){
+												//data contains the response from the php file.
+												//u can pass it here to the javascript function
+												console.log(data);
+												if(data.responseText=='1'){
+														d.style.display="none";
+														alert("deleted");
+												}else{
+														alert("not deleted due to some error");
+												}
+										}
+								});
+							}}
+						}
 
             function change_(a){
-                var but=document.getElementsByName(a+"edit_update");
                 var s_name=document.getElementsByName(a+"s_name");
-                if(but[0].value=="Edit"){
-                    but[0].value="Update";
+                if(s_name[0].disabled){
                     s_name[0].disabled=false;
                 }else{
 									if(confirm("Want to Update id "+a+" data?")){if(confirm("Going to Update id "+a+" data")){
                     send_data(a,s_name[0].value,);
-                    but[0].value="Edit";
                     s_name[0].disabled=true;
 									}}
                 }
 
             }
 						function cancel_(a){
-							var but=document.getElementsByName(a+"edit_update")[0];
               var s_name=document.getElementsByName(a+"s_name")[0];
 							if(s_name.disabled==false){
 								var formData= new FormData();
@@ -104,11 +156,54 @@ else
 										var temp=data.responseText.split("|");
 										s_name.value=temp[1];
 										s_name.disabled=true;
-										but.value="Edit";
 									}
 								});
 							}
 						}
+						function add(){
+                var add_one=document.getElementById('add_one');
+                if(add_one.style.display=='none'){
+                    add_one.style.display="";
+                }else{
+                    alert("Already displayed Enter your detail");
+                }
+						}
+						function cancel_add(){
+							var temp=document.getElementsByName('input_');
+							for (var i=0;i<temp.length;i++){
+								temp[i].value="";
+							}
+							document.getElementById('add_one').style.display="none";
+						}
+						function add_it(){
+                if(confirm("Want to Update?")){if(confirm("Going to update")){
+                    var input_=document.getElementsByName("input_");
+                    var head=input_[0];
+                    if(head.value==""){
+                        alert("Fill all Feild");
+                        return;
+                    }
+                    var formData= new FormData();
+                    formData.append('s_name',escape(head.value));
+                    $.ajax({
+                            url: "./specialisation_add.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText==1 ){
+                                    alert("Data Added Successfully");
+                                    window.location.href="./specialisation_edit";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
+                            }
+                        });
+                }}
+            }
         </script>
 
 	</head>
@@ -131,39 +226,146 @@ else
 
             <?php include('./settingsContainer.php'); ?>
 
+                  <div class="row">
+								<div class="col-xs-12">
+										<h3 class="header smaller lighter blue">Specialisation dataTables</h3>
 
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+										<div class="table-header">
+											Results Of Specialisation
+										</div>
 
-            <div class='row menu-form' >
-              <div class='col-lg-6' style="width:90%">
-                  <h2 class='menu-text'>Specialisation Edit Menu</h2>
-                  <form class='menu-content'  method="post" action="">
-                      <table style="width:100%;">
-                            <tr style="padding:12px;">
-                                <th width="30px" style="text-align:center; padding:10px">Id</th>
-                                <th style="text-align:center; padding:10px">Specialisation Name</th>
-                            </tr>
-                            <?php $res=$conn_p->query("select * from subject");
-                            while($row=$res->fetch_assoc()){ echo "<tr class=\"form-group\">";
-                          ?>
-                          <td style="text-align:center; padding:10px"><?php echo $row['id'];?>
-                          </td>
-                          <td style="padding:10px;width:50%;" >
-														<input  name="<?php echo $row['id']."s_name";?>" type=text-area class="form-control" value="<?php echo $row['sub_name'];?>" disabled/>
-                          </td>
-													<td>
-														<span class='label label-sm label-warning' style='height:auto;font-size:13px;' ><?php echo $row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]; ?>
-													</td>
-                          <td>
-														<input name="<?php echo $row['id']."edit_update" ?>" type="button" class="btn btn-primary" style="width:80px" value="Edit" onclick="change_('<?php echo $row['id'];?>');"/>
-														<input type="button" class="btn btn-primary" style="width:80px" value="Cancel" onclick="cancel_('<?php echo $row['id'];?>');"/>
-                          </td>
-                            <?php echo"</tr>";}
-                            ?>
-                        </table>
-                  </form>
-              </div>
-            </div>
+										<!-- div.table-responsive -->
 
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+													<div style="background-color: #EFF3F8;padding:15px 15px 5px 15px;">
+                                                    <a href='javascript:delete_checked()' class='tooltip-error ' data-rel='tooltip' title='Delete' >
+                                                        <span class='red'>
+                                                            <i class='ace-icon fa fa-trash-o bigger-120'></i>
+                                                            Selected
+                                                        </span>
+                                                    </a>
+														<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add()">Add New</a>
+														<div id="add_one" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">			
+														<textarea style="resize:none;width:100%;" type="text" name="input_" class="form-control" placeholder="Specialisation Name"></textarea>
+														
+														<input class="btn btn-primary" style="width:100px; margin:5px;" type="button" value="Confirm" onclick="add_it();" />
+														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add()" />
+													</div>
+                                                </div>
+												<thead>
+													<tr >
+													<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+															<label class="pos-rel">
+																<input type="checkbox" class="ace">
+																<span class="lbl"></span>
+															</label>
+														</th>
+														<th class="center">
+															<label class="pos-rel">
+																<span class="lbl">Sl No</span>
+															</label>
+														</th>
+														<th style='text-align:center;' >Specialisation Name</th>
+
+														<th style='text-align:center;' >
+															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+															Last Updated By
+														</th>
+
+														<th>Edit/Delete</th>
+													</tr>
+												</thead>
+												<tbody>
+												<?php
+                                                    $sql="SELECT * FROM subject";
+                                                    $result=$conn_p->query($sql);
+                                                    while($row=mysqli_fetch_assoc($result))      
+                                                    {
+												echo  
+												"<tr id='row_".$row['id']."'>
+													<td class='center'>
+															<label class='pos-rel'>
+																<input name='check_id'  value='".$row['id']."'  type='checkbox' class='ace'>
+																<span class='lbl'></span>
+															</label>
+														</td>
+														<td class='center'>
+															<label class='pos-rel'>
+																<span  class='lbl'>".$row['id']."</span>
+															</label>
+														</td>
+                                                        <td>
+                                                            <textarea name='".$row['id']."s_name' disabled style='resize:none;width:100%;height:35px;' class='lbl' name='display".$row['id']."' >".urldecode($row['sub_name'])."</textarea>
+                                                        </td>
+														
+												<td class='hidden-480' style='text-align:center;'>
+													<span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
+												</td>
+														<td style='width:120px'>
+															<div class='hidden-sm hidden-xs action-buttons'>
+																
+
+																<a class='green' href='javascript:change_(".$row['id'].")' class='tooltip-success'>
+																	<i class='ace-icon fa fa-pencil bigger-130'></i>
+																</a>
+
+																<a class='red' href='javascript:delete_(".$row['id'].")' >
+																	<i class='ace-icon fa fa-trash-o bigger-130'></i>
+																</a>
+
+																<a class='blue' href='javascript:cancel_(".$row['id'].")' >
+																	<i class='ace-icon fa fa-times red2 bigger-130'></i>
+																</a>
+															</div>
+
+															<div class='hidden-md hidden-lg'>
+																<div class='inline pos-rel'>
+																	<button class='btn btn-minier btn-yellow dropdown-toggle' data-toggle='dropdown' data-position='auto'>
+																		<i class='ace-icon fa fa-caret-down icon-only bigger-120'></i>
+																	</button>
+
+																	<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
+																		
+																		<li>
+																			<a href='javascript:change_(".$row['id'].")'   class='tooltip-success' data-rel='tooltip' title='Edit'>
+																				<span class='green'>
+																					<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
+																				</span>
+																			</a>
+																		</li>
+
+																		<li>
+																			<a href='javascript:delete_(".$row['id'].")' class='tooltip-error' data-rel='tooltip' title='Delete' >
+																				<span class='red'>
+																					<i class='ace-icon fa fa-trash-o bigger-120'></i>
+																				</span>
+																			</a>
+																		</li>
+
+																		
+																		<li>
+																			<a href='javascript:cancel_(".$row['id'].")' class='tooltip-info' data-rel='tooltip' title='View'>
+																				<span class='blue'>
+																					<i class='ace-icon fa fa-times red2 bigger-120'></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>";} ?>
+												</tbody>
+											</table>
+										</div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
@@ -191,15 +393,253 @@ else
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-
-		<!--[if lte IE 8]>
-		  <script src="assets/js/excanvas.min.js"></script>
-		<![endif]-->
-		<script src="assets/js/jquery-ui.custom.min.js"></script>
-		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="assets/js/dataTables.buttons.min.js"></script>
+		<script src="assets/js/buttons.flash.min.js"></script>
+		<script src="assets/js/buttons.html5.min.js"></script>
+		<script src="assets/js/buttons.print.min.js"></script>
+		<script src="assets/js/buttons.colVis.min.js"></script>
+		<script src="assets/js/dataTables.select.min.js"></script>
 
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+				//initiate dataTables plugin
+				var myTable = 
+				$('#dynamic-table')
+				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+				.DataTable( {
+					bAutoWidth: false,
+					"aoColumns": [
+					  null,
+					  null, null,
+					  { "bSortable": false }
+					],
+					"aaSorting": [],
+					
+					
+					//"bProcessing": true,
+			        //"bServerSide": true,
+			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
+			
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
+			
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+			
+					//"iDisplayLength": 50
+			
+			
+					select: {
+						style: 'multi'
+					}
+			    } );
+			
+				
+				
+				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+				
+				new $.fn.dataTable.Buttons( myTable, {
+					buttons: [
+					  {
+						"extend": "colvis",
+						"text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
+						"className": "btn btn-white btn-primary btn-bold",
+						columns: ':not(:first):not(:last)'
+					  },
+					  {
+						"extend": "copy",
+						"text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "csv",
+						"text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "excel",
+						"text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "pdf",
+						"text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+						"className": "btn btn-white btn-primary btn-bold"
+					  },
+					  {
+						"extend": "print",
+						"text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+						"className": "btn btn-white btn-primary btn-bold",
+						autoPrint: false,
+						message: 'This print was produced using the Print button for DataTables'
+					  }		  
+					]
+				} );
+				myTable.buttons().container().appendTo( $('.tableTools-container') );
+				
+				//style the message box
+				var defaultCopyAction = myTable.button(1).action();
+				myTable.button(1).action(function (e, dt, button, config) {
+					defaultCopyAction(e, dt, button, config);
+					$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+				});
+				
+				
+				var defaultColvisAction = myTable.button(0).action();
+				myTable.button(0).action(function (e, dt, button, config) {
+					
+					defaultColvisAction(e, dt, button, config);
+					
+					
+					if($('.dt-button-collection > .dropdown-menu').length == 0) {
+						$('.dt-button-collection')
+						.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+						.find('a').attr('href', '#').wrap("<li />")
+					}
+					$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+				});
+			
+				////
+			
+				setTimeout(function() {
+					$($('.tableTools-container')).find('a.dt-button').each(function() {
+						var div = $(this).find(' > div').first();
+						if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+						else $(this).tooltip({container: 'body', title: $(this).text()});
+					});
+				}, 500);
+				
+				
+				
+				
+				
+				myTable.on( 'select', function ( e, dt, type, index ) {
+					if ( type === 'row' ) {
+						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
+					}
+				} );
+				myTable.on( 'deselect', function ( e, dt, type, index ) {
+					if ( type === 'row' ) {
+						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
+					}
+				} );
+			
+			
+			
+			
+				/////////////////////////////////
+				//table checkboxes
+				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+				
+				//select/deselect all rows according to table header checkbox
+				$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$('#dynamic-table').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) myTable.row(row).select();
+						else  myTable.row(row).deselect();
+					});
+				});
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
+					var row = $(this).closest('tr').get(0);
+					if(this.checked) myTable.row(row).deselect();
+					else myTable.row(row).select();
+				});
+			
+			
+			
+				$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+					e.stopImmediatePropagation();
+					e.stopPropagation();
+					e.preventDefault();
+				});
+				
+				
+				
+				//And for the first simple table, which doesn't have TableTools or dataTables
+				//select/deselect all rows according to table header checkbox
+				var active_class = 'active';
+				$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$(this).closest('table').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+						else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+					});
+				});
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+					var $row = $(this).closest('tr');
+					if($row.is('.detail-row ')) return;
+					if(this.checked) $row.addClass(active_class);
+					else $row.removeClass(active_class);
+				});
+			
+				
+			
+				/********************************/
+				//add tooltip for small view action buttons in dropdown menu
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				
+				//tooltip placement on right or left
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+			
+					var off2 = $source.offset();
+					//var w2 = $source.width();
+			
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+				
+				
+				
+				
+				/***************/
+				$('.show-details-btn').on('click', function(e) {
+					e.preventDefault();
+					$(this).closest('tr').next().toggleClass('open');
+					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+				});
+				/***************/
+				
+				
+				
+				
+				
+				/**
+				//add horizontal scrollbars to a simple table
+				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
+				  {
+					horizontal: true,
+					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
+					size: 2000,
+					mouseWheelLock: true
+				  }
+				).css('padding-top', '12px');
+				*/
+			
+			
+			});
+		</script>
 	</body>
 </html>

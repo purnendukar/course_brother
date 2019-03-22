@@ -101,10 +101,10 @@ else
         </div>
       </div>
 
-      <div class="about_us__founders">
+      <div class="about_us__founders" >
         <?php $res=$conn->query("SELECT * FROM `team`")?>
         <h2 class='about_us__founders__title'>Team Members</h2>
-        <div class='about_us__founders__container'>
+        <div class='about_us__founders__container' style="align-items:flex-start;">
           <?php while($row=$res->fetch_assoc()){?>
           <div class="about_us__founders__item">
             <img src=".<?php echo $row['img_src']?>" alt="image"/>

@@ -450,6 +450,45 @@ else
 
         </script>
 
+		<style>
+			.accordion {
+			background-color: #eee;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+			}
+
+			.active_, .accordion:hover {
+			background-color: #ccc;
+			}
+
+			.accordion:after {
+			content: '\002B';
+			color: #777;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+			}
+
+			.active_:after {
+			content: "\2212";
+			}
+			.panel {
+			padding: 0 18px;
+			background-color: white;
+			height: 0;
+			overflow: auto;
+			opacity:0;
+			transition: 0.3s ease-out;
+			}
+		</style>
+
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--if lte IE 8>
@@ -482,8 +521,8 @@ else
             <?php include('./settingsContainer.php'); ?>
             <h3>Index Page</h3>
             <div id="accordion">
-			  <h3>Slider</h3>
-                        <div class="row row menu-form">
+			  <h3 class="accordion">Slider</h3>
+                        <div class="panel row row menu-form">
 									<div class="col-xs-12 col-lg-6" style="width:100%; height:100%">
 										<h3 class="header smaller lighter blue">Slider</h3>
 
@@ -636,8 +675,8 @@ else
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 
-			  	<h3>Why Select Us</h3>
-				  		<div class="row row menu-form">
+			  	<h3 class="accordion">Why Select Us</h3>
+				  		<div class="panel row row menu-form">
 									<div class="col-xs-12 col-lg-6" style="width:100%; height:100%">
 										<h3 class="header smaller lighter blue">Why Select Us</h3>
 
@@ -835,8 +874,8 @@ else
 	              </div>
 	            </div> -->
 
-                <h3>Featured Courses</h3>
-			    <div class='row menu-form'>
+                <h3 class="accordion">Featured Courses</h3>
+			    <div class='panel row menu-form'>
 	              <div class='col-lg-6'>
                       <?php $res=$conn_p->query('select * from featured_courses');
                       ?>
@@ -878,9 +917,26 @@ else
 <![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-			$( "#accordion" ).accordion();
+			
 		</script>
+		<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
 
+		for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function() {
+			this.classList.toggle("active_");
+			var panel = this.nextElementSibling;
+			if (panel.style.height){
+			panel.style.height = null;
+			panel.style.opacity="0";
+			} else {
+			panel.style.opacity="1";
+			panel.style.height = "600px";
+			} 
+		});
+		}
+		</script>
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>

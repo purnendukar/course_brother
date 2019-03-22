@@ -268,23 +268,10 @@
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<ul class="submenu">
-							
-							<li class="">
-								<a href="./specialisation_add">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-plus"></b> &nbsp; Add
-								</a>
-							</li>
 							<li class="">
 								<a href="./specialisation_edit">
 									<i class="menu-icon fa fa-caret-right"></i>
 									<b class="fa fa-edit"></b> &nbsp; All
-								</a>
-							</li>
-							<li class="">
-								<a href="./specialisation_delete">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-minus"></b> &nbsp; Delete
 								</a>
 							</li>
 						</ul>

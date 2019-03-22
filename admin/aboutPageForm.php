@@ -389,21 +389,21 @@ else
 	                  <h2 class='menu-text'>WE STRIVE TO PROVIDE YOU WITH</h2>
                       <div id="tab" class='menu-content' style="width:100%">
                         <?php $t=$conn_p->query("select * from provide");?>
-                        <div class="form-group" id="<?php echo "row".$row['id'] ?>">
-                            <div style="padding-bottom:10px;"><b>VERSATILITY</b></div>
-                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($t->fetch_assoc()['content']); ?></textarea>
+                        <div class="form-group" id="<?php echo "row".$row['id']; $te=$t->fetch_assoc(); ?>">
+                            <div style="padding-bottom:10px;"><input type="text" value="<?php echo urldecode($te['heading']);?>" disabled/></div>
+                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($te['content']); ?></textarea>
                         </div>
-                        <div class="form-group" id="<?php echo "row".$row['id'] ?>">
-                            <div style="padding-bottom:10px;"><b>CONVENIENCE</b></div>
-                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($t->fetch_assoc()['content']); ?></textarea>
+                        <div class="form-group" id="<?php echo "row".$row['id']; $te=$t->fetch_assoc(); ?>">
+                            <div style="padding-bottom:10px;"><input type="text" value="<?php echo urldecode($te['heading']);?>" disabled/></div>
+                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($te['content']); ?></textarea>
                         </div>
-                        <div class="form-group" id="<?php echo "row".$row['id'] ?>">
-                            <div style="padding-bottom:10px;"><b>AUTHENTICITY</b></div>
-                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($t->fetch_assoc()['content']); ?></textarea>
+                        <div class="form-group" id="<?php echo "row".$row['id']; $te=$t->fetch_assoc(); ?>">
+                            <div style="padding-bottom:10px;"><input type="text" value="<?php echo urldecode($te['heading']);?>" disabled/></div>
+                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($te['content']); ?></textarea>
                         </div>
-                        <div class="form-group" id="<?php echo "row".$row['id'] ?>">
-                            <div style="padding-bottom:10px;"><b>SUPPORT</b></div>
-                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($t->fetch_assoc()['content']); ?></textarea>
+                        <div class="form-group" id="<?php echo "row".$row['id']; $te=$t->fetch_assoc(); ?>">
+                            <div style="padding-bottom:10px;"><input type="text" value="<?php echo urldecode($te['heading']);?>" disabled/></div>
+                            <textarea disabled name="provide_" style="min-width:100%;max-width:100%;height:100px;"><?php echo urldecode($te['content']); ?></textarea>
                         </div>
                         <div style="text-align:center;padding:10px;">
                             <input id="provide_edit" class="btn btn-primary" type="button" onclick="provide_edit();" value="Edit" /> <input style="display:none;" id='cancel_provide' type="button" class="btn btn-primary" value="Cancel" onclick="provide_cancel();" />
