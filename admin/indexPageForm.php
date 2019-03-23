@@ -247,6 +247,41 @@ else
                         });
                 }}
             }
+			function delete_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+																	for(var i=0;i<checked_.length;i++){
+																			if(checked_[i].checked){
+																				if(a==''){
+																					a+=checked_[i].value
+																				}else{
+																					a+=","+checked_[i].value;
+																				}
+																			}
+																	}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./slider_delete.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("all selected data deleted");
+                                        }else{
+																					alert("not all selected data deleted");
+                                        }
+																					window.location.href="./indexPageForm";
+                                    }
+                                });
+                    }
+                }
+            }
 
             //Features
             function edit_f(a){
@@ -409,6 +444,41 @@ else
                         });
                 }}
             }
+			function delete_f_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+																	for(var i=0;i<checked_.length;i++){
+																			if(checked_[i].checked){
+																				if(a==''){
+																					a+=checked_[i].value
+																				}else{
+																					a+=","+checked_[i].value;
+																				}
+																			}
+																	}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./feature_delete.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("all selected data deleted");
+                                        }else{
+																					alert("not all selected data deleted");
+                                        }
+																					window.location.href="./indexPageForm";
+                                    }
+                                });
+                    }
+                }
+            }
 
             //Featured Courses
             function f_course_sel(){
@@ -556,7 +626,7 @@ else
                                                 </div>
                                                 <thead>
 													<tr >
-													<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+														<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
 															<label class="pos-rel">
 																<input type="checkbox" class="ace">
 																<span class="lbl"></span>

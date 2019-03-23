@@ -71,6 +71,42 @@ else
                     }
                 }
             }
+						function delete_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+                        for(var i=0;i<checked_.length;i++){
+                            if(checked_[i].checked){
+															if(a==''){
+																a+=checked_[i].value
+															}else{
+																a+=","+checked_[i].value;
+															}
+                            }
+													}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./newsletterdelete.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("Successfully deleted all selected data");
+																					window.location.href="./newsletterEditForm?id=<?php echo $_GET['id'];?>";
+																				}else{
+                                          alert("Not able to delete all selected data");
+																					window.location.href="./newsletterEditForm?id=<?php echo $_GET['id'];?>";
+                                        }
+                                    }
+                                });
+                    }
+                }
+            }
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -115,20 +151,36 @@ else
 										<!-- div.dataTables_borderWrap -->
 										<div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+																							<div style="background-color: #EFF3F8;padding:15px 15px 5px 15px;">
+																																						<a href='javascript:delete_checked()' class='tooltip-error ' data-rel='tooltip' title='Delete' >
+																																								<span class='red'>
+																																										<i class='ace-icon fa fa-trash-o bigger-120'></i>
+																																										Selected
+																																								</span>
+																																						</a>
+																									<a style="margin-left:125px;" class="btn btn-primary" href="./newsletterAddForm?u_id=<?php echo $_GET['id']?>">Add New</a>
+																									
+                                                </div>
 												<thead>
 													<tr >
-														<th class="center">
+														<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
 															<label class="pos-rel">
-																<span class="lbl">Sl No</span>
+																<input type="checkbox" class="ace">
+																<span class="lbl"></span>
 															</label>
 														</th>
-														<th>Heading</th>
-                                                        <th>Content</th>
-														<th>
-															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Last Updated
+														<th class="center">
+															<label class="pos-rel">
+																<span class="lbl">Id</span>
+															</label>
 														</th>
-														<th>Edit</th>
+														<th class="center">Heading</th>
+                                                        <th class="center">Content</th>
+														<th class="center">
+															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+															Last Updated By
+														</th>
+														<th class="center">Edit/Delete</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -141,6 +193,12 @@ else
 												"<tr id='row_".$row['id']."'>
 														<td class='center'>
 															<label class='pos-rel'>
+																<input name='check_id'  value='".$row['id']."'  type='checkbox' class='ace'>
+																<span class='lbl'></span>
+															</label>
+														</td>
+														<td class='center' style='width:50px;'>
+															<label class='pos-rel'>
 																<span  class='lbl'>".$row['id']."</span>
 															</label>
 														</td>
@@ -148,10 +206,12 @@ else
 														<td> 
                                                             <span class='lbl' name='display".$row['id']."' >".urldecode($row['heading'])."</span>
                                                         </td>
-                                                        <td style='width:50%;'>
-                                                            <span class='lbl' name='display".$row['id']."' >".urldecode($row['content'])."</span>
+                                                        <td style='width:40%;'>
+                                                            <span class='lbl' name='display".$row['id']."' >".substr(urldecode($row['content']),0,100)."...</span>
                                                         </td>
-														<td>".$row['updated']."</td>
+														<td class='hidden-480 center'>
+															<span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
+														</td>
 
 														<td style='width:120px'>
 															<div class='hidden-sm hidden-xs action-buttons'>
@@ -251,7 +311,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null,
+					  null, null, null,null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

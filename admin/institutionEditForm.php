@@ -150,6 +150,41 @@ else
             function cancel_(a){
               
             }
+						function delete_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+																	for(var i=0;i<checked_.length;i++){
+																			if(checked_[i].checked){
+																				if(a==''){
+																					a+=checked_[i].value
+																				}else{
+																					a+=","+checked_[i].value;
+																				}
+																			}
+																	}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./includes/delete_univesities.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("all selected data deleted");
+                                        }else{
+																					alert("not all selected data deleted");
+                                        }
+																				window.location.href="./institutionEditForm";
+                                    }
+                                });
+                    }
+                }
+            }
         </script>
 
 	</head>
@@ -189,23 +224,38 @@ else
 										<!-- div.dataTables_borderWrap -->
 										<div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+												<div style="background-color: #EFF3F8;padding:15px 15px 5px 15px;">
+                                                    <a href='javascript:delete_checked()' class='tooltip-error ' data-rel='tooltip' title='Delete' >
+                                                        <span class='red'>
+                                                            <i class='ace-icon fa fa-trash-o bigger-120'></i>
+                                                            Selected
+                                                        </span>
+                                                    </a>
+													
+                        </div>
 												<thead>
 													<tr >
+														<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+															<label class="pos-rel">
+																<input type="checkbox" class="ace">
+																<span class="lbl"></span>
+															</label>
+														</th>
 														<th class="center">
 															<label class="pos-rel">
 																<span class="lbl">Sl No</span>
 															</label>
 														</th>
-                                                        <th>University Name</th>
-                                                        <th>About</th>
-														<th class="hidden-480">Registation Fees</th>
-                                                        <th>Image</th>
-														<th class="hidden-480">
+                                                        <th class="center">University Name</th>
+                                                        <th class="center">About</th>
+														<th class="hidden-480 center">Registation Fees</th>
+                                                        <th class="center">Image</th>
+														<th class="hidden-480 center">
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
                               Last Updated By
                             </th>
 
-														<th>Edit/Delete</th>
+														<th class="center">Edit/Delete</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -216,6 +266,12 @@ else
                                                     {
 												echo  
 												"<tr id='row_".$row['u_id']."'>
+														<td class='center'>
+															<label class='pos-rel'>
+																<input name='check_id'  value='".$row['u_id']."'  type='checkbox' class='ace'>
+																<span class='lbl'></span>
+															</label>
+														</td>
 														<td class='center'>
 															<label class='pos-rel'>
 																<span  class='lbl'>".$row['u_id']."</span>
@@ -234,7 +290,7 @@ else
                               <img name=".$row['u_id']."img width='100px' src='.".$row['img_src']."'' alt='image'/>
                               <input id='".$row['u_id']."image' name='".$row['u_id']."image' type='file' class='form-control' style='display:none; width:250px;'/>
                             </td>
-														<td class='hidden-480'>
+														<td class='hidden-480' style='text-align:center'>
                                                             <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['u_id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
 														</td>
 														<td style='width:120px'>
@@ -355,7 +411,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, { "bSortable": false }, null,
+					  null, null, null,null, { "bSortable": false }, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

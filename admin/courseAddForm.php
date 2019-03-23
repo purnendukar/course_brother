@@ -267,7 +267,7 @@ else
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Description</label>
-                      <input name="c_desc" type="text" class="form-control" placeholder="Course Description" required>
+                      <textarea name="c_desc" type="text" class="form-control" style="resize:vertical;" placeholder="Course Description" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Add Course Structure</label><br/>

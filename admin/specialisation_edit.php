@@ -53,20 +53,20 @@ else
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
         <script>
-					function delete_checked(){
+						function delete_checked(){
                 if(confirm("want to delete all checked data?")){
                     if(confirm("Going to delete all checked data")){
-						var checked_=document.getElementsByName("check_id");
-						var a="";
-                        for(var i=0;i<checked_.length;i++){
-                            if(checked_[i].checked){
-								if(a==''){
-									a+=checked_[i].value
-								}else{
-									a+=","+checked_[i].value;
-								}
-                            }
-						}
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+																	for(var i=0;i<checked_.length;i++){
+																			if(checked_[i].checked){
+																				if(a==''){
+																					a+=checked_[i].value
+																				}else{
+																					a+=","+checked_[i].value;
+																				}
+																			}
+																	}
                                 var formData= new FormData();
                                 formData.append("ids",a);
                                 $.ajax({
@@ -416,8 +416,7 @@ else
 				.DataTable( {
 					bAutoWidth: false,
 					"aoColumns": [
-					  null,
-					  null, null,
+					  { "bSortable": false }, null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

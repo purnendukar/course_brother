@@ -47,96 +47,108 @@ else
 
 
             function submit_it(){
-                if(confirm("Do you want to update?")){
-                    if(confirm("Going to update")){
-                        var duration=document.getElementsByName('duration')[0].value;
-                        var formData = new FormData();
-                        formData.append("fees",document.getElementsByName('fees')[0].value);
-                        formData.append("duration",duration);
-                        formData.append("description",escape(document.getElementsByName('c_desc')[0].value));
-                        var i=1;
-                        var sem=2*(duration);
-                        var s="";
-                        var count=0;
-                        try{
-                            var te=document.getElementsByName('sem_struc');
-                        for(i=0;i<te.length;i++){
-                            if(count>0){
-                                s+="|"
-                            }
-                            if(te[i].value==null || te[i]==""){
-                                alert("Fill semester "+(i+1)+" Structure");
-                                return;
-                            }
-                            s+=te[i].value;
-                            count++;
-                        }
-                        }catch(e){
-                            alert("Add Course Structure ");
-                            return;
-                        }
-                        formData.append("sem_struc",s);
-                        var i=1;
-                        var sem=2*(duration);
-                        var s="";
-                        var count=0;
-                        try{
-                            var te=document.getElementsByName('sem_fees');
-                        for(i=0;i<te.length;i++){
-                            if(count>0){
-                                s+=","
-                            }
-                            if(te[i].value==null || te[i].value==""){
-                                alert("Fill semester "+(i+1)+" Fees");
-                                return;
-                            }
-                            s+=te[i].value;
-                            count++;
-                        }
-                        }catch(e){
-                            alert("Add Fees Structure ");
-                            return;
-                        }
-                        formData.append("fees_struc",s);
-                        var aff=document.getElementsByName("aff");
-                        var t="";
-                        var count=0;
-                        for(var i=0;i<aff.length;i++){
-                            if(aff[i].checked){
+                var butt=document.getElementById("butt");
+                var edit_i=document.getElementsByClassName("edit_i");
+                if(butt.value=="Edit"){
+                    butt.value="Update";
+                    for(var i=0;i<edit_i.length;i++){
+                        edit_i[i].disabled=false;
+                    }
+                }else{
+                    if(confirm("Do you want to update?")){
+                        if(confirm("Going to update")){
+                            var duration=document.getElementsByName('duration')[0].value;
+                            var formData = new FormData();
+                            formData.append("fees",document.getElementsByName('fees')[0].value);
+                            formData.append("duration",duration);
+                            formData.append("description",escape(document.getElementsByName('c_desc')[0].value));
+                            var i=1;
+                            var sem=2*(duration);
+                            var s="";
+                            var count=0;
+                            try{
+                                var te=document.getElementsByName('sem_struc');
+                            for(i=0;i<te.length;i++){
                                 if(count>0){
-                                    t+=",";
+                                    s+="|"
                                 }
-                                t+=aff[i].value;
+                                if(te[i].value==null || te[i]==""){
+                                    alert("Fill semester "+(i+1)+" Structure");
+                                    return;
+                                }
+                                s+=te[i].value;
                                 count++;
                             }
-                        }
-                        if(t==""){
-                            alert("Select affiliation");
-                            return;
-                        }
-                        formData.append("aff",t);
-                        var meta_desc=document.getElementsByName("meta_desc")[0].value;
-                        var meta_keys=document.getElementsByName("meta_keys")[0].value;
-                        formData.append("meta_keys",meta_keys);
-                        formData.append("meta_desc",meta_desc);
-                        formData.append("id","<?php echo $_GET['id']?>");
-                        $.ajax({
-                            url: "./courseAddFormupdate.php",
-                            type: 'POST',
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            data: formData,
-                            complete: function (data) {
-                                console.log(data.responseText);
-                                if(data.responseText=='1'){
-                                    alert("Successfully Added");
-                                    window.location.href="./courseEditForm";
-                                }else{
-                                    alert("Something went wrong submit again");
+                            }catch(e){
+                                alert("Add Course Structure ");
+                                return;
+                            }
+                            formData.append("sem_struc",s);
+                            var i=1;
+                            var sem=2*(duration);
+                            var s="";
+                            var count=0;
+                            try{
+                                var te=document.getElementsByName('sem_fees');
+                            for(i=0;i<te.length;i++){
+                                if(count>0){
+                                    s+=","
+                                }
+                                if(te[i].value==null || te[i].value==""){
+                                    alert("Fill semester "+(i+1)+" Fees");
+                                    return;
+                                }
+                                s+=te[i].value;
+                                count++;
+                            }
+                            }catch(e){
+                                alert("Add Fees Structure ");
+                                return;
+                            }
+                            formData.append("fees_struc",s);
+                            var aff=document.getElementsByName("aff");
+                            var t="";
+                            var count=0;
+                            for(var i=0;i<aff.length;i++){
+                                if(aff[i].checked){
+                                    if(count>0){
+                                        t+=",";
+                                    }
+                                    t+=aff[i].value;
+                                    count++;
                                 }
                             }
-                        });
+                            if(t==""){
+                                alert("Select affiliation");
+                                return;
+                            }
+                            formData.append("aff",t);
+                            var meta_desc=document.getElementsByName("meta_desc")[0].value;
+                            var meta_keys=document.getElementsByName("meta_keys")[0].value;
+                            formData.append("meta_keys",meta_keys);
+                            formData.append("meta_desc",meta_desc);
+                            formData.append("id","<?php echo $_GET['id']?>");
+                            $.ajax({
+                                url: "./courseAddFormupdate.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: formData,
+                                complete: function (data) {
+                                    console.log(data.responseText);
+                                    if(data.responseText=='1'){
+                                        alert("Successfully Added");
+                                    }else{
+                                        alert("Something went wrong submit again");
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    butt.value="Edit";
+                    for(var i=0;i<edit_i.length;i++){
+                        edit_i[i].disabled=true;
                     }
                 }
             }
@@ -178,12 +190,12 @@ else
                   <form class='menu-content' id="form1" name="form1" method="post" action="javascript:submit_it()">
                       <?php ?>
                     <div class="form-group">
-                    <label for="exampleInputPassword1">Add University</label>
+                    <label for="exampleInputPassword1">University</label>
                         <?php $res=$conn_p->query("select * from universities"); ?>
                		<input class="form-control" value="<?php echo $conn_p->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['u_name']; ?>" disabled/>
                		</div>
                		<div class="form-group">
-                    <label for="exampleInputPassword1">Add program</label>
+                    <label for="exampleInputPassword1">Program</label>
                		<?php $res=$conn_p->query("select * from program"); ?>
                		<input class="form-control" value="<?php echo $conn_p->query("select * from program where p_id=".$row['prg_id'])->fetch_assoc()['p_name']; ?>" disabled/>
                		</div>
@@ -199,16 +211,16 @@ else
                		<input class="form-control" value="<?php echo $conn_p->query("select * from subject where id=".$row['s_id'])->fetch_assoc()['sub_name']; ?>" disabled/>
                     </div>
                		<div class="form-group">
-                    <label for="exampleInputPassword1">Add Fees</label>
-               		<input name="fees" type="number" step="0.0" class="form-control" value="<?php echo $row['fees']; ?>" required>
+                    <label for="exampleInputPassword1">Fees</label>
+               		<input disabled name="fees" type="number" step="0.0" class="edit_i form-control" value="<?php echo $row['fees']; ?>" required>
                		</div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Duration</label>
-                      <input name="duration" type="number" step="0.0" class="form-control" value="<?php echo $row['duration']; ?>" required>
+                      <input disabled name="duration" type="number" step="0.0" class="edit_i form-control" value="<?php echo $row['duration']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Description</label>
-                      <input name="c_desc" type="text" class="form-control" value="<?php echo urldecode($conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['overview']); ?>" required>
+                      <textarea disabled style="resize:vertical;" name="c_desc" type="text" class="edit_i form-control" required><?php echo urldecode($conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['overview']); ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Course Structure</label><br/>
@@ -217,7 +229,7 @@ else
                             $c_struc=explode("|",$c_struc);
                             for($i=0;$i<count($c_struc);$i++){
                                 $s=str_replace("<br>","\n",$c_struc[$i]);
-                                echo "<p>Semester ".($i+1)."</p>"."<textarea name='sem_struc' class=\"form-control\">".urldecode($s)."</textarea>";
+                                echo "<p>Semester ".($i+1)."</p>"."<textarea disabled name='sem_struc' class=\"edit_i form-control\">".urldecode($s)."</textarea>";
                             }?>
                         </div>
                		</div>
@@ -227,30 +239,30 @@ else
                             <?php $f_struc=$conn_p->query("select * from fee_structure where id=".$row['id'])->fetch_assoc()['structure'];
                             $f_struc=explode(",",$f_struc);
                             for($i=0;$i<count($f_struc);$i++){
-                                echo "<p>Semester ".($i+1)."</p>"."<input type='number' step=\"0.1\" class=\"form-control\" name='sem_fees' value='".$f_struc[$i]."' />";
+                                echo "<p>Semester ".($i+1)."</p>"."<input disabled type='number' step=\"0.1\" class=\"edit_i form-control\" name='sem_fees' value='".$f_struc[$i]."' />";
                             }?>
                         </div>
                		</div>
                     <div class="form-group">
                       <label for="exampleInputPassword1" required>Affiliation</label><br/>
                       <?php $res1=$conn_p->query("select * from affiliation"); ?>
-               			<?php while($row1=$res1->fetch_assoc()){ ?><input name="aff" type="checkbox" value="<?php echo $row1['id'];?>" <?php if(strpos($row['a_id'],$row1['id'])!==false){echo "checked";}?> ><?php echo strtoupper($row1['a_name']); ?><br/><?php } ?>
+               			<?php while($row1=$res1->fetch_assoc()){ ?><input disabled name="aff" type="checkbox" class="edit_i" value="<?php echo $row1['id'];?>" <?php if(strpos($row['a_id'],$row1['id'])!==false){echo "checked";}?> ><?php echo strtoupper($row1['a_name']); ?><br/><?php } ?>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Delivery Mode</label>
-               		<input class="form-control" value="<?php echo $conn_p->query("select * from delivery_mode where id=".$row['d_mode_id'])->fetch_assoc()['d_mode']; ?>" disabled/>
+               		<input disabled class="form-control" value="<?php echo $conn_p->query("select * from delivery_mode where id=".$row['d_mode_id'])->fetch_assoc()['d_mode']; ?>" disabled/>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Meta Description</label>
-                      <input type="text" name="meta_desc" class="form-control" placeholder="Meta Description" value="<?php echo $row['meta_desc']?>">
+                      <input disabled type="text" name="meta_desc" class="edit_i form-control" placeholder="Meta Description" value="<?php echo $row['meta_desc']?>">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Meta Keyword</label>
-                      <input type="text"  name="meta_keys" class="form-control" placeholder="Meta Tag" value="<?php echo $row['meta_key']?>">
+                      <input disabled type="text"  name="meta_keys" class="edit_i form-control" placeholder="Meta Tag" value="<?php echo $row['meta_key']?>">
                     </div>
                     <br>
-                    <input type="submit" class="btn btn-primary" name="btnsubmit" value="Update"/>
-                    <input type="button" class="btn btn-primary" onclick="window.location.href='./courseEditForm'" value="Cancel"/>
+                    <input id="butt" type="submit" class="btn btn-primary" name="btnsubmit" value="Edit"/>
+                    <input type="button" class="btn btn-primary" onclick="window.location.href='./courseEditFormShow?id=<?php echo $_GET['id'];?>'" value="Cancel"/>
                   </form>
               </div>
                 <?php } ?>

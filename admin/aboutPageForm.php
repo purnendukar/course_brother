@@ -328,8 +328,136 @@ else
                 about[3].value=temp4;
                 cancel.style.display="none";
             }
+			function delete_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+                        for(var i=0;i<checked_.length;i++){
+                            if(checked_[i].checked){
+															if(a==''){
+																a+=checked_[i].value
+															}else{
+																a+=","+checked_[i].value;
+															}
+                            }
+													}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./team_delete.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("Successfully deleted all selected data");
+																					window.location.href="./aboutPageForm";
+																				}else{
+                                          alert("Not able to delete all selected data");
+																					window.location.href="./aboutPageForm";
+                                        }
+                                    }
+                                });
+                    }
+                }
+            }
+			function add(){
+                var add_one=document.getElementById('add_one');
+                if(add_one.style.display=='none'){
+                    add_one.style.display="";
+                }else{
+                    alert("Already displayed Enter your detail");
+                }
+			}
+			function cancel_add(){
+							var temp=document.getElementsByName('input_');
+							for (var i=0;i<temp.length;i++){
+								temp[i].value="";
+							}
+							document.getElementById('add_one').style.display="none";
+			}
+			function add_it(){
+				var input_=document.getElementsByName("input_");
+					for(var i=0;i<input_.length;i++){
+						if(input_.value==""){
+							alert("fill all field");
+							return;
+						}
+					}
+                if(confirm("Want to Update?")){if(confirm("Going to update")){
+                    
+					var im=document.getElementById("img_choose");
+					if(im==""){
+						alert("select image");
+						return;
+					}
+                    var formData= new FormData();
+                    formData.append('name',input_[0].value);
+                    formData.append('position',input_[1].value);
+                    formData.append('about',input_[2].value);
+					formData.append('image',im.files[0]);
+                    $.ajax({
+                            url: "./team_member_add.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText==1 ){
+                                    alert("Data Added Successfully");
+                                    window.location.href="./aboutPageForm";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
+                            }
+                        });
+                }}
+            }
         </script>
 
+		<style>
+			.accordion {
+			background-color: #eee;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+			}
+
+			.active_, .accordion:hover {
+			background-color: #ccc;
+			}
+
+			.accordion:after {
+			content: '\002B';
+			color: #777;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+			}
+
+			.active_:after {
+			content: "\2212";
+			}
+			.panel {
+			padding: 0 18px;
+			background-color: white;
+			height: 0;
+			overflow: auto;
+			opacity:0;
+			transition: 0.3s ease-out;
+			}
+		</style>
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--if lte IE 8>
@@ -362,10 +490,10 @@ else
 				<a href="javascript:window.history.back();">Back</a>
 
             <?php include('./settingsContainer.php'); ?>
-            <h3>About Page</h3>
+            <h3 >About Page</h3>
             <div id="accordion">
-			  <h3>About</h3>
-				<div class='row menu-form' >
+			  <h3 class="accordion">About</h3>
+				<div class='panel row menu-form' >
 	              <div class='col-lg-6' style="width:100%;height:100%">
 	                  <h2 class='menu-text'>About</h2>
 	                  <div id="tab" class='menu-content' style="width:100%">
@@ -383,8 +511,8 @@ else
 	              </div>
 	            </div>
 
-			  <h3>Provide you</h3>
-			    <div class='row menu-form'>
+			  <h3 class="accordion">Provide you</h3>
+			    <div class='panel row menu-form'>
 	              <div class='col-lg-6' style="width:100%; height:100%">
 	                  <h2 class='menu-text'>WE STRIVE TO PROVIDE YOU WITH</h2>
                       <div id="tab" class='menu-content' style="width:100%">
@@ -412,8 +540,8 @@ else
 	              </div>
 	            </div>
 
-                <h3>Team Member</h3>
-                <div class="row">
+                <h3 class="accordion">Team Member</h3>
+                <div class="panel row">
 									<div class="col-xs-12">
 										<h3 class="header smaller lighter blue">Team Member</h3>
 
@@ -436,10 +564,11 @@ else
                                                             Selected
                                                         </span>
                                                     </a>
-													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add()">Add New Slider</a>
+													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add()">Add New</a>
 													<div id="add_one" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">			
-														<textarea style="resize:vertical;width:100%;" type="text" name="input_" class="form-control" placeholder="Content"></textarea>
-														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="link"></textarea>
+														<textarea style="resize:vertical;width:100%;" type="text" name="input_" class="form-control" placeholder="Name"></textarea>
+														<textarea style="resize:vertical;width:100%;" type="text" name="input_" class="form-control" placeholder="Position"></textarea>
+														<textarea style="resize:vertical;" type="text" name="input_" class="form-control" placeholder="About"></textarea>
 														<input type="file" id="img_choose" accept="image/*" style="margin:5px;" />
 														<input class="btn btn-primary" style="width:100px; margin:5px;" type="button" value="Confirm" onclick="add_it();" />
 														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add()" />
@@ -658,9 +787,25 @@ else
 <![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-			$( "#accordion" ).accordion();
 		</script>
+		<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
 
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function() {
+				this.classList.toggle("active_");
+				var panel = this.nextElementSibling;
+				if (panel.style.height){
+				panel.style.height = null;
+				panel.style.opacity="0";
+				} else {
+				panel.style.opacity="1";
+				panel.style.height = "600px";
+				} 
+			});
+		}
+		</script>
 
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>

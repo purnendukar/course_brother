@@ -102,7 +102,7 @@ else
       </div>
 
       <div class="about_us__founders" >
-        <?php $res=$conn->query("SELECT * FROM `team`")?>
+        <?php $res=$conn->query("SELECT * FROM `team` where display='yes'")?>
         <h2 class='about_us__founders__title'>Team Members</h2>
         <div class='about_us__founders__container' style="align-items:flex-start;">
           <?php while($row=$res->fetch_assoc()){?>

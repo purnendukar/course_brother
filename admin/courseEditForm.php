@@ -71,6 +71,42 @@ else
 									}
 								}      
             }
+						function delete_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id");
+											var a="";
+																	for(var i=0;i<checked_.length;i++){
+																			if(checked_[i].checked){
+																				if(a==''){
+																					a+=checked_[i].value
+																				}else{
+																					a+=","+checked_[i].value;
+																				}
+																			}
+																	}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./courseEditFormdelete.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("all selected data deleted");
+                                        }else{
+																					alert("not all selected data deleted");
+                                        }
+																				// console.log(data.responseText);
+																				window.location.href="./courseEditForm";
+                                    }
+                                });
+                    }
+                }
+            }
         </script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
@@ -115,8 +151,23 @@ else
 										<!-- div.dataTables_borderWrap -->
 										<div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+												<div style="background-color: #EFF3F8;padding:15px 15px 5px 15px;">
+                                                    <a href='javascript:delete_checked()' class='tooltip-error ' data-rel='tooltip' title='Delete' >
+                                                        <span class='red'>
+                                                            <i class='ace-icon fa fa-trash-o bigger-120'></i>
+                                                            Selected
+                                                        </span>
+                                                    </a>
+													
+                        </div>
 												<thead>
 													<tr >
+														<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+															<label class="pos-rel">
+																<input type="checkbox" class="ace">
+																<span class="lbl"></span>
+															</label>
+														</th>
 														<th class="center">
 															<label class="pos-rel">
 																<span class="lbl">Sl No</span>
@@ -138,6 +189,12 @@ else
                           {
 											echo  
 												"<tr id='row_".$row['id']."'>
+													<td class='center'>
+														<label class='pos-rel'>
+															<input name='check_id'  value='".$row['id']."'  type='checkbox' class='ace'>
+															<span class='lbl'></span>
+														</label>
+													</td>
 														<td class='center'>
 															<label class='pos-rel'>
 																<span  class='lbl'>".$row['id']."</span>
@@ -257,7 +314,7 @@ else
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, null, null,
+					  null, null, null,null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

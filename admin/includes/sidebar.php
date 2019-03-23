@@ -21,13 +21,7 @@
 
 						<ul class="submenu">
 
-							<li class="">
-								<a href="#" class='dropdown-toggle'>
-              			          <i class="menu-icon fa fa-leaf"></i>
-							       <span class="menu-text"> Page List </span>
-							      <b class="arrow fa fa-angle-down"></b>
-						        </a>
-								<ul class="submenu">
+							
 
 									<li class="">
 										<a href="./indexPageForm">
@@ -85,12 +79,9 @@
 										</a>
 									</li>
 								</ul>
-							</li>
-
-						</ul>
 					</li>
 
-					<li class="">
+					<!-- <li class="">
 						<a href="#" class='dropdown-toggle'>
               			  <i class="menu-icon fa fa-leaf"></i>
 							<span class="menu-text"> Logo </span>
@@ -115,11 +106,11 @@
 							</li>
 
 						</ul>
-					</li>
+					</li> -->
 
 					<!-- NexGen Shiksha Side Option Ends -->
 
-					<li class="">
+					<!-- <li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-bars"></i>
 							<span class="menu-text"> Menu </span>
@@ -141,7 +132,8 @@
 								</a>
 							</li>
 						</ul>
-					</li> <!-- Menu Side Option Ends -->
+					</li>  -->
+					<!-- Menu Side Option Ends -->
 
 					<li class="">
 						<a href="#" class="dropdown-toggle">
