@@ -197,7 +197,7 @@ else
                		<div class="form-group">
                     <label for="exampleInputPassword1">Program</label>
                		<?php $res=$conn_p->query("select * from program"); ?>
-               		<input class="form-control" value="<?php echo $conn_p->query("select * from program where p_id=".$row['prg_id'])->fetch_assoc()['p_name']; ?>" disabled/>
+               		<input class="form-control" value="<?php echo $conn_p->query("select * from program where p_id=".$row['prg_id'])->fetch_assoc()['program']; ?>" disabled/>
                		</div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Course Name</label>

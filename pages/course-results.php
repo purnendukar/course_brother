@@ -520,7 +520,7 @@ else
                 </div>
               </div>
               <div class="course_results__item__content__price">
-                <h3>Rs <?php echo $row_2['fees']?> <span>(annual)</span></h3>
+                <h3>Rs <?php echo $row_2['fees']?> <!--<span>(annual)</span>--></h3>
               </div>
             </div>
             <div class="course_results__item__buttons">

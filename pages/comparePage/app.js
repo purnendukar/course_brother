@@ -21,6 +21,7 @@ var duration_=document.getElementsByName("duration_");
 var eligibility_=document.getElementsByName("eligibility_");
 var univ_=document.getElementsByName("univ_");
 var d_mode_=document.getElementsByName("d_mode_");
+var apply_=document.getElementsByName("apply_");
 var j_temp=0;
 
 function add_compare(a){
@@ -68,6 +69,7 @@ function compare_(a) {
               }
               d_mode_[i].innerHTML=info[7];
               d_mode_[i].classList.add("modal--content__comparisontable__row__tag_");
+              apply_[i].innerHTML="<button onclick=\"window.location.href='./course-detail?id="+a+"'\">APPLY NOW</button>";
             }else{
                 alert("Something went wrong try again again");
             }
@@ -93,6 +95,14 @@ span.onclick = function() {
     univ_[i].innerHTML='';
     duration_[i].innerHTML="";
     d_mode_[i].innerHTML="";
+    _course_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    fees_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    desc_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    sub_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    univ_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    duration_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    d_mode_[i].classList.remove("modal--content__comparisontable__row__tag_");
+    apply_[i].innnerHTML="";
   }
 }
 
@@ -114,6 +124,15 @@ window.onclick = function(event) {
       univ_[i].innerHTML='';
       duration_[i].innerHTML="";
       d_mode_[i].innerHTML="";
+      
+      _course_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      fees_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      desc_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      sub_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      univ_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      duration_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      d_mode_[i].classList.remove("modal--content__comparisontable__row__tag_");
+      apply_[i].innnerHTML="";
     }
   }
 }
@@ -128,4 +147,13 @@ function remove_compare(a){
   univ_[i].innerHTML='';
   duration_[i].innerHTML="";
   d_mode_[i].innerHTML="";
+  
+  _course_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  fees_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  desc_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  sub_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  univ_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  duration_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  d_mode_[i].classList.remove("modal--content__comparisontable__row__tag_");
+  apply_[i].innnerHTML="";
 }

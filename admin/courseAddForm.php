@@ -238,7 +238,7 @@ else
                		<?php $res=$conn_p->query("select * from program"); ?>
                		<select class='course__add__select' name="program">
                			<option value="" selected>Program</option>
-               			<?php while($row=$res->fetch_assoc()){ ?><option value="<?php echo $row['p_id'];?>"><?php echo strtoupper($row['p_name']); ?></option><?php } ?>
+               			<?php while($row=$res->fetch_assoc()){ ?><option value="<?php echo $row['p_id'];?>"><?php echo strtoupper($row['program']); ?></option><?php } ?>
                		</select>
                		</div>
                     <div class="form-group">

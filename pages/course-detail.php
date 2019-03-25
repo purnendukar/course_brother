@@ -232,11 +232,9 @@ else
                 $t_num=$t['t'];
                 $id_d=0;
                 $used='';
-            for($i=0;$i<2;$i++){
+              for($i=0;$i<2;$i++){
                 if($i<$t_num){
-                    while($id_d==$used){
                         $id_d=rand()%$t_num;
-                    }
                     $res_t=$conn->query($sql_t);
                     for($j=0;$j<=$id_d;$j++){
                         $row_t=$res_t->fetch_assoc();

@@ -50,13 +50,13 @@
 							<li name="sub_"></li>
 						</ul>
 
-						<ul class="modal--content__comparisontable__row">
+						<!-- <ul class="modal--content__comparisontable__row">
 							<li class="modal--content__comparisontable__row__tag">FEE TYPE</li>
-							<li name="pay_type"><!--Annual Payment, One Time Payment--></li>
 							<li name="pay_type"></li>
 							<li name="pay_type"></li>
 							<li name="pay_type"></li>
-						</ul>
+							<li name="pay_type"></li>
+						</ul> -->
 
 						<ul class="modal--content__comparisontable__row">
 							<li class="modal--content__comparisontable__row__tag">DURATION</li>
@@ -66,13 +66,13 @@
 							<li name="duration_"></li>
 						</ul>
 
-						<ul class="modal--content__comparisontable__row">
+						<!-- <ul class="modal--content__comparisontable__row">
 							<li class="modal--content__comparisontable__row__tag">ELIGIBILITY</li>
 							<li name="eligibility_"></li>
 							<li name="eligibility_"></li>
 							<li name="eligibility_"></li>
 							<li name="eligibility_"></li>
-						</ul>
+						</ul> -->
 
 						<ul class="modal--content__comparisontable__row">
 							<li class="modal--content__comparisontable__row__tag">INSTITUTE</li>
@@ -92,10 +92,10 @@
 
 						<ul class="modal--content__comparisontable__row">
 							<li></li>
-							<li><button>APPLY NOW</button></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li name="apply_"></li>
+							<li name="apply_"></li>
+							<li name="apply_"></li>
+							<li name="apply_"></li>
 						</ul>
 					</div>
 					<div class="floating">

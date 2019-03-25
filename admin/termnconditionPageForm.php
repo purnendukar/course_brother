@@ -127,7 +127,7 @@ else
                                     </div>
                                     <div style="margin:10px;text-align:center;"><input type="button" id="update_" class="btn btn-primary" value="Edit" onclick="update_('4',this);" /> <input style="display:none;" id='cancel_' type="button" class="btn btn-primary" value="Cancel" onclick="cancel();" /></div>
                                 </div>
-								<?php include "policies_guide.php";?>
+																<?php include "policies_guide.php";?>
                             </div>
                         </div>
                     </div>
