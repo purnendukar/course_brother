@@ -116,6 +116,7 @@ else
                 formData.append("fees",document.getElementsByName('fees')[0].value);
                 formData.append("duration",duration);
                 formData.append("description",document.getElementsByName('c_desc')[0].value);
+                formData.append("desc_s",document.getElementsByName('c_desc_s')[0].value);
                 var i=1;
                 var sem=2*(duration);
                 var s="";
@@ -268,6 +269,10 @@ else
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Description</label>
                       <textarea name="c_desc" type="text" class="form-control" style="resize:vertical;" placeholder="Course Description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Short Course Description</label>
+                      <textarea name="c_desc_s" type="text" class="form-control" style="resize:vertical;" placeholder="Short Course Description" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Add Course Structure</label><br/>

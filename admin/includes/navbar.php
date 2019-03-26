@@ -110,6 +110,10 @@ $conn_p=connect_mysql_page();
 			$t=false;
 			break;
 		}
+		if(strpos($_SERVER['REQUEST_URI'],'indexPagefeature')!==false && strpos($r[$i],'indexPageForm')!==false){
+			$t=false;
+			break;
+		}
 	}
 	
 	if($t){

@@ -237,7 +237,12 @@
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<ul class="submenu">
-							
+							<li class="">
+								<a href="./courseNameForm">
+									<i class="menu-icon fa fa-caret-right"></i>
+									<b class="fa fa-plus"></b> &nbsp; Course Name
+								</a>
+							</li>
 							<li class="">
 								<a href="./courseAddForm">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -286,22 +291,7 @@
 					<li class="">
 						<a href="#" class='dropdown-toggle'>
 							<i class="menu-icon fa fa-book"></i>
-							<span class="menu-text"> Course Name</span>
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-						<ul class="submenu">
-							<li class="">
-								<a href="./courseNameForm">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; All
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="">
-						<a href="#" class='dropdown-toggle'>
-							<i class="menu-icon fa fa-book"></i>
-							<span class="menu-text"> Affilidation</span>
+							<span class="menu-text"> Affiliation</span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 						<ul class="submenu">

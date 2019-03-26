@@ -332,11 +332,10 @@ else
                                 processData: false,
                                 data: img_form,
                                 complete: function (data) {
-                                    if(data.responseText!='0'){
-                                        img_display.src="."+data.responseText;
+                                    console.log(data.responseText);
+                                    if(data.responseText==1){
                                         alert("Image Updated");
                                     }else{
-                                        console.log(data.responseText);
                                         alert("Image Not Updated");
                                     }
                                 }
@@ -489,9 +488,9 @@ else
                         var formData= new FormData();
                         formData.append('id',f_c[i].value);
                         if(f_c[i].checked){
-                            formData.append('check','yes');
+                            formData.append('checks','Yes');
                         }else{
-                            formData.append('check','no');
+                            formData.append('checks','No');
                         }
                         t=$.ajax({
                         url: "./featured_checked.php",
@@ -898,62 +897,18 @@ else
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
-			    <!-- <div class='row menu-form'>
-	              <div class='col-lg-6' style="width:100%; height:100%">
-	                  <h2 class='menu-text'>Why Select Us</h2>
-	                  <table id="tab" class='menu-content' style="width:100%">
-                          <tr class="form-group">
-                              <th style="padding:5px; text-align:center;" >Id</th>
-                              <th style="padding:5px; text-align:center;" >Heading</th>
-                              <th style="padding:5px; text-align:center;" >Information</th>
-                              <th style="padding:5px; text-align:center;" >Image</th>
-                          </tr>
-                          <?php
-                          $res=$conn_p->query("select * from features");
-                          while($row=$res->fetch_assoc()){
-                          ?>
-                          <tr class="form-group" id="<?php echo "rowf".$row['id'] ?>">
-                              <td style="padding:5px;"><?php echo $row['id']; ?></td>
-                              <td style="padding:5px;">
-                                  <input name="input_f<?php echo $row['id']?>" style="padding:10px;" type="text" class="form-control" value="<?php echo urldecode($row['heading']);?>" disabled />
-                              </td>
-                              <td style="padding:5px;">
-                                  <input name="input_f<?php echo $row['id']?>" style="padding:10px;" type="text" class="form-control" value="<?php echo urldecode($row['info'])?>" disabled />
-                                </td>
 
-                              <td style="padding:5px;width:100px;height:100px;overflow:hidden;">
-                                  <img id="img_displayf<?php echo $row['id']?>" style="width:100px;height:100px;" src="<?php echo ".".$row['img_src']?>" alt="image"/>
-                                  <input id="img_choosef<?php echo $row['id']?>" type="file" style="width:200px;display:none;"/></td>
-                              <td>
-                                  <input id="edit_updatef<?php echo $row['id']?>" class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Edit" onclick="edit_f('<?php echo $row['id']?>')" /><br>
-                                  <input type="button" style="width:85px; margin:5px;" class="btn btn-primary" value="Delete" onclick="delete_f('<?php echo $row['id']?>')"/>
-                              </td>
-                          </tr>
-                          <?php } ?>
-
-                          <tr id="add_onef" style="display:none">
-                              <td style="padding:5px;"></td>
-                              <td style="padding:5px;"><input type="text" name="input_f" class="form-control" placeholder="Heading"/></td>
-                              <td style="padding:5px;"><input type="text" name="input_f" class="form-control" placeholder="link"/></td>
-                              <td style="padding:5px;"><input type="file" id="img_choosef" name="" style="margin:5px;" /></td>
-                              <td><input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Confirm" onclick="add_it_f();" /></td>
-                          </tr>
-
-	                  </table>
-                        <div class="form-group"  style="text-align:center; padding:30px;"><input type="button" style="width:100px;" class="btn btn-primary" value="Add One" onclick="add_f()"/></div>
-	              </div>
-	            </div> -->
 
                 <h3 class="accordion">Featured Courses</h3>
 			    <div class='panel row menu-form'>
 	              <div class='col-lg-6'>
-                      <?php $res=$conn_p->query('select * from featured_courses');
+                      <?php $res=$conn_p->query('select * from program');
                       ?>
 	                  <h2 class='menu-text'>Featured Courses</h2>
 	                  <form class='menu-content' >
 	                    <div class="form-group">
                             <?php while($row=$res->fetch_assoc()){ ?>
-                                    <div><input name='featured_c' type='checkbox' value='<?php echo $row['id']?>' <?php if($row['checked']=="yes") echo "checked";?> /> <?php echo $row['c_name'];?></div>
+                                <div><input name='featured_c' type='checkbox' value='<?php echo $row['p_id']?>' <?php if($row['checked']=="Yes") echo "checked";?> /> <?php echo $row['program'];?> <a href="./indexPagefeature?id=<?php echo $row['p_id']?>" target="blank"><b>Show</b></a></div>
                             <?php } ?>
 	                    </div>
 	                    <button type="button" class="btn btn-primary" onclick="f_course_sel()">Submit</button>

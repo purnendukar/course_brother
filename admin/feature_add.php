@@ -11,7 +11,7 @@ if(isset($_FILES['image'])){
     $file_type=$_FILES['image']['type'];
     $t=explode('.',$_FILES['image']['name']);
     $file_ext=strtolower(end($t));
-    $file_path="./assets/svg/Icons/white/";
+    $file_path="./assets/images/features/";
 
     $extensions= array("jpeg","jpg","png","svg");
     if(in_array($file_ext,$extensions)=== false){

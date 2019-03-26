@@ -109,33 +109,33 @@ span.onclick = function() {
 
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == compare__bg) {
-    j_temp=0;
-    modal.style.display = "none";
-    compare__bg.style.display="none";
-    for(var i=0;i<4;i++){
-      fill[i]='not';
-      add_remove_[i].innerHTML='<div class="add" onclick="add_compare('+i+')"><i class="fas fa-plus"></i>';
-      _course_[i].innerHTML="";
-      fees_[i].innerHTML="";
-      desc_[i].innerHTML="";
-      sub_[i].innerHTML="";
-      univ_[i].innerHTML='';
-      duration_[i].innerHTML="";
-      d_mode_[i].innerHTML="";
+// window.onclick = function(event) {
+//   if (event.target == compare__bg) {
+//     j_temp=0;
+//     modal.style.display = "none";
+//     compare__bg.style.display="none";
+//     for(var i=0;i<4;i++){
+//       fill[i]='not';
+//       add_remove_[i].innerHTML='<div class="add" onclick="add_compare('+i+')"><i class="fas fa-plus"></i>';
+//       _course_[i].innerHTML="";
+//       fees_[i].innerHTML="";
+//       desc_[i].innerHTML="";
+//       sub_[i].innerHTML="";
+//       univ_[i].innerHTML='';
+//       duration_[i].innerHTML="";
+//       d_mode_[i].innerHTML="";
       
-      _course_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      fees_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      desc_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      sub_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      univ_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      duration_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      d_mode_[i].classList.remove("modal--content__comparisontable__row__tag_");
-      apply_[i].innnerHTML="";
-    }
-  }
-}
+//       _course_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       fees_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       desc_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       sub_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       univ_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       duration_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       d_mode_[i].classList.remove("modal--content__comparisontable__row__tag_");
+//       apply_[i].innnerHTML="";
+//     }
+//   }
+// }
 
 function remove_compare(a){
   i=a;

@@ -46,30 +46,42 @@ else
 		<script src="assets/js/ace-extra.min.js"></script>
 
         <script>
-            function update_(){
-				if(confirm("Want to update?")){if(confirm("Going to update")){
-                var input_=document.getElementsByName("input_");
-                var f=new FormData();
-                f.append('phn_no',input_[0].value);
-                f.append('email',input_[1].value);
-                f.append('address',input_[2].value);
-                $.ajax({
-                        url: "./contact_update.php",
-                        type: 'POST',
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: f,
-                        complete: function (data) {
-                            if(data.responseText=='1'){
-                                alert("Updated");
-                            }else{
-                                console.log(data.responseText);
-                                alert("Something went Wrong");
-                            }
-                        }
-                    });
-				}}
+            function update_(a){
+				var input_=document.getElementsByName("input_");
+				if(a.value=="Edit"){
+					a.value="Update";
+					for(var i=0;i<input_.length;i++){
+						input_[i].disabled=false;
+					}
+				}else{
+					if(confirm("Want to update?")){if(confirm("Going to update")){
+					var f=new FormData();
+					f.append('phn_no',input_[0].value);
+					f.append('email',input_[1].value);
+					f.append('address',input_[2].value);
+					$.ajax({
+							url: "./contact_update.php",
+							type: 'POST',
+							cache: false,
+							contentType: false,
+							processData: false,
+							data: f,
+							complete: function (data) {
+								if(data.responseText=='1'){
+									alert("Updated");
+									for(var i=0;i<input_.length;i++){
+										input_[i].disabled=true;
+									}
+									a.value="Edit";
+								}else{
+									console.log(data.responseText);
+									alert("Something went Wrong");
+									window.location.href='./contactPageForm';
+								}
+							}
+						});
+					}}
+				}
             }
         </script> 
        
@@ -104,10 +116,10 @@ else
                             <div id="tab" class='menu-content' style="width:100%">
                                 <div class="form-group">
                                 <?php $res=$conn_p->query("SELECT * FROM `contact_info`");?>
-                                    <div style="padding:5px">Contact No. : <input class="form-control" name="input_" type="text" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
-                                    <div style="padding:5px">Email : <input class="form-control" name="input_" type="email" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
-                                    <div style="padding:5px">Address : <input class="form-control" name="input_" type="text" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
-                                    <div style="margin:10px;text-align:center;"><input type="button" class="btn btn-primary" value="Update" onclick="update_();" /></div>
+                                    <div style="padding:5px">Contact No. : <input disabled class="form-control" name="input_" type="text" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
+                                    <div style="padding:5px">Email : <input disabled class="form-control" name="input_" type="email" value="<?php echo $res->fetch_assoc()['info']; ?>" /></div>
+                                    <div style="padding:5px">Address : <textarea disabled class="form-control" name="input_" type="text" ><?php echo $res->fetch_assoc()['info']; ?></textarea></div>
+                                    <div style="margin:10px;text-align:center;"><input style="margin:10px;" type="button" class="btn btn-primary" value="Edit" onclick="update_(this);" /><input style="margin:10px;" type="button" class="btn btn-primary" value="Cancel" onclick="window.location.href='./contactPageForm'" /></div>
                                 </div>
                             </div>
                         </div>

@@ -65,38 +65,18 @@ else
       <div class="about_us__services">
         <h2 class='about_us__services__title'>we strive to provide you with</h2>
         <div class="about_us__services__container">
-          <?php $res=$conn->query("SELECT * FROM `provide`");?>
-          <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\journey.svg" alt="image"/>
-            <h5>versatility</h5>
-            <p>
-              <?php echo urldecode($res->fetch_assoc()['content']);?>
-            </p>
-          </div>
+          <?php $res=$conn->query("SELECT * FROM `provide` where display='Yes'");
+          while($row=$res->fetch_assoc()){  
+          ?>
+            <div class="about_us__services__container__item">
+              <img src=".<?php echo $row['img_src'];?>" alt="image"/>
+              <h5><?php echo urldecode($row['heading']);?></h5>
+              <p>
+                <?php echo urldecode($row['content']);?>
+              </p>
+            </div>
+          <?php }?>
 
-          <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\stopwatch.svg" alt="image" />
-            <h5>convenience</h5>
-            <p>
-            <?php echo urldecode($res->fetch_assoc()['content']);?>
-            </p>
-          </div>
-
-          <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\customer.svg" alt="image"/>
-            <h5>authenticity</h5>
-            <p>
-              Get access to 1000+ courses from leading course providers offering recognized and industry standard
-            </p>
-          </div>
-
-          <div class="about_us__services__container__item">
-            <img src="..\assets\svg\Icons\white\support.svg" alt="image"/>
-            <h5>support</h5>
-            <p>
-            <?php echo urldecode($res->fetch_assoc()['content']);?>
-            </p>
-          </div>
 
         </div>
       </div>

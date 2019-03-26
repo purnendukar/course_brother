@@ -22,8 +22,8 @@ if(isset($_FILES['image'])){
     if(empty($errors)==true){
         $path=$file_path.rand().$file_name;
          if(move_uploaded_file($file_tmp,".".$path)){
-             if($conn->query("UPDATE `slide_show` SET img_src='".$path."' where id=".$id)){
-                 echo $path;
+             if($conn->query("UPDATE `features` SET img_src='".$path."' where id=".$id)){
+                 echo "1";
              }else{
                  echo "0";
              }

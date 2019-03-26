@@ -186,11 +186,11 @@ else
         <div class="featured_courses__main__nav">
           <ul>
               <?php
-                $sql1="select * from featured_courses where checked='Yes'";
+                $sql1="select * from program where checked='Yes'";
                     $res1=$conn->query($sql1);
                     while($row1=$res1->fetch_assoc()){
                 ?>
-                       <li><a href=''><?php echo $row1['c_name'];?></a></li>
+                       <li><a href=''><?php echo $row1['program'];?></a></li>
                 <?php
                     }
               ?>
@@ -198,164 +198,44 @@ else
         </div>
 
         <div class="featured_courses__body">
-
-
-          <div class="featured_courses__body__container">
-              <?php
-              /* flag is to count number of result */
-              $flag=0;
-                $sql="select * from full_detail where prg_id=5";
-                    $res=$conn->query($sql);
-                    while($row=$res->fetch_assoc() and $flag<4){
-              ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
-              class="featured_courses__body__item">
-
-                <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
-
-                <div class="featured_courses__body__item__course">
-                    <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
-                </div>
-              <div class="featured_courses__body__item__info">
-                <div class="featured_courses__body__item__info__price">
-                  Rs <?php echo $row['fees'];?>
-                </div>
-                <div class="featured_courses__body__item__info__year">
-                  <?php echo $row['duration']." Years" ?>
-                </div>
-              </div>
-              <div class="featured_courses__body__item__buttons">
-                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
-                  <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
-              </div>
-            </div>
-            <?php $flag++;}?>
-
-          </div>
-
+          <?php
+            $sql1="select * from program where checked='Yes'";
+            $res1=$conn->query($sql1);
+            while($row1=$res1->fetch_assoc()){
+          ?>
             <div class="featured_courses__body__container">
-              <?php
-              /* flag is to count number of result */
-              $flag=0;
-                $sql="select * from full_detail where prg_id=1";
-                    $res=$conn->query($sql);
-                    while($row=$res->fetch_assoc() and $flag<4){
-              ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
-              class="featured_courses__body__item">
-              <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
-              <div class="featured_courses__body__item__course">
-                <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
-              </div>
-              <div class="featured_courses__body__item__info">
-                <div class="featured_courses__body__item__info__price">
-                  Rs <?php echo $row['fees'];?>
+                <?php
+                /* flag is to count number of result */
+                $flag=0;
+                  $sql="select * from full_detail where prg_id=".$row1['p_id'];
+                      $res=$conn->query($sql);
+                      while($row=$res->fetch_assoc() and $flag<4){
+                ?>
+              <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
+                class="featured_courses__body__item">
+
+                  <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
+
+                  <div class="featured_courses__body__item__course">
+                      <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
+                  </div>
+                <div class="featured_courses__body__item__info">
+                  <div class="featured_courses__body__item__info__price">
+                    Rs <?php echo $row['fees'];?>
+                  </div>
+                  <div class="featured_courses__body__item__info__year">
+                    <?php echo $row['duration']." Years" ?>
+                  </div>
                 </div>
-                <div class="featured_courses__body__item__info__year">
-                  <?php echo $row['duration']." Years" ?>
+                <div class="featured_courses__body__item__buttons">
+                  <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
+                    <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
                 </div>
               </div>
-              <div class="featured_courses__body__item__buttons">
-                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
-                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
-              </div>
+              <?php $flag++;}?>
+
             </div>
-            <?php $flag++;}?>
-
-          </div>
-
-            <div class="featured_courses__body__container">
-              <?php
-              /* flag is to count number of result */
-              $flag=0;
-                $sql="select * from full_detail where prg_id=2";
-                    $res=$conn->query($sql);
-                    while($row=$res->fetch_assoc() and $flag<4){
-              ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
-              class="featured_courses__body__item">
-              <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
-              <div class="featured_courses__body__item__course">
-                <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
-              </div>
-              <div class="featured_courses__body__item__info">
-                <div class="featured_courses__body__item__info__price">
-                  Rs <?php echo $row['fees'];?>
-                </div>
-                <div class="featured_courses__body__item__info__year">
-                  <?php echo $row['duration']." Years" ?>
-                </div>
-              </div>
-              <div class="featured_courses__body__item__buttons">
-                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
-                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
-              </div>
-            </div>
-            <?php $flag++;}?>
-
-          </div>
-
-            <div class="featured_courses__body__container">
-              <?php
-              /* flag is to count number of result */
-              $flag=0;
-                $sql="select * from full_detail where prg_id=4";
-                    $res=$conn->query($sql);
-                    while($row=$res->fetch_assoc() and $flag<4){
-              ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
-              class="featured_courses__body__item">
-              <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
-              <div class="featured_courses__body__item__course">
-                <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
-              </div>
-              <div class="featured_courses__body__item__info">
-                <div class="featured_courses__body__item__info__price">
-                  Rs <?php echo $row['fees'];?>
-                </div>
-                <div class="featured_courses__body__item__info__year">
-                  <?php echo $row['duration']." Years" ?>
-                </div>
-              </div>
-              <div class="featured_courses__body__item__buttons">
-                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
-                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
-              </div>
-            </div>
-            <?php $flag++;}?>
-
-          </div>
-
-            <div class="featured_courses__body__container">
-              <?php
-              /* flag is to count number of result */
-              $flag=0;
-                $sql="select * from full_detail where prg_id=3";
-                    $res=$conn->query($sql);
-                    while($row=$res->fetch_assoc() and $flag<4){
-              ?>
-            <div style="background: linear-gradient(0deg, rgba(219, 50, 78, 0.900), rgba(219, 50, 78, 1));"
-              class="featured_courses__body__item">
-              <h4><?php $sql_t="select * from universities where u_id=".$row['u_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['u_name'];?></h4>
-              <div class="featured_courses__body__item__course">
-                <span><?php $sql_t="select * from subject where id=".$row['s_id']; $res_t=$conn->query($sql_t); while($row_t=$res_t->fetch_assoc()) echo $row_t['sub_name'];?></span>
-              </div>
-              <div class="featured_courses__body__item__info">
-                <div class="featured_courses__body__item__info__price">
-                  Rs <?php echo $row['fees'];?>
-                </div>
-                <div class="featured_courses__body__item__info__year">
-                  <?php echo $row['duration']." Years" ?>
-                </div>
-              </div>
-              <div class="featured_courses__body__item__buttons">
-                <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
-                <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
-              </div>
-            </div>
-            <?php $flag++;}?>
-
-          </div>
+          <?php } ?>
 
         </div>
 
