@@ -201,4 +201,57 @@ $conn=connect_mysql();
     <p></p>
   </div>
 </div>
-<!-- /STUDENT_POPUP -->  
+<!-- /STUDENT_POPUP -->
+<?php $stud=$conn->query("select * from student_popup where id=1")->fetch_assoc();
+$c=$conn->query("select * from courses");
+$c_s="";
+$i=0;
+while($co=$c->fetch_assoc()){
+  if($i==0){
+    $c_s.=$co['c_name'];
+  }else{
+    $c_s.=",".$co['c_name'];
+  }
+  $i++;
+}
+?>
+<script>
+// For Random Student Popups
+// const studentPopup = document.querySelector('.student_popup');
+// const studentPopupChildren = studentPopup.children;
+// const studentPhrase = document.querySelector('.student_popup__text p');
+// const studentPopupAudio = document.querySelector('.student_popup audio');
+
+const randomCities = ['<?php echo str_replace(",","','",$stud['city']);?>'];
+const randomNames = ['<?php echo str_replace(",","','",$stud['stud_name']);?>'];
+const formNames = ['<?php echo str_replace(",","','",$c_s);?>'];
+
+
+// function showStudentPopup() {
+
+// let randomName = Math.floor(Math.random() * randomNames.length);
+// let randomCity = Math.floor(Math.random() * randomCities.length);
+// let randomForm = Math.floor(Math.random() * formNames.length);
+// studentPopupAudio.play();
+
+// studentPopupChildren[2].textContent = randomNames[randomName];
+// studentPopupChildren[3].textContent = randomCities[randomCity];
+// studentPhrase.textContent = `has just filled out the ${formNames[randomForm]} form`;
+
+// studentPopup.classList.add('student_popup--active');
+// setTimeout(() => {
+//   studentPopup.classList.remove('student_popup--active');
+// }, 5000);
+
+// };
+
+// (function studentPopupLoop () {
+// let rand = Math.floor(Math.random() * 150000);
+// setTimeout(() => {
+//   showStudentPopup();
+//   studentPopupLoop();
+// }, 6000);
+// }());
+</script>
+
+

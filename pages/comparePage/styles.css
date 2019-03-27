@@ -48,8 +48,8 @@ h3 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   width: 100%;
   background-color: #de4651;
   color: white;
@@ -57,17 +57,19 @@ h3 {
 
 .modal--content__header h1 {
   margin-left: 20px;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .modal--content__header i {
+  margin-top:7px;
   margin-right: 20px;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .modal--content__header i:hover {
   cursor: pointer;
-  font-size: 41px;
+  margin-top:6px;
+  font-size: 32px;
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -83,20 +85,22 @@ h3 {
       -ms-flex-align: center;
           align-items: center;
   background-color: #de4651;
-  border-radius: 30px;
+  border-radius: 20px;
   color: white;
-  font-size: 50px;
-  width: 100px;
-  height: 100px;
+  font-size: 35px;
+  width: 70px;
+  height: 70px;
   margin:auto;
   opacity: 0.6;
   position: relative;
   top: 300px;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 .add:hover {
   cursor: pointer;
-  font-size: 60px;
+  font-size: 45px;
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -136,22 +140,23 @@ div.modal--content__comparisontable ul.modal--content__comparisontable__row li {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 15px;
+  padding: 10px;
   color: #434647;
 }
-
 div.modal--content__comparisontable ul.modal--content__comparisontable__row .modal--content__comparisontable__row__tag {
   color: #535b5e;
   font-weight: bold;
   border: none;
   width: 200px;
-  border-bottom: 3px solid #de4651;
+  font-size:15px;
+  border-bottom: 2px solid #de4651;
 }
 div.modal--content__comparisontable ul.modal--content__comparisontable__row .modal--content__comparisontable__row__tag_ {
   color: #535b5e;
   border: none;
   width: 200px;
-  border-bottom: 3px solid #de4651;
+  font-size:15px;
+  border-bottom: 2px solid #de4651;
 }
 /* very first row */
 div.modal--content__comparisontable ul.modal--content__comparisontable__row:first-of-type li {
@@ -173,30 +178,30 @@ div.modal--content__comparisontable ul.modal--content__comparisontable__row:last
 .modal--content__comparisontable__row button {
   background-color: #de4651;
   width: 100%;
-  height: 40px;
+  height: 35px;
   outline: none;
   border: none;
   border-radius: 10px;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .modal--content__comparisontable__row button:hover {
   cursor: pointer;
-  font-size: 19px;
+  font-size: 17px;
   -webkit-transition: .2s;
   transition: .2s;
 }
 
 .modal--content__comparisontable__row__remove i {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   background-color: #ff5e5b;
   border-radius: 50%;
   margin-right: 10px;
-  padding-top: 4px;
+  padding: 5px;
+  font-size: 15px;
 }
-
 .floating {
   height: 15vh;
   background-color: #fff;

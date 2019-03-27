@@ -214,19 +214,19 @@ const studentPopupChildren = studentPopup.children;
 const studentPhrase = document.querySelector('.student_popup__text p');
 const studentPopupAudio = document.querySelector('.student_popup audio');
 
-const randomCities = ['Kolkata', 'Mumbai', 'Allahabad', 'Delhi', 'Sikkim', 'Patna', 'Kerala', 'Bangalore', 'Chennai', 'Pune', 'Jaipur', 'Agra'];
-const randomNames = ['Rahul', 'Noor', 'Suman', 'Rajni', 'Brian', 'Shyam', 'Komal', 'Hemant', 'Aarav', 'Vivan', 'Aditya', 'Vihaan', 'Arjun', 'Ansh'];
-const formNames = [
-                  'Global Family Managed Business (GFMB)', 
-                  'Luxury Brand Management', 
-                  'Masters of Global Business (MGB)', 
-                  'Global MBA (GMBA)', 
-                  'Executive MBA (EMBA)', 
-                  'Bachelor of Business Administration (BBA)', 
-                  'Bachelor of Business Communication (BBC)', 
-                  'Bachelor of Data Science (BDS)', 
-                  'Bachelor of Economics'
-                  ];
+// const randomCities = ['Kolkata', 'Mumbai', 'Allahabad', 'Delhi', 'Sikkim', 'Patna', 'Kerala', 'Bangalore', 'Chennai', 'Pune', 'Jaipur', 'Agra'];
+// const randomNames = ['Rahul', 'Noor', 'Suman', 'Rajni', 'Brian', 'Shyam', 'Komal', 'Hemant', 'Aarav', 'Vivan', 'Aditya', 'Vihaan', 'Arjun', 'Ansh'];
+// const formNames = [
+//                   'Global Family Managed Business (GFMB)', 
+//                   'Luxury Brand Management', 
+//                   'Masters of Global Business (MGB)', 
+//                   'Global MBA (GMBA)', 
+//                   'Executive MBA (EMBA)', 
+//                   'Bachelor of Business Administration (BBA)', 
+//                   'Bachelor of Business Communication (BBC)', 
+//                   'Bachelor of Data Science (BDS)', 
+//                   'Bachelor of Economics'
+//                   ];
 
 function showStudentPopup() {
 

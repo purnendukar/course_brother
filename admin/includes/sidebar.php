@@ -416,7 +416,34 @@
 									<i class="menu-icon fa fa-caret-right"></i>
 									Form 3
 								</a>
-              				</li> -->
+              </li> -->
+						</ul>
+
+					</li>
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list-alt"></i>
+
+							<span class="menu-text">
+								Pop Up
+							</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="./student_popup">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Student Pop Up
+								</a>
+							</li>
+
+							<li class="">
+								<a href="./lead_popup">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Lead Pop Up
+								</a>
+							</li>
 						</ul>
 
 					</li>

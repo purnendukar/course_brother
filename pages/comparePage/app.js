@@ -49,7 +49,7 @@ function compare_(a) {
         complete: function (data) {
             if(data.responseText.indexOf("`")){
               info=data.responseText.split("`");
-              add_remove_[i].innerHTML='<button class="modal--content__comparisontable__row__remove" onclick="remove_compare(\''+i+'\')" ><i class="far fa-trash-alt"></i>REMOVE</i></button><img class="c_univ" src=".'+info[0].toString()+'" />';
+              add_remove_[i].innerHTML='<button class="modal--content__comparisontable__row__remove" onclick="remove_compare(\''+i+'\')" ><i class="far fa-trash-alt"></i>REMOVE</button><img class="c_univ" src=".'+info[0].toString()+'" />';
               _course_[i].classList.add("modal--content__comparisontable__row__tag_");
               _course_[i].innerHTML=info[1];
               fees_[i].innerHTML="Rs "+info[6];
@@ -156,4 +156,30 @@ function remove_compare(a){
   duration_[i].classList.remove("modal--content__comparisontable__row__tag_");
   d_mode_[i].classList.remove("modal--content__comparisontable__row__tag_");
   apply_[i].innnerHTML="";
+}
+function send_enquire(){
+  var input_=getElementsByName("help_");
+  var f=new FormData();
+  f.append("uname",input_[0]);
+  f.append("email",input_[1]);
+  f.append("phn",input_[2]);
+  $.ajax({
+    url: "./help_enquire.php",
+    type: 'POST',
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: f,
+    complete: function (data) {
+      if(data.responseText=='1'){
+        alert("Enquiry send.")
+        for(var i=0;i<input_.length;i++){
+          input_[i].value="";
+        }
+      }else{
+        console.log(data.responseText);
+        alert("Something went Wrong");
+      }
+    }
+  });
 }

@@ -11,7 +11,7 @@
 					<div class="modal--content__comparisontable">
 
 						<ul class="modal--content__comparisontable__row">
-							<li><h3>select upto 4 courses</h3></li>
+							<li><h3 style="font-size:22px;">select upto 4 courses</h3></li>
 							<li name="add_remove_"><div class="add"><i class="fas fa-plus"></i></li>
 							<li name="add_remove_"><div class="add" onclick="add_compare(1)"><i class="fas fa-plus"></i></div></li>
 							<li name="add_remove_"><div class="add" onclick="add_compare(2)"><i class="fas fa-plus"></i></div></li>
@@ -101,10 +101,10 @@
 					<div class="floating">
 						<p>Having problems deciding? Let our experts advise you</p>
 						<div class="floating__form">
-							<input type="text" placeholder="Your full name">
-							<input type="text" placeholder="Your email address">
-							<input type="text" placeholder="Your mobile number">
-							<button>GET HELP</button>
+							<input name="help_" type="text" placeholder="Your full name">
+							<input name="help_" type="text" placeholder="Your email address">
+							<input name="help_" type="text" placeholder="Your mobile number">
+							<button onclick="send_enquire();">GET HELP</button>
 						</div>
 					</div>
 		</div>
