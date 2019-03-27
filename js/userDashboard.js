@@ -32,7 +32,7 @@ dashboardNavbarItems.forEach((item, index) => {
   item.addEventListener('click', function(e) {
     e.preventDefault();
     $('html, body').animate({
-      scrollTop: ($(idArray[index]).offset().top - 180)
+      scrollTop: ($(idArray[index]).offset().top - 170)
     }, 1000);
   });
 });

@@ -2864,8 +2864,14 @@ body {
     margin-top: 1rem;
     height: 3rem;
   }
+  .footer__get_in_touch .touch_contact .contact_phone h4 {
+    margin: 0;
+  }
   .footer__get_in_touch .touch_contact .contact_phone span {
     font-size: 1.4rem;
+  }
+  .footer__get_in_touch .touch_contact .contact_email h4 {
+    margin: 0;
   }
   .footer__get_in_touch .touch_contact .contact_email span {
     font-size: 1.4rem;
@@ -3982,10 +3988,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 5rem;
+          -webkit-box-align: end;
+          -ms-flex-align: end;
+              align-items: flex-end;
 }
 
 .navbar_main__header__contact__item {
@@ -4003,13 +4008,14 @@ body {
 .navbar_main__header__contact__item img {
   height: 2.2rem;
   width: 2.2rem;
-  padding-left: 1.5rem;
+  padding-top: 0.2rem;
 }
 
 .navbar_main__header__contact__item h4 {
   color: white;
   font-size: 1.2rem;
   font-weight: 300;
+  margin: 0;
 }
 
 .navbar_main__courses {
@@ -4637,7 +4643,6 @@ body {
   text-align: center;
   color: white;
   padding-top: 6rem;
-  margin-top: 0;
 }
 
 .site_features__subtitle {
@@ -4654,7 +4659,7 @@ body {
 
 .site_features__container {
   width: 100%;
-  margin: 5rem auto;
+  margin: 0rem auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5168,7 +5173,7 @@ body {
 
 .user_dashboard .dashboard__header__main__info {
   width: 100%;
-  margin-top: 17rem;
+  margin-top: 12rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5278,7 +5283,7 @@ body {
 }
 
 .user_dashboard .dashboard__header__main__info__cv {
-  width: 15%;
+  width: 16%;
 }
 
 .user_dashboard .dashboard__header__main__info__cv button {
@@ -5302,8 +5307,8 @@ body {
 }
 
 .user_dashboard .dashboard__header__main__navbar {
-  margin-top: 8rem;
-  padding: 3rem;
+  margin-top: 5rem;
+  padding: 0.5rem;
   -webkit-box-shadow: 0 0 3px 1px #00000042;
           box-shadow: 0 0 3px 1px #00000042;
   border-radius: 0.5rem;
@@ -5328,7 +5333,7 @@ body {
   width: 100vw;
   height: 5rem;
   left: 0;
-  top: 6.3rem;
+  top: 9.4rem;
   background-color: white;
 }
 
@@ -5366,7 +5371,7 @@ body {
   right: 0;
   -webkit-transform: scaleX(1.2);
           transform: scaleX(1.2);
-  bottom: -2.35rem;
+  bottom: -2rem;
   height: 0.17rem;
   background-color: #F34965;
 }
@@ -5690,17 +5695,81 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-  .dashboard__header {
-    height: 20rem;
-    outline: 2px solid blue;
-  }
-  .dashboard__header__bg {
-    height: 10%;
-    outline: 2px solid red;
-  }
-  .dashboard__header__bg__circle {
+  .user_dashboard .dashboard__header__bg__circle {
     height: 3rem;
     width: 3rem;
+  }
+  .user_dashboard .dashboard__header__bg__info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 12rem;
+    margin-bottom: 4rem;
+  }
+  .user_dashboard .dashboard__header__bg__info__appendix__item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .user_dashboard .dashboard__header__main__info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .user_dashboard .dashboard__header__main__info__media {
+    width: 60%;
+    padding-bottom: 2rem;
+  }
+  .user_dashboard .dashboard__header__main__info__personal {
+    padding-bottom: 2rem;
+  }
+  .user_dashboard .dashboard__header__main__info__cv {
+    width: auto;
+  }
+  .user_dashboard .dashboard__header__main__navbar {
+    visibility: hidden;
+  }
+  .user_dashboard .dashboard__content {
+    margin-top: 8rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .user_dashboard .dashboard__content__skills {
+    width: 100%;
+  }
+  .user_dashboard .dashboard__content__skills__education__item img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .user_dashboard .dashboard__content__skills__education__item__content__degree {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .user_dashboard .dashboard__content__skills__education__item__content__degree h6 {
+    padding: 0;
+  }
+  .user_dashboard .dashboard__content__skills__workexp__item__circle {
+    display: none;
+  }
+  .user_dashboard .dashboard__content__skills__awards__item__circle {
+    display: none;
+  }
+  .user_dashboard .dashboard__content__overview {
+    width: 100%;
+    padding-left: 0;
+  }
+  .user_dashboard .dashboard__content__overview h3 {
+    font-weight: 600;
   }
 }
 
