@@ -192,16 +192,7 @@ else
             <div id="tabs-eligibility">
               <h3 class='main_content__title'>COURSE ELIGIBILITY</h3>
               <p class='main_content__body'>
-                <?php $criteria="";
-                    if($row['prg_id']==1 || $row['prg_id']==5){
-                        $criteria= "Bachelor Degree";
-                    }else if($row['prg_id']==2){
-                        $criteria= "12th Pass or Diploma";
-                    }else if($row['prg_id']==3 || $row['prg_id']==4){
-                        $criteria= "10th Pass";
-                    }
-                  echo $criteria;
-                  ?>
+                <?php echo $conn->query("select * from about_course where id=".$_GET['id'])->fetch_assoc()['eligible'];?>
               </p>
             </div>
 
