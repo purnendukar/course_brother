@@ -261,13 +261,13 @@ else
 						<?php include('./settingsContainer.php'); ?>
 						<div class="row">
 								<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">Program dataTables</h3>
+										<h3 class="header smaller lighter blue">Sponsered Courses </h3>
 
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Results Of Programs
+											Results Of Sponsered Courses
 										</div>
 
 										<!-- div.table-responsive -->

@@ -681,7 +681,7 @@ else
               <h5 class='dashboard__header__main__info__personal__email'><?php echo $user['email'];?></h5>
             </div>
             <div class="dashboard__header__main__info__cv">
-              <a href="./test"><button style="outline:none;">Download CV &nbsp; <i class='fa fa-arrow-down'></i></button></a>
+              <a href="./test_server"><button style="outline:none;">Download CV &nbsp; <i class='fa fa-arrow-down'></i></button></a>
             </div>
           </div>
 
