@@ -6,13 +6,15 @@ $aff=$_POST['aff'];
 $fees=$_POST['fees'];
 $duration=$_POST['duration'];
 $desc=$_POST['description'];
+$eligible=$_POST['eligible'];
 $sem_struc=$_POST['sem_struc'];
 $fees_struc=$_POST['fees_struc'];
 $meta_desc=$_POST['meta_desc'];
 $meta_keys=$_POST['meta_keys'];
 if($conn->query("UPDATE `full_detail` SET `fees`=".$fees.",`duration`=".$duration.",`a_id`='".$aff."' WHERE id=".$id)){
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
-    if($conn->query("UPDATE `about_course` SET `overview`='".$desc."', `structure`='".$sem_struc."',`short_desc`='".$_POST['desc_s']."' where id=".$id)){
+    $eligible= preg_replace("/[\n\r]/",'<br>',$eligible);
+    if($conn->query("UPDATE `about_course` SET `overview`='".$desc."', `structure`='".$sem_struc."',`short_desc`='".$_POST['desc_s']."', eligible='".$eligible."' where id=".$id)){
         if($conn->query("UPDATE `fee_structure` SET `structure`='".$fees_struc."' WHERE id=".$id)){
             $row=$conn->query("select * from full_detail where id=".$id)->fetch_assoc();
             $u_id=$row['u_id'];

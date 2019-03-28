@@ -9,6 +9,7 @@ $prg_id=$_POST['prg_id'];
 $fees=$_POST['fees'];
 $duration=$_POST['duration'];
 $desc=$_POST['description'];
+$eligible=$_POST['eligible'];
 $desc_s=$_POST['desc_s'];
 $sem_struc=$_POST['sem_struc'];
 $d_id=$_POST['d_mode_id'];
@@ -21,7 +22,8 @@ if($conn->query("SELECT * FROM `full_detail` WHERE c_id=".$c_id." and s_id=".$s_
 if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fees`, `duration`, `a_id`,  `d_mode_id`,`meta_desc`,`meta_key`) VALUES (".$prg_id.",".$c_id.",".$u_id.",".$s_id.",".$fees.",".$duration.",'".$aff."',".$d_id.",'".$meta_desc."','".$meta_keys."')")){
     $id=$conn->insert_id;
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
-    if($conn->query("INSERT INTO `about_course`( id , `overview`, `structure`,`short_desc`) VALUES (".$id.",'".urlencode($desc)."','".urlencode($sem_struc)."','".$desc_s."')")){
+    $eligible= preg_replace("/[\n\r]/",'<br>',$eligible);
+    if($conn->query("INSERT INTO `about_course`( id , `overview`, `structure`,`short_desc`,`eligible`) VALUES (".$id.",'".urlencode($desc)."','".urlencode($sem_struc)."','".$desc_s."','".$eligible."')")){
         if($conn->query("INSERT INTO `fee_structure`(`id`, `structure`) VALUES (".$id.",'".$fees_struc."')")){
             
             $u_name=$conn->query("SELECT * FROM `universities` where u_id=".$u_id)->fetch_assoc()['u_name'];

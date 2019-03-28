@@ -63,6 +63,7 @@ else
                             formData.append("duration",duration);
                             formData.append("description",escape(document.getElementsByName('c_desc')[0].value));
                             formData.append("desc_s",escape(document.getElementsByName('c_desc_s')[0].value));
+                            formData.append("eligible",escape(document.getElementsByName('eligible')[0].value));
                             var i=1;
                             var sem=2*(duration);
                             var s="";
@@ -226,6 +227,10 @@ else
                     <div class="form-group">
                       <label for="exampleInputPassword1">Short Course Description</label>
                       <textarea disabled style="resize:vertical;" name="c_desc_s" type="text" class="edit_i form-control" required><?php echo urldecode($conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['short_desc']); ?></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Eligibility</label>
+                      <textarea disabled style="resize:vertical;" name="eligible" type="text" class="edit_i form-control" required><?php echo urldecode($conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['eligible']); ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Course Structure</label><br/>

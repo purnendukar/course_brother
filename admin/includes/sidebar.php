@@ -447,6 +447,26 @@
 						</ul>
 
 					</li>
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list-alt"></i>
+
+							<span class="menu-text">
+								Ads Banner
+							</span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="./ads_banner">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Courses
+								</a>
+							</li>
+						</ul>
+
+					</li>
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

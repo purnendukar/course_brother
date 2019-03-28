@@ -506,7 +506,7 @@ else
             </div>
             <div class="course_results__item__content">
               <div class="course_results__item__content__head">
-                <h4><a href=""><?php echo $conn->query("select * from courses where id=".$row_2['c_id'])->fetch_assoc()['c_name'];?> IN <?php echo $conn->query("select * from subject where id=".$row_2['s_id'])->fetch_assoc()['sub_name']; ?></a></h4>
+                <h4><a href=<?php echo "'./course-detail?id=".$row_2['id']."'"; ?> target="_blank"><?php echo $conn->query("select * from courses where id=".$row_2['c_id'])->fetch_assoc()['c_name'];?> IN <?php echo $conn->query("select * from subject where id=".$row_2['s_id'])->fetch_assoc()['sub_name']; ?></a></h4>
                 <h5><?php echo $res_u['u_name']?></h5>
               </div>
               <div class="course_results__item__content__info">
@@ -524,7 +524,7 @@ else
               </div>
             </div>
             <div class="course_results__item__buttons">
-              <button onclick=<?php echo "\"window.location.href='./course-detail?id=".$row_2['id']."'\""; ?>  >go to course</button>
+              <button onclick=<?php echo "\"window.open('./course-detail?id=".$row_2['id']."')\""; ?>  >go to course</button>
               <button onclick="compare_('<?php echo $row_2['id'];?>')">add to compare</button>
             </div>
           </div>
@@ -538,17 +538,13 @@ else
 
       <!-- AD_BANNERS -->
       <div class="ad_banners">
-
-        <div class="ad_banners__item">
-          <h4>ad banner</h4>
-        </div>
-        <div class="ad_banners__item">
-          <h4>ad banner</h4>
-        </div>
-        <div class="ad_banners__item">
-          <h4>ad banner</h4>
-        </div>
-
+        <?php $res=$conn->query("select * from sponsor_course");
+          while($row=$res->fetch_assoc()){
+        ?>
+          <div class="ad_banners__item">
+            <img src=".<?php echo $row['img_src']?>" onclick="window.open('<?php echo $row['link']?>');" style="width:100%;display:block;"/>
+          </div>
+          <?php } ?>
       </div>
       <!-- /AD_BANNERS -->
 
