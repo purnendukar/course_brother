@@ -18,6 +18,13 @@ body {
   src: url("../fonts/leaguespartan-bold.woff2");
 }
 
+@media screen and (max-width: 480px) {
+  .main-container {
+    margin-top: 11rem;
+  }
+}
+
+
 .about_us {
   margin-top: -2.2rem;
 }
@@ -1741,6 +1748,7 @@ body {
 .course_detail__body__main .main_content {
   width: 340rem;
   margin-right: 10rem;
+  padding-bottom: 2rem;
   border-bottom: 2px solid #d4d4d4;
 }
 
@@ -1754,6 +1762,27 @@ body {
   font-size: 1.4rem;
   color: #c0bebe;
   line-height: 1.7rem;
+}
+.course_detail__body__main .main_content table, .course_detail__body__main .main_content th, .course_detail__body__main .main_content td {
+  border: 1px solid #FF8B9C;
+  padding: 1rem;
+}
+
+.course_detail__body__main .main_content table {
+  width: 100%;
+  border: none;
+  padding: 0;
+}
+
+.course_detail__body__main .main_content th {
+  font-size: 1.4rem;
+  text-align: left;
+  background-color: #DB324D;
+  color: white;
+}
+
+.course_detail__body__main .main_content td {
+  font-size: 1.4rem;
 }
 
 .course_detail__body__main .etabs {
@@ -3785,6 +3814,10 @@ body {
   height: 100%;
 }
 
+.navbar_main__appendix__hamburger {
+  display: none;
+}
+
 .navbar_main__appendix__cart {
   width: 80%;
   margin: 0 auto;
@@ -3960,7 +3993,7 @@ body {
   font-size: 1.3rem;
 }
 
-.navbar_main__header__search input[type='submit'] {
+.navbar_main__header__search__button {
   border: none;
   -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
           box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
@@ -3977,8 +4010,12 @@ body {
   transition: 0.4s;
 }
 
-.navbar_main__header__search input[type='submit']:hover {
+.navbar_main__header__search__button:hover {
   background-color: #d82642;
+}
+
+.navbar_main__header__search__button i {
+  display: none;
 }
 
 .navbar_main__header__contact {
@@ -4196,6 +4233,176 @@ body {
   font-size: 1.3rem;
   font-weight: 500;
 }
+
+.mob__sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .navbar_main {
+    width: 100vw;
+  }
+  .navbar_main__appendix {
+    height: 4rem;
+  }
+  .navbar_main__appendix__container {
+    width: 100%;
+    margin: 0;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .navbar_main__appendix__login {
+    display: none;
+  }
+  .navbar_main__appendix__register {
+    display: none;
+  }
+  .navbar_main__appendix__cart {
+    all: initial;
+    padding-right: 1.5rem;
+  }
+  .navbar_main__appendix__cart h5 {
+    display: none;
+  }
+  .navbar_main__appendix__cart img {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  .navbar_main__appendix__hamburger {
+    display: block;
+    color: white;
+    font-size: 2.1rem;
+    padding-left: 1.5rem;
+  }
+  .navbar_main__appendix__logo img {
+    height: 2.5rem;
+  }
+  .navbar_main__header {
+    height: 7rem;
+  }
+  .navbar_main__header__contact {
+    display: none;
+  }
+  .navbar_main__header__container {
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .navbar_main__header__logo {
+    display: none;
+  }
+  .navbar_main__header__search input[type='text'] {
+    width: 29rem;
+  }
+  .navbar_main__header__search ::-webkit-input-placeholder {
+    font-size: 1.2rem;
+  }
+  .navbar_main__header__search :-ms-input-placeholder {
+    font-size: 1.2rem;
+  }
+  .navbar_main__header__search ::-ms-input-placeholder {
+    font-size: 1.2rem;
+  }
+  .navbar_main__header__search ::placeholder {
+    font-size: 1.2rem;
+  }
+  .navbar_main__header__search__button i {
+    display: block;
+    padding: 0.1rem;
+  }
+  .navbar_main__header__search__button span {
+    display: none;
+  }
+  .navbar_main__courses {
+    display: none;
+  }
+  .mob__sidebar {
+    display: block;
+    height: 100vh;
+    width: 28rem;
+    background: -webkit-gradient(linear, left top, right bottom, from(white), color-stop(#f0f0f0), to(white));
+    background: linear-gradient(to right bottom, white, #f0f0f0, white);
+    position: fixed;
+    top: 0;
+    left: -30rem;
+    z-index: 10;
+    -webkit-box-shadow: 2px 0 20px 1px rgba(0, 0, 0, 0.486);
+            box-shadow: 2px 0 20px 1px rgba(0, 0, 0, 0.486);
+    padding: 2rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .mob__sidebar__login button {
+    border: 2px solid #DB324D;
+    padding: 1rem;
+    color: #DB324D;
+    font-weight: 600;
+    font-size: 1.3rem;
+    background-color: transparent;
+    border-radius: 0.5rem;
+  }
+  .mob__sidebar__sep {
+    margin: 2rem 0;
+    height: 0.1rem;
+    width: 100%;
+    background-color: darkgrey;
+  }
+  .mob__sidebar__courses h3 {
+    color: grey;
+    font-size: 1.6rem;
+  }
+  .mob__sidebar__courses a {
+    display: block;
+    margin: 1rem 0;
+    color: #DB324D;
+  }
+  .mob__sidebar__courses a:link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .mob__sidebar__contact h3 {
+    color: grey;
+    font-size: 1.6rem;
+  }
+  .mob__sidebar__contact__phone h5 {
+    margin: 0;
+    color: #FF8B9C;
+  }
+  .mob__sidebar__contact__phone h6 {
+    margin: 0.5rem 0 0 0;
+    color: darkgrey;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .mob__sidebar__contact__email {
+    margin-top: 1rem;
+  }
+  .mob__sidebar__contact__email h5 {
+    margin: 0;
+    color: #FF8B9C;
+  }
+  .mob__sidebar__contact__email h6 {
+    margin: 0.5rem 0 0 0;
+    color: darkgrey;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .mob__sidebar__closer {
+    font-size: 2.5rem;
+    color: #DB324D;
+    padding-bottom: 1rem;
+  }
+}
+
 
 .newsletter_popup {
   -webkit-transition: all 0.3s;

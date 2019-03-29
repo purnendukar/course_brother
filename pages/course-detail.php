@@ -154,39 +154,74 @@ else
 
             <div id="tabs-structure">
               <h3 class='main_content__title'>COURSE STRUCTURE</h3>
-              <p class='main_content__body'>
-                <?php $sem=explode("|",$row_1['structure']);
-                  for($i=0;$i<count($sem);$i++){
-                      if($i==0){
-                          ?>1ST SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
-                      }else if($i==1){
-                          ?>2ND SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
-                      }else if($i==2){
-                          ?>3RD SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
-                      }else{
-                          echo ($i+1)?>TH SEMESTER <br><br><?php echo urldecode($sem[$i]); ?><br><br><br><?php
-                      }
-                  }
+              
+              <table>
+                  <?php
+                    $c=0;$i=1;
+                    $sem=explode("|",$row_1['structure']);
+                    while($c<$row['duration']){
                   ?>
-              </p>
+                  <tr>
+                    <?php
+                      for($j=0;$j<2;$j++){
+                        if($c==0 && $j==0){
+                          ?><th>1ST SEMESTER</th><?php
+                        }else if($c==0 && $i<2*$row['duration'] && $j=1){
+                          ?><th>2ND SEMESTER</th><?php
+                        }else{
+                          echo "<th>".($i)."TH SEMESTER</th>";
+                        }
+                        $i++;
+                      }
+
+                    ?>
+                  </tr>
+                  <tr>
+                    <td>
+                      <?php echo urldecode($sem[$i-3]); ?>
+                    </td>
+                    <td>
+                    <?php if(($i-1)<=2*$row['duration']){echo urldecode($sem[$i-2]);} ?>
+                    </td>
+                  </tr>
+                  <?php $c++; } ?>
+                </table>
             </div>
 
             <div id="tabs-fee">
               <h3 class='main_content__title'>COURSE FEE</h3>
-                <?php $sql_t="select * from fee_structure where id=".$row['id']; $res_t=$conn->query($sql_t); $row_t=$res_t->fetch_assoc(); $fee_str=explode(",",$row_t['structure']);?>
-              <p class='main_content__body'>
-                  <?php for($i=0;$i<2*$row['duration'];$i++){
-                      if($i==0){
-                          echo ($i+1)."ST SEMESTER - Rs ".$fee_str[$i]."<br>";
-                      }else if($i==1){
-                          echo ($i+1)."ND SEMESTER - Rs ".$fee_str[$i]."<br>";
-                      }else if($i==2){
-                          echo ($i+1)."RD SEMESTER - Rs ".$fee_str[$i]."<br>";
-                      }else{
-                          echo ($i+1)."TH SEMESTER - Rs ".$fee_str[$i]."<br>";
+              <?php $sql_t="select * from fee_structure where id=".$row['id']; $res_t=$conn->query($sql_t); $row_t=$res_t->fetch_assoc(); $fee_str=explode(",",$row_t['structure']);?>
+              <table>
+              <?php
+                    $c=0;$i=1;
+                    $sem=explode("|",$row_1['structure']);
+                    while($c<$row['duration']){
+                  ?>
+                  <tr>
+                    <?php
+                      for($j=0;$j<2;$j++){
+                        if($c==0 && $j==0){
+                          ?><th>1ST SEMESTER</th><?php
+                        }else if($c==0 && $i<2*$row['duration'] && $j=1){
+                          ?><th>2ND SEMESTER</th><?php
+                        }else{
+                          echo "<th>".($i)."TH SEMESTER</th>";
+                        }
+                        $i++;
                       }
-                  }?>
-              </p>
+
+                    ?>
+                  </tr>
+                  <tr>
+                    <td>
+                      <?php echo "Rs ".$fee_str[$i-3]; ?>
+                    </td>
+                    <td>
+                    <?php if(($i-1)<=2*$row['duration']){echo "Rs ".$fee_str[$i-2];} ?>
+                    </td>
+                  </tr>
+                  <?php $c++; } ?>
+                </table>
             </div>
 
             <div id="tabs-eligibility">

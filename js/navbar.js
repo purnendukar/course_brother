@@ -253,3 +253,17 @@ function showStudentPopup() {
     studentPopupLoop();
   }, rand);
 }());
+
+
+// For toggling sidebar in mobile version
+const hambToggler = document.querySelector('.navbar_main__appendix__hamburger');
+const sidebarMenu = document.querySelector('.mob__sidebar');
+const sidebarMenuCloser = document.querySelector('.mob__sidebar__closer');
+
+hambToggler.addEventListener('click', () => {
+  sidebarMenu.style.left = '0';
+});
+
+sidebarMenuCloser.addEventListener('click', () => {
+  sidebarMenu.style.left = '-30rem';
+}); 
