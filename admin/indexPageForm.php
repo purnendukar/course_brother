@@ -378,6 +378,35 @@ else
 					});
 				}
             }
+			function cancel_fc(a){
+                var img_display=document.getElementById("img_displayf"+a);
+                var img_choose=document.getElementById("img_choosef"+a);
+                var input_= document.getElementsByName('input_f'+a);
+				var select_t=document.getElementsByName('select_f'+a)[0];
+				if(input_[0].disabled==false){
+					input_[0].disabled=true;
+                	input_[1].disabled=true;
+                    img_display.style.display="block";
+                    img_choose.style.display="none";
+					select_t.disabled=true;
+					var formData= new FormData();
+					formData.append('query','select heading,info,display from features where id='+a);
+					$.ajax({
+						url: "./get_info.php",
+						type: 'POST',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: formData,
+						complete: function (data) {
+							var temp=data.responseText.split("|");
+							input_[0].value=temp[0];
+							input_[1].value=temp[1];
+							select_t.value=temp[2];
+						}
+					});
+				}
+            }
             function delete_f(a){
                 if(confirm("Want to delete id "+a+"?")){
                     if(confirm("Going to delete id "+a+" data")){
@@ -410,6 +439,14 @@ else
                 }else{
                     alert("Already displayed Enter your detail");
                 }
+			}
+			function add_f_head(){
+                var add_one=document.getElementById('add_onef1');
+                if(add_one.style.display=='none'){
+                    add_one.style.display="";
+                }else{
+                    alert("Already displayed Enter your detail");
+                }
             }
             function add_it_f(){
                 var input_=document.getElementsByName("input_f");
@@ -433,7 +470,39 @@ else
                             data: formData,
                             complete: function (data) {
                                 if(data.responseText=='1'){
-                                    alert("Data Added Succedd fully");
+                                    alert("Data Added Successfully");
+                                    window.location.href="./indexPageForm";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
+                            }
+                        });
+                }}
+			}
+			function add_it_f(){
+                var input_=document.getElementsByName("input_fc");
+                var head=input_[0];
+                var info=input_[1];
+                if(head.value=="" || info.value=="" || document.getElementById('img_choosef').value==""){
+                    alert("Fill all Feild");
+                    return;
+                }
+                if(confirm("Want to add?")){if(confirm("Going to add")){
+                    var formData= new FormData();
+                    formData.append('id','1');
+                    formData.append('head',escape(head.value));
+                    formData.append('info',escape(info.value));
+                    $.ajax({
+                            url: "./content_update.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Data Added Success fully");
                                     window.location.href="./indexPageForm";
                                 }else{
                                     console.log(data.responseText);
@@ -768,13 +837,22 @@ else
                                                             Selected
                                                         </span>
                                                     </a>
-													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add_f()">Add New Section</a>
+													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add_f()">Add New Section</a> 
+													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add_f_head()">Edit Content</a>
 													<div id="add_onef" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">
 														<textarea style="resize:vertical;width:100%;" type="text" name="input_f" class="form-control" placeholder="Heading"></textarea>
 														<textarea style="resize:vertical;width:100%;" type="text" name="input_f" class="form-control" placeholder="Content"></textarea>
 														<input type="file" id="img_choosef" accept="image/*" style="margin:5px;" />
 														<input class="btn btn-primary" style="width:100px; margin:5px;" type="button" value="Confirm" onclick="add_it_f();" />
 														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add_f()" />
+													</div>
+													<div id="add_onef1" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">
+														<?php $t=$conn_p->query("select * from head_content where id=1")->fetch_assoc();?>
+														<textarea style="resize:vertical;width:100%;" type="text" name="input_fc" class="form-control" placeholder="Heading"><?php echo $t['head']?></textarea>
+														<textarea style="resize:vertical;width:100%;" type="text" name="input_fc" class="form-control" placeholder="Content"><?php echo $t['content']?></textarea>
+														<p>Use &ltspan&gt text &lt/span&gt in content to highlight in text in page</p>
+														<input class="btn btn-primary" style="width:100px; margin:5px;" type="button" value="Confirm" onclick="add_it_fc();" />
+														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add_fc()" />
 													</div>
                                                 </div>
                                                 <thead>

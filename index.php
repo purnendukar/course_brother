@@ -248,11 +248,12 @@ else
       <!-- FEATURES -->
     <div class="site_features">
       <div class='site_features__out'>
-        <h1 class='site_features__title wow fadeIn'>FEW REASONS WHY STUDENTS PREFER US</h1>
-        <h3 class='site_features__subtitle'><span>CourseBrother.com</span> is your one-stop destination for course exploration & making an informed education decision</h3>
+        <?php $t=$conn->query("select * from head_content where id=1")->fetch_assoc();?>
+        <h1 class='site_features__title wow fadeIn'><?php echo $t['head']?></h1>
+        <h3 class='site_features__subtitle'><?php echo $t['content']?></h3>
         <div class="site_features__container">
 
-          <?php
+            <?php
                 $sql="select * from features where display='yes'";
                 $res=$conn->query($sql);
                 $delay=[0.0,0.2,0.4,0.6,0.8];

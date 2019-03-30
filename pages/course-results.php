@@ -30,6 +30,45 @@ else
   <link rel="stylesheet" href="./comparePage/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+  <style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #DB324D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #DB324D;
+  cursor: pointer;
+}
+</style>
 
     <script>
         function filter(a){
@@ -82,7 +121,6 @@ else
             xmlhttp.send();
 
         }
-
         function clear_all(){
 
             if (window.XMLHttpRequest) {
@@ -127,6 +165,7 @@ else
             xmlhttp.open("GET","get_detail?u_id=&s_id=&a_id=&c_id=&d_id=&course=all");
             xmlhttp.send();
         }
+        
     </script>
   <title>CourseBrother.com | One Stop Destination for Learning</title>
 </head>
@@ -154,6 +193,16 @@ else
     <main class="main_container">
       <!-- FILTER_RESULTS -->
       <div class="filter_results">
+        <!-- will only show in mobile view -->
+        <div class="filter_results__finisher">
+          <div class="filter_results__finisher__apply">
+            apply filters
+          </div>
+          <!-- <div class="filter_results__finisher__close">
+            <i class='fa fa-times'></i>
+            CLOSE
+          </div> -->
+        </div>
 
         <div class="filter_results__head">
           <h3>filter results</h3>
@@ -219,13 +268,35 @@ else
 
         <div class="filter_results__item">
           <div class="filter_results__item__head">
-            <h5>exam centre</h5>
+            <h5>fees</h5>
             <i class='fa fa-angle-up'></i>
           </div>
           <div class="filter_results__item__content">
             <form class='filter_results__item__form'>
-              <!-- <input type="text" placeholder='search exam centres' /> -->
+              <!-- <input type="text" placeholder='search specializations' /> -->
             </form>
+            <div class="filter_results__item__check">
+                <?php $sql_3="select max(fees)+10000 as fee from full_detail";
+                    $res_3=$conn->query($sql_3)->fetch_assoc();
+                    $res_3=$res_3['fee'];
+                    ?>
+                    <div class="""slidecontainer">
+                      <input type="range" min="1" max="<?php echo $res_3;?>" value="<?php echo $res_3;?>" class="slider" id="myRange">
+                      <p>Max Fees: <span id="demo"></span></p>
+                    </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="filter_results__item">
+          <div class="filter_results__item__head">
+            <h5>exam centre</h5>
+            <i class='fa fa-angle-up'></i>
+          </div>
+          <div class="filter_results__item__content">
+            <form class='filter_results__item__form'> -->
+              <!-- <input type="text" placeholder='search exam centres' /> -->
+            <!-- </form>
             <div class="filter_results__item__check">
               <input type="checkbox"> delhi ncr <br>
               <input type="checkbox"> kolkata <br>
@@ -233,7 +304,7 @@ else
               <input type="checkbox"> hugli <br>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="filter_results__item">
           <div class="filter_results__item__head">
@@ -304,7 +375,7 @@ else
             </div>
           </div>
         </div>
-
+        
       </div>
       <!-- /FILTER_RESULTS -->
 
@@ -488,7 +559,14 @@ else
         $res_2=$conn->query($sql_2);
       ?>
       <!-- COURSE_RESULTS -->
+
+      <!-- will show only in mobile view -->
+        <div class="course_results__mob__filter">
+          <i class='fa fa-filter'></i>
+        </div>
+
       <div id="show_result" class="course_results">
+
 
         <div class="course_results__head">
             <h3>FOUND <b id="num_res"><?php if($res_=$conn->query("select count(c_id) as c from (".$sql_2.") as t")) echo $res_->fetch_assoc()['c']; else echo "0";  ?></b> RESULT(S) <?php if($course!='ALL'){?> FOR <b id="course"><?php echo strtoupper($_GET['course']);?></b><?php }?> </h3>
@@ -592,6 +670,14 @@ else
                 }
         });
     }, 1000);
+
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
     </script>
 
     <script src="../js/preloader.js"></script>

@@ -1,4 +1,7 @@
 <?php
+
+//MySQL connector
+$conn=connect_mysql();
 $s=$_SERVER['REQUEST_URI'];
 $s=explode('/',$s);
 $d="";
@@ -7,8 +10,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
 }else if($s[count($s)-2]=='forms'){
   $d="../.";
 }
-//MySQL connector
-$conn=connect_mysql();
+
 ?>
 <!-- PRELOADER -->
 <?php include $d.'./includes/preloader.php';
@@ -232,11 +234,35 @@ $conn=connect_mysql();
     <div class="mob__sidebar__courses">
       <h3>CATEGORIES</h3>
       <div class="mob__sidebar__courses__container">
-        <a href="#">ALL COLLEGES</a>
-        <a href="#">PG COURSES</a>
-        <a href="#">UG COURSES</a>
-        <a href="#">DIPLOMA</a>
-        <a href="#">CERTIFICATE</a>
+        <a href="http://localhost/course_brother/pages/course-results?course=all">ALL COLLEGES</a>
+        <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=1 or prg_id=5");
+          $str="";
+          while($r=$temp->fetch_assoc()){ 
+            $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
+          } 
+        ?>
+        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">PG COURSES</a>
+        <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=2");
+          $str="";
+          while($r=$temp->fetch_assoc()){ 
+            $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
+          } 
+        ?>
+        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">UG COURSES</a>
+        <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=4");
+          $str="";
+          while($r=$temp->fetch_assoc()){ 
+            $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
+          } 
+        ?>
+        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">DIPLOMA</a>
+        <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=3");
+          $str="";
+          while($r=$temp->fetch_assoc()){ 
+            $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
+          } 
+        ?>
+        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">CERTIFICATE</a>
       </div>
     </div>
 
@@ -246,11 +272,12 @@ $conn=connect_mysql();
       <h3>CONTACT</h3>
       <div class="mob__sidebar__contact__phone">
         <h5>PHONE</h5>
-        <h6>+91 7044356471</h6>
+        <?php $res=$conn->query("SELECT * FROM `contact_info`");?>
+        <h6><?php echo $res->fetch_assoc()['info'];?></h6>
       </div>
       <div class="mob__sidebar__contact__email">
         <h5>EMAIL</h5>
-        <h6>shyamdalmia28@gmail.com</h6>
+        <h6><?php echo $email ?></h6>
       </div>
     </div>
 
@@ -265,6 +292,7 @@ $conn=connect_mysql();
 $c=$conn->query("select * from courses");
 $c_s="";
 $i=0;
+
 while($co=$c->fetch_assoc()){
   if($i==0){
     $c_s.=$co['c_name'];
@@ -275,42 +303,12 @@ while($co=$c->fetch_assoc()){
 }
 ?>
 <script>
-// For Random Student Popups
-// const studentPopup = document.querySelector('.student_popup');
-// const studentPopupChildren = studentPopup.children;
-// const studentPhrase = document.querySelector('.student_popup__text p');
-// const studentPopupAudio = document.querySelector('.student_popup audio');
 
 const randomCities = ['<?php echo str_replace(",","','",$stud['city']);?>'];
 const randomNames = ['<?php echo str_replace(",","','",$stud['stud_name']);?>'];
 const formNames = ['<?php echo str_replace(",","','",$c_s);?>'];
+const sentence = ['<?php echo str_replace(",","','",$stud['sentence']);?>'];
 
-
-// function showStudentPopup() {
-
-// let randomName = Math.floor(Math.random() * randomNames.length);
-// let randomCity = Math.floor(Math.random() * randomCities.length);
-// let randomForm = Math.floor(Math.random() * formNames.length);
-// studentPopupAudio.play();
-
-// studentPopupChildren[2].textContent = randomNames[randomName];
-// studentPopupChildren[3].textContent = randomCities[randomCity];
-// studentPhrase.textContent = `has just filled out the ${formNames[randomForm]} form`;
-
-// studentPopup.classList.add('student_popup--active');
-// setTimeout(() => {
-//   studentPopup.classList.remove('student_popup--active');
-// }, 5000);
-
-// };
-
-// (function studentPopupLoop () {
-// let rand = Math.floor(Math.random() * 150000);
-// setTimeout(() => {
-//   showStudentPopup();
-//   studentPopupLoop();
-// }, 6000);
-// }());
 </script>
 
 

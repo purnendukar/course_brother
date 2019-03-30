@@ -29,9 +29,10 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
       <div class="links">
         <a href="<?php echo $d; ?>./">HOME</a>
         <a href="<?php echo $d; ?>./pages/about-us">ABOUT US</a>
-        <a href="<?php echo $d; ?>./pages/contact-us">CONTACT US</a>
+        <a href="<?php echo $d; ?>./pages/all-testimonials">TESTIMONIAL</a>
         <a href="<?php echo $d; ?>./pages/course-results">COURSES</a>
         <a href="<?php echo $d; ?>./blogs">BLOGS</a>
+        <a href="<?php echo $d; ?>./pages/contact-us">CONTACT US</a>
       </div>
     </div>
     <div class="footer__policies">

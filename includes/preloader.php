@@ -39,7 +39,7 @@
       </g>
     </svg>
     <div class="preloader__tagline">
-      <p>Helping students reach their desired heights</p>
+      <p><?php echo $conn->query("select * from preloader where id=1")->fetch_assoc()['slogan'];?></p>
     </div>
   </div>
 </div>

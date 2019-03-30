@@ -425,7 +425,7 @@
 							<i class="menu-icon fa fa-list-alt"></i>
 
 							<span class="menu-text">
-								Pop Up
+								Extra Edit
 							</span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -442,6 +442,13 @@
 								<a href="./lead_popup">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Lead Pop Up
+								</a>
+							</li>
+							
+							<li class="">
+								<a href="./preloader">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Preloader
 								</a>
 							</li>
 						</ul>

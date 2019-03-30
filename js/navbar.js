@@ -233,11 +233,12 @@ function showStudentPopup() {
   let randomName = Math.floor(Math.random() * randomNames.length);
   let randomCity = Math.floor(Math.random() * randomCities.length);
   let randomForm = Math.floor(Math.random() * formNames.length);
+  let randomsentence = Math.floor(Math.random() * sentence.length);
   studentPopupAudio.play();
 
   studentPopupChildren[2].textContent = randomNames[randomName];
   studentPopupChildren[3].textContent = randomCities[randomCity];
-  studentPhrase.textContent = `has just filled out the ${formNames[randomForm]} form`;
+  studentPhrase.textContent = `${sentence[randomsentence]} ${formNames[randomForm]} form`;
 
   studentPopup.classList.add('student_popup--active');
   setTimeout(() => {

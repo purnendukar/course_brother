@@ -56,11 +56,9 @@ else
 				}else{
 					if(confirm("Want to update?")){if(confirm("Going to update")){
 					var f=new FormData();
-					f.append('stud',input_[0].value);
-					f.append('city',input_[1].value);
-					f.append('sentence',input_[2].value);
+					f.append('slogan',input_[0].value);
 					$.ajax({
-							url: "./std_pop_update.php",
+							url: "./preloader_update.php",
 							type: 'POST',
 							cache: false,
 							contentType: false,
@@ -76,7 +74,7 @@ else
 								}else{
 									console.log(data.responseText);
 									alert("Something went Wrong");
-									window.location.href='./student_popup';
+									window.location.href='./preloader';
 								}
 							}
 						});
@@ -112,14 +110,12 @@ else
                     <?php include('./settingsContainer.php'); ?>
                     <div class='row menu-form'>
                         <div class='col-lg-6'>
-                            <h2 class='menu-text'>Student Pop Up</h2>
+                            <h2 class='menu-text'>Preloader</h2>
                             <div id="tab" class='menu-content' style="width:100%">
                                 <div class="form-group">
-                                <?php $row=$conn_p->query("SELECT * FROM `student_popup` where id=1")->fetch_assoc();?>
-                                    <div style="padding:5px">Students Name : <textarea style="resize:vertical" disabled class="form-control" name="input_" type="text" ><?php echo $row['stud_name']; ?></textarea></div>
-                                    <div style="padding:5px">Cities : <textarea style="resize:vertical" disabled class="form-control" name="input_" type="text" ><?php echo $row['city'];  ?></textarea></div>
-                                    <div style="padding:5px">Sentence : <textarea style="resize:vertical" disabled class="form-control" name="input_" type="text" ><?php echo $row['sentence'];  ?></textarea></div>
-                                    <div style="margin:10px;text-align:center;"><input style="margin:10px;" type="button" class="btn btn-primary" value="Edit" onclick="update_(this);" /><input style="margin:10px;" type="button" class="btn btn-primary" value="Cancel" onclick="window.location.href='./student_popup'" /></div>
+                                <?php $row=$conn_p->query("SELECT * FROM `preloader` where id=1")->fetch_assoc();?>
+                                    <div style="padding:5px">Slogan : <textarea style="resize:vertical" disabled class="form-control" name="input_" type="text" ><?php echo $row['slogan']; ?></textarea></div>
+                                    <div style="margin:10px;text-align:center;"><input style="margin:10px;" type="button" class="btn btn-primary" value="Edit" onclick="update_(this);" /><input style="margin:10px;" type="button" class="btn btn-primary" value="Cancel" onclick="window.location.href='./preloader'" /></div>
                                 </div>
                             </div>
                         </div>
