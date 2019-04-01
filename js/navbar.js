@@ -267,4 +267,43 @@ hambToggler.addEventListener('click', () => {
 
 sidebarMenuCloser.addEventListener('click', () => {
   sidebarMenu.style.left = '-30rem';
-}); 
+});
+
+
+// -------------------------------
+// For show password in login modal
+const loginModalPasswordBox = document.querySelector('.login_modal__main__form input[type="password"]');
+const loginModalEye = document.querySelector('.login_modal__main__form__showpw');
+
+let eyeOfAgamotto = 0;
+
+loginModalEye.addEventListener('click', () => {
+  if (eyeOfAgamotto === 0) {
+    loginModalPasswordBox.type = 'text';
+    eyeOfAgamotto = 1;
+  } else if (eyeOfAgamotto === 1) {
+    loginModalPasswordBox.type = 'password';
+    eyeOfAgamotto = 0;
+  }
+});
+
+// -------------------------------
+// For show password in login modal
+const registerModalPasswordBoxes = document.querySelectorAll('.register_modal__main__form input[type="password"]');
+const registerModalEye1 = document.querySelector('.register_modal__main__form__showpw1');
+const registerModalEye2 = document.querySelector('.register_modal__main__form__showpw2');
+const registerModalEyes = [registerModalEye1, registerModalEye2];
+
+let eyeOfAgamotto2 = 0;
+
+registerModalEyes.forEach((eye, index) => {
+  eye.addEventListener('click', () => {
+    if (eyeOfAgamotto2 === 0) {
+      registerModalPasswordBoxes[index].type = 'text';
+      eyeOfAgamotto2 = 1;
+    } else if (eyeOfAgamotto2 === 1) {
+      registerModalPasswordBoxes[index].type = 'password';
+      eyeOfAgamotto2 = 0;
+    }
+  });
+});

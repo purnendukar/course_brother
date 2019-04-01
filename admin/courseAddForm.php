@@ -114,10 +114,13 @@ else
                 formData.append("c_id",c_id);
                 formData.append("s_id",s_id);
                 formData.append("fees",document.getElementsByName('fees')[0].value);
+                formData.append("s_fees",document.getElementsByName('sem_fees')[0].value);
+                formData.append("a_fees",document.getElementsByName('annual_fees')[0].value);
                 formData.append("duration",duration);
                 formData.append("description",document.getElementsByName('c_desc')[0].value);
                 formData.append("desc_s",document.getElementsByName('c_desc_s')[0].value);
                 formData.append("eligible",document.getElementsByName('eligibility')[0].value);
+                formData.append("terms",document.getElementsByName('terms')[0].value);
                 var i=1;
                 var sem=2*(duration);
                 var s="";
@@ -140,20 +143,6 @@ else
                 var sem=2*(duration);
                 var s="";
                 var count=0;
-                try{
-                for(i=1;i<=sem;i++){
-                    var te=document.getElementsByName('sem'+i+'fees')[0].value;
-                    if(count>0){
-                        s+=","
-                    }
-                    s+=te;
-                    count++;
-                }
-                }catch(e){
-                    alert("Add Fees Structure ");
-                    return;
-                }
-                formData.append("fees_struc",s);
                 var aff=document.getElementsByName("aff");
                 var t="";
                 var count=0;
@@ -260,9 +249,21 @@ else
                		</select>
                     </div>
                		<div class="form-group">
-                    <label for="exampleInputPassword1">Add Fees</label>
-               		<input name="fees" type="number" step="0.0" class="form-control" placeholder="Fees" required>
-               		</div>
+                    <label for="exampleInputPassword1">Add Full Fees</label>
+               		<input name="fees" type="number" step="0.0" class="form-control" placeholder="Full Fees" required>
+                    </div><div class="form-group">
+                    <label for="exampleInputPassword1">Add Annual Fees</label>
+               		<input name="annual_fees" type="number" step="0.0" class="form-control" placeholder="Annual Fees" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" >Add Semester Fees</label><br/>
+                        <input name="sem_fees" type="number" step="0.0" class="form-control" placeholder="Semester Fees" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Terms and Condition in Fees Section</label>
+                      <textarea name="terms"class="form-control" style="resize:vertical;" placeholder="Terms and condition" required></textarea>
+                    <?php include "./policies_guide.php";?>
+                    </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Duration</label>
                       <input name="duration" type="number" step="0.0" class="form-control" placeholder="Course Duration In Years" required>
@@ -283,13 +284,6 @@ else
                         <label for="exampleInputPassword1" >Add Course Structure</label><br/>
                         <a id="add_course"  href="javascript:add_course();">Click Here</a>
                         <div id="structure_sec">
-
-                        </div>
-               		</div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" >Add Fee Structure</label><br/>
-                        <a id="add_fees"  href="javascript:add_fees();">Click Here</a>
-                        <div id="structure_fees">
 
                         </div>
                		</div>

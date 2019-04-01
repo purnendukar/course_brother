@@ -502,7 +502,7 @@ else
                             data: formData,
                             complete: function (data) {
                                 if(data.responseText=='1'){
-                                    alert("Data Added Success fully");
+                                    alert("Data Added Successfully");
                                     window.location.href="./indexPageForm";
                                 }else{
                                     console.log(data.responseText);
@@ -585,7 +585,30 @@ else
                     alert("Successfully Added");
                 }
             }
-
+			//univ_sec
+			function univ_sec(){
+				var univ_head=document.getElementById("univ_head");
+				var formData= new FormData();
+                    formData.append('id','2');
+                    formData.append('head',univ_head.value);
+                    $.ajax({
+                            url: "./univ_head_update.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Data Updated Successfully");
+                                    window.location.href="./indexPageForm";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
+                            }
+                        });
+			}
         </script>
 
 		<style>
@@ -990,6 +1013,22 @@ else
                             <?php } ?>
 	                    </div>
 	                    <button type="button" class="btn btn-primary" onclick="f_course_sel()">Submit</button>
+	                  </form>
+
+	              </div>
+				</div>
+				
+				<h3 class="accordion">Universities Section</h3>
+			    <div class='panel row menu-form'>
+	              <div class='col-lg-6'>
+                      <?php $res=$conn_p->query('SELECT * FROM `head_content` where id=2');
+                      ?>
+	                  <h2 class='menu-text'>Universities Section</h2>
+	                  <form class='menu-content' >
+	                    <div class="form-group">
+                            <textarea id="univ_head" style="width:100%;resize:vertical;"><?php echo $res->fetch_assoc()['head'];?></textarea>
+	                    </div>
+	                    <button type="button" class="btn btn-primary" onclick="univ_sec()">Submit</button>
 	                  </form>
 
 	              </div>

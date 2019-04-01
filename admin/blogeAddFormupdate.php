@@ -60,6 +60,33 @@ if($conn->query("UPDATE `blogs` SET `heading`='".$title."',`content`='".$content
             print_r($errors);
         }
   }
+  if(isset($_FILES['image2'])){
+    $errors= array();
+    $file_name = $_FILES['image2']['name'];
+    $file_size =$_FILES['image2']['size'];
+    $file_tmp2 =$_FILES['image2']['tmp_name'];
+    $file_type=$_FILES['image2']['type'];
+      $t=explode('.',$_FILES['image2']['name']);
+    $file_ext=strtolower(end($t));
+
+      $file_path="./assets/images/institute_img/";
+
+    $extensions= array("jpeg","jpg","png");
+
+    if(in_array($file_ext,$extensions)=== false){
+       $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+    }
+    if(empty($errors)==true){
+      $path = $file_path.rand().$file_name;
+       if(move_uploaded_file($file_tmp2,".".$path)){
+           if($conn->query("UPDATE `blogs` SET title_bg='".$path."' where id=".$id)){
+              echo "1";
+           }
+       }
+    }else{
+        print_r($errors);
+    }
+}
       echo "1";
       
     $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','update blog id=".$id."')");

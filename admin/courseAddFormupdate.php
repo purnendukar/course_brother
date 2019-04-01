@@ -4,18 +4,19 @@ $conn=connect_mysql_page();
 $id=$_POST['id'];
 $aff=$_POST['aff'];
 $fees=$_POST['fees'];
+$a_fees=$_POST['a_fees'];
+$s_fees=$_POST['s_fees'];
 $duration=$_POST['duration'];
 $desc=$_POST['description'];
 $eligible=$_POST['eligible'];
 $sem_struc=$_POST['sem_struc'];
-$fees_struc=$_POST['fees_struc'];
 $meta_desc=$_POST['meta_desc'];
 $meta_keys=$_POST['meta_keys'];
-if($conn->query("UPDATE `full_detail` SET `fees`=".$fees.",`duration`=".$duration.",`a_id`='".$aff."' WHERE id=".$id)){
+if($conn->query("UPDATE `full_detail` SET `fees`=".$fees.",`a_fees`=".$a_fees.",`s_fees`=".$s_fees.",`term`='".$_POST['terms']."',`duration`=".$duration.",`a_id`='".$aff."' WHERE id=".$id)){
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
     $eligible= preg_replace("/[\n\r]/",'<br>',$eligible);
     if($conn->query("UPDATE `about_course` SET `overview`='".$desc."', `structure`='".$sem_struc."',`short_desc`='".$_POST['desc_s']."', eligible='".$eligible."' where id=".$id)){
-        if($conn->query("UPDATE `fee_structure` SET `structure`='".$fees_struc."' WHERE id=".$id)){
+        
             $row=$conn->query("select * from full_detail where id=".$id)->fetch_assoc();
             $u_id=$row['u_id'];
             $c_id=$row['c_id'];
@@ -43,7 +44,7 @@ if($conn->query("UPDATE `full_detail` SET `fees`=".$fees.",`duration`=".$duratio
             echo"1";
             $admin=connect_mysql();
             $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','course updated id=".$id."')");
-        }
+        
     }
 }else{
     echo "0";

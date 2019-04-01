@@ -810,6 +810,32 @@ body {
   }
 }
 
+@media screen and (max-width: 480px) {
+  .latest_blogs {
+    height: auto;
+  }
+  .latest_blogs__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .latest_blogs__item {
+    width: 90%;
+    height: 100%;
+    margin: 3rem 0;
+    overflow: visible;
+  }
+  .latest_blogs__item__bg {
+    height: 16rem;
+  }
+  .latest_blogs__item__continue {
+    bottom: -2rem;
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+            box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  }
+}
+
 .college_dashboard {
   width: 100%;
   position: relative;
@@ -1995,6 +2021,79 @@ body {
   .course_detail__header .detail__img img {
     display: none;
   }
+  .course_detail__body__nav {
+    padding: 1rem;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    height: auto;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  .course_detail__body__nav button {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  .course_detail__body__nav ul {
+    margin: 0;
+    padding: 0;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 98%;
+    border-bottom: 1px solid transparent;
+  }
+  .course_detail__body__nav ul li {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+  .course_detail__body__main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 2rem;
+  }
+  .course_detail__body__main .main_content {
+    width: 100%;
+    border: none;
+    margin: 0;
+  }
+  .course_detail__body__main .main_content__title {
+    font-size: 1.3rem;
+  }
+  .course_detail__body__main .main_content th {
+    font-size: 1.2rem;
+  }
+  .course_detail__body__main .main_content td {
+    font-size: 1.2rem;
+  }
+  .course_detail .related_courses {
+    padding: 1rem 2em 2rem 2rem;
+  }
+  .course_detail .related_courses__title {
+    font-size: 1.4rem;
+  }
+  .course_detail .related_courses__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 0;
+  }
+  .course_detail .related_courses__item {
+    width: 90%;
+    height: 20rem;
+    margin: 2rem 0 0 0;
+  }
+
 }
 
 .main_container {
@@ -2747,6 +2846,12 @@ body {
   font-weight: 500;
 }
 
+@media screen and (max-width: 480px) {
+  .featured_courses {
+    display: none;
+  }
+}
+
 .footer {
   width: 100%;
   height: 50vh;
@@ -3000,7 +3105,7 @@ body {
   }
   .footer__get_in_touch {
     width: 100%;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
   }
   .footer__get_in_touch .touch_contact {
     margin-top: 1rem;
@@ -3229,6 +3334,42 @@ body {
   padding: 0.5rem;
 }
 
+@media screen and (max-width: 480px) {
+  .main-container {
+    margin-top: -3rem;
+  }
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header__testimonial {
+    width: 100%;
+  }
+  .header__carousel {
+    height: 30rem;
+    width: 100%;
+  }
+  .header__carousel__item img {
+    height: 35rem;
+    width: 100%;
+  }
+  .header__carousel__item__content {
+    left: 50%;
+    top: 35%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .header__carousel__item__content h4 {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .policy_icons {
+    display: none;
+  }
+}
+
 .uni_and_col {
   height: 28vh;
   width: 100%;
@@ -3264,6 +3405,28 @@ body {
   height: 8rem;
   width: 15rem;
 }
+
+@media screen and (max-width: 480px) {
+  .uni_and_col {
+    height: auto;
+    margin-top: 30rem;
+    padding: 1rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .uni_and_col .rslides {
+    width: 90%;
+  }
+  .uni_and_col .rslides li {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .uni_and_col .rslides li img {
+    height: 6rem;
+    width: 12rem;
+  }
+}
+
 
 .login_modal {
   height: 55rem;
@@ -3390,10 +3553,20 @@ body {
           align-items: center;
   height: 20rem;
   width: 100%;
+  position: relative;
+}
+
+.login_modal__main__form__showpw {
+  position: absolute;
+  right: 2rem;
+  top: 8.5rem;
+  color: #DB324D;
+  cursor: pointer;
 }
 
 .login_modal__main__form input[type='email'],
-.login_modal__main__form input[type='password'] {
+.login_modal__main__form input[type='password'],
+.login_modal__main__form input[type='text'] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 1.8rem;
@@ -3629,7 +3802,7 @@ body {
 }
 
 .register_modal__submit {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1.4rem 3rem 1rem 3rem;
   background-color: #DB324D;
   color: white;
@@ -3714,7 +3887,7 @@ body {
 
 .register_modal__main__form {
   margin-right: -6.5rem;
-  margin-top: 3rem;
+  margin-top: 0rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3725,8 +3898,25 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 20rem;
+  height: 16rem;
   width: 100%;
+  position: relative;
+}
+
+.register_modal__main__form__showpw1 {
+  position: absolute;
+  right: 2rem;
+  top: 17rem;
+  color: #DB324D;
+  cursor: pointer;
+}
+
+.register_modal__main__form__showpw2 {
+  right: 2rem;
+  top: 22rem;
+  position: absolute;
+  color: #DB324D;
+  cursor: pointer;
 }
 
 .register_modal__main__form input[type='text'],
@@ -3931,9 +4121,8 @@ body {
 }
 
 .navbar_main__appendix__logo {
-  display: none;
+  display: block;
 }
-
 
 .navbar_main__appendix__cart {
   width: 80%;
@@ -4078,7 +4267,7 @@ body {
           box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  width: 26rem;
+  width: 36rem;
   height: 4rem;
   padding-left: 2rem;
   outline: none;
@@ -4834,6 +5023,59 @@ body {
   color: #FF8B9C;
 }
 
+@media screen and (max-width: 480px) {
+  .news_updates {
+    height: 50rem;
+  }
+  .news_updates__back, .news_updates__next {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  .news_updates__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .news_updates__head {
+    width: 100%;
+    height: 5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .news_updates__head h2 {
+    all: initial;
+    text-align: center;
+    color: white;
+    font-family: "LeagueSpartan";
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  .news_updates__main {
+    height: 35rem;
+  }
+  .news_updates__main__container {
+    display: block;
+  }
+  .news_updates__main__section__content__item h3 {
+    font-size: 1.3rem;
+  }
+  .news_updates__main__section__content__item p {
+    font-size: 1.1rem;
+  }
+  .news_updates__main__section__content__item a:link {
+    font-size: 1.2rem;
+  }
+}
+
+
 .policy_container {
   height: 60vh;
 }
@@ -5036,6 +5278,25 @@ body {
 .site_features__section .section_text p {
   font-weight: 300;
   font-size: 1.4rem;
+}
+
+@media screen and (max-width: 480px) {
+  .site_features {
+    height: auto;
+  }
+  .site_features__title {
+    font-size: 2.4rem;
+    letter-spacing: 0;
+  }
+  .site_features__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .site_features__section {
+    width: 100%;
+  }
 }
 
 .all_testimonials__container {
@@ -5359,6 +5620,12 @@ body {
   font-weight: 500;
   color: #DB324D;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 480px) {
+  .top_courses {
+    display: none;
+  }
 }
 
 .user_dashboard {

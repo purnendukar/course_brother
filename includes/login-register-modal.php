@@ -102,6 +102,9 @@ function login(){
         <form class="login_modal__main__form" action="javascript:login();">
           <input name="input_login" required type="email" placeholder='enter email address' />
           <input name="input_login" required type="password" placeholder='enter password' />
+          <span class="login_modal__main__form__showpw">
+            <i class="fa fa-eye"></i>
+          </span>
           <button type='submit'>log in</button>
         </form>
         <div class="login_modal__main__oauth">
@@ -142,7 +145,13 @@ function login(){
           <input name='input_' required type="text" placeholder='enter last name' />
           <input name='input_' required type="text" placeholder='enter email address' />
           <input name='input_' required type="password" placeholder='enter password' />
+          <span class="register_modal__main__form__showpw1">
+            <i class="fas fa-eye"></i>
+          </span>
           <input name='input_' required type="password" placeholder='confirm password' />
+          <span class="register_modal__main__form__showpw2">
+            <i class="fas fa-eye"></i>
+          </span>
           <input name='input_' required type="text" placeholder='enter mobile no.' />
           <input name='input_' required type="text" placeholder='enter city' />
           <div class="register_modal__submit">register</div>

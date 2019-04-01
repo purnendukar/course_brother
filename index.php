@@ -152,7 +152,7 @@ else
     <!-- UNIVERSITIES_COLLEGES -->
     <div class="uni_and_col">
 
-      <div class="uni_and_col__title">trusted by 10+ universities & colleges</div>
+      <div class="uni_and_col__title"><?php echo $conn->query("select * from head_content where id=2")->fetch_assoc()['head'];?></div>
 
       <ul class="rslides ">
           <?php $sql="select * from universities";

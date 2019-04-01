@@ -59,7 +59,9 @@ else
             $title="";
             $content="";
 						$errors[]="";
-						$path1="";
+						$path1=null;
+						$path2=null;
+						$path=null;
             if(isset($_POST['title'])){
                 $title=$_POST['title'];
             }
@@ -90,7 +92,7 @@ else
 							$errors= array();
 							$file_name = $_FILES['image1']['name'];
 							$file_size =$_FILES['image1']['size'];
-							$file_tmp =$_FILES['image1']['tmp_name'];
+							$file_tmp1 =$_FILES['image1']['tmp_name'];
 							$file_type=$_FILES['image1']['type'];
 							$t=explode('.',$_FILES['image1']['name']);
 							$file_ext=strtolower(end($t));
@@ -98,24 +100,47 @@ else
 
 							$extensions= array("jpeg","jpg","png");
 							if(in_array($file_ext,$extensions)=== false){
-									 $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+									 $errors[]="1 extension not allowed, please choose a JPEG or PNG file.";
 							}
 							if(empty($errors)==true){
 								$path1=$file_path.rand().$file_name;
-									 if(move_uploaded_file($file_tmp,".".$path1)){
+									 if(move_uploaded_file($file_tmp1,".".$path1)){
 
 									 }
 							}else{
 									print_r($errors);
 							}
-					}
+						}
+						if(isset($_FILES['image2'])){
+							$errors= array();
+							$file_name = $_FILES['image2']['name'];
+							$file_size =$_FILES['image2']['size'];
+							$file_tmp2 =$_FILES['image2']['tmp_name'];
+							$file_type=$_FILES['image2']['type'];
+							$t=explode('.',$_FILES['image2']['name']);
+							$file_ext=strtolower(end($t));
+							$file_path="./assets/images/blogs_thumnail/";
+
+							$extensions= array("jpeg","jpg","png");
+							if(in_array($file_ext,$extensions)=== false){
+									 $errors[]="2 extension not allowed, please choose a JPEG or PNG file.";
+							}
+							if(empty($errors)==true){
+								$path2=$file_path.rand().$file_name;
+									 if(move_uploaded_file($file_tmp2,".".$path2)){
+
+									 }
+							}else{
+									print_r($errors);
+							}
+						}
             if(isset($_POST['title'])){
                 $content=preg_replace("/[\n\r]/",'<br>',$_POST['content']);
-                $res=$conn_p->query("INSERT INTO `blogs`(`heading`, `content`,`img_src`,`content_2`,`thumnail`,`author`) VALUES ('".$title."','".$content."','".$path1."','".$_POST['content1']."','".$path."','".$conn->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['f_name']."')");
+                $res=$conn_p->query("INSERT INTO `blogs`(`title_bg`,`heading`, `content`,`img_src`,`content_2`,`thumnail`,`author`) VALUES ('".$path2."','".$title."','".$content."','".$path1."','".$_POST['content1']."','".$path."','".$conn->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['f_name']."')");
                 if($res){
 									
     $admin=connect_mysql();
-    $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','blog added ".$_title."')");
+    $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','blog added ".$_POST['title']."')");
                     echo "<script>alert('Successfully Added');window.location.href='./blogAddForm';</script>";
                 }else{
                     echo "<script>alert('Failed')</script>";
@@ -139,10 +164,15 @@ else
             <div class='row menu-form'>
               <div class='col-lg-6'>
                   <h2 class='menu-text'>Add Blog</h2>
-                  <form method="post" class='menu-content' action="" enctype="multipart/form-data" >
+									<form method="post" class='menu-content' action="" enctype="multipart/form-data" >
+										
                     <div class="form-group">
                       <label for="title">Title</label>
                       <input name="title" type="text" class="form-control" placeholder="Blog Title" required>
+										</div>
+										<div class="form-group">
+                      <label for="image2">Title Background:</label>
+                      <input name="image2" type="file" accept="image/*" class="form-control" >
                     </div>
                     <div class="form-group">
                       <label for="content">Content </label>

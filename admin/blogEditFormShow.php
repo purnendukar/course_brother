@@ -54,10 +54,11 @@ else
 										formData.append('id',a);
 										formData.append('title',input_[0].value);
 										formData.append('content',input_[1].value);
-										formData.append('image1', $('input[type=file]')[0].files[0]);
+										formData.append('image2', $('input[type=file]')[0].files[0]);
+										formData.append('image1', $('input[type=file]')[1].files[0]);
 										formData.append('content2',input_[2].value);
 										formData.append('display',document.getElementsByName("select_")[0].value);
-										formData.append('image', $('input[type=file]')[1].files[0]);
+										formData.append('image', $('input[type=file]')[2].files[0]);
 										$.ajax({
 												url: "./blogeAddFormupdate.php",
 												type: 'POST',
@@ -67,7 +68,7 @@ else
 												data: formData,
 												complete: function (data) {
 														console.log(data.responseText);
-														if(data.responseText=='1' || data.responseText=='11' || data.responseText=='111'){
+														if(data.responseText=='1' || data.responseText=='11' || data.responseText=='111' || data.responseText=='1111'){
 																alert("Successfully Added");
 																butt.value="Edit";
 																for(var i=0;i<input_.length;i++){
@@ -75,6 +76,7 @@ else
 																}
 																document.getElementsByName("image_")[0].disabled=true;
 																document.getElementsByName("image_")[1].disabled=true;
+																document.getElementsByName("image_")[2].disabled=true;
 																document.getElementsByName("select_")[0].disabled=true;
 																window.location.href="./blogEditForm";
 														}else{
@@ -91,6 +93,7 @@ else
 									}
 									document.getElementsByName("image_")[0].disabled=false;
 									document.getElementsByName("image_")[1].disabled=false;
+									document.getElementsByName("image_")[2].disabled=false;
 									document.getElementsByName("select_")[0].disabled=false;
 								}
             }
@@ -173,7 +176,14 @@ else
                     <div class="form-group">
                     <label for="exampleInputPassword1">Title</label>
                		<input disabled name="input_" class="form-control" value="<?php echo $row['heading'] ?>" />
-               		</div>
+									 </div>
+									 <div class="form-group">
+									 	<?php if($row['title_bg']!="" && $row['title_bg']!=null){
+											 echo "<img id='title_bg' src='.".$row['title_bg']."' style='width:100%;height:40rem;object-fit: cover;'>";
+										 }?>
+                      <label for="exampleInputPassword1">Title Bar Background</label>
+                      <input disabled type="file" name="image_" accept="image/*" class="form-control">
+                    </div>
                		<div class="form-group">
                     <label for="exampleInputPassword1">Content 1</label>
                		<textarea disabled name="input_" class="form-control" style="min-width:100%;max-width:100%;height:300px;" ><?php echo str_replace("<br>","\n",$row['content']); ?></textarea>
@@ -194,7 +204,10 @@ else
 											<option value='Yes' <?php echo select_or_not($row['display'])?> >Yes</option>
 										</select>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Thumnail</label>
+											<label for="exampleInputPassword1">Thumnail</label>
+											<?php if($row['thumnail']!="" && $row['thumnail']!=null){
+											 echo "<img id='thumnail' src='.".$row['thumnail']."' style='width:100%;'>";
+										 }?>
                       <input disabled id="thumnail" type="file" name="image_" accept="image/*" class="form-control">
                     </div>
                     <br>

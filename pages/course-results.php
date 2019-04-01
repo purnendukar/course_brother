@@ -77,6 +77,7 @@ else
             var a_id="";
             var c_id="";
             var d_id="";
+            var m_f="";
 
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -95,6 +96,7 @@ else
             var aff= document.getElementsByClassName("affiliate");
             var course= document.getElementsByClassName("c_id");
             var dmode= document.getElementsByClassName("d_mode");
+            var myRange=document.getElementById("myRange");
 
             for(var i=0;i<univ.length;i++){
                 if(univ[i].checked)
@@ -117,7 +119,8 @@ else
                 if(dmode[i].checked)
                     d_id=d_id+(dmode[i].value)+",";
             }
-            xmlhttp.open("GET","get_detail?u_id="+u_id+"&s_id="+s_id+"&a_id="+a_id+"&c_id="+c_id+"&d_id="+d_id+"&course=all");
+            m_f=myRange.value;
+            xmlhttp.open("GET","get_detail?u_id="+u_id+"&s_id="+s_id+"&m_f="+m_f+"&a_id="+a_id+"&c_id="+c_id+"&d_id="+d_id+"&course=all");
             xmlhttp.send();
 
         }
@@ -140,6 +143,10 @@ else
             var aff= document.getElementsByClassName("affiliate");
             var course= document.getElementsByClassName("c_id");
             var dmode= document.getElementsByClassName("d_mode");
+            var myRange=document.getElementById("myRange");
+
+            myRange.value=myRange.max;
+            document.getElementById("demo").innerHTML=myRange.max;
 
             for(var i=0;i<univ.length;i++){
                 if(univ[i].checked)
@@ -162,7 +169,7 @@ else
                 if(dmode[i].checked)
                     dmode[i].checked=false;
             }
-            xmlhttp.open("GET","get_detail?u_id=&s_id=&a_id=&c_id=&d_id=&course=all");
+            xmlhttp.open("GET","get_detail?u_id=&s_id=&a_id=&m_f=&c_id=&d_id=&course=all");
             xmlhttp.send();
         }
         
@@ -268,7 +275,7 @@ else
 
         <div class="filter_results__item">
           <div class="filter_results__item__head">
-            <h5>fees</h5>
+            <h5>Course Fees</h5>
             <i class='fa fa-angle-up'></i>
           </div>
           <div class="filter_results__item__content">
@@ -280,7 +287,7 @@ else
                     $res_3=$conn->query($sql_3)->fetch_assoc();
                     $res_3=$res_3['fee'];
                     ?>
-                    <div class="""slidecontainer">
+                    <div class="slidecontainer">
                       <input type="range" min="1" max="<?php echo $res_3;?>" value="<?php echo $res_3;?>" class="slider" id="myRange">
                       <p>Max Fees: <span id="demo"></span></p>
                     </div>
@@ -598,7 +605,7 @@ else
                 </div>
               </div>
               <div class="course_results__item__content__price">
-                <h3>Rs <?php echo $row_2['fees']?> <!--<span>(annual)</span>--></h3>
+                <h3>Rs <?php echo $row_2['fees']?> <span>(Full Fees)</span></h3>
               </div>
             </div>
             <div class="course_results__item__buttons">
@@ -677,6 +684,7 @@ else
 
         slider.oninput = function() {
           output.innerHTML = this.value;
+          filter(this.value);
         }
     </script>
 

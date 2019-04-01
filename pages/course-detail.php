@@ -221,7 +221,11 @@ else
                     </td>
                   </tr>
                   <?php $c++; } ?>
-                </table>
+                </table><br>
+                <h3 class='main_content__title'>Terms & Condition</h3>
+                <div>
+                  <?php echo $row['term']; ?>
+                </div>
             </div>
 
             <div id="tabs-eligibility">

@@ -47,7 +47,7 @@
     <!-- BLOG_DETAIL -->
     <main class="blog_detail">
 
-      <div class="blog_detail__header">
+      <div class="blog_detail__header" style="background:url('<?php echo $d.$row['title_bg']; ?>');background-size: cover;background-position: center;">
         <div class="blog_detail__header__title">
           <h1><?php echo $row['heading'];?></h1>
         </div>
@@ -83,15 +83,13 @@
         </div>
 
         <div class="blog_detail__aside">
-          <div class="blog_detail__aside__ad">
-            ad banner
+          <?php $res=$conn->query("select * from sponsor_course");
+            while($row=$res->fetch_assoc()){
+          ?>
+          <div class="blog_detail__aside__ad" style="height:auto;">
+            <img src=".<?php echo $row['img_src']?>" onclick="window.open('<?php echo $row['link']?>');" style="width:100%;display:block;"/>
           </div>
-          <div class="blog_detail__aside__ad">
-            ad banner
-          </div>
-          <div class="blog_detail__aside__ad">
-            ad banner
-          </div>
+          <?php } ?>
         </div>
 
       </div>

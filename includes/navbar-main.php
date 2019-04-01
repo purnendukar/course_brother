@@ -23,7 +23,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
     <div class='navbar_main__appendix__container'>
       <!-- will show only in mobile view -->
       <div class="navbar_main__appendix__hamburger">
-        <i class="fas fa-bars"></i>
+        <i class="fa fa-bars"></i>
       </div>
 
       <!-- will show only in mobile view -->

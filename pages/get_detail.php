@@ -4,6 +4,7 @@
         $s_id="";
         $a_id="";
         $d_id="";
+        $m_f="";
         $str="";
         
         $k=0;
@@ -46,6 +47,11 @@
                     $d_id="d_mode_id=".str_replace(","," or d_mode_id=",$d_id);
                     $str=$str." and (".$d_id.")";
                 }
+                if($_GET['m_f']!=""){
+                    $m_f = rtrim($_GET['m_f'],',');
+                    $m_f="fees<=".$m_f;
+                    $str=$str." and (".$m_f.")";
+                }
             $sql_2="select * from full_detail where ".$str;
         }else{
             if($c_id!=""){
@@ -86,6 +92,15 @@
                         $str=$str." (".$d_id.")";
                     $k++;
                 }
+                if($_GET['m_f']!=""){
+                    $m_f = rtrim($_GET['m_f'],',');
+                    $m_f="fees<=".$m_f;
+                    if($k!=0)
+                        $str=$str." and (".$m_f.")";
+                    else
+                        $str=$str." (".$m_f.")";
+                    $k++;
+                }
             if($str==""){
                 $sql_2="select * from full_detail ";
             }else{
@@ -124,7 +139,7 @@
                 </div>
               </div>
               <div class="course_results__item__content__price">
-                <h3>Rs <?php echo $row_2['fees']?> <span>(annual)</span></h3>
+                <h3>Rs <?php echo $row_2['fees']?> <span>(Full Fees)</span></h3>
               </div>
             </div>
             <div class="course_results__item__buttons">

@@ -60,6 +60,9 @@ else
                             var duration=document.getElementsByName('duration')[0].value;
                             var formData = new FormData();
                             formData.append("fees",document.getElementsByName('fees')[0].value);
+                            formData.append("a_fees",document.getElementsByName('a_fees')[0].value);
+                            formData.append("s_fees",document.getElementsByName('s_fees')[0].value);
+                            formData.append("terms",document.getElementsByName('terms')[0].value);
                             formData.append("duration",duration);
                             formData.append("description",escape(document.getElementsByName('c_desc')[0].value));
                             formData.append("desc_s",escape(document.getElementsByName('c_desc_s')[0].value));
@@ -70,17 +73,17 @@ else
                             var count=0;
                             try{
                                 var te=document.getElementsByName('sem_struc');
-                            for(i=0;i<te.length;i++){
-                                if(count>0){
-                                    s+="|"
+                                for(i=0;i<te.length;i++){
+                                    if(count>0){
+                                        s+="|"
+                                    }
+                                    if(te[i].value==null || te[i]==""){
+                                        alert("Fill semester "+(i+1)+" Structure");
+                                        return;
+                                    }
+                                    s+=te[i].value;
+                                    count++;
                                 }
-                                if(te[i].value==null || te[i]==""){
-                                    alert("Fill semester "+(i+1)+" Structure");
-                                    return;
-                                }
-                                s+=te[i].value;
-                                count++;
-                            }
                             }catch(e){
                                 alert("Add Course Structure ");
                                 return;
@@ -213,9 +216,22 @@ else
                		<input class="form-control" value="<?php echo $conn_p->query("select * from subject where id=".$row['s_id'])->fetch_assoc()['sub_name']; ?>" disabled/>
                     </div>
                		<div class="form-group">
-                    <label for="exampleInputPassword1">Fees</label>
+                    <label for="exampleInputPassword1">Add Full Fees</label>
                		<input disabled name="fees" type="number" step="0.0" class="edit_i form-control" value="<?php echo $row['fees']; ?>" required>
-               		</div>
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Add Annual Fees</label>
+               		<input disabled name="a_fees" type="number" step="0.0" class="edit_i form-control" placeholder="Annual Fees" value="<?php echo $row['a_fees']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" >Add Semester Fees</label><br/>
+                        <input disabled name="s_fees" type="number" step="0.0" class="edit_i form-control" placeholder="Semester Fees" value="<?php echo $row['s_fees']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Terms and Condition in Fees Section</label>
+                      <textarea disabled name="terms"  class="edit_i form-control" style="resize:vertical;" placeholder="Terms and condition" required><?php echo $row['term']; ?></textarea>
+                    <?php include "./policies_guide.php";?>
+                    </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Course Duration</label>
                       <input disabled name="duration" type="number" step="0.0" class="edit_i form-control" value="<?php echo $row['duration']; ?>" required>
