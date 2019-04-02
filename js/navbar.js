@@ -26,7 +26,8 @@ $(document).ready(function(){
      'z-index': '8'
    });
      }
- };
+ }
+
  function hideNewsletter() {
      $('.newsletter_popup__backdrop').removeClass('newsletter_popup__backdrop--active');
      $('.newsletter_popup').css({
@@ -88,6 +89,14 @@ $(window).on('scroll', () => {
   });
 });
 
+$('.newsletter_popup__main__close1').click(function() {
+  $('.newsletter_popup__backdrop1').removeClass('newsletter_popup__backdrop1--active');
+    $('.newsletter_popup1').css({
+          'transform': 'scale(0) translate(-50%, -50%)',
+          'opacity': '0',
+          'z-index': '1'
+        });
+});
 
 
 // Back to top
@@ -110,8 +119,14 @@ const loginButton = document.querySelector('.navbar_main__appendix__login');
 const loginModal = document.querySelector('.login_modal');
 const loginModalBackdrop = document.querySelector('.login_modal__backdrop');
 const loginModalClose = document.querySelector('.login_modal__close');
+const mobLoginButton = document.querySelector('.mob__sidebar__login');
 
 loginButton.addEventListener('click', function() {
+  loginModalBackdrop.classList.add('login_modal__backdrop--active');
+  loginModal.classList.add('login_modal--active');
+});
+
+mobLoginButton.addEventListener('click', function() {
   loginModalBackdrop.classList.add('login_modal__backdrop--active');
   loginModal.classList.add('login_modal--active');
 });
@@ -150,16 +165,30 @@ replacedRegisterSubmit.addEventListener('click', () => {
 
 // Interchanging Register and Login Modals
 const registerHereButton = document.querySelector('.login_modal__appendix__register');
+const registerHereMob = document.querySelector('.mob__login_to_reg');
 const loginHereButton = document.querySelector('.register_modal__appendix__login');
+const loginHereMob = document.querySelector('.mob__reg_to_login');
 
 registerHereButton.addEventListener('click', () => {
   registerModal.classList.add('register_modal--active');
   loginModal.classList.remove('login_modal--active');
 });
+
+registerHereMob.addEventListener('click', () => {
+  registerModal.classList.add('register_modal--active');
+  loginModal.classList.remove('login_modal--active');
+});
+
 loginHereButton.addEventListener('click', () => {
   loginModal.classList.add('login_modal--active');
   registerModal.classList.remove('register_modal--active');
 });
+
+loginHereMob.addEventListener('click', () => {
+  loginModal.classList.add('login_modal--active');
+  registerModal.classList.remove('register_modal--active');
+});
+
 }catch(err){
   
 }
@@ -268,6 +297,12 @@ hambToggler.addEventListener('click', () => {
 sidebarMenuCloser.addEventListener('click', () => {
   sidebarMenu.style.left = '-30rem';
 });
+
+mobLoginButton.addEventListener('click', () => {
+  sidebarMenu.style.left = '-30rem';
+});
+
+
 
 
 // -------------------------------

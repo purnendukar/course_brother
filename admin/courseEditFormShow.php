@@ -260,16 +260,6 @@ else
                         </div>
                		</div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1" >Fee Structure</label><br/>
-                        <div id="structure_fees">
-                            <?php $f_struc=$conn_p->query("select * from fee_structure where id=".$row['id'])->fetch_assoc()['structure'];
-                            $f_struc=explode(",",$f_struc);
-                            for($i=0;$i<count($f_struc);$i++){
-                                echo "<p>Semester ".($i+1)."</p>"."<input disabled type='number' step=\"0.1\" class=\"edit_i form-control\" name='sem_fees' value='".$f_struc[$i]."' />";
-                            }?>
-                        </div>
-               		</div>
-                    <div class="form-group">
                       <label for="exampleInputPassword1" required>Affiliation</label><br/>
                       <?php $res1=$conn_p->query("select * from affiliation"); ?>
                			<?php while($row1=$res1->fetch_assoc()){ ?><input disabled name="aff" type="checkbox" class="edit_i" value="<?php echo $row1['id'];?>" <?php if(strpos($row['a_id'],$row1['id'])!==false){echo "checked";}?> ><?php echo strtoupper($row1['a_name']); ?><br/><?php } ?>

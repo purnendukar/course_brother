@@ -172,6 +172,9 @@ else
 										<!-- div.dataTables_borderWrap -->
 										<div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+												<div style="background-color:#EFF3F8;width:100%;">
+													<button style="margin:15px;" class="btn btn-primary" onclick="window.location.href='./user_add'">Add one</button>
+												</div>
 												<thead>
 													<tr >
 														<th class="center">
@@ -286,7 +289,6 @@ else
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
-						<button class="btn btn-primary" onclick="window.location.href='./user_add'">Add one</button>
 					</div><!-- /.page-content -->
 				</div>
         <!-- footer section -->

@@ -109,13 +109,13 @@ else
 												</thead>
 												<tbody id="filter_data">
 												<?php
-                                                    $sql="SELECT * FROM user_session";
+                                                    $sql="SELECT * FROM enquire order by id desc";
                                                     $result=$conn->query($sql);
                                                     while($row=$result->fetch_assoc())      
                                                     {
                                                         
                                                         $email=$row['email'];
-                                                        $f_name=$row['full_name'];
+                                                        $f_name=$row['name'];
                                                         $phn_no=$row['phn_no'];
 												echo  
 												"<tr id='row_".$row['id']."'>

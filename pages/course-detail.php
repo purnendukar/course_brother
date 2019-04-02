@@ -190,38 +190,54 @@ else
 
             <div id="tabs-fee">
               <h3 class='main_content__title'>COURSE FEE</h3>
-              <?php $sql_t="select * from fee_structure where id=".$row['id']; $res_t=$conn->query($sql_t); $row_t=$res_t->fetch_assoc(); $fee_str=explode(",",$row_t['structure']);?>
-              <table>
-              <?php
-                    $c=0;$i=1;
-                    $sem=explode("|",$row_1['structure']);
-                    while($c<$row['duration']){
-                  ?>
-                  <tr>
-                    <?php
-                      for($j=0;$j<2;$j++){
-                        if($c==0 && $j==0){
-                          ?><th>1ST SEMESTER</th><?php
-                        }else if($c==0 && $i<2*$row['duration'] && $j=1){
-                          ?><th>2ND SEMESTER</th><?php
-                        }else{
-                          echo "<th>".($i)."TH SEMESTER</th>";
-                        }
-                        $i++;
-                      }
 
-                    ?>
-                  </tr>
-                  <tr>
-                    <td>
-                      <?php echo "Rs ".$fee_str[$i-3]; ?>
-                    </td>
-                    <td>
-                    <?php if(($i-1)<=2*$row['duration']){echo "Rs ".$fee_str[$i-2];} ?>
-                    </td>
-                  </tr>
-                  <?php $c++; } ?>
-                </table><br>
+              <p class="main_content__body">Students have the following three options for paying the program fee:</p>
+              <h4 class='main_content__title'>Option 1:</h4>
+              <table>
+                <tr>
+                  <th>Structure </th>
+                  <th>Amount </th>
+                </tr>
+                <tr>
+                  <td>Admission Processing Fee </td>
+                  <td><?php echo "Rs ".$conn->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['fees'];?></td>
+                </tr>
+                <tr>
+                  <td>Full Fee Payment </td>
+                  <td><?php echo "Rs ".$row['fees']; ?> </td>
+                </tr>
+              </table>
+              <h4 class='main_content__title'>Option 2:</h4>
+              <table>
+                <tr>
+                  <th>Structure </th>
+                  <th>Amount </th>
+                </tr>
+                <tr>
+                  <td>Admission Processing Fee </td>
+                  <td><?php echo "Rs ".$conn->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['fees'];?></td>
+                </tr>
+                <tr>
+                  <td>Program fee per year </td>
+                  <td><?php echo "Rs ".$row['a_fees']; ?> </td>
+                </tr>
+              </table>
+              <h4 class='main_content__title'>Option 3:</h4>
+              <table>
+                <tr>
+                  <th>Structure </th>
+                  <th>Amount </th>
+                </tr>
+                <tr>
+                  <td>Admission Processing Fee </td>
+                  <td><?php echo "Rs ".$conn->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['fees'];?></td>
+                </tr>
+                <tr>
+                  <td>Program fee per semester </td>
+                  <td><?php echo "Rs ".$row['s_fees']; ?> </td>
+                </tr>
+              </table>
+              <br>
                 <h3 class='main_content__title'>Terms & Condition</h3>
                 <div>
                   <?php echo $row['term']; ?>

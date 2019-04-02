@@ -53,11 +53,11 @@ else
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
         <script>
-            function send_data(u_id,u_name,about,image,reg_fees){
+            function send_data(u_id,u_name,about,image,reg_fees,type_fees){
                 $.ajax({
                       type: "POST",
                       url: "./includes/update_univesities.php",
-                      data: {u_id:u_id,u_name:u_name,about:about,reg_fees:reg_fees},
+                      data: {u_id:u_id,u_name:u_name,about:about,reg_fees:reg_fees,type_fees:type_fees},
                       complete: function(data){
                                 //data contains the response from the php file.
                                 //u can pass it here to the javascript function
@@ -99,6 +99,7 @@ else
                 var u_name=document.getElementsByName(a+"u_name");
                 var about=document.getElementsByName(a+"about");
                 var reg_fees=document.getElementsByName(a+"reg_fees");
+                var type_fees=document.getElementsByName(a+"type_fees");
                 var img=document.getElementsByName(a+"img");
                 var image=document.getElementsByName(a+"image");
                 if(u_name[0].disabled){
@@ -108,13 +109,15 @@ else
                     image[0].style.display="block";
                     image[0].disable=false;
                     reg_fees[0].disabled=false;
+                    type_fees[0].disabled=false;
                 }else{
                   if(confirm("Want to Update?")){if(confirm("Going to update")){
                     console.log(image[0].files);
-                    send_data(a,u_name[0].value,about[0].value,img[0],reg_fees[0].value);
+                    send_data(a,u_name[0].value,about[0].value,img[0],reg_fees[0].value,type_fees[0].value);
                     u_name[0].disabled=true;
                     about[0].disabled=true;
                     reg_fees[0].disabled=true;
+                    type_fees[0].disabled=true;
                     //if(image[0].files.length==0){
                         img[0].style.display="block";
                         image[0].style.display="none";
@@ -247,7 +250,9 @@ else
 															</label>
 														</th>
                                                         <th class="center">University Name</th>
-                                                        <th class="center">About</th>
+																												<th class="center">About</th>
+																												
+														<th class="hidden-480 center">Fees Type</th>
 														<th class="hidden-480 center">Registation Fees</th>
                                                         <th class="center">Image</th>
 														<th class="hidden-480 center">
@@ -283,7 +288,10 @@ else
                                                         <td>
                                                             <textarea disabled class='lbl' name='".$row['u_id']."about' >".urldecode($row['about'])."</textarea>
                                                         </td>
-                                                        <td class='hidden-480'>
+                                                        <td >
+                                                            <input type='text' disabled class='lbl' name='".$row['u_id']."type_fees' value='".urldecode($row['type_fees'])."'/>
+														                            </td>
+                                                        <td >
                                                             <input type='number' disabled class='lbl' name='".$row['u_id']."reg_fees' value='".urldecode($row['fees'])."'/>
 														                            </td>
 														<td class='hidden-480'>

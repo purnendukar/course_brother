@@ -3335,14 +3335,12 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-  .main-container {
-    margin-top: -3rem;
-  }
   .header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    margin-top: -1rem;
   }
   .header__testimonial {
     width: 100%;
@@ -3371,7 +3369,7 @@ body {
 }
 
 .uni_and_col {
-  height: 28vh;
+  height: 25rem;
   width: 100%;
   background-color: white;
   -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
@@ -3402,7 +3400,7 @@ body {
 }
 
 .uni_and_col .rslides li img {
-  height: 8rem;
+  height: 15rem;
   width: 15rem;
 }
 
@@ -3636,6 +3634,11 @@ body {
   border-top: 1px solid #cfcfcf;
   width: 100%;
 }
+
+.login_modal__main__oauth a {
+  display: none;
+}
+
 
 .login_modal__main__oauth h3 {
   text-transform: uppercase;
@@ -3871,6 +3874,10 @@ body {
   margin-bottom: 2rem;
 }
 
+.register_modal__main .mob__reg_to_login {
+  display: none;
+}
+
 .register_modal__main__title h2 {
   font-family: "LeagueSpartan";
   text-transform: uppercase;
@@ -4075,6 +4082,73 @@ body {
 
 .register_modal__appendix__login button:hover {
   padding: 1rem 2rem;
+}
+.mob__login_to_reg{
+  display:none;
+}
+@media screen and (max-width: 480px) {
+  .mob__login_to_reg{
+    display:block;
+  }
+  .login_modal {
+    height: 52rem;
+    left: 45%;
+    top: 45%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 35rem;
+  }
+  .login_modal__main {
+    width: 100%;
+  }
+  .login_modal__main__title {
+    margin-right: 0;
+  }
+  .login_modal__main__form {
+    margin-right: 0;
+  }
+  .login_modal__main__oauth {
+    margin-right: 0;
+  }
+  .login_modal__main__oauth a {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 1rem;
+  }
+  .login_modal__appendix {
+    display: none;
+  }
+  .register_modal {
+    height: 58rem;
+    left: 45%;
+    top: 45%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 35rem;
+  }
+  .register_modal__main {
+    width: 100%;
+  }
+  .register_modal__main__title {
+    margin-right: 0;
+  }
+  .register_modal__main__form {
+    margin-right: 0;
+  }
+  .register_modal__main .mob__reg_to_login {
+    display: block;
+    position: absolute;
+    bottom: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: blue;
+    cursor:pointer;
+  }
+  .register_modal__appendix {
+    display: none;
+  }
 }
 
 .navbar_main {
@@ -4734,8 +4808,41 @@ body {
   opacity: 0;
   z-index: 6;
 }
-
+.newsletter_popup1 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 70vh;
+  width: 45vw;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  -webkit-transform: scale(0) translate(-50%, -50%);
+          transform: scale(0) translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  opacity: 0;
+  z-index: 6;
+}
 .newsletter_popup__backdrop {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.432);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 7;
+}
+.newsletter_popup__backdrop1 {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.432);
@@ -4747,6 +4854,10 @@ body {
 }
 
 .newsletter_popup__backdrop--active {
+  display: block;
+}
+
+.newsletter_popup__backdrop1--active {
   display: block;
 }
 
@@ -4795,6 +4906,32 @@ body {
 }
 
 .newsletter_popup__main__close:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.newsletter_popup__main1 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: linear-gradient(135deg, #FF5E5B 0%, #DB324D 100%);
+}
+
+.newsletter_popup__main__close1 {
+  color: white;
+  font-size: 3rem;
+  position: absolute;
+  right: 1.7rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  top: 1rem;
+  cursor: pointer;
+}
+
+.newsletter_popup__main__close1:hover {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
@@ -5075,6 +5212,169 @@ body {
   }
 }
 
+.news_events__header {
+  height: 15rem;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#00000077), to(#00000077)), url("../assets/images/courses_img/ins1.jpg");
+  background: linear-gradient(to right, #00000077, #00000077), url("../assets/images/courses_img/ins1.jpg");
+  background-size: cover;
+  background-position: 20% 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.news_events__header__title {
+  color: white;
+  font-family: "LeagueSpartan";
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.news_events__main {
+  width: 82%;
+  margin: 3rem auto;
+  border: 2px solid #DB324D;
+  border-radius: 0.5rem;
+}
+
+.news_events__main__head {
+  background-color: #DB324D;
+  border-radius: 0.3rem 0.3rem 0 0;
+  padding: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(219, 50, 77, 0.8)), to(rgba(219, 50, 77, 0.8))), url("https://study.eshipglobal.com/img/StudentsIMG.jpg");
+  background: linear-gradient(to right, rgba(219, 50, 77, 0.8), rgba(219, 50, 77, 0.8)), url("https://study.eshipglobal.com/img/StudentsIMG.jpg");
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.news_events__main__head h4 {
+  color: white;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.news_events__main__head h6 {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.news_events__main__share {
+  background-color: #ffba00;
+  padding: 1rem;
+  margin: 1rem 1rem 0 1rem;
+  color: white;
+  display: inline-block;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.news_events__main__content {
+  padding: 1rem;
+}
+
+.news_events__main__content p {
+  color: darkgrey;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.news_events__more_updates {
+  width: 82%;
+  margin: 2rem auto;
+}
+
+.news_events__more_updates__title {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-size: 2rem;
+  font-family: "LeagueSpartan";
+}
+
+.news_events__more_updates__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.news_events__more_updates__item {
+  width: 32%;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+          box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.199);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.news_events__more_updates__item h4 {
+  text-transform: uppercase;
+  color: black;
+}
+
+.news_events__more_updates__item h3 {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: #DB324D;
+  font-weight: 700;
+}
+
+.news_events__more_updates__item h5 {
+  color: #b6b6b6;
+  font-weight: 500;
+}
+
+.news_events__more_updates__item:hover {
+  -webkit-box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.329);
+          box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.329);
+}
+
+@media screen and (max-width: 480px) {
+  .news_events__main {
+    width: 90%;
+  }
+  .news_events__main__head h4 {
+    font-size: 1.6rem;
+  }
+  .news_events__more_updates {
+    width: 90%;
+  }
+  .news_events__more_updates__item {
+    width: 48%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .news_events__more_updates__item h4 {
+    font-size: 1.1rem;
+  }
+  .news_events__more_updates__item h3 {
+    font-size: 1.2rem;
+  }
+  .news_events__more_updates__item h5 {
+    font-size: 1rem;
+  }
+}
 
 .policy_container {
   height: 60vh;

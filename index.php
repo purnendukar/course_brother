@@ -41,6 +41,16 @@ else
     function apply_form(a){
       window.location.href="./pages/form?id="+a;
     }
+    function lead_popup() {
+        $('.newsletter_popup__backdrop1').addClass('newsletter_popup__backdrop1--active');
+        $('.newsletter_popup1').css({
+          'transform': 'scale(1) translate(-50%, -50%)',
+          'opacity': '1',
+          'display': 'relative',
+          'z-index': '8'
+        });
+    }
+    
   </script>
 
   <title>CourseBrother.com | One Stop Destination for Learning</title>
@@ -61,6 +71,7 @@ else
     <?php include 'includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
 
+    <?php include "./includes/lead_popup.php"; ?>
 
     <!-- BACK_TO_TOP -->
     <?php include 'includes/back-to-top.php'; ?>
@@ -135,7 +146,7 @@ else
             <div class="header__carousel__item__content">
               <h4><?php echo urldecode($row['head']); ?></h4>
               <div class="header__carousel__item__content__sep"></div>
-              <button><a href="#">know more</a></button>
+              <button><a href="javascript:lead_popup();">know more</a></button>
             </div>
           </div>
             <?php } ?>
@@ -365,7 +376,7 @@ else
                   <h3><?php echo urldecode($row_1['heading']); ?></h3>
                   <p>
                     <?php echo substr(urldecode($row_1['content']),0,80)."..."; ?>
-                    <a href="#">read more</a>
+                    <a href="./pages/news-updates?id=<?php echo $row_1['id'];?>">read more</a>
                   </p>
                 </div>
                   <?php } ?>

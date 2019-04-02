@@ -88,12 +88,12 @@ else
 						</div>
 					</a>
 
-					<a href="#">
+					<!-- <a href="#">
 						<div class="college_dashboard__body__sidebar__item">
 							<i class="fas fa-file-alt"></i>
 							<h3>Student Documents</h3>
 						</div>
-					</a>
+					</a> -->
 					
 				</div>
 			</div>

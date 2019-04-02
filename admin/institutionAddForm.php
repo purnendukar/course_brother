@@ -91,7 +91,7 @@ else
 								if(file_exists('../'.strtolower($u_name))){
 									echo "<script>alert('University Name already exist')</script>";
 								}else{
-									$res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`,`fees`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."','".$_POST['reg_fees']."')");
+									$res=$conn_p->query("INSERT INTO `universities`(`u_name`, `about`, `img_src`, `keyword`,`fees`,`type_fees`) VALUES ('".$u_name."','".$about."','".$img_src."','".$keyword."','".$_POST['reg_fees']."','".$_POST['type_fees']."')");
 									if($res){
 										$admin=connect_mysql();
 										$admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','added university ".$u_name."')");
@@ -133,6 +133,7 @@ else
 										<div class="form-group">
                       <label for="reg_fees">Registration Fees</label>
                       <input name="reg_fees" type="text" class="form-control" placeholder="Registration Fees" required>
+                      <input name="type_fees" type="text" class="form-control" placeholder="Type of Fees" required>
                     </div>
                     <div class="form-group">
                       <label for="image">University Image</label>
