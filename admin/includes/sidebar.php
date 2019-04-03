@@ -348,6 +348,12 @@
 									<b class="fa fa-edit"></b> &nbsp; Lead User Info
 								</a>
 							</li>
+							<li class="">
+								<a href="./admission_form">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Admission Form
+								</a>
+							</li>
 						</ul>
 					</li> <!-- Menu Side Option Ends -->
 					

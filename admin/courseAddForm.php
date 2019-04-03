@@ -107,7 +107,7 @@ else
                     alert("Delivery Mode not selected");
                     return;
                 }
-
+                var fee_struc_n=document.getElementsByName("fee_struc_n");
                 var formData = new FormData();
                 formData.append("u_id",u_id);
                 formData.append("prg_id",prg_id);
@@ -121,6 +121,9 @@ else
                 formData.append("desc_s",document.getElementsByName('c_desc_s')[0].value);
                 formData.append("eligible",document.getElementsByName('eligibility')[0].value);
                 formData.append("terms",document.getElementsByName('terms')[0].value);
+                formData.append("fees_s",fees_struc[0].value);
+                formData.append("a_fees_s",fees_struc[1].value);
+                formData.append("s_fees_s",fees_struc[2].value);
                 var i=1;
                 var sem=2*(duration);
                 var s="";
@@ -250,14 +253,18 @@ else
                     </div>
                		<div class="form-group">
                     <label for="exampleInputPassword1">Add Full Fees</label>
-               		<input name="fees" type="number" step="0.0" class="form-control" placeholder="Full Fees" required>
-                    </div><div class="form-group">
+               	    	<input name="fees" type="text" class="form-control" placeholder="Full Fees">
+                      <input name="fee_struc_n" type="text" class="form-control" placeholder="Fee Structure Name"/>
+                    </div>
+                    <div class="form-group">
                     <label for="exampleInputPassword1">Add Annual Fees</label>
-               		<input name="annual_fees" type="number" step="0.0" class="form-control" placeholder="Annual Fees" required>
+               		    <input name="annual_fees" type="text" class="form-control" placeholder="Annual Fees" >
+                      <input name="fee_struc_n" type="text" class="form-control" placeholder="Fee Structure Name"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Add Semester Fees</label><br/>
-                        <input name="sem_fees" type="number" step="0.0" class="form-control" placeholder="Semester Fees" required>
+                        <input name="sem_fees" type="text" class="form-control" placeholder="Semester Fees">
+                      <input name="fee_struc_n" type="text" class="form-control" placeholder="Fee Structure Name"/>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Terms and Condition in Fees Section</label>

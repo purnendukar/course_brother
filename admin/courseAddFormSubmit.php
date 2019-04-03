@@ -20,7 +20,7 @@ $meta_keys=$_POST['meta_keys'];
 if($conn->query("SELECT * FROM `full_detail` WHERE c_id=".$c_id." and s_id=".$s_id." and d_mode_id=".$d_id." and u_id=".$u_id)->fetch_assoc()){
     die("Already Exist");
 }
-if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fees`,`a_fees`,`s_fees`,`term`, `duration`, `a_id`,  `d_mode_id`,`meta_desc`,`meta_key`) VALUES (".$prg_id.",".$c_id.",".$u_id.",".$s_id.",".$fees.",".$a_fees.",".$s_fees.",".$_POST['terms'].",".$duration.",'".$aff."',".$d_id.",'".$meta_desc."','".$meta_keys."')")){
+if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fees`,`a_fees`,`s_fees`,`fees_s`,`a_fees_s`,`s_fees_s`,`term`, `duration`, `a_id`,  `d_mode_id`,`meta_desc`,`meta_key`) VALUES (".$prg_id.",".$c_id.",".$u_id.",".$s_id.",".$fees.",".$a_fees.",".$s_fees.",".$fees_s.",".$a_fees_s.",".$s_fees_s.",".$_POST['terms'].",".$duration.",'".$aff."',".$d_id.",'".$meta_desc."','".$meta_keys."')")){
     $id=$conn->insert_id;
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
     $eligible= preg_replace("/[\n\r]/",'<br>',$eligible);
