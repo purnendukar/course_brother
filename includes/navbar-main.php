@@ -46,6 +46,11 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" alt="icon" /></span>
         <h5>register</h5>
       </div>
+        
+      <div class="navbar_main__appendix__compare">
+        <span><img src="<?php echo $d;?>./assets/svg/Icons/red/compare.svg" /></span>
+        <h5>compare</h5>
+      </div>
       <?php } ?>
       <div class="navbar_main__appendix__cart" onclick="window.location='<?php echo $d?>./cart'" style="cursor:pointer;">
         <h5>cart</h5>
@@ -53,7 +58,12 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
       </div>
       
       <?php if(isset($_COOKIE['email'])){?>
-        <div class="navbar_main__appendix__register " style="margin-right:0;margin-left:5rem;" onclick="window.location='<?php echo $d?>./pages/user-dashboard'">
+      
+        <div class="navbar_main__appendix__compare" style="margin-right:0;margin-left:5rem;" onclick="window.location.href='<?php echo $d?>./pages/course-results'">
+        <span><img src="<?php echo $d;?>./assets/svg/Icons/red/compare.svg" /></span>
+        <h5>compare</h5>
+        </div>
+        <div class="navbar_main__appendix__register " style="margin-right:0;" onclick="window.location='<?php echo $d?>./pages/user-dashboard'">
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" alt="icon" /></span>
         <h5>My Profile</h5>
       </div>
@@ -61,6 +71,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
         <span><img src="<?php echo $d?>./assets/svg/Icons/red/log-in.svg"  alt="icon"/></span>
         <h5>Logout</h5>
       </div>
+      
       <?php } ?>
     </div>
 
@@ -228,6 +239,12 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
     <div class="mob__sidebar__login">
       <button>LOG IN / REGISTER</button>
     </div>
+
+    <div class="mob__sidebar__compare" onclick="window.location.href='<?php echo $d?>./pages/course-results'">
+      <img src="<?php echo $d?>./assets/svg/Icons/red/compare.svg" alt="compare icon" />
+      <h4>compare courses</h4>
+    </div>
+
 
     <div class="mob__sidebar__sep"></div>
 

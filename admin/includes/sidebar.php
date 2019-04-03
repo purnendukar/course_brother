@@ -336,8 +336,8 @@
 					</li> <!-- Menu Side Option Ends -->
 					<li class="">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-bars"></i>
-							<span class="menu-text"> Leads </span>
+							<i class="menu-icon fa fa-list-alt"></i>
+							<span class="menu-text"> Leads & Forms </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
@@ -345,7 +345,7 @@
 							<li class="">
 								<a href="./lead">
 									<i class="menu-icon fa fa-caret-right"></i>
-									<b class="fa fa-edit"></b> &nbsp; Lead User Info
+									<b class="fa fa-edit"></b> &nbsp; Leads 
 								</a>
 							</li>
 							<li class="">
@@ -368,7 +368,7 @@
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-						<ul class="submenu">
+						<!-- <ul class="submenu">
 							<li class="">
 								<a href="./admission_form">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -376,7 +376,7 @@
 								</a>
 							</li>
 
-							<!-- <li class="">
+							<li class="">
 								<a href="#">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Form 2
@@ -388,10 +388,11 @@
 									<i class="menu-icon fa fa-caret-right"></i>
 									Form 3
 								</a>
-              				</li> -->
-						</ul>
+              				</li> 
+						</ul> -->
 
-					</li> <!-- Forms Side Option Ends -->
+					</li> 
+					<!-- Forms Side Option Ends -->
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list-alt"></i>

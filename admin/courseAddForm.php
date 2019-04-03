@@ -107,7 +107,7 @@ else
                     alert("Delivery Mode not selected");
                     return;
                 }
-                var fee_struc_n=document.getElementsByName("fee_struc_n");
+                var fees_struc_n=document.getElementsByName("fee_struc_n");
                 var formData = new FormData();
                 formData.append("u_id",u_id);
                 formData.append("prg_id",prg_id);
@@ -121,9 +121,10 @@ else
                 formData.append("desc_s",document.getElementsByName('c_desc_s')[0].value);
                 formData.append("eligible",document.getElementsByName('eligibility')[0].value);
                 formData.append("terms",document.getElementsByName('terms')[0].value);
-                formData.append("fees_s",fees_struc[0].value);
-                formData.append("a_fees_s",fees_struc[1].value);
-                formData.append("s_fees_s",fees_struc[2].value);
+                formData.append("fees_s",fees_struc_n[0].value);
+                formData.append("a_fees_s",fees_struc_n[1].value);
+                formData.append("s_fees_s",fees_struc_n[2].value);
+                formData.append("fees_d",document.getElementsByName("fees_d")[0].value);
                 var i=1;
                 var sem=2*(duration);
                 var s="";
@@ -246,12 +247,16 @@ else
                     <div class="form-group">
                       <label for="exampleInputEmail1">Specialisation Name</label>
                       <?php $res=$conn_p->query("select * from subject"); ?>
-               		<select class='course__add__select' name="subject">
-               			<option value="" selected>Specialisation</option>
-               			<?php while($row=$res->fetch_assoc()){ ?><option value="<?php echo $row['id'];?>"><?php echo strtoupper($row['sub_name']); ?></option><?php } ?>
-               		</select>
+                    <select class='course__add__select' name="subject">
+                      <option value="" selected>Specialisation</option>
+                      <?php while($row=$res->fetch_assoc()){ ?><option value="<?php echo $row['id'];?>"><?php echo strtoupper($row['sub_name']); ?></option><?php } ?>
+                    </select>
                     </div>
-               		<div class="form-group">
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Fees Description</label>
+               	    	<textarea name="fees_d" type="text" class="form-control" placeholder="Fees Description"></textarea>
+                    </div>
+               		  <div class="form-group">
                     <label for="exampleInputPassword1">Add Full Fees</label>
                	    	<input name="fees" type="text" class="form-control" placeholder="Full Fees">
                       <input name="fee_struc_n" type="text" class="form-control" placeholder="Fee Structure Name"/>

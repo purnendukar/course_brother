@@ -9,6 +9,9 @@ $prg_id=$_POST['prg_id'];
 $fees=$_POST['fees'];
 $s_fees=$_POST['s_fees'];
 $a_fees=$_POST['a_fees'];
+$fees_s=$_POST['fees_s'];
+$s_fees_s=$_POST['s_fees_s'];
+$a_fees_s=$_POST['a_fees_s'];
 $duration=$_POST['duration'];
 $desc=$_POST['description'];
 $eligible=$_POST['eligible'];
@@ -17,10 +20,14 @@ $sem_struc=$_POST['sem_struc'];
 $d_id=$_POST['d_mode_id'];
 $meta_desc=$_POST['meta_desc'];
 $meta_keys=$_POST['meta_keys'];
+$fees_d=$_POST['fees_d'];
+
+$admin=connect_mysql();
+
 if($conn->query("SELECT * FROM `full_detail` WHERE c_id=".$c_id." and s_id=".$s_id." and d_mode_id=".$d_id." and u_id=".$u_id)->fetch_assoc()){
     die("Already Exist");
 }
-if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fees`,`a_fees`,`s_fees`,`fees_s`,`a_fees_s`,`s_fees_s`,`term`, `duration`, `a_id`,  `d_mode_id`,`meta_desc`,`meta_key`) VALUES (".$prg_id.",".$c_id.",".$u_id.",".$s_id.",".$fees.",".$a_fees.",".$s_fees.",".$fees_s.",".$a_fees_s.",".$s_fees_s.",".$_POST['terms'].",".$duration.",'".$aff."',".$d_id.",'".$meta_desc."','".$meta_keys."')")){
+if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fees`,`a_fees`,`s_fees`,`fees_d`,`fee_s`,`a_fee_s`,`s_fee_s`,`term`, `duration`, `a_id`,  `d_mode_id`,`meta_desc`,`meta_key`,`update_by`) VALUES (".$prg_id.",".$c_id.",".$u_id.",".$s_id.",'".$fees."','".$a_fees."','".$s_fees."','".$fees_d."','".$fees_s."','".$a_fees_s."','".$s_fees_s."','".$_POST['terms']."',".$duration.",'".$aff."',".$d_id.",'".$meta_desc."','".$meta_keys."','".$admin->query("select * from user where id=".$_COOKIE['user_id'])->fetch_assoc()['u_name']."')")){
     $id=$conn->insert_id;
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
     $eligible= preg_replace("/[\n\r]/",'<br>',$eligible);
@@ -59,7 +66,6 @@ if($conn->query("INSERT INTO `full_detail`(`prg_id`, `c_id`, `u_id`, `s_id`, `fe
             fwrite($myfile, $txt);
             fclose($myfile);
             echo"1";
-            $admin=connect_mysql();
             $admin->query("INSERT INTO `user_activity`(`user_id`, `activity`) VALUES ('".$_COOKIE['user_id']."','course added')");
         
     }

@@ -104,11 +104,11 @@ else
           </div>
           <div class="detail__info__payment">
             <div class="detail__info__payment__onetime">
-              <h4>Rs <?php $fees=(int)$row['fees']; echo $fees; ?></h4>
+              <h4><?php $fees=(int)$row['fees']; echo $fees; ?></h4>
               <h4>ONE TIME PAYMENT</h4>
             </div>
             <div class="detail__info__payment__annual">
-              <h4>Rs <?php $a_fees=$fees/$row['duration'];  echo (int)$a_fees; ?></h4>
+              <h4><?php echo $row["a_fees"]; ?></h4>
               <h4>ANNUAL PAYMENT</h4>
             </div>
           </div>
@@ -158,7 +158,7 @@ else
               <table>
                   <?php
                     $c=0;$i=1;
-                    $sem=explode("|",$row_1['structure']);
+                    $sem=explode("|",urldecode($row_1['structure']));
                     while($c<$row['duration']){
                   ?>
                   <tr>
@@ -190,24 +190,10 @@ else
 
             <div id="tabs-fee">
               <h3 class='main_content__title'>COURSE FEE</h3>
-
-              <p class="main_content__body">Students have the following three options for paying the program fee:</p>
-              <h4 class='main_content__title'>Option 1:</h4>
-              <table>
-                <tr>
-                  <th>Structure </th>
-                  <th>Amount </th>
-                </tr>
-                <tr>
-                  <td>Admission Processing Fee </td>
-                  <td><?php echo "Rs ".$conn->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['fees'];?></td>
-                </tr>
-                <tr>
-                  <td>Full Fee Payment </td>
-                  <td><?php echo "Rs ".$row['fees']; ?> </td>
-                </tr>
-              </table>
-              <h4 class='main_content__title'>Option 2:</h4>
+              <?php $co=1;?>
+              <p class="main_content__body"><?php echo $row['fees_d']; ?></p>
+              <?php if($row['fees']!=""){?>
+              <h4 class='main_content__title'>Option <?php echo $co++;?>:</h4>
               <table>
                 <tr>
                   <th>Structure </th>
@@ -219,10 +205,12 @@ else
                 </tr>
                 <tr>
                   <td>Program fee per year </td>
-                  <td><?php echo "Rs ".$row['a_fees']; ?> </td>
+                  <td><?php echo $row['fees']; ?> </td>
                 </tr>
               </table>
-              <h4 class='main_content__title'>Option 3:</h4>
+              <?php } ?>
+              <?php if($row['a_fees']!=""){?>
+              <h4 class='main_content__title'>Option <?php echo $co++;?>:</h4>
               <table>
                 <tr>
                   <th>Structure </th>
@@ -233,10 +221,28 @@ else
                   <td><?php echo "Rs ".$conn->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['fees'];?></td>
                 </tr>
                 <tr>
-                  <td>Program fee per semester </td>
-                  <td><?php echo "Rs ".$row['s_fees']; ?> </td>
+                  <td>Program fee per year </td>
+                  <td><?php echo $row['a_fees']; ?> </td>
                 </tr>
               </table>
+              <?php } ?>
+              <?php if($row['s_fees']!=""){?>
+              <h4 class='main_content__title'>Option <?php echo $co++;?>:</h4>
+              <table>
+                <tr>
+                  <th>Structure </th>
+                  <th>Amount </th>
+                </tr>
+                <tr>
+                  <td>Admission Processing Fee </td>
+                  <td><?php echo "Rs ".$conn->query("select * from universities where u_id=".$row['u_id'])->fetch_assoc()['fees'];?></td>
+                </tr>
+                <tr>
+                  <td>Program fee per year </td>
+                  <td><?php echo $row['s_fees']; ?> </td>
+                </tr>
+              </table>
+              <?php } ?>
               <br>
                 <h3 class='main_content__title'>Terms & Condition</h3>
                 <div>
@@ -294,6 +300,7 @@ else
                 }
                 $used=$id_d;
             ?>
+            <?php if($row_t['id']!=""){ ?>
           <div class="related_courses__item" onclick="window.location.href='./course-detail?id=<?php echo $row_t['id']; ?>'">
             <h3 class='related_courses__item__uni'><?php $p=$conn->query("select u_name from universities where u_id=".$row_t['u_id']); echo $p->fetch_assoc()['u_name']; ?></h3>
             <div class="related_courses__item__sep"></div>
@@ -303,6 +310,7 @@ else
               <h4 class='related_courses__item__info__duration'><?php if($row_t['duration']>1){echo $row_t['duration']." YEARS";}else{echo $row_t['duration']." YEAR";}?>  </h4>
             </div>
           </div>
+            <?php }?>
             <?php } ?>
 
         </div>

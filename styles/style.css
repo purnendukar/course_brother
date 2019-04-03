@@ -4277,7 +4277,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-right: 8rem;
+  margin-right: 0rem;
   -webkit-transform: skewX(-10deg);
           transform: skewX(-10deg);
   cursor: pointer;
@@ -4301,6 +4301,44 @@ body {
   width: 1.5rem;
   padding: 0rem 0.6rem 0 0;
 }
+
+.navbar_main__appendix__compare {
+  background-color: white;
+  padding: 0 2rem 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 8rem;
+  -webkit-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+  cursor: pointer;
+}
+
+.navbar_main__appendix__compare > * {
+  -webkit-transform: skewX(10deg);
+          transform: skewX(10deg);
+}
+
+.navbar_main__appendix__compare h5 {
+  text-transform: uppercase;
+  color: #DB324D;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 0.5rem;
+}
+
+.navbar_main__appendix__compare img {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0.5rem 0.6rem 0 0;
+}
+
 
 .navbar_main__header {
   width: 100%;
@@ -4641,6 +4679,9 @@ body {
   .navbar_main__appendix__register {
     display: none;
   }
+  .navbar_main__appendix__compare {
+    display: none;
+  }
   .navbar_main__appendix__cart {
     all: initial;
     padding-right: 1.5rem;
@@ -4728,6 +4769,29 @@ body {
     font-size: 1.3rem;
     background-color: transparent;
     border-radius: 0.5rem;
+  }
+  .mob__sidebar__compare {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    height: 2rem;
+    padding-top: 2rem;
+  }
+  .mob__sidebar__compare img {
+    width: 2rem;
+    padding-right: 1rem;
+  }
+  .mob__sidebar__compare h4 {
+    text-transform: uppercase;
+    color: #DB324D;
+    font-size: 1.4rem;
+    font-weight: 600;
   }
   .mob__sidebar__sep {
     margin: 2rem 0;

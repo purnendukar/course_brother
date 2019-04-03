@@ -127,6 +127,11 @@ else
                                 alert("Select affiliation");
                                 return;
                             }
+                            var fee_struc_n=document.getElementsByName("fee_struc_n");
+                            formData.append("fees_s",fee_struc_n[0].value);
+                            formData.append("a_fees_s",fee_struc_n[1].value);
+                            formData.append("s_fees_s",fee_struc_n[2].value);
+                            formData.append("fees_d",document.getElementsByName("fees_d")[0].value);
                             formData.append("aff",t);
                             var meta_desc=document.getElementsByName("meta_desc")[0].value;
                             var meta_keys=document.getElementsByName("meta_keys")[0].value;
@@ -215,17 +220,24 @@ else
                		<?php $res=$conn_p->query("select * from courses"); ?>
                		<input class="form-control" value="<?php echo $conn_p->query("select * from subject where id=".$row['s_id'])->fetch_assoc()['sub_name']; ?>" disabled/>
                     </div>
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Fees Description</label>
+               	    	<textarea name="fees_d" disabled type="text" class="edit_i form-control" placeholder="Fees Description"><?php echo $row['fees_d'];?></textarea>
+                    </div>
                		<div class="form-group">
                     <label for="exampleInputPassword1">Add Full Fees</label>
-               		<input disabled name="fees" type="number" step="0.0" class="edit_i form-control" value="<?php echo $row['fees']; ?>" required>
+               		<input disabled name="fees" type="text" class="edit_i form-control" value="<?php echo $row['fees']; ?>" >
+                      <input disabled name="fee_struc_n" type="text" class="edit_i form-control" placeholder="Fee Structure Name" value="<?php echo $row['fee_s']; ?>"/>
                     </div>
                     <div class="form-group">
                     <label for="exampleInputPassword1">Add Annual Fees</label>
-               		<input disabled name="a_fees" type="number" step="0.0" class="edit_i form-control" placeholder="Annual Fees" value="<?php echo $row['a_fees']; ?>" required>
+               		<input disabled name="a_fees" type="number" type="text" class="edit_i form-control" placeholder="Annual Fees" value="<?php echo $row['a_fees']; ?>" >
+                      <input disabled name="fee_struc_n" type="text" class="edit_i form-control" placeholder="Fee Structure Name" value="<?php echo $row['a_fee_s']; ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" >Add Semester Fees</label><br/>
-                        <input disabled name="s_fees" type="number" step="0.0" class="edit_i form-control" placeholder="Semester Fees" value="<?php echo $row['s_fees']; ?>" required>
+                        <input disabled name="s_fees" type="text" class="edit_i form-control" placeholder="Semester Fees" value="<?php echo $row['s_fees']; ?>">
+                      <input disabled name="fee_struc_n" type="text" class="edit_i form-control" placeholder="Fee Structure Name" value="<?php echo $row['s_fee_s']; ?>"/>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Terms and Condition in Fees Section</label>
@@ -252,7 +264,7 @@ else
                         <label for="exampleInputPassword1" >Course Structure</label><br/>
                         <div id="structure_sec">
                             <?php $c_struc=$conn_p->query("select * from about_course where id=".$row['id'])->fetch_assoc()['structure'];
-                            $c_struc=explode("|",$c_struc);
+                            $c_struc=explode('|',urldecode($c_struc));
                             for($i=0;$i<count($c_struc);$i++){
                                 $s=str_replace("<br>","\n",$c_struc[$i]);
                                 echo "<p>Semester ".($i+1)."</p>"."<textarea disabled name='sem_struc' class=\"edit_i form-control\">".urldecode($s)."</textarea>";

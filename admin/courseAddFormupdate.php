@@ -3,16 +3,20 @@ include "./includes/mysql_connect.php";
 $conn=connect_mysql_page();
 $id=$_POST['id'];
 $aff=$_POST['aff'];
+$fees_d=$_POST['fees_d'];
 $fees=$_POST['fees'];
 $a_fees=$_POST['a_fees'];
 $s_fees=$_POST['s_fees'];
+$fees_s=$_POST['fees_s'];
+$a_fees_s=$_POST['a_fees_s'];
+$s_fees_s=$_POST['s_fees_s'];
 $duration=$_POST['duration'];
 $desc=$_POST['description'];
 $eligible=$_POST['eligible'];
 $sem_struc=$_POST['sem_struc'];
 $meta_desc=$_POST['meta_desc'];
 $meta_keys=$_POST['meta_keys'];
-if($conn->query("UPDATE `full_detail` SET `fees`=".$fees.",`a_fees`=".$a_fees.",`s_fees`=".$s_fees.",`term`='".$_POST['terms']."',`duration`=".$duration.",`a_id`='".$aff."' WHERE id=".$id)){
+if($conn->query("UPDATE `full_detail` SET `fees_d`='".$fees_d."',`fees`='".$fees."',`a_fees`='".$a_fees."',`s_fees`='".$s_fees."',`fee_s`='".$fees_s."',`a_fee_s`='".$a_fees_s."',`s_fee_s`='".$s_fees_s."',`term`='".$_POST['terms']."',`duration`=".$duration.",`a_id`='".$aff."' WHERE id=".$id)){
     $sem_struc= preg_replace("/[\n\r]/",'<br>',$sem_struc);
     $eligible= preg_replace("/[\n\r]/",'<br>',$eligible);
     if($conn->query("UPDATE `about_course` SET `overview`='".$desc."', `structure`='".$sem_struc."',`short_desc`='".$_POST['desc_s']."', eligible='".$eligible."' where id=".$id)){

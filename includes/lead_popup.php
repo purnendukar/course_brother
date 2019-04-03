@@ -60,15 +60,15 @@ $id_l="";
 <div class="newsletter_popup1">
   <div class="newsletter_popup__main1">
     <div class="newsletter_popup__main__close1"><i class="fa fa-times"></i></div>
-    <h2 class='newsletter_popup__main__title'>We will contact you</h2>
+    <h2 class='newsletter_popup__main__title' style="text-align:center;width:100%;margin-top:25px;">We will contact you</h2>
     <div class="newsletter_popup__main__form">
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
         <input name="full_name" type="text" placeholder='your full name'>
         <input name="c_name" type="text" placeholder='your city name'>
         <input name="phn_num" type="tel" placeholder='your phone number'>
         <input name="e_id" type="email" placeholder='your email address' required>
-        <span>
-          <input type="submit" value="Submit">
+        <span style="text-align:center;width:100%;">
+          <input type="submit" value="Submit" style="position:relative;left:26%;"/>
         </span>
       </form>
     </div>
