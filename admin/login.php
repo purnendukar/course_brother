@@ -94,7 +94,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" name="username" placeholder="Username" />
+															<input type="text" id="email_"  class="form-control" name="username" placeholder="Username" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
@@ -142,7 +142,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input id="email_" type="email" class="form-control" placeholder="Email" />
+															<input type="email" class="form-control" placeholder="Email" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
@@ -321,8 +321,9 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 		<script>
 			function forget_password(){
 				var email_=document.getElementById("email_");
-				if(email_value==""){
-					alert("enter you username");
+				if(email_.value==""){
+					alert("enter you username or email");
+					alert(email_.value);
 				}else{
 					var f=new FormData();
                         f.append("u_name",email_.value);
@@ -335,15 +336,14 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
                                 data: f,
                                 complete: function (data) {
                                     if(data.responseText=='1'){
-                                        alert("Data Deleted");
-                                        document.getElementById("row_"+a).style.display="none";
+                                        alert("Password sent in mail");
                                     }else{
-                                        alert("Data Not Deleted");
+                                        alert("Something went wrong");
+                                        console.log(data.responseText);
                                     }
                                 }
                             });
                     }
-				}
 			}
 		</script>
 	</body>
