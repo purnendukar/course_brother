@@ -60,7 +60,7 @@ $id_l="";
 <div class="newsletter_popup1">
   <div class="newsletter_popup__main1">
     <div class="newsletter_popup__main__close1"><i class="fa fa-times"></i></div>
-    <h2 class='newsletter_popup__main__title' style="text-align:center;width:100%;margin-top:25px;">We will contact you</h2>
+    <h2 class='newsletter_popup__main__title' style="text-align:center;width:100%;margin-top:25px;"><?php echo $conn->query("select * from enquire_popup where id=1")->fetch_assoc()['head']; ?></h2>
     <div class="newsletter_popup__main__form">
       <form method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
         <input name="full_name" type="text" placeholder='your full name'>

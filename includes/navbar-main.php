@@ -47,7 +47,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
         <h5>register</h5>
       </div>
         
-      <div class="navbar_main__appendix__compare">
+      <div class="navbar_main__appendix__compare" onclick="window.location.href='<?php echo $d?>./pages/course-results'">
         <span><img src="<?php echo $d;?>./assets/svg/Icons/red/compare.svg" /></span>
         <h5>compare</h5>
       </div>

@@ -33,6 +33,41 @@ else
 
 	<!-- CUSTOM CSS -->
 	<link rel='stylesheet' href='../styles/style.css' />
+
+	<style>
+		.accordion {
+			background-color: #de4651;
+			color: white;
+			cursor: pointer;
+			padding: 18px;
+			width: 60%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+			border-bottom:1px solid white;
+		}
+
+		.active, .accordion:hover {
+			background-color: #ccc;
+		}
+
+		.panel {
+			padding: 0 18px;
+			background-color: white;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.2s ease-out;
+		}
+		.panel .month{
+			margin:10px;
+			font-size:13px;
+			display:block;
+			text-decoration:none;
+		}
+	</style>
+
 </head>
 <body>
 	<div class="main-container">
@@ -83,7 +118,7 @@ else
 
 		<div class="main">
 			<div class="main__contents">
-				<?php $res=$conn->query("select * from blogs");
+				<?php $res=$conn->query("select * from blogs limit 12");
 				while($row=$res->fetch_assoc()){
 				?>
 				<div class="main__contents__snippets">
@@ -94,22 +129,55 @@ else
 				
 				</div>
 				<?php } ?>
-				
+				<div style="display:block;width:100%;margin:20px;">
+					Page: 
+					<?php $p=(int)$conn->query("select count(*) as c from blogs")->fetch_assoc()['c']; 
+						for($i=1;$i<=(int)($p+12)/12;$i++){
+							echo "<a style='text-decoration:none;margin:10px;' href='javascript:select_page(".$i.");'>".$i."</a> ";
+						}
+					?>
+				</div>
 			</div>
+			
 			<div class="main__sidebar">
 				<div class="main__sidebar__side">
-					<h2>Popular Blogs</h2>
-					<?php $res=$conn->query("SELECT * FROM `blogs` ORDER BY `read_count` DESC");
-					$count_t=0;
-					while($row=$res->fetch_assoc()){
-					    if($count_t>=5){
-					        break;
-					    }
-					?>
-						<p style="width:70%; margin-bottom:5px;"><?php echo "<a href='./blog-detail?id=".$row['id']."' style='text-decoration:none;'>".$row['heading']."</a>";?></p>
+					<h2>Archieve Blog</h2>
+					<?php 
+					$years=array();
+					$res_year=$conn->query("select distinct(year(created)) as years from blogs order by years desc");
+					while($row=$res_year->fetch_assoc()){
+						?><div class="accordion"><?php echo $row['years'];?></div>
+						<div class="panel">
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','01')">January</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','02')">February</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','03')">March</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','04')">April</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','05')">May</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','06')">June</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','07')">July</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','08')">August</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','09')">September</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','10')">September</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','11')">November</a>
+							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','12')">December</a>
+						</div>
+						<div class="accordion"><?php echo $row['years'];?></div>
+						<div class="panel">
+							<a class="month">January</a>
+							<a class="month">February</a>
+							<a class="month">March</a>
+							<a class="month">April</a>
+							<a class="month">May</a>
+							<a class="month">June</a>
+							<a class="month">August</a>
+							<a class="month">September</a>
+							<a class="month">November</a>
+							<a class="month">December</a>
+						</div>
+						<p style="width:70%; margin-bottom:5px;"><?php echo "<a href='./blog-detail?id=' style='text-decoration:none;'></a>";?></p>
 					<?php $count_t += 1; } ?>
 				</div>
-				<hr>
+				<!-- <hr>
 				<div class="main__sidebar__social">
 					<h2>Connect with us</h2>
 					<div class="main__sidebar__social__bar">
@@ -119,7 +187,7 @@ else
 						<li><a id="linkedIn" href="#"><i class="fab fa-linkedin-in"></i></a></li>
 					</div>
 					
-				</div>
+				</div> -->
 				<!-- <hr>
 				<div class="main__sidebar__tagbar">
 					<h2>Tags</h2>
@@ -165,5 +233,55 @@ else
     }, 1000);
     </script>
 	<script src="app.js"></script>
+	<script>
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight){
+				panel.style.maxHeight = null;
+			} else {
+				panel.style.maxHeight = panel.scrollHeight + "px";
+			} 
+		});
+	}
+	function show_blog(year,month){
+		main__contents=document.getElementsByClassName("main__contents")[0];
+		if (window.XMLHttpRequest) {
+    	// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp = new XMLHttpRequest();
+		} else {
+      // code for IE6, IE5
+		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				main__contents.innerHTML = this.responseText;
+			}
+    };
+		xmlhttp.open("GET","get_detail?y="+year+"&m="+month);
+    xmlhttp.send();
+	}
+	function select_page(p){
+		main__contents=document.getElementsByClassName("main__contents")[0];
+		if (window.XMLHttpRequest) {
+    	// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp = new XMLHttpRequest();
+		} else {
+      // code for IE6, IE5
+		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				main__contents.innerHTML = this.responseText;
+			}
+    };
+		xmlhttp.open("GET","page_blog?p="+p);
+    xmlhttp.send();
+	}
+	</script>
 </body>
 </html>

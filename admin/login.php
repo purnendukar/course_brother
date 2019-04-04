@@ -71,10 +71,10 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Nextgen</span>
-									<span class="white" id="id-text2">Shiksha</span>
+									<span class="red">Course </span>
+									<span class="white" id="id-text2">Brother</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; Nextgen shiksha</h4>
+								<h4 class="blue" id="id-company-text">&copy; Course Brother</h4>
 							</div>
 
 							<div class="space-6"></div>
@@ -110,8 +110,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 
 													<div class="clearfix">
 														<label class="inline">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"> Remember Me</span>
+															<span class="lbl"><a href="javascript:forget_password();">Forget Password</a></span>
 														</label>
 
 														<button type="submit" value="Login" name="Login" class="width-35 pull-right btn btn-sm btn-primary">
@@ -119,7 +118,6 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 															<span class="bigger-110">Login</span>
 														</button>
 													</div>
-
 													<div class="space-4"></div>
 												</fieldset>
 											</form>
@@ -144,7 +142,7 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input id="email_" type="email" class="form-control" placeholder="Email" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
@@ -319,6 +317,34 @@ if(isset( $_POST['username']) and isset($_POST['password'])){
 			 });
 			 
 			});
+		</script>
+		<script>
+			function forget_password(){
+				var email_=document.getElementById("email_");
+				if(email_value==""){
+					alert("enter you username");
+				}else{
+					var f=new FormData();
+                        f.append("u_name",email_.value);
+                        $.ajax({
+                                url: "./forget_password.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: f,
+                                complete: function (data) {
+                                    if(data.responseText=='1'){
+                                        alert("Data Deleted");
+                                        document.getElementById("row_"+a).style.display="none";
+                                    }else{
+                                        alert("Data Not Deleted");
+                                    }
+                                }
+                            });
+                    }
+				}
+			}
 		</script>
 	</body>
 </html>

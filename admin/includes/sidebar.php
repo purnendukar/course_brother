@@ -358,7 +358,7 @@
 					</li> <!-- Menu Side Option Ends -->
 					
 
-					<li class="">
+					<!-- <li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list-alt"></i>
 
@@ -368,7 +368,7 @@
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-						<!-- <ul class="submenu">
+						<ul class="submenu">
 							<li class="">
 								<a href="./admission_form">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -389,9 +389,9 @@
 									Form 3
 								</a>
               				</li> 
-						</ul> -->
+						</ul>
 
-					</li> 
+					</li>  -->
 					<!-- Forms Side Option Ends -->
 					<li class="">
 						<a href="#" class="dropdown-toggle">
@@ -456,6 +456,13 @@
 								<a href="./preloader">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Preloader
+								</a>
+							</li>
+							
+							<li class="">
+								<a href="./enquire_popup">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Enquire Pop Up
 								</a>
 							</li>
 						</ul>
