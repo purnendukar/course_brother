@@ -3,16 +3,16 @@
     $conn=connect_mysql();
     
     $name="".$_POST['u_name'];
-    $pass=$conn->query("select * from user where u_name='".$name."' or email='".$email."'")->fetch_assoc()['password'];
+    $pass=$conn->query("select * from user where u_name='".$name."' or email='".$name."'")->fetch_assoc()['password'];
     
     
 
-    ini_set('SMTP','smtp.zoho.com');
-    ini_set('smtp_port',465);
-    ini_set('sendmail_from', 'shyam.d@coursebrother.com');
+    // ini_set('SMTP','smtp.zoho.com');
+    // ini_set('smtp_port',465);
+    // ini_set('sendmail_from', 'shyam.d@coursebrother.com');
     
     //define the receiver of the email
-    $to = $conn->query("select * from user where u_name='".$name."' or email='".$email."'")->fetch_assoc()['email'];
+    $to = $conn->query("select * from user where u_name='".$name."' or email='".$name."'")->fetch_assoc()['email'];
     //define the subject of the email
     $subject = 'Test for title'; 
     //define the message to be sent. Each line should be separated with \n
@@ -23,10 +23,8 @@
     
     //send the email
     $mail_sent = mail($to, $subject, $message, $headers);
-    mail($to, $subject, $message, $headers);
-    
     //if the message is sent successfully print "Mail sent correctly". Otherwise print "Mail failed" 
-    echo $mail_sent ? "<script>alert('Passwird sent to your mail');</script>" : "<script>alert('Something went wrong');</script>";
+    echo $mail_sent ? "1" : "0";
     
     
 //   $to = "rijusuman1996@gmail.com"; // <– replace with your address here
@@ -72,7 +70,5 @@
 //     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 // }
 
-    $t=explode("/",$_GET['url']);
-    echo "<script>window.location.href='".$t[count($t)-1]."'</script>";
     
 ?>
