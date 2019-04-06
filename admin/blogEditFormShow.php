@@ -179,7 +179,7 @@ else
 									 </div>
 									 <div class="form-group">
 									 	<?php if($row['title_bg']!="" && $row['title_bg']!=null){
-											 echo "<img id='title_bg' src='.".$row['title_bg']."' style='width:100%;height:40rem;object-fit: cover;'>";
+											 echo "<img id='title_bg' src='.".$row['title_bg']."' style='width:50%;height:20rem;object-fit: cover;'><br>";
 										 }?>
                       <label for="exampleInputPassword1">Title Bar Background</label>
                       <input disabled type="file" name="image_" accept="image/*" class="form-control">
@@ -190,7 +190,7 @@ else
                		</div>
 									 <div class="form-group">
 									 	<?php if($row['img_src']!="" && $row['img_src']!=null){
-											 echo "<img id='blog_img' src='.".$row['img_src']."' style='width:100%;'>";
+											 echo "<img id='blog_img' src='.".$row['img_src']."' style='width:50%;height:100px;object-fit:cover;'><br>";
 										 }?>
                       <label for="exampleInputPassword1">Blog Image</label>
                       <input disabled type="file" name="image_" accept="image/*" class="form-control">
@@ -206,7 +206,7 @@ else
                     <div class="form-group">
 											<label for="exampleInputPassword1">Thumnail</label>
 											<?php if($row['thumnail']!="" && $row['thumnail']!=null){
-											 echo "<img id='thumnail' src='.".$row['thumnail']."' style='width:100%;'>";
+											 echo "<br><img id='thumnail' src='.".$row['thumnail']."' style='width:25%;'>";
 										 }?>
                       <input disabled id="thumnail" type="file" name="image_" accept="image/*" class="form-control">
                     </div>

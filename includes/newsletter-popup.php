@@ -1,4 +1,3 @@
-
 <?php
 
 $id_l="";
@@ -9,7 +8,7 @@ function set_s_cookie($e_id){
             $conn=connect_mysql();
         echo "<script>var now=new Date();
  console.log(now.toUTCString());
- now.setTime(now.getTime()+ 10*365*24*60*60*1000);
+ now.setTime(now.getTime()+ 24*60*60*1000);
  console.log(now.toUTCString()); 
  var tr=now.toUTCString();
  document.cookie=\"e_id=".$e_id.";expires=\"+tr+\";path=/\";</script>";
@@ -42,6 +41,37 @@ function set_s_cookie($e_id){
         if($_POST['e_id']!=''){
             $e_id=$_POST['e_id'];
             set_s_cookie($e_id);
+            
+              $name="".$_POST['uname'];
+              $email=$_POST['e_id'];
+              $phn="".$_POST['phn'];
+              $city="";
+              $str="I am ".strtoupper($name).",";
+              if(isset($_POST['city'])){
+                  $city="".$_POST['city'];
+                  $str.=" halting from ".strtoupper($city).",";
+              }
+            
+              ini_set('SMTP','smtp.zoho.com');
+              ini_set('smtp_port',465);
+              ini_set('sendmail_from', 'shyam.d@coursebrother.com');
+              
+              //define the receiver of the email
+              $to = strtolower($email);
+              //define the subject of the email
+              $subject = 'Test for title'; 
+              //define the message to be sent. Each line should be separated with \n
+              $message = 'Newsletter Subscribe'; 
+              
+              //define the headers we want passed. Note that they are separated with \r\n
+              $headers = 'From: shyam.d@coursebrother.com\r\n';
+              
+              //send the email
+              $mail_sent = mail($to, $subject, $message, $headers);
+              mail('shyam.d@coursebrother.com', 'Enquiry', 'Lead Generated \n\n Name: '.$name.' \nEmail: '.$email.' \nContact no.: '.$phn_no.' \nCity: '.$city, $headers);
+              
+              //if the message is sent successfully print "Mail sent correctly". Otherwise print "Mail failed" 
+              echo $mail_sent ? "<script>alert('Thank you');</script>" : "<script>alert('Something went wrong');</script>";
         }
     }?>
 <!-- NEWSlETTER_POPUP -->
@@ -79,4 +109,3 @@ function set_s_cookie($e_id){
         
 }
 ?>
-

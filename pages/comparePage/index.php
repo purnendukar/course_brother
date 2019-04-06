@@ -1,5 +1,5 @@
 <div class="compare_bg"></div>
-<div style="width:100%; height:100%;">
+<div class="modal_bg" style="width:100%; height:100%;">
 	<div class="modal">
 		<div class="modal--content">
 					<div class="modal--content__header">

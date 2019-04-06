@@ -1,8 +1,8 @@
 <?php
 
 $id_l="";
-    if(isset($_POST['e_id'])){
-        if($_POST['e_id']!=''){
+    if(isset($_POST['email_id'])){
+        if($_POST['email_id']!=''){
           $sql="INSERT INTO `enquire`(`email`, `name`, `city`, `phn_no`) VALUES ( '".$e_id."', '";
                 if(isset($_POST['full_name'])){
                     $sql=$sql.$_POST['full_name']."', '";
@@ -17,7 +17,7 @@ $id_l="";
             if($conn->query($sql)){
               
               $name="".$_POST['uname'];
-              $email="".$_POST['email'];
+              $email=$_POST['email_id'];
               $phn="".$_POST['phn'];
               $course="".$_POST['course_t'];
               $city="";
@@ -26,17 +26,14 @@ $id_l="";
                   $city="".$_POST['city'];
                   $str.=" halting from ".strtoupper($city).",";
               }
-              $str.=" and I would like to discuss about ".strtoupper($course)." course. My email address is ".$email.", and my phone number is ".strtoupper($phn).". THANK YOU.";
               $e=$conn->query("SELECT * FROM `contact_info` where id=2")->fetch_assoc()['info'];
-              
-              
 
               ini_set('SMTP','smtp.zoho.com');
               ini_set('smtp_port',465);
               ini_set('sendmail_from', 'shyam.d@coursebrother.com');
               
               //define the receiver of the email
-              $to = $email;
+              $to = strtolower($email);
               //define the subject of the email
               $subject = 'Test for title'; 
               //define the message to be sent. Each line should be separated with \n
@@ -66,7 +63,7 @@ $id_l="";
         <input name="full_name" type="text" placeholder='your full name'>
         <input name="c_name" type="text" placeholder='your city name'>
         <input name="phn_num" type="tel" placeholder='your phone number'>
-        <input name="e_id" type="email" placeholder='your email address' required>
+        <input name="email_id" type="email" placeholder='your email address' required>
         <span style="text-align:center;width:100%;">
           <input type="submit" value="Submit" style="position:relative;left:26%;"/>
         </span>

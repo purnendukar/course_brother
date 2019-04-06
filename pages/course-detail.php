@@ -75,6 +75,8 @@ else
     <?php include('../includes/newsletter-popup.php'); ?>
     <!-- NEWSLETTER_POPUP -->
 
+    <?php include "../includes/lead_popup.php"; ?>
+
 
     <!-- COURSE_DETAIL -->
     <div class="course_detail">
@@ -129,7 +131,7 @@ else
             <li class='tab'>FEE</li>
             <li class='tab'>ELIGIBILITY</li>
           </ul>
-          <button onclick="apply_now();">APPLY NOW</button>
+          <button onclick="lead_popup();">APPLY NOW</button>
         </div>
         <div class="course_detail__body__main">
           <div id='tab-container' class="main_content tab-container">
@@ -253,7 +255,7 @@ else
             <div id="tabs-eligibility">
               <h3 class='main_content__title'>COURSE ELIGIBILITY</h3>
               <p class='main_content__body'>
-                <?php echo $conn->query("select * from about_course where id=".$_GET['id'])->fetch_assoc()['eligible'];?>
+                <?php echo urldecode($conn->query("select * from about_course where id=".$_GET['id'])->fetch_assoc()['eligible']);?>
               </p>
             </div>
 

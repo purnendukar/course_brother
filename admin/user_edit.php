@@ -173,12 +173,19 @@ else
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="institutionAddForm,institutionEditForm,institutionDeleteForm" <?php if(strpos($row['access'], 'institutionAddForm,institutionEditForm,institutionDeleteForm') !== false){echo 'checked';} ?>> University Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="courseAddForm,courseEditForm" <?php if(strpos($row['access'], 'courseAddForm,courseEditForm') !== false){echo 'checked';} ?>> Course Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="specialisation_add,specialisation_edit,specialisation_delete" <?php if(strpos($row['access'], 'specialisation_add,specialisation_edit,specialisation_delete') !== false){echo 'checked';} ?>> Specialisation Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="ProgramEditForm" > Program Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="deliverymodeFormm" > Delivery Mode Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="affiliationForm" > Affiliation Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user" > User</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_edit"> User Edit</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="user_add"> User Add</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="admission_form" > Admission Form</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="lead" > Leads</div>
                       <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="activity_log" > Activity Log</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="student_popup" > Student Pop Up</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="lead_popup" > Lead Pop Up</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="affiliationForm" > Affiliation Edit</div>
+                      <div style="display:inline-block;font-size:15px;padding:5px;"><input name="pages" type="checkbox" value="affiliationForm" > Affiliation Edit</div>
                     </div>
                     <script>make_check('<?php echo $row['access'];?>');</script>
                     <div class="form-group">

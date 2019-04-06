@@ -41,15 +41,6 @@ else
     function apply_form(a){
       window.location.href="./pages/form?id="+a;
     }
-    function lead_popup() {
-        $('.newsletter_popup__backdrop1').addClass('newsletter_popup__backdrop1--active');
-        $('.newsletter_popup1').css({
-          'transform': 'scale(1) translate(-50%, -50%)',
-          'opacity': '1',
-          'display': 'relative',
-          'z-index': '8'
-        });
-    }
     
   </script>
 
@@ -239,7 +230,7 @@ else
                   </div>
                 </div>
                 <div class="featured_courses__body__item__buttons">
-                  <button onclick="apply_form('<?php echo $row['id'];?>')">apply now</button>
+                  <button onclick="lead_popup();">apply now</button>
                     <button traget="blank" onclick=<?php echo "\"window.open('./pages/course-detail?id=".$row['id']."')\""?>>read more</button>
                 </div>
               </div>
@@ -320,7 +311,7 @@ else
                             }if($row['heading']=="universities"){
                                 $res_t1=$conn->query("select * from universities");
                                 while($row_t1=$res_t1->fetch_assoc()){
-                                ?> <a href='<?php echo "./pages/course-results.p?course=all ".$row_t1['u_name']; ?>'><li><?php echo $row_t1['u_name'];?></li></a>  <?php }
+                                ?> <a href='<?php echo "./pages/course-results?course=all ".$row_t1['u_name']; ?>'><li><?php echo $row_t1['u_name'];?></li></a>  <?php }
                             }if($row['heading']=="diploma & pg diploma courses"){
                                 $res_t1=$conn->query("select DISTINCT(s_id) as c from full_detail where prg_id=4 ");
                                 while($row_t1=$res_t1->fetch_assoc()){

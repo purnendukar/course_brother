@@ -44,7 +44,7 @@ function register(){
                     complete: function (data) {
                         if(data.responseText=='1'){
                             var now=new Date();
-                            now.setTime(now.getTime()+ 10*365*24*60*60*1000);
+                            now.setTime(now.getTime()+ 24*60*60*1000);
                             var tr=now.toUTCString();
                             document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
                             window.location.href=window.location;
@@ -76,7 +76,7 @@ function login(){
         complete: function (data) {
             if(data.responseText=='1'){
                 var now=new Date();
-                now.setTime(now.getTime()+ 10*365*24*60*60*1000);
+                now.setTime(now.getTime()+ 24*60*60*1000);
                 var tr=now.toUTCString();
                 document.cookie="e_id="+input_[0].value+";expires="+tr+";path=/";
                 window.location.href=window.location;

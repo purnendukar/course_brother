@@ -1,15 +1,15 @@
 <?php
-    include "../includes/mysql_connect.php";
+    include "./includes/mysql_connect.php";
     $conn=connect_mysql();
     
-    $name="".$_POST['u_name'];
+    $name=$_POST['u_name'];
     $pass=$conn->query("select * from user where u_name='".$name."' or email='".$name."'")->fetch_assoc()['password'];
     
-    
 
-    // ini_set('SMTP','smtp.zoho.com');
-    // ini_set('smtp_port',465);
-    // ini_set('sendmail_from', 'shyam.d@coursebrother.com');
+
+    ini_set('SMTP','smtp.zoho.com');
+    ini_set('smtp_port',465);
+    ini_set('sendmail_from', 'shyam.d@coursebrother.com');
     
     //define the receiver of the email
     $to = $conn->query("select * from user where u_name='".$name."' or email='".$name."'")->fetch_assoc()['email'];

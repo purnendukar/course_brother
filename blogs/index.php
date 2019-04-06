@@ -101,7 +101,7 @@ else
 					<div class="siema__image">
 						<img src=".<?php echo $row['thumnail']; ?>" alt="">
 						<div class="siema__text">
-							<h1><?php echo $row['heading'];?></h1>
+							<h1 ><?php echo $row['heading'];?></h1>
 							<p><?php echo substr(str_replace('<br>','',$row['content']),0,60)."..."; ?></p>
 							<button class="siema__image__button" onclick="window.location.href='./blog-detail?id=<?php echo $row['id'];?>'" >Read</button>
 						</div>
@@ -123,7 +123,7 @@ else
 				?>
 				<div class="main__contents__snippets">
 					<img src="<?php echo ".".$row['thumnail']?>" alt="Blog Image">
-					<a href=""><h3><?php echo $row['heading']?></h3></a>
+					<a href="./blog-detail?id=<?php echo $row['id'];?>"><h3><?php echo $row['heading']?></h3></a>
 					
 					<p><?php echo substr(str_replace('<br>','',$row['content']),0,60)."... <a style='color:red;' href='./blog-detail?id=".$row["id"]."'>Read More</a>";?></p>
 				
@@ -141,7 +141,7 @@ else
 			
 			<div class="main__sidebar">
 				<div class="main__sidebar__side">
-					<h2>Archieve Blog</h2>
+					<h2>Archive Blog</h2>
 					<?php 
 					$years=array();
 					$res_year=$conn->query("select distinct(year(created)) as years from blogs order by years desc");
@@ -160,19 +160,6 @@ else
 							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','10')">September</a>
 							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','11')">November</a>
 							<a class="month" href="javascript:show_blog('<?php echo $row['years']; ?>','12')">December</a>
-						</div>
-						<div class="accordion"><?php echo $row['years'];?></div>
-						<div class="panel">
-							<a class="month">January</a>
-							<a class="month">February</a>
-							<a class="month">March</a>
-							<a class="month">April</a>
-							<a class="month">May</a>
-							<a class="month">June</a>
-							<a class="month">August</a>
-							<a class="month">September</a>
-							<a class="month">November</a>
-							<a class="month">December</a>
 						</div>
 						<p style="width:70%; margin-bottom:5px;"><?php echo "<a href='./blog-detail?id=' style='text-decoration:none;'></a>";?></p>
 					<?php $count_t += 1; } ?>

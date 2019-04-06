@@ -129,6 +129,7 @@ loginButton.addEventListener('click', function() {
 mobLoginButton.addEventListener('click', function() {
   loginModalBackdrop.classList.add('login_modal__backdrop--active');
   loginModal.classList.add('login_modal--active');
+  sidebarMenu.style.left = '-30rem';
 });
 
 loginModalClose.addEventListener('click', function() {
@@ -298,9 +299,9 @@ sidebarMenuCloser.addEventListener('click', () => {
   sidebarMenu.style.left = '-30rem';
 });
 
-mobLoginButton.addEventListener('click', () => {
-  sidebarMenu.style.left = '-30rem';
-});
+// mobLoginButton.addEventListener('click', () => {
+//   sidebarMenu.style.left = '-30rem';
+// });
 
 
 
@@ -342,3 +343,14 @@ registerModalEyes.forEach((eye, index) => {
     }
   });
 });
+
+
+function lead_popup() {
+  $('.newsletter_popup__backdrop1').addClass('newsletter_popup__backdrop1--active');
+  $('.newsletter_popup1').css({
+    'transform': 'scale(1) translate(-50%, -50%)',
+    'opacity': '1',
+    'display': 'relative',
+    'z-index': '8'
+  });
+}

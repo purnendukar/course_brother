@@ -235,11 +235,18 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
     <i class='fa fa-times'></i>
   </div>
   <div class="mob__sidebar__container">
-
+  <?php if(!(isset($_COOKIE['email']))){?>
     <div class="mob__sidebar__login">
       <button>LOG IN / REGISTER</button>
     </div>
-
+  <?php } else{ ?>
+    <div class="mob__sidebar__compare" style="padding-top:1rem" onclick="window.location='<?php echo $d?>./pages/user-dashboard'">
+      <h4>My Profile</h4>
+    </div>
+    <div class="mob__sidebar__compare"  style="padding-top:1rem" onclick="window.location='<?php echo $d?>./includes/logout.php'">
+      <h4>Logout</h4>
+    </div>
+  <?php }?>
     <div class="mob__sidebar__compare" onclick="window.location.href='<?php echo $d?>./pages/course-results'">
       <img src="<?php echo $d?>./assets/svg/Icons/red/compare.svg" alt="compare icon" />
       <h4>compare courses</h4>
@@ -251,35 +258,35 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
     <div class="mob__sidebar__courses">
       <h3>CATEGORIES</h3>
       <div class="mob__sidebar__courses__container">
-        <a href="http://localhost/course_brother/pages/course-results?course=all">ALL COLLEGES</a>
+        <a href="<?php echo $d; ?>./pages/course-results?course=all">ALL COLLEGES</a>
         <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=1 or prg_id=5");
           $str="";
           while($r=$temp->fetch_assoc()){ 
             $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
           } 
         ?>
-        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">PG COURSES</a>
+        <a href="<?php echo $d; ?>./pages/course-results?course=<?php echo $str; ?>">PG COURSES</a>
         <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=2");
           $str="";
           while($r=$temp->fetch_assoc()){ 
             $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
           } 
         ?>
-        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">UG COURSES</a>
+        <a href="<?php echo $d; ?>./pages/course-results?course=<?php echo $str; ?>">UG COURSES</a>
         <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=4");
           $str="";
           while($r=$temp->fetch_assoc()){ 
             $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
           } 
         ?>
-        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">DIPLOMA</a>
+        <a href="<?php echo $d; ?>./pages/course-results?course=<?php echo $str; ?>">DIPLOMA</a>
         <?php $temp=$conn->query("select distinct(c_id) as c_id from full_detail where prg_id=3");
           $str="";
           while($r=$temp->fetch_assoc()){ 
             $str.=$conn->query("select * from courses where id=".$r['c_id'])->fetch_assoc()['c_name']." ";
           } 
         ?>
-        <a href="http://localhost/course_brother/pages/course-results?course=<?php echo $str; ?>">CERTIFICATE</a>
+        <a href="<?php echo $d; ?>./pages/course-results?course=<?php echo $str; ?>">CERTIFICATE</a>
       </div>
     </div>
 

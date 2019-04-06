@@ -187,9 +187,11 @@ else
 
     <?php include '../includes/navbar-main.php'; ?>
 
-      <!-- NEWSLETTER_POPUP -->
+    <!-- NEWSLETTER_POPUP -->
     <?php include '../includes/newsletter-popup.php'; ?>
     <!-- NEWSLETTER_POPUP -->
+
+    <?php include "../includes/lead_popup.php"; ?>
 
     <!--COMPARE PAGE-->
     <?php include "./comparePage/index.php"; ?>
@@ -211,12 +213,13 @@ else
           </div> -->
         </div>
 
-        <div class="filter_results__head">
+        <div class="filter_results__head" >
           <h3>filter results</h3>
+          <button class="back_filter">Back</button>
           <button onclick="clear_all();">clear all</button>
         </div>
 
-        <div class="filter_results__item">
+        <div class="filter_results__item1 ">
           <div class="filter_results__item__head">
             <h5>course category</h5>
             <i class='fa fa-angle-up'></i>
@@ -235,7 +238,7 @@ else
 
         <div class="filter_results__item">
           <div class="filter_results__item__head">
-            <h5>institute</h5>
+            <h5>institutes / universities</h5>
             <i class='fa fa-angle-up'></i>
           </div>
           <div class="filter_results__item__content">
@@ -283,7 +286,7 @@ else
               <!-- <input type="text" placeholder='search specializations' /> -->
             </form>
             <div class="filter_results__item__check">
-                <?php $sql_3="select max(fees)+10000 as fee from full_detail";
+                <?php $sql_3="select max(fees)+25000 as fee from full_detail";
                     $res_3=$conn->query($sql_3)->fetch_assoc();
                     $res_3=$res_3['fee'];
                     ?>
@@ -315,7 +318,7 @@ else
 
         <div class="filter_results__item">
           <div class="filter_results__item__head">
-            <h5>affiliation</h5>
+            <h5>affiliation / accreditation</h5>
             <i class='fa fa-angle-up'></i>
           </div>
           <div class="filter_results__item__content">
@@ -626,8 +629,8 @@ else
         <?php $res=$conn->query("select * from sponsor_course");
           while($row=$res->fetch_assoc()){
         ?>
-          <div class="ad_banners__item">
-            <img src=".<?php echo $row['img_src']?>" onclick="window.open('<?php echo $row['link']?>');" style="width:100%;display:block;"/>
+          <div class="ad_banners__item" onclick="lead_popup();">
+            <img src=".<?php echo $row['img_src']?>" style="width:100%;display:block;"/>
           </div>
           <?php } ?>
       </div>

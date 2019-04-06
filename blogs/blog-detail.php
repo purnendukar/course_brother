@@ -72,7 +72,7 @@
             </p>
             <?php if($row['img_src']!=null){?>
               <div class="blog_detail__content__image">
-                <img style="width:100%;height:300px;object-fit:cover;" src=".<?php echo $row['img_src'];?>" alt="Not Loaded"/>
+                <img style="width:100%;height:200px;object-fit:cover;" src=".<?php echo $row['img_src'];?>" alt="Not Loaded"/>
               </div>
             <?php } ?>
             <p>
