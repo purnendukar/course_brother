@@ -2374,6 +2374,7 @@ body {
     height: 4rem;
     font-weight: 600;
     text-transform: uppercase;
+    cursor:pointer;
 }
 
 .course_results__item__content {
