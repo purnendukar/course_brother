@@ -2356,14 +2356,14 @@ body {
 }
 
 .course_results__item__img {
-  height: 18rem;
-  width: auto;
-  border: 2px solid #DB324D;
+  height: auto;
+  width: 18rem;
 }
 
 .course_results__item__img img {
   width: 100%;
   height: auto;
+  border: 2px solid #DB324D;
 }
 .course_results__item__img button{
     border: 1px solid #DB324D;
