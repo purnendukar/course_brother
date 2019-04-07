@@ -1979,7 +1979,7 @@ body {
     margin: 14rem 0;
   }
   .course_detail__header {
-    height: 30rem;
+    height: 25rem;
     background: -webkit-gradient(linear, left bottom, left top, from(rgba(219, 50, 77, 0.9)), to(rgba(219, 50, 77, 0.9))), url("../assets/images/header-bg.jpg");
     background: linear-gradient(0deg, rgba(219, 50, 77, 0.9), rgba(219, 50, 77, 0.9)), url("../assets/images/header-bg.jpg");
   }
