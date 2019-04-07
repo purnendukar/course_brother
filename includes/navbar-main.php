@@ -12,6 +12,15 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
 }
 
 ?>
+<script>
+    function my_profile(){
+        if('<?php echo urldecode($_COOKIE['email'])?>'=='dalmiashyam@yahoo.co.in'){
+            window.location.href="<?php echo $d?>./pages/user-dashboard";
+        }else{
+            alert("Sorry, this feature is being updated. Should be up soon, enjoy other part of website.");
+        }
+    }
+</script>
 <!-- PRELOADER -->
 <?php include $d.'./includes/preloader.php';
 ?>
@@ -63,7 +72,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
         <span><img src="<?php echo $d;?>./assets/svg/Icons/red/compare.svg" /></span>
         <h5>compare</h5>
         </div>
-        <div class="navbar_main__appendix__register " style="margin-right:0;" onclick="window.location='<?php echo $d?>./pages/user-dashboard'">
+        <div class="navbar_main__appendix__register " style="margin-right:0;" onclick="my_profile();">
         <span><img src="<?php echo $d?>./assets/svg/Icons/white/clipboard-with-pencil-.svg" alt="icon" /></span>
         <h5>My Profile</h5>
       </div>
@@ -240,7 +249,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
       <button>LOG IN / REGISTER</button>
     </div>
   <?php } else{ ?>
-    <div class="mob__sidebar__compare" style="padding-top:1rem" onclick="window.location='<?php echo $d?>./pages/user-dashboard'">
+    <div class="mob__sidebar__compare" style="padding-top:1rem" onclick="my_profile();">
       <h4>My Profile</h4>
     </div>
     <div class="mob__sidebar__compare"  style="padding-top:1rem" onclick="window.location='<?php echo $d?>./includes/logout.php'">
