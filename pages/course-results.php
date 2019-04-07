@@ -591,7 +591,7 @@ else
             ?>
           <div class="course_results__item">
             <div class="course_results__item__img">
-              <img src="<?php echo ".".$res_u['img_src'];?>" alt="image" />
+              <img onclick="lead_popup();" src="<?php echo ".".$res_u['img_src'];?>" alt="image" />
               <button onclick="lead_popup();">Download Brochure</button>
             </div>
             <div class="course_results__item__content">
