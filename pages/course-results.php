@@ -68,6 +68,7 @@ else
   background: #DB324D;
   cursor: pointer;
 }
+
 </style>
 
     <script>
@@ -591,6 +592,7 @@ else
           <div class="course_results__item">
             <div class="course_results__item__img">
               <img src="<?php echo ".".$res_u['img_src'];?>" alt="image" />
+              <button onclick="lead_popup();">Download Brochure</button>
             </div>
             <div class="course_results__item__content">
               <div class="course_results__item__content__head">
