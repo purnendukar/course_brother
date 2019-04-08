@@ -22,7 +22,7 @@
     ini_set('sendmail_from', 'shyam.d@coursebrother.com');
     
     //define the receiver of the email
-    $to = 'rijusuman1996@gmail.com';
+    $to = 'shyam.d@coursebrother.com';
     //define the subject of the email
     $subject = 'Test for title'; 
     //define the message to be sent. Each line should be separated with \n

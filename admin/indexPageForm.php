@@ -480,7 +480,7 @@ else
                         });
                 }}
 			}
-			function add_it_f(){
+			function add_it_fc(){
                 var input_=document.getElementsByName("input_fc");
                 var head=input_[0];
                 var info=input_[1];
@@ -609,6 +609,210 @@ else
                             }
                         });
 			}
+
+			//policies
+			
+            function add_p(){
+                var add_one=document.getElementById('add_onep');
+                if(add_one.style.display=='none'){
+                    add_one.style.display="";
+                }else{
+                    alert("Already displayed Enter your detail");
+                }
+			}
+			
+			function add_it_p(){
+                var input_=document.getElementsByName("input_p");
+                var head=input_[0];
+                var info=input_[1];
+                if(head.value=="" || info.value=="" || document.getElementById('img_choosep').value==""){
+                    alert("Fill all Feild");
+                    return;
+                }
+                if(confirm("Want to add?")){if(confirm("Going to add")){
+                    var formData= new FormData();
+                    formData.append('head',escape(head.value));
+                    formData.append('info',escape(info.value));
+                    formData.append('image',$('#img_choosep')[0].files[0]);
+                    $.ajax({
+                            url: "./policies_i_add.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Data Added Successfully");
+                                    window.location.href="./indexPageForm";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Data Not Added Try Again");
+                                }
+                            }
+                        });
+                }}
+			}
+			function cancel_add_p(){
+				var temp=document.getElementsByName('input_p');
+				for (var i=0;i<temp.length;i++){
+					temp[i].value="";
+				}
+				document.getElementById('add_onep').style.display="none";
+			}
+			function cancel_p(a){
+                var img_display=document.getElementById("img_displayp"+a);
+                var img_choose=document.getElementById("img_choosep"+a);
+                var input_= document.getElementsByName('input_p'+a);
+				var select_t=document.getElementsByName('select_p'+a)[0];
+				if(input_[0].disabled==false){
+					input_[0].disabled=true;
+                	input_[1].disabled=true;
+                    img_display.style.display="block";
+                    img_choose.style.display="none";
+					select_t.disabled=true;
+					var formData= new FormData();
+					formData.append('query','select head,content,display from policies_index where id='+a);
+					$.ajax({
+						url: "./get_info.php",
+						type: 'POST',
+						cache: false,
+						contentType: false,
+						processData: false,
+						data: formData,
+						complete: function (data) {
+							var temp=data.responseText.split("|");
+							input_[0].value=temp[0];
+							input_[1].value=temp[1];
+							select_t.value=temp[2];
+						}
+					});
+				}
+			}
+			function edit_p(a){
+                var input_= document.getElementsByName('input_p'+a);
+                var head=input_[0];
+                var info=input_[1];
+                var img_display=document.getElementById("img_displayp"+a);
+                var img_choose=document.getElementById("img_choosep"+a);
+                var select_f=document.getElementsByName("select_p"+a)[0];
+                if(head.disabled){
+                    head.disabled=false;
+                    info.disabled=false;
+                    select_f.disabled=false;
+                    img_display.style.display="none";
+                    img_choose.style.display="block";
+                }else{
+                    if(confirm("Want to Update?")){if(confirm("Going to update")){
+                        var formData=new FormData();
+                        formData.append('id',a);
+                        formData.append('head',escape(head.value));
+                        formData.append('info',escape(info.value));
+                        formData.append('display',select_f.value);
+
+                        $.ajax({
+                            url: "./policies_i_update.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='01'){
+                                    alert("Data Updated");
+                                }else{
+                                    alert("Data Not Updated");
+                                    window.location.href="./indexPageForm";
+                                }
+                            }
+                        });
+                        var img_form=new FormData();
+                            img_form.append('image',$('#img_choosep'+a+'')[0].files[0]);
+                            img_form.append('id',a);
+                            $.ajax({
+                                url: "./policies_i_update.php",
+                                type: 'POST',
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                data: img_form,
+                                complete: function (data) {
+                                    console.log(data.responseText);
+                                    if(data.responseText==1){
+                                        alert("Image Updated");
+                                    }else{
+                                        alert("Image Not Updated");
+                                    }
+                                }
+                            });
+                        head.disabled=true;
+                        info.disabled=true;
+                    	select_f.disabled=true;
+                        img_display.style.display="block";
+                        img_choose.style.display="none";
+                    }}
+                }
+			}
+			function delete_p(a){
+                if(confirm("Want to delete id "+a+"?")){
+                    if(confirm("Going to delete id "+a+" data")){
+                    var formData= new FormData();
+                    formData.append("id",a);
+                    $.ajax({
+                            url: "./policies_i_delete.php",
+                            type: 'POST',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            complete: function (data) {
+                                if(data.responseText=='1'){
+                                    alert("Deleted");
+                                    document.getElementById("rowf"+a).style.display="none";
+                                }else{
+                                    console.log(data.responseText);
+                                    alert("Not Deleted");
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+			function delete_p_checked(){
+                if(confirm("want to delete all checked data?")){
+                    if(confirm("Going to delete all checked data")){
+											var checked_=document.getElementsByName("check_id_p");
+											var a="";
+																	for(var i=0;i<checked_.length;i++){
+																			if(checked_[i].checked){
+																				if(a==''){
+																					a+=checked_[i].value
+																				}else{
+																					a+=","+checked_[i].value;
+																				}
+																			}
+																	}
+                                var formData= new FormData();
+                                formData.append("ids",a);
+                                $.ajax({
+                                    url: "./policies_i_delete.php",
+                                    type: 'POST',
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    data: formData,
+                                    complete: function (data) {
+                                        if(data.responseText==1){
+																					alert("all selected data deleted");
+                                        }else{
+																					alert("not all selected data deleted");
+                                        }
+																					window.location.href="./indexPageForm";
+                                    }
+                                });
+                    }
+                }
+            }
         </script>
 
 		<style>
@@ -998,7 +1202,160 @@ else
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+				
+				<h3 class="accordion">Policies</h3>
+				  		<div class="panel row row menu-form">
+									<div class="col-xs-12 col-lg-6" style="width:100%; height:100%">
+										<h3 class="header smaller lighter blue">Policies</h3>
 
+										<div class="clearfix">
+											<div class="pull-right tableTools-container"></div>
+										</div>
+										<div class="table-header">
+											Results Of Policies
+										</div>
+
+										<!-- div.table-responsive -->
+
+										<!-- div.dataTables_borderWrap -->
+										<div>
+											<table id="dynamic-table-2" class="table table-striped table-bordered table-hover">
+                                                <div style="background-color: #EFF3F8;padding:15px 15px 5px 15px;">
+                                                    <a href='javascript:delete_p_checked()' class='tooltip-error ' data-rel='tooltip' title='Delete' >
+                                                        <span class='red'>
+                                                            <i class='ace-icon fa fa-trash-o bigger-120'></i>
+                                                            Selected
+                                                        </span>
+                                                    </a>
+													<a style="margin-left:125px;" class="btn btn-primary" href="javascript:add_p()">Add New Section</a> 
+													<div id="add_onep" class="form-group"  style="display:none;width:100%;text-align:center; padding:30px;">
+														<textarea style="resize:vertical;width:100%;" type="text" name="input_p" class="form-control" placeholder="Heading"></textarea>
+														<textarea style="resize:vertical;width:100%;" type="text" name="input_p" class="form-control" placeholder="Content"></textarea>
+														<input type="file" id="img_choosep" accept="image/*" style="margin:5px;" />
+														<input class="btn btn-primary" style="width:100px; margin:5px;" type="button" value="Confirm" onclick="add_it_p();" />
+														<input class="btn btn-primary" style="width:85px; margin:5px;" type="button" value="Cancel" onclick="cancel_add_p()" />
+													</div>
+                                                </div>
+                                                <thead>
+													<tr >
+													<th class="center sorting_disabled" rowspan="1" colspan="1" aria-label="">
+															<label class="pos-rel">
+																<input type="checkbox" class="ace">
+																<span class="lbl"></span>
+															</label>
+														</th>
+														<th class="center">
+															<label class="pos-rel">
+																<span class="lbl">Id</span>
+															</label>
+														</th>
+														<th style="text-align:center">Heading</th>
+														<th style="text-align:center">Content</th>
+                                                        <th style="text-align:center">Display</th>
+                                                        <th style="text-align:center">Images</th>
+														<th style="text-align:center" class="hidden-480">Last Updated By</th>
+														<th style="text-align:center">Edit/Delete</th>
+													</tr>
+												</thead>
+												<tbody>
+												<?php
+                                                    $sql="select * from policies_index";
+                                                    $result=$conn_p->query($sql);
+                                                    while($row=$result->fetch_assoc())      
+                                                    {
+												echo  
+												"<tr id='rowf".$row['id']."'>
+														<td class='center'>
+															<label class='pos-rel'>
+																<input name='check_id_p'  value='".$row['id']."'  type='checkbox' class='ace'>
+																<span class='lbl'></span>
+															</label>
+														</td>
+														<td class='center'>
+                                                            <label class='pos-rel'>
+																<span  class='lbl'>".$row['id']."</span>
+															</label>
+														</td>
+
+														<td>
+                                                            <textarea class='lbl' name='input_p".$row['id']."' style='width:100%;resize:vertical;height:35px;' disabled>".urldecode($row['head'])."</textarea>
+														</td>
+														<td> 
+                                                            <textarea class='lbl' name='input_p".$row['id']."' style='width:100%;resize:vertical;height:35px;' disabled>".urldecode($row['content'])."</textarea>
+                                                        </td>
+														<td>
+															<select class='lbl' name='select_p".$row['id']."' style='width:100%;resize:vertical;height:auto;' disabled>
+																<option value='No' ".select_or_not($row['display']).">No</option>
+																<option value='Yes' ".select_or_not($row['display']).">Yes</option>
+															</select>
+														</td>
+                                                        <td>
+                                                            <img id='img_displayp".$row['id']."' class='img_displayf' style='background-color:#f5b300;' src='.".$row['img_src']."' alt='image'/>
+                                                            <input id='img_choosep".$row['id']."' type='file' style='width:200px;display:none;' accept='image/*'/>
+                                                        </td>
+														<td class='hidden-480'>
+                                                            <span class='label label-sm label-warning' style='height:auto;font-size:13px;' name='display".$row['id']."' >".$row['update_by']." <br/>".implode('-',array_reverse(explode('-',explode(' ',$row['updated'])[0])))."<br>".explode(' ',$row['updated'])[1]."</span>
+														</td>
+														<td style='width:120px'>
+															<div class='hidden-sm hidden-xs action-buttons'>
+																
+																<a class='green' href='javascript:edit_p(".$row['id'].")' class='tooltip-success'>
+																	<i class='ace-icon fa fa-pencil bigger-130'></i>
+																</a>
+
+																<a class='red' href='javascript:delete_p(".$row['id'].")' >
+																	<i class='ace-icon fa fa-trash-o bigger-130'></i>
+                                                                </a>
+                                                                
+                                                                <a class='blue' href='javascript:cancel_p(".$row['id'].")' >
+																	<i class='ace-icon fa fa-times red2 bigger-130'></i>
+																</a>
+															</div>
+
+															<div class='hidden-md hidden-lg'>
+																<div class='inline pos-rel'>
+																	<button class='btn btn-minier btn-yellow dropdown-toggle' data-toggle='dropdown' data-position='auto'>
+																		<i class='ace-icon fa fa-caret-down icon-only bigger-120'></i>
+																	</button>
+
+																	<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
+																		
+																		<li>
+																			<a href='javascript:edit_p(".$row['id'].")'  class='tooltip-success' data-rel='tooltip' title='Edit'>
+																				<span class='green'>
+																					<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
+																				</span>
+																			</a>
+																		</li>
+
+																		<li>
+																			<a href='javascript:delete_p(".$row['id'].")' class='tooltip-error' data-rel='tooltip' title='Delete' >
+																				<span class='red'>
+																					<i class='ace-icon fa fa-trash-o bigger-120'></i>
+																				</span>
+																			</a>
+                                                                        </li>
+                                                                        
+                                                                        <li>
+																			<a href='javascript:cancel_p(".$row['id'].")' class='tooltip-info' data-rel='tooltip' title='View'>
+																				<span class='blue'>
+																					<i class='ace-icon fa fa-times red2 bigger-120'></i>
+																				</span>
+																			</a>
+																		</li>
+
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>";} ?>
+												</tbody>
+											</table>
+											<div class="form-group"  style="text-align:center; padding:30px;"></div>
+										</div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
 
                 <h3 class="accordion">Featured Courses</h3>
 			    <div class='panel row menu-form'>
@@ -1452,6 +1809,202 @@ else
 			
 			
 				$(document).on('click', '#dynamic-table-1 .dropdown-toggle', function(e) {
+					e.stopImmediatePropagation();
+					e.stopPropagation();
+					e.preventDefault();
+				});
+				
+				
+				
+				//And for the first simple table, which doesn't have TableTools or dataTables
+				//select/deselect all rows according to table header checkbox
+				var active_class = 'active';
+				$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$(this).closest('table').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+						else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+					});
+				});
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+					var $row = $(this).closest('tr');
+					if($row.is('.detail-row ')) return;
+					if(this.checked) $row.addClass(active_class);
+					else $row.removeClass(active_class);
+				});
+			
+				
+			
+				/********************************/
+				//add tooltip for small view action buttons in dropdown menu
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				
+				//tooltip placement on right or left
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+			
+					var off2 = $source.offset();
+					//var w2 = $source.width();
+			
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+				
+				
+				
+				
+				/***************/
+				$('.show-details-btn').on('click', function(e) {
+					e.preventDefault();
+					$(this).closest('tr').next().toggleClass('open');
+					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+				});
+				/***************/
+				
+				
+				
+				
+				
+				/**
+				//add horizontal scrollbars to a simple table
+				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
+				  {
+					horizontal: true,
+					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
+					size: 2000,
+					mouseWheelLock: true
+				  }
+				).css('padding-top', '12px');
+				*/
+			
+			
+			});
+		</script>
+		<script type="text/javascript">
+			jQuery(function($) {
+				//initiate dataTables plugin
+				var myTable1 = 
+				$('#dynamic-table-2')
+				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+				.DataTable( {
+					bAutoWidth: false,
+					"aoColumns": [
+					  { "bSortable": false },{ "bSortable": false },
+					  null, null, null, null, null,
+					  { "bSortable": false }
+					],
+					"aaSorting": [],
+					
+					
+					//"bProcessing": true,
+			        //"bServerSide": true,
+			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
+			
+					//,
+					//"sScrollY": "200px",
+					//"bPaginate": false,
+			
+					//"sScrollX": "100%",
+					//"sScrollXInner": "120%",
+					//"bScrollCollapse": true,
+					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
+			
+					//"iDisplayLength": 50
+			
+			
+					select: {
+						style: 'multi'
+					}
+			    } );
+			
+				
+				
+				
+				myTable1.buttons().container().appendTo( $('.tableTools-container') );
+				
+				//style the message box
+				var defaultCopyAction = myTable1.button(1).action();
+				myTable1.button(1).action(function (e, dt, button, config) {
+					defaultCopyAction(e, dt, button, config);
+					$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+				});
+				
+				
+				var defaultColvisAction = myTable1.button(0).action();
+				myTable1.button(0).action(function (e, dt, button, config) {
+					
+					defaultColvisAction(e, dt, button, config);
+					
+					
+					if($('.dt-button-collection > .dropdown-menu').length == 0) {
+						$('.dt-button-collection')
+						.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+						.find('a').attr('href', '#').wrap("<li />")
+					}
+					$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+				});
+			
+				////
+			
+				setTimeout(function() {
+					$($('.tableTools-container')).find('a.dt-button').each(function() {
+						var div = $(this).find(' > div').first();
+						if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+						else $(this).tooltip({container: 'body', title: $(this).text()});
+					});
+				}, 500);
+				
+				
+				
+				
+				
+				myTable1.on( 'select', function ( e, dt, type, index ) {
+					if ( type === 'row' ) {
+						$( myTable1.row( index ).node() ).find('input:checkbox').prop('checked', true);
+					}
+				} );
+				myTable1.on( 'deselect', function ( e, dt, type, index ) {
+					if ( type === 'row' ) {
+						$( myTable1.row( index ).node() ).find('input:checkbox').prop('checked', false);
+					}
+				} );
+			
+			
+			
+			
+				/////////////////////////////////
+				//table checkboxes
+				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+				
+				//select/deselect all rows according to table header checkbox
+				$('#dynamic-table-2 > thead > tr > th input[type=checkbox], #dynamic-table-2_wrapper input[type=checkbox]').eq(0).on('click', function(){
+					var th_checked = this.checked;//checkbox inside "TH" table header
+					
+					$('#dynamic-table-2').find('tbody > tr').each(function(){
+						var row = this;
+						if(th_checked) myTable1.row(row).select();
+						else  myTable1.row(row).deselect();
+					});
+				});
+				
+				//select/deselect a row when the checkbox is checked/unchecked
+				$('#dynamic-table-2').on('click', 'td input[type=checkbox]' , function(){
+					var row = $(this).closest('tr').get(0);
+					if(this.checked) myTable1.row(row).deselect();
+					else myTable1.row(row).select();
+				});
+			
+			
+			
+				$(document).on('click', '#dynamic-table-2 .dropdown-toggle', function(e) {
 					e.stopImmediatePropagation();
 					e.stopPropagation();
 					e.preventDefault();

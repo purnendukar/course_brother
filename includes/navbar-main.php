@@ -14,7 +14,7 @@ if($s[count($s)-2]=='pages' || $s[count($s)-2]=='blogs' || $s[count($s)-2]=='car
 ?>
 <script>
     function my_profile(){
-        if('<?php echo urldecode($_COOKIE['email'])?>'=='dalmiashyam@yahoo.co.in'){
+        if('<?php if(isset($_COOKIE['email'])){echo urldecode($_COOKIE['email']);}?>'=='dalmiashyam@yahoo.co.in'){
             window.location.href="<?php echo $d?>./pages/user-dashboard";
         }else{
             alert("Sorry, this feature is being updated. Should be up soon, enjoy other part of website.");

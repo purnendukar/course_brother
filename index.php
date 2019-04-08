@@ -82,21 +82,13 @@ else
 			<i class="fas fa-chevron-left"></i>
 		</div>
 		<div class="policy_icons__container">
-			<div class="policy_icons__item tooltip" title='<b>CREDIBLE INSTITUTES</b> <br><br> For formal education courses, check the status of the listed universities on the UGC DEB website. https://www.ugc.ac.in/deb/'>
-				<img src="./assets/svg/Icons/white/apartments.svg" alt="credible institutes" />
+      <?php $res=$conn->query("select * from policies_index where display='Yes'");
+        while($row=$res->fetch_assoc()){
+      ?>
+			<div class="policy_icons__item tooltip" title='<b><?php echo $row['head'];?></b> <br><br> <?php echo $row['content'];?>'>
+				<img src="<?php echo $row['img_src'];?>" alt="credible institutes" />
 			</div>
-			<div class="policy_icons__item tooltip" title='<b>TRANSPARENT INFORMATION</b> <br><br> CourseBrother.com is not a study center and has no role in admission decisions, examinations and / or awarding any degree or diploma'>
-				<img src="./assets/svg/Icons/white/information.svg" alt="transparent information" />
-			</div>
-			<div class="policy_icons__item tooltip" title='<b>GENUINE FEE</b> <br><br> CourseBrother.com charges no extra fee. No discount is offered by the course provider of any of the courses listed'>
-				<img src="./assets/svg/Icons/white/give-money.svg" alt="genuine fee" />
-			</div>
-			<div class="policy_icons__item tooltip" title='<b>COUNSELLING SUPPORT</b> <br><br> Get expert and dedicated counselling support to make an informed education decision'>
-				<img src="./assets/svg/Icons/white/phone-receiver.svg" alt="counselling support" />
-			</div>
-			<div class="policy_icons__item tooltip" title='<b>STUDY MATERIAL</b> <br><br> Study material is provided by the respective course providers'>
-				<img src="./assets/svg/Icons/white/books-stack-of-three.svg" alt="study material" />
-			</div>
+      <?php } ?>
 		</div>
 	</div>
 	<!-- /POLICY_ICONS -->
@@ -302,19 +294,31 @@ else
                           <?php
                             if($row['heading']=="graduate & post-graduate"){
                                 $res_t1=$conn->query("select DISTINCT(c_id) as c from full_detail where prg_id=1 or prg_id=2 ");
+                                $count=0;
                                 while($row_t1=$res_t1->fetch_assoc()){
+                                  if($count==8){break;}
+                                  $count++;
                                 ?> <a href='<?php $t_cname=$conn->query("select c_name from courses where id=".$row_t1['c'])->fetch_assoc()['c_name']; echo "./pages/course-results?course=".$t_cname; ?>'><li><?php echo $t_cname;?></li></a>  <?php }
                             }if($row['heading']=="specialization courses"){
                                 $res_t1=$conn->query("select * from subject");
+                                $count=0;
                                 while($row_t1=$res_t1->fetch_assoc()){
+                                  if($count==8){break;}
+                                  $count++;
                                 ?> <a href='<?php echo "./pages/course-results?course=".$row_t1['sub_name']; ?>'><li><?php echo $row_t1['sub_name'];?></li></a>  <?php }
                             }if($row['heading']=="universities"){
                                 $res_t1=$conn->query("select * from universities");
+                                $count=0;
                                 while($row_t1=$res_t1->fetch_assoc()){
+                                  if($count==8){break;}
+                                  $count++;
                                 ?> <a href='<?php echo "./pages/course-results?course=all ".$row_t1['u_name']; ?>'><li><?php echo $row_t1['u_name'];?></li></a>  <?php }
                             }if($row['heading']=="diploma & pg diploma courses"){
                                 $res_t1=$conn->query("select DISTINCT(s_id) as c from full_detail where prg_id=4 ");
+                                $count=0;
                                 while($row_t1=$res_t1->fetch_assoc()){
+                                  if($count==8){break;}
+                                  $count++;
                                 ?> <a href='<?php $t_sname=$conn->query("select sub_name from subject where id=".$row_t1['c'])->fetch_assoc()['sub_name']; echo "./pages/course-results?course=DIPLOMA ".$t_sname; ?>'><li><?php echo $t_sname;?></li></a>  <?php }
                             }
                           ?>

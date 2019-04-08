@@ -54,11 +54,11 @@ else
 
     <!-- ABOUT_US -->
     <div class='about_us'>
-      <?php $res=$conn->query("SELECT * FROM `about`");?>
+      <?php $res=$conn->query("SELECT * FROM `about`")->fetch_assoc();?>
       <div class="about_us__header">
-        <h1 class='about_us__header__title'>about</h1>
+        <h1 class='about_us__header__title'><?php echo $res['head']; ?></h1>
         <div class="about_us__header__para">
-          <?php echo urldecode($res->fetch_assoc()['content']);?>
+          <?php echo urldecode($res['content']);?>
         </div>
       </div>
 

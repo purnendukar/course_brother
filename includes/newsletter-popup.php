@@ -61,7 +61,7 @@ function set_s_cookie($e_id){
               //define the subject of the email
               $subject = 'Test for title'; 
               //define the message to be sent. Each line should be separated with \n
-              $message = 'Newsletter Subscribe'; 
+              $message = $conn->query("SELECT * FROM `lead_popup` where id=1")->fetch_assoc()['message'];; 
               
               //define the headers we want passed. Note that they are separated with \r\n
               $headers = 'From: shyam.d@coursebrother.com\r\n';

@@ -26,7 +26,7 @@ $id_l="";
                   $city="".$_POST['city'];
                   $str.=" halting from ".strtoupper($city).",";
               }
-              $e=$conn->query("SELECT * FROM `contact_info` where id=2")->fetch_assoc()['info'];
+              $e=$conn->query("SELECT * FROM `enquire_popup` where id=1")->fetch_assoc()['message'];
 
               ini_set('SMTP','smtp.zoho.com');
               ini_set('smtp_port',465);
@@ -37,7 +37,7 @@ $id_l="";
               //define the subject of the email
               $subject = 'Test for title'; 
               //define the message to be sent. Each line should be separated with \n
-              $message = 'You requested for enquiry, we will contact you shortly.'; 
+              $message = $e; 
               
               //define the headers we want passed. Note that they are separated with \r\n
               $headers = 'From: shyam.d@coursebrother.com\r\n';

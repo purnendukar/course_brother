@@ -57,6 +57,7 @@ else
 					if(confirm("Want to update?")){if(confirm("Going to update")){
 					var f=new FormData();
 					f.append('head',input_[0].value);
+					f.append('msg',input_[1].value);
 					$.ajax({
 							url: "./lead_pop_update.php",
 							type: 'POST',
@@ -115,6 +116,7 @@ else
                                 <div class="form-group">
                                 <?php $row=$conn_p->query("SELECT * FROM `lead_popup` where id=1")->fetch_assoc();?>
                                     <div style="padding:5px">Heading : <textarea style="resize:vertical" disabled class="form-control" name="input_" type="text" ><?php echo $row['head']; ?></textarea></div>
+                                    <div style="padding:5px">Confirmation mail message : <textarea style="resize:vertical" disabled class="form-control" name="input_" type="text" ><?php echo $row['message']; ?></textarea></div>
                                     <div style="margin:10px;text-align:center;"><input style="margin:10px;" type="button" class="btn btn-primary" value="Edit" onclick="update_(this);" /><input style="margin:10px;" type="button" class="btn btn-primary" value="Cancel" onclick="window.location.href='./lead_popup'" /></div>
                                 </div>
                             </div>

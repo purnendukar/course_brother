@@ -188,10 +188,12 @@ else
             }
             function about_edit(){
                 var about = document.getElementById("about");
+                var about_head = document.getElementById("about_head");
                 var edit=document.getElementById('about_edit');
                 var cancel=document.getElementById('cancel_about');
                 if(edit.value=='Edit'){
                     about.disabled=false;
+                    about_head.disabled=false;
                     edit.value='Update';
                     cancel.style.display="";
                     about_t=about.value;
@@ -199,6 +201,7 @@ else
                     if(confirm("Want to update?")){if(confirm("Going to Update")){
                         var f=new FormData();
                         f.append('content',about.value);
+                        f.append('head',about_head.value);
 
                         $.ajax({
                                 url: "./about_update.php",
@@ -212,6 +215,7 @@ else
                                         alert("Data Updated Successfully");
                                         edit.value="Edit";
                                         about.disabled=true;
+                                        about_head.disabled=true;
                                         cancel.style.display="none";
                                     }else{
                                         alert("Data Not Updated Try Again");
@@ -469,11 +473,13 @@ else
             }
             function about_cancel(){
                 var about = document.getElementById("about");
+                var about_head = document.getElementById("about_head");
                 var edit=document.getElementById('about_edit');
                 var cancel=document.getElementById('cancel_about');
                 about.value=about_t;
                 edit.value="Edit";
                 about.disabled=true;
+                about_head.disabled=true;
                 cancel.style.display="none";
             }
             function provide_cancel(){
@@ -664,12 +670,12 @@ else
 			  <h3 class="accordion">About</h3>
 				<div class='panel row menu-form' >
 	              <div class='col-lg-6' style="width:100%;height:100%">
-	                  <h2 class='menu-text'>About</h2>
 	                  <div id="tab" class='menu-content' style="width:100%">
 
                           <div class="form-group" id="<?php echo "row".$row['id'] ?>">
-                                <?php $t=$conn_p->query("select * from about");?>
-                                <textarea disabled id="about" style="min-width:100%;max-width:100%;height:300px;"><?php echo urldecode($t->fetch_assoc()['content']); ?></textarea>
+                                <?php $t=$conn_p->query("select * from about")->fetch_assoc();?>
+	                  			<h2 class='menu-text'><input disabled id="about_head" value="<?php echo $t['head'];?>" style="width:100%;"/></h2>
+                                <textarea disabled id="about" style="min-width:100%;max-width:100%;height:300px;"><?php echo urldecode($t['content']); ?></textarea>
                                 <div style="text-align:center;padding:10px;">
                                     <input id="about_edit" class="btn btn-primary" type="button" onclick="about_edit();" value="Edit" /> <input style="display:none;" id='cancel_about' type="button" class="btn btn-primary" value="Cancel" onclick="about_cancel();" />
                                 </div>
