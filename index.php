@@ -85,7 +85,7 @@ else
       <?php $res=$conn->query("select * from policies_index where display='Yes'");
         while($row=$res->fetch_assoc()){
       ?>
-			<div class="policy_icons__item tooltip" title='<b><?php echo $row['head'];?></b> <br><br> <?php echo $row['content'];?>'>
+			<div class="policy_icons__item tooltip" title='<b><?php urldeocde(echo $row['head']);?></b> <br><br> <?php echo urldeocde($row['content']);?>'>
 				<img src="<?php echo $row['img_src'];?>" alt="credible institutes" />
 			</div>
       <?php } ?>
@@ -289,7 +289,7 @@ else
                       <i class='fa fa-times'></i>
                     </div>
                     <div class='top_courses__item__section__container'>
-                      <h4>TOP <?php echo $row['heading']?></h4>
+                      <h4>TOP <?php echo urldeocde($row['heading']);?></h4>
                       <ul>
                           <?php
                             if($row['heading']=="graduate & post-graduate"){
