@@ -50,7 +50,7 @@ function register(){
                             window.location.href=window.location;
                         }else{
                             console.log(data.responseText);
-                            alert("Not Able to Login try again");
+                            alert("Not Able to Register Try Again");
                         }
                     }
                   });
@@ -82,7 +82,7 @@ function login(){
                 window.location.href=window.location;
             }else{
                 console.log(data.responseText);
-                alert("Not Able to Login try again");
+                alert("Incorrect Email Id or Password");
             }
         }
     });

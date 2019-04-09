@@ -6246,7 +6246,7 @@ body {
 
 .user_dashboard .dashboard__header__main__info {
   width: 100%;
-  margin-top: 12rem;
+  margin-top: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6598,6 +6598,7 @@ body {
   margin: 0;
   font-size: 1.6rem;
   color: #F34965;
+  padding-left: 1rem;
 }
 
 .user_dashboard .dashboard__content__skills__workexp__item__content__work h6 {
@@ -6605,7 +6606,6 @@ body {
   color: #7e7e7e;
   font-size: 1.6rem;
   font-weight: 500;
-  padding-left: 1rem;
 }
 
 .user_dashboard .dashboard__content__skills__workexp__item__content p {

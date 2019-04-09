@@ -217,7 +217,7 @@ else
         f.append('company',work_i[1].value);
         f.append('start_',work_i[3].value);
         f.append('end_',work_i[4].value);
-        f.append('about',work_i[5].value);
+        f.append('about',work_i[5].value.replace(/(?:\r\n|\r|\n)/g,"<br/>"));
         about.style.display="block";
         $.ajax({
           url: "./user_dashboard/work_update.php",
@@ -238,7 +238,7 @@ else
               work[0].innerHTML=work_i[0].value;
               work[1].innerHTML=work_i[1].value;
               work[2].innerHTML=work_i[3].value+" - "+work_i[4].value;
-              work[3].innerHTML=work_i[5].value;
+              work[3].innerHTML=work_i[5].value.replace(/(?:\r\n|\r|\n)/g,"<br/>");
             }else{
               alert("Data Not Updated Try Again");
               console.log(data.responseText);
@@ -279,11 +279,11 @@ else
       }else{
         var done=false;
         var f=new FormData();
-        f.append('position',work_i[0].value);
-        f.append('company',work_i[1].value);
+        f.append('position',work_i[1].value);
+        f.append('company',work_i[0].value);
         f.append('start_',work_i[2].value);
         f.append('end_',work_i[3].value);
-        f.append('about',work_i[4].value);
+        f.append('about',work_i[4].value.replace(/(?:\r\n|\r|\n)/g,"<br/>"));
         about.style.display="block";
         $.ajax({
           url: "./user_dashboard/work_insert.php",
@@ -296,7 +296,7 @@ else
             if(data.responseText.indexOf("success") !== false){
               alert("Data Updated Successfully");
               var id=data.responseText.replace("success","");
-              document.getElementById("work_sec_have").innerHTML+='<div id="work_sec'+id+'" class="dashboard__content__skills__workexp__item"><div class="dashboard__content__skills__workexp__item__circle"></div><div class="dashboard__content__skills__workexp__item__content"><div class="dashboard__content__skills__workexp__item__content__work"><h5 class="work_'+id+'">'+work_i[0].value+'</h5><h6 class="work_'+id+'">'+work_i[1].value+'</h6><input class="work_i'+id+'" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[0].value+'"/><input class="work_i'+id+'" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[1].value+'"/></div><h6 class="work_'+id+'">'+work_i[2].value+' - '+work_i[3].value+'</h6><div class="work_i'+id+'" style="display:none;"><input class="work_i'+id+'" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[2].value+'"/> - <input class="work_i'+id+'" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[3].value+'"/></div><p class="work_'+id+'">'+work_i[4].value+'</p><textarea class="work_i'+id+'" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;">'+work_i[4].value+'</textarea><div style="margin-top:15px;"><a class="work_'+id+'" href="javascript:work_edit(\'edit\',\''+id+'\');" style="text-decoration:none;">Edit</a><a class="work_'+id+'" href="javascript:work_edit(\'delete\',\''+id+'\');" style="text-decoration:none;margin-left:15px;">Delete</a><button onclick="work_edit(\'update\',\''+id+'\');" class="work_i'+id+'" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button></div> </div></div>';
+              document.getElementById("work_sec_have").innerHTML+='<div id="work_sec'+id+'" class="dashboard__content__skills__workexp__item"><div class="dashboard__content__skills__workexp__item__circle"></div><div class="dashboard__content__skills__workexp__item__content"><div class="dashboard__content__skills__workexp__item__content__work"><h6 class="work_'+id+'">'+work_i[0].value+'</h6> <h5 class="work_'+id+'">'+work_i[1].value+'</h5><input class="work_i'+id+'" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[0].value+'"/><input class="work_i'+id+'" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[1].value+'"/></div><h6 class="work_'+id+'">'+work_i[2].value+' - '+work_i[3].value+'</h6><div class="work_i'+id+'" style="display:none;"><input class="work_i'+id+'" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[2].value+'"/> - <input class="work_i'+id+'" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="'+work_i[3].value+'"/></div><p class="work_'+id+'">'+work_i[4].value.replace(/(?:\r\n|\r|\n)/g,"<br/>")+'</p><textarea class="work_i'+id+'" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;">'+work_i[4].value+'</textarea><div style="margin-top:15px;"><a class="work_'+id+'" href="javascript:work_edit(\'edit\',\''+id+'\');" style="text-decoration:none;">Edit</a><a class="work_'+id+'" href="javascript:work_edit(\'delete\',\''+id+'\');" style="text-decoration:none;margin-left:15px;">Delete</a><button onclick="work_edit(\'update\',\''+id+'\');" class="work_i'+id+'" style="outline:none;margin-top:10px;background-color:#F34965; padding:10px 20px; border:none;color:white; border-radius:8px;cursor:pointer; display:none;" >Update</button></div> </div></div>';
               done=true;
               if(done){
                 for(var i=0 ;i<work_i.length;i++){
@@ -597,6 +597,118 @@ else
         });
       }
     }
+
+    function edit_exp(){
+      var _exp_i=document.getElementById("_exp_i");
+      var _exp_o=document.getElementById("_exp_o");
+      var edit_exp_=document.getElementById("edit_exp_");
+      if(_exp_i.style.display=="none"){
+        _exp_i.style.display="";
+        _exp_o.style.display="none";
+        edit_exp_.innerHTML="Update";
+      }else{
+        var f=new FormData();
+        f.append('exp',_exp_i.value);
+        about.style.display="block";
+        $.ajax({
+          url: "./user_dashboard/work_exp.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText.indexOf("success") !== false){
+              alert("Data Updated Successfully");
+              _exp_i.style.display="none";
+              _exp_o.style.display="";
+              _exp_o.innerHTML=_exp_i.value;
+              edit_exp_.innerHTML="Edit";
+            }else{
+              alert("Data Not Updated Try Again");
+              console.log(data.responseText);
+            }
+          }
+        });
+      }
+    }
+    function edit_dob(a){
+      var _exp_i=document.getElementById("dob_i");
+      var _exp_o=document.getElementById("dob_o");
+      var dob_edit=document.getElementById("dob_edit");
+      if(_exp_i.style.display=="none"){
+        _exp_i.style.display="";
+        _exp_o.style.display="none";
+        dob_edit.innerHTML="Update";
+      }else{
+        var f=new FormData();
+        f.append('dob',dob_i.value);
+        about.style.display="block";
+        $.ajax({
+          url: "./user_dashboard/dob_edit.php",
+          type: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: f,
+          complete: function (data) {
+            if(data.responseText.indexOf("success") !== false){
+              alert("Data Updated Successfully");
+              window.location.href="./user-dashboard";
+            }else{
+              alert("Data Not Updated Try Again");
+              console.log(data.responseText);
+            }
+          }
+        });
+      }
+    }
+    function edit_dp(){
+      var dp_edit=document.getElementById("dp_edit");
+      var edit_dp=document.getElementById("edit_dp");
+      var dp_choose=document.getElementById("dp_choose");
+      var cancel_dp=document.getElementById("cancel_dp");
+      if(dp_choose.style.display=="none"){
+        edit_dp.innerHTML="Update";
+        dp_edit.style.marginTop="5px";
+        dp_choose.style.display="";
+        cancel_dp.style.display="";
+      }else{
+        if(confirm("Want to Update?")){if(confirm("Going to update")){
+                var formData = new FormData();
+                formData.append('image',$('#dp_choose')[0].files[0]);
+                  $.ajax({
+                      type: "POST",
+                      url: "./user_dashboard/dp_update.php",
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      data: formData,
+                      complete: function(data){
+                                //data contains the response from the php file.
+                                //u can pass it here to the javascript function
+                                console.log(data.responseText);
+                                if(data.responseText=='1'){
+                                    alert("data updated");
+                                    window.location.href="./user-dashboard";
+                                }else{
+                                    alert("data not updated");
+                                }
+                            }
+                    });
+                  }}
+      }
+    }
+    function cancel_dp(){
+      var dp_edit=document.getElementById("dp_edit");
+      var edit_dp=document.getElementById("edit_dp");
+      var dp_choose=document.getElementById("dp_choose");
+      var cancel_dp=document.getElementById("cancel_dp");
+        edit_dp.innerHTML="Edit Profile Picture";
+        dp_edit.style.marginTop="110px";
+        dp_choose.style.display="none";
+        cancel_dp.style.display="none";
+    }
   </script>
 
   <title>CourseBrother.com | User Dashboard</title>
@@ -643,7 +755,7 @@ else
               </div>
 
               <div class="dashboard__header__bg__info__appendix__item">
-                <img src="<?php if(isset($user_info['img_src'])){echo $user_info['img_src'];}else{echo "../assets/svg/Icons/white/stopwatch.svg";}?>" alt="Location Icon" />
+                <img src="../assets/svg/Icons/white/stopwatch.svg" alt="Location Icon" />
                 <p>Member Since <?php $since=new DateTime($user['created']); echo $since->format("Y");?></p>
               </div>
             </div>
@@ -652,7 +764,12 @@ else
 
         </div>
         <div class="dashboard__header__main">
-          <img src="../assets/svg/Icons/white/user.svg" alt="Student Image" />
+          <img src="<?php if($user_info['img_src']){echo ".".$user_info['img_src'];}else{echo "../assets/svg/Icons/white/user.svg";}?>" alt="Student Image" />
+          <input id="dp_choose" style="border: 2px solid #F34965;display:none;margin-top:100px;margin-bottom:5px;" type="file" />
+          <div id="dp_edit" style="margin-top:110px;">
+          <a id="edit_dp" style="text-decoration:none;margin:5px;" href="javascript:edit_dp();">Edit Profile Picture</a>
+          <a id="cancel_dp" style="text-decoration:none;margin:5px;display:none;" href="javascript:cancel_dp();">Cancel</a>
+          </div>
           <div class="dashboard__header__main__info">
 
             <div class="dashboard__header__main__info__media">
@@ -674,7 +791,7 @@ else
               </div>
               <h4 id="name_show" class='dashboard__header__main__info__personal__name'><?php echo urldecode($user['f_name'])." ".urldecode($user['l_name']); ?> <a href="javascript:f_name_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Edit</a></h4>
               <div id="occu_edit" class='dashboard__header__main__info__personal__name' style="display:none;font-size:1.5rem;">
-                <input class="occu_i" placeholder="First Name" type="text" value="<?php echo urldecode($user_info['occupation']);?>" style="width:120px;padding: 5px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;"/> 
+                <input class="occu_i" placeholder="Occupation" type="text" value="<?php echo urldecode($user_info['occupation']);?>" style="width:120px;padding: 5px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;"/> 
                 <a href="javascript:occu_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Update</a>
               </div>
               <h5 id="occu_show" class="dashboard__header__main__info__personal__occupation"><?php if(isset($user_info['occupation'])){echo ucwords(urldecode($user_info['occupation']));}?> <a href="javascript:occu_edit();" style="text-decoration:none;font-weight:400;font-size:1.5rem;">Edit</a></h5>
@@ -687,7 +804,7 @@ else
 
           <div class="dashboard__header__main__navbar">
             <ul>
-              <li><a href="">Candidate About</a></li>
+              <li><a href="">About</a></li>
               <li><a href="">Education</a></li>
               <li><a href="">Work Experience</a></li>
               <li><a href="">Professional Skills</a></li>
@@ -700,13 +817,13 @@ else
       <!-- /DASHBOARD_HEADER -->
 
       <!-- DASHBOARD__CONTENT -->
-      <div class="dashboard__content">
+      <div class="dashboard__content" style="margin-top:100px;">
 
         <!-- DASHBOARD_SKILLS -->
-        <div class="dashboard__content__skills">
+        <div class="dashboard__content__skills" >
 
           <div id='CandidateAbout' class="dashboard__content__skills__about">
-            <h3>Candidate's About</h3>
+            <h3>About</h3>
             <p id="about"><?php echo $user_info['about']; ?></p>
             <textarea id="about_input" placeholder="About the Course" style="resize:vertical;width:100%;min-height:200px;display:none;padding:10px;border:1px solid #cccccc;border-radius:3px;"><?php echo str_replace("<br/>","\n",$user_info['about']); ?></textarea>
             <a id="edit_about" href="javascript:about_edit('edit','<?php echo $user_info['id'];?>');" style="text-decoration:none;">Edit</a>
@@ -754,7 +871,7 @@ else
                 </div>
                 <textarea placeholder="About the Course" class="add_edu" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"></textarea>
                 <div style="margin-top:15px;">
-                  <a href="javascript:add_cancel('add');" style="text-decoration:none;">Add it</a>
+                  <a href="javascript:add_cancel('add');" style="text-decoration:none;">Submit</a>
                   <a href="javascript:add_cancel('delete');" style="text-decoration:none;margin-left:15px;">Cancel</a>
                 </div>
               </div>
@@ -773,17 +890,18 @@ else
                 <div class="dashboard__content__skills__workexp__item__circle"></div>
                 <div class="dashboard__content__skills__workexp__item__content">
                   <div class="dashboard__content__skills__workexp__item__content__work">
-                    <h5 class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['position']);?></h5>
                     <h6 class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['company_name']);?></h6>
-                    <input class="work_i<?php echo $exp_row['id']?>" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['position']);?>"/>
+                    <h5 class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['position']);?></h5>
+                    
                     <input class="work_i<?php echo $exp_row['id']?>" type="text" placeholder="Company"style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['company_name']);?>"/>
+                    <input class="work_i<?php echo $exp_row['id']?>" type="text" placeholder="Position" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo urldecode($exp_row['position']);?>"/>
                   </div>
                   <h6 class="work_<?php echo $exp_row['id']?>"><?php echo $exp_row['start_date'];?> - <?php echo $exp_row['end_date']?></h6>
                   <div class="work_i<?php echo $exp_row['id']?>" style="display:none;">
                     <input class="work_i<?php echo $exp_row['id']?>" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['start_date'];?>"/> - <input class="work_i<?php echo $exp_row['id']?>" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value="<?php echo $exp_row['end_date']?>"/>
                   </div>
                   <p class="work_<?php echo $exp_row['id']?>"><?php echo urldecode($exp_row['about_work']);?></p>
-                  <textarea class="work_i<?php echo $exp_row['id']?>" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo urldecode($exp_row['about_work']);?></textarea>
+                  <textarea class="work_i<?php echo $exp_row['id']?>" placeholder="About Job" class="add_edu" style="display:none;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo str_replace("<br/>","\n",urldecode($exp_row['about_work']));?></textarea>
                   <div style="margin-top:15px;">
                     <a class="work_<?php echo $exp_row['id']?>" href="javascript:work_edit('edit','<?php echo $exp_row['id'];?>');" style="text-decoration:none;">Edit</a>
                     <a class="work_<?php echo $exp_row['id']?>" href="javascript:work_edit('delete','<?php echo $exp_row['id'];?>');" style="text-decoration:none;margin-left:15px;">Delete</a>
@@ -797,15 +915,15 @@ else
               <div class="dashboard__content__skills__workexp__item__circle"></div>
               <div class="dashboard__content__skills__workexp__item__content">
                 <div class="dashboard__content__skills__workexp__item__content__work">
-                  <input class="work_i" type="text" placeholder="Position" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
                   <input class="work_i" type="text" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
+                  <input class="work_i" type="text" placeholder="Position" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
                 </div>
                 <div>
                   <input class="work_i" type="date" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/> - <input class="work_i" type="date" placeholder="Company"style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;" value=""/>
                 </div>
                 <textarea class="work_i" placeholder="About Job" class="add_edu" style="padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;width:100%;min-height:100px;resize:vertical;"><?php echo urldecode($exp_row['about_work']);?></textarea>
                 <div style="margin-top:15px;">
-                  <a class="work_i" href="javascript:add_work('add_it');" style="text-decoration:none;">Add it</a>
+                  <a class="work_i" href="javascript:add_work('add_it');" style="text-decoration:none;">Submit</a>
                   <a class="work_i" href="javascript:add_work('cancel');" style="text-decoration:none;margin-left:15px;">Cancel</a>
                 </div>
               </div>
@@ -872,7 +990,7 @@ else
                 <textarea placeholder="About Award" class="award_input" style="resize:vertical;width:100%;min-height:100px;padding:7px;margin:3px;border:1px solid #cccccc;border-radius:3px;"></textarea>
 
                 <div id="award_not_update" style="margin-top:10px;">
-                  <a  style="text-decoration:none;margin:10px 10px 10px 0;" href="javascript:new_award('add_it')">Add it</a>
+                  <a  style="text-decoration:none;margin:10px 10px 10px 0;" href="javascript:new_award('add_it')">Submit</a>
                   <a style="text-decoration:none;margin:10px;" href="javascript:new_award('cancel')">Cancel</a>
                 </div>
               </div>
@@ -883,7 +1001,6 @@ else
           </div>
         </div>
         <!-- /DASHBOARD_SKILLS -->
-
         <!-- DASHBOARD_OVERVIEW -->
         <div class="dashboard__content__overview">
 
@@ -895,7 +1012,9 @@ else
               <i class='fas fa-sliders-h'></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Experience</h5>
-                <h5><?php echo $user_info['experience']?></h5>
+                <h5 id="_exp_o" ><?php echo $user_info['experience']?></h5>
+                <input id="_exp_i" type="text" style="display:none;padding: 7px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;" placeholder="Work Experience" value="<?php echo $user_info['experience']?>"/>
+                <a id="edit_exp_" style="text-decoration:none;" href="javascript:edit_exp();">Edit</a>
               </div>
             </div>
 
@@ -903,10 +1022,12 @@ else
               <i class='fas fa-hourglass-half'></i>
               <div class="dashboard__content__overview__item__content">
                 <h5>Age</h5>
-                <h5><?php $now=new DateTime(); $dob=new DateTime($user_info['dob']); echo $now->diff($dob)->y;?></h5>
+                <h5 id="dob_o"><?php $now=new DateTime(); $dob=new DateTime($user_info['dob']); echo $now->diff($dob)->y;?></h5>
+                <input id="dob_i" type="date" style="display:none;padding: 7px; margin: 3px; border: 1px solid rgb(204, 204, 204); border-radius: 3px;" placeholder="Work Experience" value="<?php echo $user_info['dob']?>"/>
+                <a id="dob_edit" style="text-decoration:none;" href="javascript:edit_dob();">Edit</a>
               </div>
             </div>
-
+<!-- 
             <div class="dashboard__content__overview__item">
               <i class="far fa-money-bill-alt"></i>
               <div class="dashboard__content__overview__item__content">
@@ -921,7 +1042,7 @@ else
                 <h5>Expected Salary</h5>
                 <h5>100 million</h5>
               </div>
-            </div>
+            </div> -->
 
             <div class="dashboard__content__overview__item">
               <i class="fas fa-transgender"></i>

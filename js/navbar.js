@@ -312,7 +312,7 @@ const loginModalPasswordBox = document.querySelector('.login_modal__main__form i
 const loginModalEye = document.querySelector('.login_modal__main__form__showpw');
 
 let eyeOfAgamotto = 0;
-
+try{
 loginModalEye.addEventListener('click', () => {
   if (eyeOfAgamotto === 0) {
     loginModalPasswordBox.type = 'text';
@@ -322,6 +322,9 @@ loginModalEye.addEventListener('click', () => {
     eyeOfAgamotto = 0;
   }
 });
+}catch(e){
+
+}
 
 // -------------------------------
 // For show password in login modal
@@ -331,7 +334,7 @@ const registerModalEye2 = document.querySelector('.register_modal__main__form__s
 const registerModalEyes = [registerModalEye1, registerModalEye2];
 
 let eyeOfAgamotto2 = 0;
-
+try{
 registerModalEyes.forEach((eye, index) => {
   eye.addEventListener('click', () => {
     if (eyeOfAgamotto2 === 0) {
@@ -343,6 +346,9 @@ registerModalEyes.forEach((eye, index) => {
     }
   });
 });
+}catch(e){
+  
+}
 
 
 function lead_popup() {
@@ -353,4 +359,9 @@ function lead_popup() {
     'display': 'relative',
     'z-index': '8'
   });
+}
+
+
+if ( $('[type="date"]').prop('type') != 'date' ) {
+  $('[type="date"]').datepicker();
 }
